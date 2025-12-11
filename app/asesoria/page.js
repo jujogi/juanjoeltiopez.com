@@ -226,8 +226,33 @@ export default function AsesoriaPage() {
             borderColor="accent.cyan"
             textAlign="center"
             mb={8}
+            position="relative"
           >
-            <Heading fontSize="3xl" mb={2} color="white">
+            <Box
+              position="absolute"
+              top="-15px"
+              right="20px"
+              bg="gradient.card"
+              bgGradient="linear(to-r, #ef4444, #dc2626)"
+              color="white"
+              px={4}
+              py={2}
+              rounded="full"
+              fontWeight="bold"
+              fontSize="sm"
+              boxShadow="lg"
+            >
+              🎉 20% de descuento
+            </Box>
+            <Text
+              color="dark.textSecondary"
+              fontSize="xl"
+              textDecoration="line-through"
+              mb={1}
+            >
+              $137.500 COP
+            </Text>
+            <Heading fontSize="4xl" mb={2} color="accent.cyan">
               $110.000 COP
             </Heading>
             <Text color="dark.textSecondary" mb={6}>

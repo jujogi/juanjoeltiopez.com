@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Container, Stack, Text, Link } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 export default function Footer() {
   return (
@@ -20,15 +21,20 @@ export default function Footer() {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text fontSize="sm">© 2025 JuanJo El Tío Pez. Todos los derechos reservados</Text>
+        <Stack direction={{ base: "column", md: "row" }} spacing={{ base: 1, md: 0 }} align="center">
+          <Text fontSize="sm">© 2025 JuanJo El Tío Pez. Todos los derechos reservados</Text>
+        </Stack>
         <Stack direction={"row"} spacing={6}>
-          <Link href={"#"} fontSize="sm" _hover={{ color: "accent.cyan" }}>
-            Privacidad
+          <Link as={NextLink} href="/terminos" fontSize="sm" _hover={{ color: "accent.cyan" }}>
+            Términos y condiciones
           </Link>
-          <Link href={"#"} fontSize="sm" _hover={{ color: "accent.cyan" }}>
-            Términos
-          </Link>
-          <Link href={"#"} fontSize="sm" _hover={{ color: "accent.cyan" }}>
+          <Link
+            href="https://www.instagram.com/juanjoeltiopez"
+            target="_blank"
+            rel="noopener noreferrer"
+            fontSize="sm"
+            _hover={{ color: "accent.cyan" }}
+          >
             Contacto
           </Link>
         </Stack>

@@ -66,7 +66,7 @@ export default function Navigation() {
     { name: "Inicio", href: "/" },
     { name: "Blog", href: "/blog" },
     { name: "Guías", href: "/guias" },
-    { name: "Asesoría", href: "/asesoria" },
+    { name: "Asesorías", href: "/asesoria" },
     { name: "Acerca de", href: "/sobre-mi" },
     { name: "Tienda", href: "#", comingSoon: true },
   ];

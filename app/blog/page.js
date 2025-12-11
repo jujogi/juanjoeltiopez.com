@@ -15,6 +15,7 @@ import Image from "next/image";
 import { getAllPosts } from "@/lib/blogData";
 import NextLink from "next/link";
 import SubscriptionSidebar from "@/components/SubscriptionSidebar";
+import AsesoriaWidget from "@/components/AsesoriaWidget";
 
 const PostListItem = ({ post }) => {
   return (
@@ -99,9 +100,10 @@ export default function BlogPage() {
 
         {/* Sidebar */}
         <GridItem display={{ base: "none", lg: "block" }}>
-          <Box position="sticky" top={4}>
+          <VStack spacing={6} position="sticky" top={4}>
+            <AsesoriaWidget />
             <SubscriptionSidebar />
-          </Box>
+          </VStack>
         </GridItem>
       </Grid>
     </Container>

@@ -22,6 +22,7 @@ import NextLink from "next/link";
 import ReactMarkdown from "react-markdown";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
 import RelatedVideosWidget from "@/components/RelatedVideosWidget";
+import AsesoriaWidget from "@/components/AsesoriaWidget";
 
 const PostSkeleton = () => (
   <Container maxW={"container.xl"} py={12}>
@@ -228,7 +229,7 @@ export default function BlogPost({ params }) {
                 color="white"
                 _hover={{ bg: "accent.cyanHover" }}
               >
-                Ver Todos los Artículos
+                Ver todos los artículos
               </Button>
             </Box>
           </Stack>
@@ -238,6 +239,7 @@ export default function BlogPost({ params }) {
         <GridItem>
           <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
             {post.videos && post.videos.length > 0 && <RelatedVideosWidget videos={post.videos} />}
+            <AsesoriaWidget />
             <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" />
           </VStack>
         </GridItem>
