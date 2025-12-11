@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { getAllPosts } from "@/lib/blogData";
+import { formatDateWithYear } from "@/lib/dateUtils";
 import NextLink from "next/link";
 import SubscriptionSidebar from "@/components/SubscriptionSidebar";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
@@ -38,13 +39,7 @@ const PostListItem = ({ post }) => {
             {post.excerpt}
           </Text>
           <HStack spacing={3} fontSize="xs" color="dark.textSecondary">
-            <Text>
-              {new Date(post.date).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </Text>
+            <Text>{formatDateWithYear(post.date)}</Text>
             <Text>•</Text>
             <Badge colorScheme={post.categoryColor || "cyan"} fontSize="9px">
               {post.category}

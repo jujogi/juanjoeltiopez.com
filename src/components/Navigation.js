@@ -92,7 +92,6 @@ export default function Navigation() {
                 sizes="180px"
                 style={{ objectFit: "contain" }}
                 priority
-                unoptimized
               />
             </Box>
           </Link>

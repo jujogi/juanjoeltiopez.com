@@ -30,7 +30,7 @@ Una sobrefiltración es muy importante para garantizar un agua cristalina y libr
 
 Estos materiales ofrecen un amplio espacio para el desarrollo de **colonias de bacterias beneficiosas**, las cuales van a descomponer todos los desechos orgánicos, llevándolos a su más mínima expresión: los **nitratos**.
 
-## Uso de Bacteria Powder (Opcional)
+## Uso de Bacteria Powder
 
 **Bacteria powder** es un suplemento muy útil en el montaje de gambarios, ya que ayuda a acelerar el establecimiento del ecosistema biológico. El powder ayudará a:
 

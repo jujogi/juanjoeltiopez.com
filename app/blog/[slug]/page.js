@@ -18,6 +18,7 @@ import {
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import { getPostBySlug, getAllPosts } from "@/lib/blogData";
+import { formatDateLong } from "@/lib/dateUtils";
 import NextLink from "next/link";
 import ReactMarkdown from "react-markdown";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
@@ -124,13 +125,7 @@ export default function BlogPost({ params }) {
           <Stack direction={"row"} spacing={4} color={"dark.textSecondary"} fontSize={"sm"}>
             <Text>{post.author}</Text>
             <Text>•</Text>
-            <Text>
-              {new Date(post.date).toLocaleDateString("es-ES", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </Text>
+            <Text>{formatDateLong(post.date)}</Text>
             <Text>•</Text>
             <Text>{post.readTime}</Text>
           </Stack>

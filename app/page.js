@@ -13,10 +13,17 @@ import {
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { getAllPosts } from "@/lib/blogData";
+import { formatDateShort } from "@/lib/dateUtils";
 import SubscriptionSidebar from "@/components/SubscriptionSidebar";
 import SocialMediaWidget from "@/components/SocialMediaWidget";
-import FeaturedVideosWidget from "@/components/FeaturedVideosWidget";
+
+// Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
+const FeaturedVideosWidget = dynamic(
+  () => import("@/components/FeaturedVideosWidget"),
+  { ssr: false }
+);
 
 const PostListItem = ({ post }) => {
   return (
@@ -39,9 +46,7 @@ const PostListItem = ({ post }) => {
             {post.excerpt}
           </Text>
           <HStack spacing={3} fontSize="xs" color="dark.textSecondary">
-            <Text>
-              {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-            </Text>
+            <Text>{formatDateShort(post.date)}</Text>
             <Text>•</Text>
             <Badge colorScheme={post.categoryColor || "cyan"} fontSize="9px">
               {post.category}

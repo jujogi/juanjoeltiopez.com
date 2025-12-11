@@ -16,7 +16,7 @@ export const blogPosts = [
     content: bettaContent,
     category: "Cuidado de Peces",
     categoryColor: "blue",
-    date: "2024-12-01",
+    date: "2024-12-01T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "10 min lectura",
     image: "/images/betta-acuario-1.jpg",
@@ -89,7 +89,7 @@ export const blogPosts = [
     content: gambitasContent,
     category: "Invertebrados",
     categoryColor: "orange",
-    date: "2024-11-28",
+    date: "2024-11-28T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "12 min lectura",
     image: "/images/gambitas.jpg",
@@ -138,7 +138,7 @@ export const blogPosts = [
     content: mantenimientoContent,
     category: "Mantenimiento",
     categoryColor: "cyan",
-    date: "2024-11-25",
+    date: "2024-11-25T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "10 min lectura",
     image: "/images/mantenimientos.jpg",
@@ -179,7 +179,7 @@ export const blogPosts = [
     content: caridinasContent,
     category: "Invertebrados",
     categoryColor: "orange",
-    date: "2024-12-09",
+    date: "2024-12-09T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "15 min lectura",
     image: "/images/gambario.jpg",
@@ -268,7 +268,7 @@ export const blogPosts = [
     content: plantasContent,
     category: "Plantas",
     categoryColor: "green",
-    date: "2024-12-08",
+    date: "2024-12-08T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "8 min lectura",
     image: "/images/acuario-plantado.jpg",
@@ -325,7 +325,7 @@ export const blogPosts = [
     content: paisajismoContent,
     category: "Aquascaping",
     categoryColor: "purple",
-    date: "2024-12-07",
+    date: "2024-12-07T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "12 min lectura",
     image: "/images/concurso.jpg",
@@ -384,7 +384,13 @@ export const blogPosts = [
 ];
 
 export function getAllPosts() {
-  return blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Create a copy to avoid mutating the original array
+  return [...blogPosts].sort((a, b) => {
+    // Use string comparison for deterministic sorting
+    if (b.date > a.date) return 1;
+    if (b.date < a.date) return -1;
+    return 0;
+  });
 }
 
 export function getPostBySlug(slug) {

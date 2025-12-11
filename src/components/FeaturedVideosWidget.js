@@ -89,7 +89,7 @@ function getRandomVideos(posts, count = 6) {
 export default function FeaturedVideosWidget({ posts, count = 6 }) {
   const [platform, setPlatform] = useState("tiktok");
 
-  // Obtener videos aleatorios de los posts (solo una vez al montar el componente)
+  // Memoize random videos to avoid reshuffling on every render
   const videos = useMemo(() => getRandomVideos(posts, count), [posts, count]);
 
   if (!videos || videos.length === 0) {

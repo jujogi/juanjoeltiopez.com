@@ -1,44 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Box, VStack, HStack, Text, Heading, Icon, Divider } from "@chakra-ui/react";
+import { Box, VStack, HStack, Text, Heading, Icon, Badge, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
 import { FaTiktok, FaInstagram } from "react-icons/fa";
-
-// Hook personalizado para animar el contador
-const useCountUp = (end, duration = 2000) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let startTime;
-    let animationFrame;
-
-    const animate = currentTime => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-
-      // Easing function más suave (easeOutExpo) - como en apps modernas
-      const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      setCount(Math.floor(easeOutExpo * end));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        // Asegurar que llegue al número exacto al final
-        setCount(end);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [end, duration]);
-
-  return count;
-};
 
 const SocialPlatform = ({ icon, platform, followers, color, link }) => {
   return (
@@ -76,7 +39,7 @@ const SocialPlatform = ({ icon, platform, followers, color, link }) => {
           <Text fontSize="xs" color="dark.textSecondary">
             {platform}
           </Text>
-          <Text fontSize="lg" fontWeight="bold" color="white">
+          <Text fontSize="lg" fontWeight="bold" color="white" suppressHydrationWarning>
             {followers.toLocaleString("es-ES")}
           </Text>
         </VStack>
@@ -99,7 +62,6 @@ export default function SocialMediaWidget() {
   };
 
   const totalFollowers = socialStats.tiktok.followers + socialStats.instagram.followers;
-  const animatedTotal = useCountUp(totalFollowers, 2500);
 
   return (
     <Box bg="dark.surface" rounded="lg" p={6} border="1px" borderColor="dark.border" w="full">
@@ -125,15 +87,41 @@ export default function SocialMediaWidget() {
             link={socialStats.instagram.link}
           />
         </VStack>
-        <Divider borderColor="dark.border" />
 
-        <Box w="full">
-          <Text fontSize="sm" color="dark.textSecondary" mb={2}>
-            Total de seguidores
-          </Text>
-          <Text fontSize="3xl" fontWeight="bold" color="accent.cyan">
-            {animatedTotal.toLocaleString("es-ES")}
-          </Text>
+        {/* Total de seguidores con Stat y Badge */}
+        <Box
+          w="full"
+          p={4}
+          bgGradient="linear(to-r, rgba(6, 182, 212, 0.1), rgba(14, 165, 233, 0.1))"
+          rounded="md"
+          border="1px"
+          borderColor="accent.cyan"
+          position="relative"
+        >
+          <Badge
+            position="absolute"
+            top="-10px"
+            right="10px"
+            colorScheme="cyan"
+            fontSize="xs"
+            px={2}
+            py={1}
+          >
+            ✨ Comunidad
+          </Badge>
+          <Stat>
+            <StatLabel color="dark.textSecondary" fontSize="sm">
+              Total de seguidores
+            </StatLabel>
+            <StatNumber
+              fontSize="3xl"
+              fontWeight="bold"
+              bgGradient="linear(to-r, accent.cyan, accent.blue)"
+              bgClip="text"
+            >
+              {totalFollowers.toLocaleString("es-ES")}
+            </StatNumber>
+          </Stat>
         </Box>
       </VStack>
     </Box>

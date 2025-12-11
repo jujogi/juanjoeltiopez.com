@@ -55,9 +55,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
-      <body>
-        {/* Google Analytics */}
+    <html lang="es" suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <Providers>
+          <Navigation />
+          {children}
+          <Footer />
+        </Providers>
+
+        {/* Google Analytics - loaded after hydration */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-Y3KZVFC4CS"
@@ -65,22 +71,14 @@ export default function RootLayout({ children }) {
         <Script
           id="google-analytics"
           strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              window.gtag = gtag;
-              gtag('js', new Date());
-              gtag('config', 'G-Y3KZVFC4CS');
-            `,
-          }}
-        />
-
-        <Providers>
-          <Navigation />
-          {children}
-          <Footer />
-        </Providers>
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Y3KZVFC4CS');
+          `}
+        </Script>
       </body>
     </html>
   );
