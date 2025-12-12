@@ -67,6 +67,7 @@ const PostSkeleton = () => (
 export default function BlogPost({ params }) {
   const { slug } = use(params);
   const [isLoading, setIsLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const post = getPostBySlug(slug);
   const allPosts = getAllPosts();
 
@@ -77,6 +78,11 @@ export default function BlogPost({ params }) {
     }, 800); // 800ms de delay para simular carga
 
     return () => clearTimeout(timer);
+  }, [slug]);
+
+  // Reset image loaded state when slug changes
+  useEffect(() => {
+    setImageLoaded(false);
   }, [slug]);
 
   // Obtener posts relacionados (misma categoría, excluyendo el actual)
@@ -138,13 +144,21 @@ export default function BlogPost({ params }) {
           position={"relative"}
           overflow={"hidden"}
         >
+          {!imageLoaded && (
+            <Skeleton h="full" w="full" position="absolute" top={0} left={0} />
+          )}
           <Image
             src={post.coverImage || post.image}
             alt={post.title}
             fill
             sizes="(max-width: 1280px) 100vw, 1280px"
-            style={{ objectFit: "cover" }}
+            style={{
+              objectFit: "cover",
+              opacity: imageLoaded ? 1 : 0,
+              transition: "opacity 0.3s ease-in-out"
+            }}
             priority
+            onLoad={() => setImageLoaded(true)}
           />
         </Box>
       </Stack>

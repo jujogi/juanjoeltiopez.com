@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, VStack, HStack, Text, Heading, Icon, Badge, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
+import { Box, VStack, HStack, Text, Heading, Icon, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
 import { FaTiktok, FaInstagram } from "react-icons/fa";
 
 const SocialPlatform = ({ icon, platform, followers, color, link }) => {
@@ -57,7 +57,7 @@ export default function SocialMediaWidget() {
     },
     instagram: {
       followers: 25725,
-      link: "https://www.instagram.com/juanjoeltiopez",
+      link: "https://ig.me/m/juanjoeltiopez",
     },
   };
 
@@ -88,7 +88,7 @@ export default function SocialMediaWidget() {
           />
         </VStack>
 
-        {/* Total de seguidores con Stat y Badge */}
+        {/* Total de seguidores */}
         <Box
           w="full"
           p={4}
@@ -96,19 +96,7 @@ export default function SocialMediaWidget() {
           rounded="md"
           border="1px"
           borderColor="accent.cyan"
-          position="relative"
         >
-          <Badge
-            position="absolute"
-            top="-10px"
-            right="10px"
-            colorScheme="cyan"
-            fontSize="xs"
-            px={2}
-            py={1}
-          >
-            ✨ Comunidad
-          </Badge>
           <Stat>
             <StatLabel color="dark.textSecondary" fontSize="sm">
               Total de seguidores

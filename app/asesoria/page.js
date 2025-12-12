@@ -277,7 +277,7 @@ export default function AsesoriaPage() {
             </SimpleGrid>
             <Button
               as="a"
-              href="https://www.instagram.com/juanjoeltiopez"
+              href="https://ig.me/m/juanjoeltiopez"
               target="_blank"
               rel="noopener noreferrer"
               size="lg"
@@ -381,7 +381,7 @@ export default function AsesoriaPage() {
             </Text>
             <Button
               as="a"
-              href="https://www.instagram.com/juanjoeltiopez"
+              href="https://ig.me/m/juanjoeltiopez"
               target="_blank"
               rel="noopener noreferrer"
               bg="accent.cyan"

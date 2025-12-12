@@ -27,7 +27,7 @@ export default function Footer() {
               Términos y condiciones
             </Link>
             <Link
-              href="https://www.instagram.com/juanjoeltiopez"
+              href="https://ig.me/m/juanjoeltiopez"
               target="_blank"
               rel="noopener noreferrer"
               fontSize="sm"

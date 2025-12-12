@@ -23,96 +23,67 @@ export default function AboutPage() {
   const posts = getAllPosts();
 
   return (
-    <>
-      {/* Hero Section with Fishroom Background */}
-      <Box
-        position="relative"
-        h={{ base: "400px", md: "500px" }}
-        w="full"
-        overflow="hidden"
-        borderBottom="4px"
-        borderColor="accent.cyan"
-      >
-        {/* Background Image */}
-        <Box position="absolute" top={0} left={0} right={0} bottom={0}>
-          <Image
-            src="/images/fishroom.jpg"
-            alt="JuanJo El Tío Pez Fishroom"
-            fill
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
-            priority
-          />
-        </Box>
+    <Container maxW={"container.xl"} py={8}>
+      <VStack spacing={8}>
+        {/* Header Section */}
+        <VStack align="start" spacing={4} w="full" mb={4}>
+          <Heading fontSize={{ base: "3xl", md: "4xl" }} color="white">
+            Acerca de JuanJo El Tío Pez
+          </Heading>
+          <Text fontSize={{ base: "md", md: "lg" }} color="dark.textSecondary">
+            Exploremos el fascinante mundo de la acuariofilia: peces, gambitas, consejos y toda
+            la inspiración para tus proyectos acuáticos
+          </Text>
+        </VStack>
 
-        {/* Gradient Overlay */}
-        <Box
-          position="absolute"
-          top={0}
-          left={0}
-          right={0}
-          bottom={0}
-          bgGradient="linear(to-b, rgba(17, 25, 40, 0.3), rgba(17, 25, 40, 0.4))"
-        />
+        {/* Mission + Image Section */}
+        <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8} w="full">
+          {/* Image Card */}
+          <Box
+            bg="dark.surface"
+            rounded={"lg"}
+            overflow="hidden"
+            border="1px"
+            borderColor="dark.border"
+            position="relative"
+            h={{ base: "300px", md: "400px" }}
+          >
+            <Image
+              src="/images/fishroom.jpg"
+              alt="JuanJo El Tío Pez Fishroom"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              style={{ objectFit: "cover" }}
+              priority
+            />
+          </Box>
 
-        {/* Content */}
-        <Container
-          maxW="container.xl"
-          h="full"
-          position="relative"
-          zIndex={1}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <VStack spacing={6} textAlign="center" maxW="3xl">
-            <Heading
-              fontSize={{ base: "3xl", md: "5xl" }}
-              color="white"
-              textShadow="2px 2px 4px rgba(0,0,0,0.6)"
-            >
-              Acerca de JuanJo El Tío Pez
-            </Heading>
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color="white"
-              textShadow="1px 1px 2px rgba(0,0,0,0.6)"
-            >
-              "Exploremos el fascinante mundo de la acuariofilia: peces, gambitas, consejos y toda
-              la inspiración para tus proyectos acuáticos"
-            </Text>
-          </VStack>
-        </Container>
-      </Box>
-
-      <Container maxW={"container.xl"} py={12}>
-        <VStack spacing={8}>
+          {/* Mission Text */}
           <Box
             bg="dark.surface"
             rounded={"lg"}
             p={8}
             border="1px"
             borderColor="dark.border"
-            w="full"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
           >
             <Heading fontSize={"2xl"} mb={4} color="accent.cyan">
               Nuestra misión
             </Heading>
-            <Text fontSize={"lg"} mb={4} color="dark.text">
-              En JuanJo El Tío Pez vivimos y respiramos acuariofilia. Nos encanta acompañarte en
-              este hobby, ya sea que estés armando tu primer acuario de 40 litros o cuidando un
-              plantado lleno de vida. Aquí encontrarás guía, apoyo y ese empujoncito que a todos nos
-              hace falta cuando empezamos… y también cuando ya llevamos años en esto.
+            <Text fontSize={"md"} mb={4} color="dark.text" lineHeight="tall">
+En JuanJo El Tío Pez vivimos y respiramos acuariofilia. Nos llena de felicidad cuando nuestros videos ayudan a que tus acuarios luzcan mejor o a que disfrutes más este hobby, ya sea que estés armando tu primer acuario o cuidando un plantado lleno de vida.
             </Text>
-            <Text fontSize={"lg"} color="dark.text">
-              Desde que nació este proyecto, la misión siempre ha sido la misma: promover una
-              acuariofilia responsable. Queremos construir una comunidad grande y bonita, donde el
-              amor por la vida sea lo primero. Si tenemos un pez, nos aseguramos de darle la mejor
-              calidad de vida posible. Así de simple. Aquí compartimos tips, experiencias, productos
-              que realmente sirven y todo lo necesario para que tus acuarios estén saludables y tus
-              peces felices.
+            <Text fontSize={"md"} color="dark.text" lineHeight="tall">
+              Desde que nació este proyecto, la misión siempre ha sido la misma:{" "}
+              <Text as="span" fontWeight="bold" color="accent.cyan">
+                promover una acuariofilia responsable
+              </Text>
+              . Queremos construir la mejor comunidad acuarista, donde el amor por la vida sea lo primero.
             </Text>
           </Box>
+        </SimpleGrid>
 
           <Box py={8} w="full">
             <Heading fontSize={"3xl"} textAlign={"center"} mb={10} color="white">
@@ -157,36 +128,35 @@ export default function AboutPage() {
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
               <Box>
                 <Text fontWeight={"bold"} mb={2} color="white">
-                  🐠 Cuidado Responsable de Peces
+                  🐠 Cuidado responsable
                 </Text>
                 <Text color="dark.textSecondary">
-                  Recomendaciones claras para que tus peces tengan una vida larga, saludable y libre
-                  de estrés.
+                  Las mejores recomendaciones para que tus peces, gambas y caracoles estén sanos.
                 </Text>
               </Box>
 
               <Box>
                 <Text fontWeight={"bold"} mb={2} color="white">
-                  🧪 Resolución de Problemas
+                  🧪 Solución a problemas
                 </Text>
                 <Text color="dark.textSecondary">
-                  Guías prácticas para enfrentar algas, enfermedades, parámetros inestables y otros
+                  Guías prácticas para enfrentar algas, parámetros inestables y otros
                   retos del acuario.
                 </Text>
               </Box>
 
               <Box>
                 <Text fontWeight={"bold"} mb={2} color="white">
-                  🎥 Contenido Educativo
+                  🎥 Contenido educativo
                 </Text>
                 <Text color="dark.textSecondary">
-                  Explicaciones fáciles, tips rápidos y demostraciones reales.
+                  Explicaciones sencillas, tips rápidos y demostraciones reales para aprender sin complicarte.
                 </Text>
               </Box>
 
               <Box>
                 <Text fontWeight={"bold"} mb={2} color="white">
-                  🛠️ Recomendaciones de Equipos y Productos
+                  👀 Review de equipos y productos
                 </Text>
                 <Text color="dark.textSecondary">
                   Opiniones honestas sobre filtros, luces, plantas, sustratos y accesorios que
@@ -196,16 +166,16 @@ export default function AboutPage() {
 
               <Box>
                 <Text fontWeight={"bold"} mb={2} color="white">
-                  🌱 Mantenimiento de Acuarios Plantados
+                  🌱 Mantenimiento de acuarios plantados
                 </Text>
                 <Text color="dark.textSecondary">
-                  Rutinas, fertilización, poda y cuidados para mantener tus plantados vibrantes.
+                  Rutinas, fertilización, poda y cuidados para mantener tus plantados.
                 </Text>
               </Box>
 
               <Box>
                 <Text fontWeight={"bold"} mb={2} color="white">
-                  🤝 Comunidad y Acompañamiento
+                  🤝 Comunidad y acompañamiento
                 </Text>
                 <Text color="dark.textSecondary">
                   Un espacio para resolver dudas y crecer juntos en el hobby.
@@ -219,6 +189,5 @@ export default function AboutPage() {
           </Box>
         </VStack>
       </Container>
-    </>
   );
 }

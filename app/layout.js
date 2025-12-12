@@ -56,7 +56,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning style={{ overflowX: 'hidden' }}>
         <Providers>
           <Navigation />
           {children}

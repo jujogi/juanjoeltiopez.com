@@ -60,7 +60,7 @@ export const blogPosts = [
           tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7451448101975395589",
           instagram: "https://www.instagram.com/reel/DD20edySgdz/",
         },
-        emoji: "🌿",
+        emoji: "🍂",
       },
       {
         name: "Peces compatibles con mi Betta",
