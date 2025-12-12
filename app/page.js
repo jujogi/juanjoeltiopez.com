@@ -81,7 +81,7 @@ export default function Home() {
 
   // Featured post sobre JuanJo el Tío Pez
   const aboutJuanJo = {
-    title: "Conoce a JuanJo el Tío Pez",
+    title: "¿Quién es JuanJo el Tío Pez?",
     excerpt:
       "Desde que nació Juanjo el Tío Pez, la misión siempre ha sido la misma: promover una acuariofilia responsable y consciente. Comparto tips sencillos, experiencia real y productos que realmente ayudan, para que disfrutes al 100% de este maravilloso hobby.",
     image: "/images/juanjoeltiopez.jpg",

@@ -35,11 +35,11 @@ export default function AboutPage() {
         {/* Header Section */}
         <VStack align="start" spacing={4} w="full" mb={4}>
           <Heading fontSize={{ base: "3xl", md: "4xl" }} color="white">
-            Acerca de JuanJo El Tío Pez
+            ¿Quién es JuanJo El Tío Pez?
           </Heading>
           <Text fontSize={{ base: "md", md: "lg" }} color="dark.textSecondary">
-            Exploremos el fascinante mundo de la acuariofilia: peces, gambitas, consejos y toda
-            la inspiración para tus proyectos acuáticos
+            "Exploremos el fascinante mundo de la acuariofilia: peces, gambitas, consejos y toda
+            la inspiración para tus proyectos acuáticos"
           </Text>
         </VStack>
 
@@ -113,7 +113,7 @@ En JuanJo El Tío Pez vivimos y respiramos acuariofilia. Nos llena de felicidad 
               />
               <ValueCard
                 emoji={"🌱"}
-                title={"Una comunidad unida"}
+                title={"Comunidad"}
                 description={
                   "No solo hablamos de acuarios: construimos un espacio donde todos aprendemos, compartimos y nos apoyamos. Una comunidad cercana donde la pasión por los peces nos conecta."
                 }
@@ -138,7 +138,7 @@ En JuanJo El Tío Pez vivimos y respiramos acuariofilia. Nos llena de felicidad 
                   🐠 Cuidado responsable
                 </Text>
                 <Text color="dark.textSecondary">
-                  Las mejores recomendaciones para que tus peces, gambas y caracoles estén sanos.
+                  Las mejores recomendaciones para que tus peces, gambas, caracoles y plantas estén sanos.
                 </Text>
               </Box>
 

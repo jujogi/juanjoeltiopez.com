@@ -87,7 +87,7 @@ export default function AsesoriaPage() {
   const posts = getAllPosts();
 
   // Obtener artículos relacionados con cuidado y mantenimiento
-  const relatedPosts = posts.slice(0, 3);
+  const relatedPosts = posts.slice(0, 5);
 
   return (
     <Container maxW="container.xl" py={8}>
@@ -107,7 +107,7 @@ export default function AsesoriaPage() {
           {/* Cuándo necesitas asesoría */}
           <Box bg="dark.surface" rounded="lg" p={8} border="1px" borderColor="dark.border" mb={8}>
             <Heading fontSize="2xl" mb={6} color="accent.cyan">
-              ¿Cuándo necesitas asesoría personalizada?
+              ¿Cuándo necesitaría asesoría personalizada?
             </Heading>
             <Text color="dark.text" mb={6}>
               El contenido que comparto en redes sociales y en esta página está diseñado para
@@ -135,7 +135,7 @@ export default function AsesoriaPage() {
                   </Text>
                 </HStack>
                 <Text color="dark.textSecondary" fontSize="sm" pl={6}>
-                  Montar un plantado de cero, cambiar de acuario, diseñar un aquascape
+                  Montar un plantado de cero, cambio de proyecto, diseñar un aquascape
                 </Text>
               </Box>
 
@@ -159,7 +159,7 @@ export default function AsesoriaPage() {
                   </Text>
                 </HStack>
                 <Text color="dark.textSecondary" fontSize="sm" pl={6}>
-                  Mejorar tu rutina, reducir mantenimiento, potenciar crecimiento
+                  Mejorar tu rutina de mantenimiento y abonado
                 </Text>
               </Box>
             </SimpleGrid>
@@ -173,7 +173,7 @@ export default function AsesoriaPage() {
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
               <StepCard
                 number="1"
-                title="Contacta"
+                title="Contáctame"
                 description="Envíame un DM en Instagram explicando brevemente tu caso"
               />
               <StepCard

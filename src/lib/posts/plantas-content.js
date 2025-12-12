@@ -17,9 +17,17 @@ Las **plantas acuáticas naturales** son mucho más que decoración en un acuari
 
 La luz es esencial para que las plantas puedan realizar la fotosíntesis. Usa **lámparas LED específicas para acuarios plantados**, que son eficientes y fáciles de instalar. En el mercado encontrarás muchas opciones, si tienes el presupuesto, una **buena inversión inicial** puede permitirte lograr grandes resultados desde el inicio.
 
+![Lámpara Chihiros VIVID2 para acuarios plantados](/images/plantas-acuaticas/lampara-chihiros-vivid2.jpg)
+
+*La Chihiros VIVID2 es una de las lámparas más potentes del mercado. Con su alta intensidad lumínica, permite disfrutar de la mayoría de plantas, desde las más sencillas hasta especies de alto requerimiento.*
+
 ### 🪨 Sustrato
 
 Las plantas pueden vivir en un sustrato inerte, pero es importante elegir uno que permita que las raíces se desarrollen correctamente. Si usas un sustrato inerte, como **arena o grava**, puedes complementar con **pastillas fertilizantes** en el sustrato. Estas pastillas liberarán nutrientes directamente en las raíces.
+
+![Plantas en sustrato inerte con fertilización](/images/plantas-acuaticas/plantas-sustrato-inerte.jpg)
+
+*Algunas plantas como las Cryptocoryne y Echinodorus pueden ser plantadas directamente en sustrato inerte. Con un correcto abono en columna de agua, se adaptarán perfectamente al acuario y crecerán saludables.*
 
 ### 🥤 Abono líquido
 
@@ -38,6 +46,11 @@ Si eres principiante, puedes iniciar con plantas de **bajo requerimiento** que c
 - **🌾 Cola de zorro**: De rápido crecimiento y excelente para absorber nutrientes. ¡Perfecta para purificar el agua!
 - **🪴 Cryptocorynes**: Ideales para la zona media del acuario, muy resistentes y de fácil mantenimiento.
 - **🍃 Echinodorus**: Una planta robusta que añade un toque imponente al fondo del acuario.
+
+![Lámpara Chihiros WRGB2 para acuarios plantados](/images/plantas-acuaticas/lampara-chihirs-wrgb2.jpg)
+
+*Una lámpara como la Chihiros WRGB2 combinada con plantas de baja y media exigencia puede ser una excelente combinación para un proyecto de aquascaping. Su potencia y control del espectro te permitirán crear paisajes acuáticos impresionantes.*
+
 
 ## ¿Por qué dejar atrás la decoración de plástico?
 
