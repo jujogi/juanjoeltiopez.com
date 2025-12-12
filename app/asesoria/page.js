@@ -23,9 +23,15 @@ import {
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import { FaInstagram, FaVideo, FaClock, FaCheckCircle } from "react-icons/fa";
+import dynamic from "next/dynamic";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
-import FeaturedVideosWidget from "@/components/FeaturedVideosWidget";
 import { getAllPosts } from "@/lib/blogData";
+
+// Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
+const FeaturedVideosWidget = dynamic(
+  () => import("@/components/FeaturedVideosWidget"),
+  { ssr: false }
+);
 
 const FeatureCard = ({ icon, title, description }) => {
   return (

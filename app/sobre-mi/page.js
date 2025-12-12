@@ -2,8 +2,15 @@
 
 import { Container, Heading, Text, Box, VStack, SimpleGrid } from "@chakra-ui/react";
 import Image from "next/image";
-import FeaturedVideosWidget from "@/components/FeaturedVideosWidget";
+import dynamic from "next/dynamic";
 import { getAllPosts } from "@/lib/blogData";
+import AsesoriaWidget from "@/components/AsesoriaWidget";
+
+// Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
+const FeaturedVideosWidget = dynamic(
+  () => import("@/components/FeaturedVideosWidget"),
+  { ssr: false }
+);
 
 const ValueCard = ({ title, description, emoji }) => {
   return (
@@ -182,6 +189,10 @@ En JuanJo El Tío Pez vivimos y respiramos acuariofilia. Nos llena de felicidad 
                 </Text>
               </Box>
             </SimpleGrid>
+          </Box>
+
+          <Box w="full">
+            <AsesoriaWidget />
           </Box>
 
           <Box mt={12}>

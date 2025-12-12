@@ -16,7 +16,7 @@ import NextLink from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const NavLink = ({ href, children, isActive, comingSoon }) => {
+const NavLink = ({ href, children, isActive, comingSoon, onClick }) => {
   if (comingSoon) {
     return (
       <Box
@@ -39,6 +39,12 @@ const NavLink = ({ href, children, isActive, comingSoon }) => {
     );
   }
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <Link
       as={NextLink}
@@ -52,6 +58,7 @@ const NavLink = ({ href, children, isActive, comingSoon }) => {
         color: "accent.cyan",
       }}
       href={href}
+      onClick={handleClick}
     >
       {children}
     </Link>
@@ -83,7 +90,7 @@ export default function Navigation() {
       <Container maxW="container.xl">
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           {/* Logo */}
-          <Link as={NextLink} href="/" _hover={{ textDecoration: "none" }}>
+          <Link as={NextLink} href="/" _hover={{ textDecoration: "none" }} onClick={onClose}>
             <Box position="relative" h="40px" w="180px" suppressHydrationWarning>
               <Image
                 src="/images/juanjoeltiopez.svg"
@@ -131,6 +138,7 @@ export default function Navigation() {
                   href={link.href}
                   isActive={isActiveLink(link.href)}
                   comingSoon={link.comingSoon}
+                  onClick={onClose}
                 >
                   {link.name}
                 </NavLink>
