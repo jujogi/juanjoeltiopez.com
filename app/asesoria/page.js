@@ -28,10 +28,9 @@ import RelatedPostsWidget from "@/components/RelatedPostsWidget";
 import { getAllPosts } from "@/lib/blogData";
 
 // Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
-const FeaturedVideosWidget = dynamic(
-  () => import("@/components/FeaturedVideosWidget"),
-  { ssr: false }
-);
+const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWidget"), {
+  ssr: false,
+});
 
 const FeatureCard = ({ icon, title, description }) => {
   return (
@@ -250,12 +249,7 @@ export default function AsesoriaPage() {
             >
               🎉 20% de descuento
             </Box>
-            <Text
-              color="dark.textSecondary"
-              fontSize="xl"
-              textDecoration="line-through"
-              mb={1}
-            >
+            <Text color="dark.textSecondary" fontSize="xl" textDecoration="line-through" mb={1}>
               $137.500 COP
             </Text>
             <Heading fontSize="4xl" mb={2} color="accent.cyan">

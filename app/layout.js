@@ -56,7 +56,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body suppressHydrationWarning style={{ overflowX: 'hidden' }}>
+      <body suppressHydrationWarning style={{ overflowX: "hidden" }}>
         <Providers>
           <Navigation />
           {children}
@@ -68,10 +68,7 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-Y3KZVFC4CS"
         />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

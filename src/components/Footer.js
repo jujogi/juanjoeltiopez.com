@@ -19,9 +19,7 @@ export default function Footer() {
           justify={{ base: "center", md: "space-between" }}
           align={{ base: "center", md: "center" }}
         >
-          <Text fontSize="sm">
-            © 2025 JuanJo El Tío Pez. Todos los derechos reservados
-          </Text>
+          <Text fontSize="sm">© 2025 JuanJo El Tío Pez. Todos los derechos reservados</Text>
           <Stack direction="row" spacing={6}>
             <Link as={NextLink} href="/terminos" fontSize="sm" _hover={{ color: "accent.cyan" }}>
               Términos y condiciones

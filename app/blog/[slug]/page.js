@@ -144,9 +144,7 @@ export default function BlogPost({ params }) {
           position={"relative"}
           overflow={"hidden"}
         >
-          {!imageLoaded && (
-            <Skeleton h="full" w="full" position="absolute" top={0} left={0} />
-          )}
+          {!imageLoaded && <Skeleton h="full" w="full" position="absolute" top={0} left={0} />}
           <Image
             src={post.coverImage || post.image}
             alt={post.title}
@@ -155,7 +153,7 @@ export default function BlogPost({ params }) {
             style={{
               objectFit: "cover",
               opacity: imageLoaded ? 1 : 0,
-              transition: "opacity 0.3s ease-in-out"
+              transition: "opacity 0.3s ease-in-out",
             }}
             priority
             onLoad={() => setImageLoaded(true)}

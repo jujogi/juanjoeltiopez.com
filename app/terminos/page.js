@@ -29,15 +29,15 @@ export default function TerminosPage() {
         <Divider borderColor="dark.border" />
 
         <Section title="1. Aceptación de los Términos">
-          Al acceder y utilizar este sitio web, aceptas estar sujeto a estos términos y
-          condiciones de uso. Si no estás de acuerdo con alguna parte de estos términos, por favor
-          no utilices este sitio.
+          Al acceder y utilizar este sitio web, aceptas estar sujeto a estos términos y condiciones
+          de uso. Si no estás de acuerdo con alguna parte de estos términos, por favor no utilices
+          este sitio.
         </Section>
 
         <Section title="2. Propiedad Intelectual">
           Todo el contenido presente en este sitio web, incluyendo pero no limitado a textos,
-          imágenes, videos, gráficos, logos y material audiovisual, es propiedad exclusiva de
-          JuanJo El Tío Pez y está protegido por las leyes de derechos de autor. Todos los recursos
+          imágenes, videos, gráficos, logos y material audiovisual, es propiedad exclusiva de JuanJo
+          El Tío Pez y está protegido por las leyes de derechos de autor. Todos los recursos
           publicados son de autoría propia y no pueden ser reproducidos, distribuidos o utilizados
           sin autorización expresa por escrito.
         </Section>

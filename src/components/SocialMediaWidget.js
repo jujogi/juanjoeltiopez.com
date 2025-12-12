@@ -1,6 +1,16 @@
 "use client";
 
-import { Box, VStack, HStack, Text, Heading, Icon, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
+import {
+  Box,
+  VStack,
+  HStack,
+  Text,
+  Heading,
+  Icon,
+  Stat,
+  StatLabel,
+  StatNumber,
+} from "@chakra-ui/react";
 import { FaTiktok, FaInstagram } from "react-icons/fa";
 
 const SocialPlatform = ({ icon, platform, followers, color, link }) => {

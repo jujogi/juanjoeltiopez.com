@@ -16,14 +16,13 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { getAllPosts } from "@/lib/blogData";
 import { formatDateShort } from "@/lib/dateUtils";
-import SubscriptionSidebar from "@/components/SubscriptionSidebar";
 import SocialMediaWidget from "@/components/SocialMediaWidget";
+import AsesoriaWidget from "@/components/AsesoriaWidget";
 
 // Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
-const FeaturedVideosWidget = dynamic(
-  () => import("@/components/FeaturedVideosWidget"),
-  { ssr: false }
-);
+const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWidget"), {
+  ssr: false,
+});
 
 const PostListItem = ({ post }) => {
   return (
@@ -168,7 +167,7 @@ export default function Home() {
         <GridItem display={{ base: "none", lg: "block" }}>
           <VStack spacing={6} position="sticky" top={4}>
             <SocialMediaWidget />
-            <SubscriptionSidebar />
+            <AsesoriaWidget />
           </VStack>
         </GridItem>
       </Grid>

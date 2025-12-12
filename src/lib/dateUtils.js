@@ -1,12 +1,12 @@
-import { format, parseISO } from 'date-fns';
-import { es } from 'date-fns/locale';
+import { format, parseISO } from "date-fns";
+import { es } from "date-fns/locale";
 
 /**
  * Format a UTC date string to short format (e.g., "Dec 1, 2024")
  */
 export function formatDateShort(dateString) {
   const date = parseISO(dateString);
-  return format(date, 'MMM d, yyyy');
+  return format(date, "MMM d, yyyy");
 }
 
 /**
@@ -22,5 +22,5 @@ export function formatDateLong(dateString) {
  */
 export function formatDateWithYear(dateString) {
   const date = parseISO(dateString);
-  return format(date, 'MMM d, yyyy');
+  return format(date, "MMM d, yyyy");
 }

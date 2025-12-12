@@ -34,66 +34,65 @@ export default function AsesoriaWidget() {
         borderColor="accent.cyan"
         position="relative"
       >
+        <VStack align="start" spacing={4}>
+          <Box>
+            <Heading size="md" color="white" mb={2}>
+              ¿Necesitas ayuda personalizada?
+            </Heading>
+            <Text color="dark.textSecondary" fontSize="sm" lineHeight="tall">
+              Agenda una sesión 1 a 1 para resolver los problemas específicos de tu acuario
+            </Text>
+          </Box>
 
-      <VStack align="start" spacing={4}>
-        <Box>
-          <Heading size="md" color="white" mb={2}>
-            ¿Necesitas ayuda personalizada?
-          </Heading>
-          <Text color="dark.textSecondary" fontSize="sm" lineHeight="tall">
-            Agenda una sesión 1 a 1 para resolver los problemas específicos de tu acuario
-          </Text>
-        </Box>
+          {/* Features */}
+          <VStack align="start" spacing={2} w="full">
+            <HStack spacing={2}>
+              <Icon as={FaVideo} color="accent.cyan" boxSize={4} />
+              <Text color="dark.text" fontSize="sm">
+                Sesión virtual de 60-90 min
+              </Text>
+            </HStack>
+            <HStack spacing={2}>
+              <Icon as={FaCheckCircle} color="accent.cyan" boxSize={4} />
+              <Text color="dark.text" fontSize="sm">
+                Plan de acción personalizado
+              </Text>
+            </HStack>
+            <HStack spacing={2}>
+              <Icon as={FaCheckCircle} color="accent.cyan" boxSize={4} />
+              <Text color="dark.text" fontSize="sm">
+                Seguimiento durante 7 días
+              </Text>
+            </HStack>
+          </VStack>
 
-        {/* Features */}
-        <VStack align="start" spacing={2} w="full">
-          <HStack spacing={2}>
-            <Icon as={FaVideo} color="accent.cyan" boxSize={4} />
-            <Text color="dark.text" fontSize="sm">
-              Sesión virtual de 60-90 min
+          {/* Precio */}
+          <Box w="full" textAlign="center" py={3} borderTop="1px" borderColor="dark.border">
+            <Text color="dark.textSecondary" fontSize="sm" textDecoration="line-through" mb={1}>
+              $137.500 COP
             </Text>
-          </HStack>
-          <HStack spacing={2}>
-            <Icon as={FaCheckCircle} color="accent.cyan" boxSize={4} />
-            <Text color="dark.text" fontSize="sm">
-              Plan de acción personalizado
+            <Heading size="lg" color="accent.cyan" mb={1}>
+              $110.000 COP
+            </Heading>
+            <Text color="dark.textSecondary" fontSize="xs">
+              por sesión
             </Text>
-          </HStack>
-          <HStack spacing={2}>
-            <Icon as={FaCheckCircle} color="accent.cyan" boxSize={4} />
-            <Text color="dark.text" fontSize="sm">
-              Seguimiento durante 7 días
-            </Text>
-          </HStack>
+          </Box>
+
+          {/* CTA Button */}
+          <Button
+            as={NextLink}
+            href="/asesoria"
+            w="full"
+            bg="accent.cyan"
+            color="white"
+            _hover={{ bg: "accent.cyanHover", transform: "translateY(-2px)" }}
+            transition="all 0.3s"
+            size="md"
+          >
+            Conocer más
+          </Button>
         </VStack>
-
-        {/* Precio */}
-        <Box w="full" textAlign="center" py={3} borderTop="1px" borderColor="dark.border">
-          <Text color="dark.textSecondary" fontSize="sm" textDecoration="line-through" mb={1}>
-            $137.500 COP
-          </Text>
-          <Heading size="lg" color="accent.cyan" mb={1}>
-            $110.000 COP
-          </Heading>
-          <Text color="dark.textSecondary" fontSize="xs">
-            por sesión
-          </Text>
-        </Box>
-
-        {/* CTA Button */}
-        <Button
-          as={NextLink}
-          href="/asesoria"
-          w="full"
-          bg="accent.cyan"
-          color="white"
-          _hover={{ bg: "accent.cyanHover", transform: "translateY(-2px)" }}
-          transition="all 0.3s"
-          size="md"
-        >
-          Conocer más
-        </Button>
-      </VStack>
       </Box>
     </Box>
   );
