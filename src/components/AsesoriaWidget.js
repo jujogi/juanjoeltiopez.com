@@ -3,10 +3,15 @@
 import { Box, Heading, Text, Button, VStack, HStack, Icon, Badge } from "@chakra-ui/react";
 import { FaVideo, FaCheckCircle } from "react-icons/fa";
 import NextLink from "next/link";
+import { trackCtaClick } from "@/lib/gtm";
 
 export default function AsesoriaWidget() {
+  const handleConocerMasClick = () => {
+    trackCtaClick("conocer_mas_asesoria", "asesoria_widget");
+  };
+
   return (
-    <Box position="relative" pt={3}>
+    <Box position="relative" pt={3} w="full">
       {/* Badge de descuento */}
       <Box
         position="absolute"
@@ -33,6 +38,7 @@ export default function AsesoriaWidget() {
         border="2px"
         borderColor="accent.cyan"
         position="relative"
+        w="full"
       >
         <VStack align="start" spacing={4}>
           <Box>
@@ -89,6 +95,7 @@ export default function AsesoriaWidget() {
             _hover={{ bg: "accent.cyanHover", transform: "translateY(-2px)" }}
             transition="all 0.3s"
             size="md"
+            onClick={handleConocerMasClick}
           >
             Conocer más
           </Button>

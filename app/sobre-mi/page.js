@@ -5,6 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { getAllPosts } from "@/lib/blogData";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
+import ImageWithOverlay from "@/components/ImageWithOverlay";
 
 // Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
 const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWidget"), {
@@ -193,7 +194,13 @@ export default function AboutPage() {
           <AsesoriaWidget />
         </Box>
 
-        <Box mt={12}>
+        <ImageWithOverlay
+          imageSrc="/images/acuarios-paisajismo.jpg"
+          alt="Acuario saludable y en equilibrio"
+          description="Un acuario debe ser un ecosistema en equilibrio, donde tus peces y plantas viven en armonía. Ese es el verdadero corazón de la acuariofilia responsable."
+        />
+
+        <Box w="full">
           <FeaturedVideosWidget posts={posts} count={6} />
         </Box>
       </VStack>

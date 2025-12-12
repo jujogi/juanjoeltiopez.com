@@ -261,7 +261,7 @@ export const blogPosts = [
   },
   {
     id: "5",
-    title: "¿Por qué añadir plantas naturales al acuario?",
+    title: "¿Por qué añadir plantas acuáticas al acuario?",
     slug: "plantas-naturales-acuario",
     excerpt:
       "Si aún decoras tu acuario con plantas de plástico, ¡es momento de hacer un cambio! Descubre por qué las plantas naturales son esenciales.",

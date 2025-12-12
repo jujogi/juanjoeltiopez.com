@@ -11,6 +11,7 @@ import {
   VStack,
   Badge,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -75,8 +76,16 @@ const PostListItem = ({ post }) => {
 };
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState("recientes");
   const posts = getAllPosts();
   const recentPosts = posts.slice(0, 6);
+
+  // Posts para la pestaña "Tendencia"
+  const trendingPostIds = ["4", "5", "2"];
+  const trendingPosts = posts.filter(post => trendingPostIds.includes(post.id));
+
+  // Determinar qué posts mostrar según la pestaña activa
+  const displayPosts = activeTab === "recientes" ? recentPosts : trendingPosts;
 
   // Featured post sobre JuanJo el Tío Pez
   const aboutJuanJo = {
@@ -138,34 +147,53 @@ export default function Home() {
         </Box>
       </Box>
 
-      <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={12}>
+      <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={{ base: 8, lg: 12 }}>
         <GridItem>
           {/* Tabs */}
           <HStack spacing={6} mb={6} borderBottom="1px" borderColor="dark.border" pb={2}>
             <Text
               fontSize="sm"
               fontWeight="600"
-              color="white"
+              color={activeTab === "recientes" ? "white" : "dark.textSecondary"}
               borderBottom="2px"
-              borderColor="white"
+              borderColor={activeTab === "recientes" ? "white" : "transparent"}
               pb={2}
               mb={-2}
+              cursor="pointer"
+              onClick={() => setActiveTab("recientes")}
+              transition="all 0.3s"
+              _hover={{ color: "white" }}
             >
               Recientes
+            </Text>
+            <Text
+              fontSize="sm"
+              fontWeight="600"
+              color={activeTab === "tendencia" ? "white" : "dark.textSecondary"}
+              borderBottom="2px"
+              borderColor={activeTab === "tendencia" ? "white" : "transparent"}
+              pb={2}
+              mb={-2}
+              cursor="pointer"
+              onClick={() => setActiveTab("tendencia")}
+              transition="all 0.3s"
+              _hover={{ color: "white" }}
+            >
+              🔥 Tendencia
             </Text>
           </HStack>
 
           {/* Post List */}
           <VStack align="stretch" spacing={0}>
-            {recentPosts.map(post => (
+            {displayPosts.map(post => (
               <PostListItem key={post.id} post={post} />
             ))}
           </VStack>
         </GridItem>
 
         {/* Sidebar */}
-        <GridItem display={{ base: "none", lg: "block" }}>
-          <VStack spacing={6} position="sticky" top={4}>
+        <GridItem>
+          <VStack spacing={6} position="sticky" top={4} w="full">
             <SocialMediaWidget />
             <AsesoriaWidget />
           </VStack>

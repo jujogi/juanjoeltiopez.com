@@ -6,7 +6,7 @@ import Script from "next/script";
 export const metadata = {
   metadataBase: new URL("https://juanjoeltiopez.com"),
   title: {
-    default: "JuanJo El Tío Pez",
+    default: "JuanJo El Tío Pez | Acuariofilia para todos",
     template: "%s | JuanJo El Tío Pez",
   },
   description:
@@ -37,16 +37,9 @@ export const metadata = {
     locale: "es_ES",
     url: "https://juanjoeltiopez.com",
     siteName: "JuanJo El Tío Pez",
-    title: "JuanJo El Tío Pez 🐠 - Tu Guía de Acuarismo",
+    title: "JuanJo El Tío Pez – Acuariofilia para todos",
     description:
       "Aprende a cuidar y disfrutar de tu acuario como nunca antes. Peces, consejos, cuidados y toda la inspiración que necesitas para tus proyectos acuáticos",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "JuanJo El Tío Pez 🐠 - Tu Guía de Acuarismo",
-    description:
-      "Aprende a cuidar y disfrutar de tu acuario como nunca antes. Peces, consejos, cuidados y toda la inspiración que necesitas para tus proyectos acuáticos",
-    creator: "@juanjoeltiopez",
   },
   verification: {
     google: "google-site-verification-code",

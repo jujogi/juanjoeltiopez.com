@@ -32,7 +32,7 @@ const NavLink = ({ href, children, isActive, comingSoon, onClick }) => {
         gap={2}
       >
         {children}
-        <Badge colorScheme="purple" fontSize="8px" px={1.5} py={0.5}>
+        <Badge colorScheme="gray" fontSize="8px" px={1.5} py={0.5}>
           Próximamente
         </Badge>
       </Box>
