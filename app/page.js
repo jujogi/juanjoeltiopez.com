@@ -19,6 +19,7 @@ import { getAllPosts } from "@/lib/blogData";
 import { formatDateShort } from "@/lib/dateUtils";
 import SocialMediaWidget from "@/components/SocialMediaWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
+import { trackBlogClick } from "@/lib/gtm";
 
 // Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
 const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWidget"), {
@@ -26,6 +27,10 @@ const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWi
 });
 
 const PostListItem = ({ post }) => {
+  const handlePostClick = () => {
+    trackBlogClick(post.title);
+  };
+
   return (
     <Box
       as={NextLink}
@@ -36,6 +41,7 @@ const PostListItem = ({ post }) => {
       borderColor="dark.border"
       _hover={{ "& h3": { color: "accent.cyan" } }}
       transition="all 0.3s"
+      onClick={handlePostClick}
     >
       <Grid templateColumns={{ base: "1fr", md: "3fr 120px" }} gap={4}>
         <VStack align="start" spacing={2} order={{ base: 2, md: 1 }}>
@@ -80,9 +86,11 @@ export default function Home() {
   const posts = getAllPosts();
   const recentPosts = posts.slice(0, 6);
 
-  // Posts para la pestaña "Tendencia"
-  const trendingPostIds = ["4", "5", "2"];
-  const trendingPosts = posts.filter(post => trendingPostIds.includes(post.id));
+  // Posts para la pestaña "Tendencia" - ordenados según el array
+  const trendingPostIds = ["2", "6", "4", "5"];
+  const trendingPosts = trendingPostIds
+    .map(id => posts.find(post => post.id === id))
+    .filter(Boolean); // Remove any undefined values
 
   // Determinar qué posts mostrar según la pestaña activa
   const displayPosts = activeTab === "recientes" ? recentPosts : trendingPosts;

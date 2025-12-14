@@ -17,8 +17,13 @@ import { formatDateWithYear } from "@/lib/dateUtils";
 import NextLink from "next/link";
 import SubscriptionSidebar from "@/components/SubscriptionSidebar";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
+import { trackBlogClick } from "@/lib/gtm";
 
 const PostListItem = ({ post }) => {
+  const handlePostClick = () => {
+    trackBlogClick(post.title);
+  };
+
   return (
     <Box
       as={NextLink}
@@ -29,6 +34,7 @@ const PostListItem = ({ post }) => {
       borderColor="dark.border"
       _hover={{ "& h3": { color: "accent.cyan" } }}
       transition="all 0.3s"
+      onClick={handlePostClick}
     >
       <Grid templateColumns={{ base: "1fr", md: "3fr 120px" }} gap={4}>
         <VStack align="start" spacing={2} order={{ base: 2, md: 1 }}>

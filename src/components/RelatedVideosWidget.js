@@ -60,9 +60,14 @@ export default function RelatedVideosWidget({ videos }) {
   return (
     <Box bg="dark.surface" rounded="lg" p={5} border="1px" borderColor="dark.border" w="full">
       <VStack align="start" spacing={3} w="full">
-        <Heading fontSize="lg" color="white">
-          Videos relacionados
-        </Heading>
+        <Box>
+          <Heading fontSize="lg" color="white">
+            Videos relacionados
+          </Heading>
+          <Text fontSize="xs" color="dark.textSecondary" mt={1}>
+            Selecciona la plataforma de tu preferencia
+          </Text>
+        </Box>
 
         {/* Platform Toggle */}
         <HStack spacing={2} w="full">

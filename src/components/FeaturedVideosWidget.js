@@ -3,12 +3,17 @@
 import { useState, useMemo } from "react";
 import { Box, VStack, HStack, Text, Heading, Button, SimpleGrid, Icon } from "@chakra-ui/react";
 import { FaTiktok, FaInstagram, FaExternalLinkAlt } from "react-icons/fa";
+import { trackVideoClick } from "@/lib/gtm";
 
 const VideoCard = ({ video, platform }) => {
   const link = platform === "tiktok" ? video.url.tiktok : video.url.instagram;
 
   // Si no hay link para la plataforma seleccionada, no mostrar
   if (!link) return null;
+
+  const handleVideoClick = () => {
+    trackVideoClick(video.name);
+  };
 
   return (
     <Box
@@ -30,6 +35,7 @@ const VideoCard = ({ video, platform }) => {
       transition="all 0.3s"
       cursor="pointer"
       h="full"
+      onClick={handleVideoClick}
     >
       <VStack spacing={3} align="center" h="full" justify="space-between">
         <Text fontSize="4xl">{video.emoji}</Text>
@@ -59,18 +65,21 @@ const VideoCard = ({ video, platform }) => {
   );
 };
 
-// Función para obtener videos aleatorios de todos los posts
-function getRandomVideos(posts, count = 6) {
+// Función para obtener videos aleatorios de todos los posts para una plataforma específica
+function getRandomVideosForPlatform(posts, platform, count = 6) {
   const allVideos = [];
 
-  // Recopilar todos los videos de todos los posts
+  // Recopilar todos los videos que tienen link para la plataforma
   posts.forEach(post => {
     if (post.videos && post.videos.length > 0) {
       post.videos.forEach(video => {
-        allVideos.push({
-          ...video,
-          postTitle: post.title,
-        });
+        const link = platform === "tiktok" ? video.url.tiktok : video.url.instagram;
+        if (link && link !== "") {
+          allVideos.push({
+            ...video,
+            postTitle: post.title,
+          });
+        }
       });
     }
   });
@@ -86,21 +95,29 @@ function getRandomVideos(posts, count = 6) {
   return shuffled.slice(0, count);
 }
 
+// Función para obtener conjuntos de videos separados por plataforma
+function getVideosForBothPlatforms(posts, count = 6) {
+  return {
+    tiktok: getRandomVideosForPlatform(posts, "tiktok", count),
+    instagram: getRandomVideosForPlatform(posts, "instagram", count),
+  };
+}
+
 export default function FeaturedVideosWidget({ posts, count = 6 }) {
   const [platform, setPlatform] = useState("tiktok");
 
-  // Memoize random videos to avoid reshuffling on every render
-  const videos = useMemo(() => getRandomVideos(posts, count), [posts, count]);
+  // Memoize random videos for both platforms to avoid reshuffling on every render
+  const videosByPlatform = useMemo(
+    () => getVideosForBothPlatforms(posts, count),
+    [posts, count]
+  );
 
-  if (!videos || videos.length === 0) {
+  // Seleccionar los videos de la plataforma activa
+  const availableVideos = videosByPlatform[platform];
+
+  if (!availableVideos || availableVideos.length === 0) {
     return null;
   }
-
-  // Filtrar videos que tienen link para la plataforma seleccionada
-  const availableVideos = videos.filter(video => {
-    const link = platform === "tiktok" ? video.url.tiktok : video.url.instagram;
-    return link && link !== "";
-  });
 
   return (
     <Box

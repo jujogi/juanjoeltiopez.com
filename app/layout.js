@@ -6,7 +6,7 @@ import Script from "next/script";
 export const metadata = {
   metadataBase: new URL("https://juanjoeltiopez.com"),
   title: {
-    default: "JuanJo El Tío Pez | Acuariofilia para todos",
+    default: "Inicio | JuanJo El Tío Pez",
     template: "%s | JuanJo El Tío Pez",
   },
   description:

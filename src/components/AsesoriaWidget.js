@@ -1,13 +1,13 @@
 "use client";
 
-import { Box, Heading, Text, Button, VStack, HStack, Icon, Badge } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, VStack, HStack, Icon } from "@chakra-ui/react";
 import { FaVideo, FaCheckCircle } from "react-icons/fa";
 import NextLink from "next/link";
 import { trackCtaClick } from "@/lib/gtm";
 
 export default function AsesoriaWidget() {
   const handleConocerMasClick = () => {
-    trackCtaClick("conocer_mas_asesoria", "asesoria_widget");
+    trackCtaClick("conocer_mas_asesoria");
   };
 
   return (

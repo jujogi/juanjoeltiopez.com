@@ -22,12 +22,7 @@ export default function ImageWithOverlay({ imageSrc, description, alt }) {
           bg="linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7), transparent)"
           p={6}
         >
-          <Text
-            color="white"
-            fontSize={{ base: "lg" }}
-            fontWeight="500"
-            lineHeight="6"
-          >
+          <Text color="white" fontSize={{ base: "lg" }} fontWeight="500" lineHeight="6">
             {description}
           </Text>
         </Box>

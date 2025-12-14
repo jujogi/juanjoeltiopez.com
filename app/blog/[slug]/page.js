@@ -24,6 +24,7 @@ import ReactMarkdown from "react-markdown";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
 import RelatedVideosWidget from "@/components/RelatedVideosWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
+import { trackCtaClick } from "@/lib/gtm";
 
 const PostSkeleton = () => (
   <Container maxW={"container.xl"} py={12}>
@@ -70,6 +71,10 @@ export default function BlogPost({ params }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const post = getPostBySlug(slug);
   const allPosts = getAllPosts();
+
+  const handleVerTodosClick = () => {
+    trackCtaClick("ver_todos_los_articulos");
+  };
 
   // Simular carga del backend
   useEffect(() => {
@@ -235,6 +240,7 @@ export default function BlogPost({ params }) {
                 bg="accent.cyan"
                 color="white"
                 _hover={{ bg: "accent.cyanHover" }}
+                onClick={handleVerTodosClick}
               >
                 Ver todos los artículos
               </Button>

@@ -91,27 +91,27 @@ export default function AsesoriaPage() {
   const relatedPosts = posts.slice(0, 5);
 
   const handleAgendarSesionClick = () => {
-    trackCtaClick("agendar_sesion_instagram", "asesoria_page_pricing");
+    trackCtaClick("agendar_sesion_instagram");
   };
 
   const handleContactarClick = () => {
-    trackCtaClick("contactar_instagram", "asesoria_page_final_cta");
+    trackCtaClick("contactar_instagram");
   };
 
   return (
     <Container maxW="container.xl" py={8}>
-      <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={12}>
-        <GridItem>
-          {/* Hero Section */}
-          <VStack align="start" spacing={4} mb={12}>
-            <Heading fontSize={{ base: "3xl", md: "4xl" }} color="white">
-              Asesoría Personalizada
-            </Heading>
-            <Text color="dark.textSecondary" fontSize="lg">
-              ¿Necesitas ayuda específica con tu acuario? Te acompaño en cada paso para resolver tus
-              dudas y alcanzar tus objetivos.
-            </Text>
-          </VStack>
+        <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={12}>
+          <GridItem>
+            {/* Hero Section */}
+            <VStack align="start" spacing={4} mb={12}>
+              <Heading fontSize={{ base: "3xl", md: "4xl" }} color="white">
+                Asesoría Personalizada
+              </Heading>
+              <Text color="dark.textSecondary" fontSize="lg">
+                ¿Necesitas ayuda específica con tu acuario? Te acompaño en cada paso para resolver tus
+                dudas y alcanzar tus objetivos.
+              </Text>
+            </VStack>
 
           {/* Cuándo necesitas asesoría */}
           <Box bg="dark.surface" rounded="lg" p={8} border="1px" borderColor="dark.border" mb={8}>
@@ -305,12 +305,19 @@ export default function AsesoriaPage() {
           <ImageWithOverlay
             imageSrc="/images/acuarios-plantados.jpg"
             alt="Acuario plantado en equilibrio"
-            description="Un acuario en equilibrio puede ser una fuente de tranquilidad, belleza y conexión con la naturaleza. Deja que te ayude a crear ese espacio único que tanto deseas."
-
+            description="Un acuario en equilibrio puede ser una fuente de tranquilidad, belleza y conexión con la naturaleza. ¡Vamos a crear ese espacio único que tanto deseas!"
           />
 
           {/* FAQ */}
-          <Box mt={8} bg="dark.surface" rounded="lg" p={8} border="1px" borderColor="dark.border" mb={8}>
+          <Box
+            mt={8}
+            bg="dark.surface"
+            rounded="lg"
+            p={8}
+            border="1px"
+            borderColor="dark.border"
+            mb={8}
+          >
             <Heading fontSize="2xl" mb={6} color="white">
               Preguntas frecuentes
             </Heading>

@@ -1,17 +1,21 @@
 /**
- * Google Tag Manager utilities
+ * Google Analytics utilities using gtag format
  */
 
 /**
- * Push an event to the dataLayer
- * @param {string} eventName - The name of the event
- * @param {Object} eventData - Additional data to send with the event
+ * Base function to track click events using gtag
+ * @param {string} name - The name/label of the event
+ * @param {string} category - The event category (e.g., "Video", "Button", "Blog")
  */
-export const pushToDataLayer = (eventName, eventData = {}) => {
-  if (typeof window !== "undefined" && window.dataLayer) {
-    window.dataLayer.push({
-      event: eventName,
-      ...eventData,
+export const trackEvent = (name, category) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    // Replace white spaces with underscores for cleaner event names
+    const eventName = name.replace(/\s+/g, "_");
+
+    window.gtag("event", eventName, {
+      event_category: category,
+      event_label: eventName,
+      page_location: window.location.href,
     });
   }
 };
@@ -19,32 +23,23 @@ export const pushToDataLayer = (eventName, eventData = {}) => {
 /**
  * Track a CTA (Call To Action) click
  * @param {string} ctaName - The name of the CTA button
- * @param {string} ctaLocation - The location where the CTA is placed
  */
-export const trackCtaClick = (ctaName, ctaLocation) => {
-  pushToDataLayer("cta_click", {
-    cta_name: ctaName,
-    cta_location: ctaLocation,
-  });
+export const trackCtaClick = (ctaName) => {
+  trackEvent(ctaName, "Button");
 };
 
 /**
- * Track a page view
- * @param {string} pagePath - The page path
- * @param {string} pageTitle - The page title
+ * Track a video click
+ * @param {string} videoName - The name of the video
  */
-export const trackPageView = (pagePath, pageTitle) => {
-  pushToDataLayer("page_view", {
-    page_path: pagePath,
-    page_title: pageTitle,
-  });
+export const trackVideoClick = (videoName) => {
+  trackEvent(videoName, "Video");
 };
 
 /**
- * Track a custom event
- * @param {string} eventName - The name of the custom event
- * @param {Object} eventData - Custom event data
+ * Track a blog post click
+ * @param {string} postTitle - The title of the blog post
  */
-export const trackCustomEvent = (eventName, eventData = {}) => {
-  pushToDataLayer(eventName, eventData);
+export const trackBlogClick = (postTitle) => {
+  trackEvent(postTitle, "Blog");
 };
