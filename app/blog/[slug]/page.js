@@ -251,7 +251,7 @@ export default function BlogPost({ params }) {
         {/* Sidebar */}
         <GridItem>
           <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
-            {post.videos && post.videos.length > 0 && <RelatedVideosWidget videos={post.videos} />}
+            {post.videoIds && post.videoIds.length > 0 && <RelatedVideosWidget videoIds={post.videoIds} />}
             <AsesoriaWidget />
             <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" />
           </VStack>

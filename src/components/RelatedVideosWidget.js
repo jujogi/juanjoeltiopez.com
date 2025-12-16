@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Box, VStack, HStack, Text, Heading, Button, List, ListItem, Icon } from "@chakra-ui/react";
 import { FaTiktok, FaInstagram, FaExternalLinkAlt } from "react-icons/fa";
+import { getVideosByIds } from "@/lib/videosData";
 
 const VideoItem = ({ name, url, emoji, platform }) => {
   const link = platform === "tiktok" ? url.tiktok : url.instagram;
@@ -50,10 +51,13 @@ const VideoItem = ({ name, url, emoji, platform }) => {
   );
 };
 
-export default function RelatedVideosWidget({ videos }) {
+export default function RelatedVideosWidget({ videos, videoIds }) {
   const [platform, setPlatform] = useState("tiktok");
 
-  if (!videos || videos.length === 0) {
+  // Si se pasan videoIds, buscar los videos
+  const videosList = videoIds ? getVideosByIds(videoIds) : videos;
+
+  if (!videosList || videosList.length === 0) {
     return null;
   }
 
@@ -109,9 +113,9 @@ export default function RelatedVideosWidget({ videos }) {
 
         {/* Video List */}
         <List spacing={2} w="full">
-          {videos.map((video, index) => (
+          {videosList.map((video, index) => (
             <VideoItem
-              key={index}
+              key={video.id || index}
               name={video.name}
               url={video.url}
               emoji={video.emoji}
