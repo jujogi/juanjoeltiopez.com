@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
   return (
     <Box
       as={NextLink}
-      href={`/shop/${product.slug}`}
+      href={`/tienda/${product.slug}`}
       display="block"
       bg="dark.surface"
       rounded="lg"
@@ -179,7 +179,7 @@ export default function ShopPage() {
         {/* Sidebar */}
         <GridItem display={{ base: "none", lg: "block" }}>
           <VStack spacing={6} position="sticky" top={4}>
-            <AsesoriaWidget />
+
 
             <Box
               bg="dark.surface"
@@ -207,6 +207,8 @@ export default function ShopPage() {
                 Solicitar asesoría
               </Button>
             </Box>
+
+                        <AsesoriaWidget />
           </VStack>
         </GridItem>
       </Grid>

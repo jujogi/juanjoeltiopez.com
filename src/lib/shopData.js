@@ -71,15 +71,12 @@ export const products = [
     brand: "SL Aqua",
     images: [
       "/images/products/spinach-powder-1.jpg",
-      "/images/products/spinach-powder-2.jpg",
-      "/images/products/spinach-powder-3.jpg",
     ],
     features: [
       "100% espinaca natural",
       "Mejora la coloración",
       "Rico en nutrientes y vitaminas",
       "Favorece la reproducción",
-      "Marca premium SL Aqua",
     ],
     videoIds: [
       "gambitas-alimento-premium",
@@ -105,7 +102,7 @@ export const products = [
   },
   {
     id: "3",
-    name: "SL Aqua Z-1 Planarian & Hydra Cleaner",
+    name: "SL Aqua Z-1 Eliminador de planarias e hidras",
     slug: "sl-aqua-z1-cleaner",
     excerpt:
       "Tratamiento especializado con extractos herbales para eliminar planarias e hidras de forma rápida y segura. Inofensivo para gambitas, peces y plantas.",
@@ -117,16 +114,13 @@ export const products = [
     ],
     brand: "SL Aqua",
     images: [
-      "/images/products/z1-cleaner-1.jpg",
-      "/images/products/z1-cleaner-2.jpg",
-      "/images/products/z1-cleaner-3.jpg",
+      "/images/products/z1-cleaner.jpg",
     ],
     features: [
       "Extracto de hierbas naturales",
       "Elimina planarias e hidras",
       "Seguro para gambitas y peces",
-      "No afecta bacterias nitrificantes",
-      "Incluye cucharita medidora",
+      "No afecta el filtro biológico del acuario",
     ],
     videoIds: [
       "gambitas-5-consejos",
@@ -156,7 +150,7 @@ export const products = [
     name: "SaltyShrimp Bee Shrimp Mineral GH+",
     slug: "saltyshrimp-bee-shrimp-gh",
     excerpt:
-      "Mineralizador especialmente desarrollado para camarones bee, bumblebee y tiger. Aumenta GH sin afectar KH, ideal para agua blanda y cría de Caridina.",
+      "Remineralizador especialmente desarrollado para gambas caridinas. Aumenta GH sin afectar KH.",
     content: beeShrimpGhContent,
     categories: [
       { label: "Acondicionador", color: "blue" },
@@ -165,15 +159,12 @@ export const products = [
     ],
     brand: "SaltyShrimp",
     images: [
-      "/images/products/bee-shrimp-gh-1.jpg",
-      "/images/products/bee-shrimp-gh-2.jpg",
-      "/images/products/bee-shrimp-gh-3.jpg",
+      "/images/products/bee-shrimp-gh.jpg",
     ],
     features: [
       "Aumenta GH sin afectar KH",
-      "Ideal para camarones de agua blanda",
+      "Ideal para gambas caridinas",
       "Minerales y oligoelementos esenciales",
-      "Disolución instantánea",
       "Incluye cucharita medidora",
     ],
     videoIds: [
@@ -192,8 +183,6 @@ export const products = [
         specifications: {
           contenido: "50 gramos",
           origen: "Alemania",
-          dosificación: "3g por 20 litros",
-          alcance: "~330 litros",
         },
       },
       {
@@ -206,8 +195,6 @@ export const products = [
         specifications: {
           contenido: "100 gramos",
           origen: "Alemania",
-          dosificación: "3g por 20 litros",
-          alcance: "~660 litros",
         },
       },
     ],
@@ -227,9 +214,7 @@ export const products = [
     ],
     brand: "SaltyShrimp",
     images: [
-      "/images/products/shrimp-mineral-ghkh-1.jpg",
-      "/images/products/shrimp-mineral-ghkh-2.jpg",
-      "/images/products/shrimp-mineral-ghkh-3.jpg",
+      "/images/products/shrimp-mineral-ghkh.jpg",
     ],
     features: [
       "Aumenta GH y KH",
@@ -254,22 +239,18 @@ export const products = [
         specifications: {
           contenido: "50 gramos",
           origen: "Alemania",
-          dosificación: "2g por 10 litros",
-          alcance: "~250 litros",
         },
       },
       {
         id: "5-100g",
         name: "100 gramos",
-        price: 100000,
+        price: 110000,
         currency: "$",
         stock: "in_stock",
         sku: "SS-SMGHKH-100",
         specifications: {
           contenido: "100 gramos",
           origen: "Alemania",
-          dosificación: "2g por 10 litros",
-          alcance: "~500 litros",
         },
       },
     ],
@@ -277,10 +258,10 @@ export const products = [
   },
   {
     id: "6",
-    name: "SL Aqua Magic Powder - Unique Enzyme Powder",
+    name: "SL Aqua Magic Powder",
     slug: "sl-aqua-magic-powder",
     excerpt:
-      "Polvo enzimático único para preparar acuarios nuevos y mantener la calidad del agua. Aumenta microorganismos beneficiosos y mejora la salud digestiva de tus gambitas.",
+      "Polvo de apoyo biológico para arrancar y mantener gambarios, favoreciendo la estabilidad del acuario y ayudando a mejorar la supervivencia de tus gambitas.",
     content: magicPowderContent,
     categories: [
       { label: "Acondicionador", color: "blue" },
@@ -289,15 +270,13 @@ export const products = [
     ],
     brand: "SL Aqua",
     images: [
-      "/images/products/magic-powder-1.jpg",
-      "/images/products/magic-powder-2.jpg",
-      "/images/products/magic-powder-3.jpg",
+      "/images/products/magic-powder.jpg",
     ],
     features: [
-      "Enzimas únicas exclusivas",
-      "Aumenta bacterias beneficiosas",
+      "Apoyo biológico para el gambario",
+      "Favorece el desarrollo de microfauna y bacterias beneficiosas",
       "Mejora la salud digestiva",
-      "Ideal para acuarios nuevos",
+      "Ideal para acuarios y gambarios nuevos",
       "Aumenta tasa de supervivencia",
     ],
     videoIds: [

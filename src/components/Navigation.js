@@ -75,7 +75,7 @@ export default function Navigation() {
     { name: "Guías", href: "/guias" },
     { name: "Asesorías", href: "/asesoria" },
     { name: "Acerca de", href: "/sobre-mi" },
-    { name: "Tienda", href: "#", comingSoon: true },
+    { name: "Tienda", href: "/tienda" },
   ];
 
   const isActiveLink = href => {

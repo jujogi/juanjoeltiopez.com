@@ -1,126 +1,29 @@
 export default `
-El **Bee Shrimp Mineral GH+ de SaltyShrimp** es un mineralizador especialmente desarrollado para la cría y mantenimiento de camarones bee, bumblebee y tiger en acuarios con agua RO (ósmosis inversa), agua de lluvia o agua completamente desalinizada.
+El **SaltyShrimp Bee Shrimp Mineral GH+** es un remineralizador premium diseñado para preparar agua de ósmosis (RO) o de muy baja mineralización y ajustarla con precisión a los parámetros ideales para la cría y mantenimiento de gambas Caridina.
 
 ## ✨ Características
+- **Aumenta GH sin elevar KH**: ideal para acuarios con sustrato activo y KH cercano a 0.
+- Aporta **minerales esenciales** (Ca/Mg y oligoelementos) para mudas correctas, crecimiento y reproducción de tus gambitas.
+- **No modifica el pH**: el pH dependerá del sustrato y KH.
+- **Mejor con agua de ósmosis (RO)**: Lienzo en blanco para remineralizar.
 
-- **Fórmula especializada** - Diseñado específicamente para camarones de agua blanda
-- **Aumenta GH sin afectar KH** - Ratio ideal para bee shrimp (KH/°dH: 0.06/1.0)
-- **Minerales esenciales** - Todos los minerales y oligoelementos necesarios
-- **Disolución instantánea** - Se disuelve en segundos, listo para usar
-- **Marca premium** - Calidad SaltyShrimp alemana
+## 🧂 Dosificación
+- **3 g / 20 L** ≈ **GH 6**.
+*Si no dispones de agua de ósmosis, es imprescindible medir el GH del agua base antes de remineralizar. A partir de ese valor, ajusta la dosis para alcanzar el GH objetivo sin excederte.*
 
-## 🦐 Ideal para
+## 🎯 Parámetros orientativos
+*(pueden variar según la especie/variedad y el montaje)*
+- **GH:** 4–6
+- **KH:** 0–1
 
-**Camarones de agua blanda:**
-- Crystal Red Shrimp (CRS)
-- Crystal Black Shrimp (CBS)
-- Taiwan Bee
-- Pinto
-- Tiger Shrimp
-- Bumblebee Shrimp
-- Todas las variedades de Caridina
 
-## 💧 ¿Qué hace?
+## 🔧 Uso recomendado
+- Disolver **siempre fuera del acuario** en agua ósmosis o baja mineralización.
+- Medir y ajustar con un **TDS** o **test de gotas GH**.
+- Igualar temperatura antes del cambio de agua.
 
-**Mineralización precisa:**
-- Aumenta la dureza total (GH) del agua
-- Mantiene baja la dureza de carbonatos (KH)
-- Crea condiciones ideales para camarones de agua blanda
-- No influye directamente en el pH
+## 📚 Presentación
+Actualmente ofrecemos este producto reenvasado en 2 presentaciones para hacerlo más asequible para ti. Puedes estar tranquilo: el contenido es **SaltyShrimp Bee Shrimp Mineral GH+** original, fraccionado por nosotros con manipulación higiénica, envase limpio y hermético.
 
-**Beneficios para tus gambitas:**
-- Coloración más intensa y vibrante
-- Reproducción exitosa
-- Crecimiento saludable
-- Mayor bienestar general
-- Mudas sin problemas
-
-**Beneficios adicionales:**
-- Favorece el crecimiento de plantas
-- Mejora la regeneración microbial del filtro biológico
-- Reduce bacterias nocivas
-- Promueve microflora beneficiosa
-
-## 📊 Parámetros objetivo
-
-Para cría y mantenimiento de bee shrimp:
-- **GH:** ~6 °dH
-- **Conductividad:** 200 ± 50 µS (microsiemens)
-- **KH:** Bajo (se mantiene naturalmente bajo)
-- **pH:** Menor a 7 (ideal 6.0-6.8)
-
-## 💡 Dosificación
-
-**Dosis estándar:**
-- **3 gramos** (1 cucharada medidora llena) por cada **20 litros** de agua
-- Esto alcanza aproximadamente 6 °dH o 200 µS de conductividad
-
-**Incluye:**
-- Cucharita medidora para dosificación precisa
-
-## 🔧 Modo de uso
-
-### Preparación del agua:
-1. **Mezcla fuera del acuario** - Nunca agregues directamente al tanque
-2. Añade la dosis correspondiente al agua RO/destilada/lluvia
-3. Se disuelve casi completamente en segundos
-4. **Importante:** Asegúrate de que cualquier partícula sin disolver también entre al acuario
-5. El agua está lista para usar inmediatamente
-
-### Para cambios de agua:
-- Prepara el agua nueva con la misma dosificación
-- Mide la conductividad para confirmar parámetros
-- Iguala la temperatura antes de agregar al acuario
-
-## 🎯 Control de pH
-
-Bee Shrimp GH+ no influye directamente en el pH, pero para bee shrimp necesitas pH bajo:
-
-**Si tu pH es mayor a 7:**
-- Usa hojas de almendro indio (Indian almond leaves)
-- Añade conos de aliso negro (black alder cones)
-- Usa turba (contiene ácidos fúlvicos)
-- Considera aditivos reductores de pH
-
-La baja dureza de carbonatos (KH) facilita ajustar el pH de forma natural.
-
-## 📦 Presentaciones
-
-**50 gramos:**
-- Suficiente para aproximadamente 330 litros
-- Ideal para acuarios pequeños y medianos
-
-**100 gramos:**
-- Suficiente para aproximadamente 660 litros
-- Mejor relación precio/cantidad
-
-Ambas presentaciones incluyen cucharita medidora.
-
-## 💭 Consejos de uso
-
-- Siempre prepara el agua fuera del acuario
-- Usa un medidor de TDS/conductividad para precisión
-- Mantén parámetros estables, evita cambios bruscos
-- Cierra bien el contenedor después de cada uso
-- Almacena en lugar seco
-
-## 🌟 Por qué elegir Bee Shrimp GH+
-
-**Calidad SaltyShrimp:**
-SaltyShrimp es una marca alemana reconocida mundialmente por sus sales mineralizadoras de alta calidad. Sus productos son utilizados por criadores profesionales de camarones en todo el mundo.
-
-**Resultados comprobados:**
-- Parámetros de agua perfectos para Caridina
-- Reproducción exitosa y constante
-- Colores más vibrantes e intensos
-- Crías saludables y fuertes
-
-## ⚠️ Almacenamiento
-
-- Mantener en lugar fresco y seco
-- Cerrar herméticamente después de cada uso
-- Proteger de la humedad
-- Usar antes de la fecha de vencimiento
-
-¡Crea el ambiente perfecto para tus bee shrimp con SaltyShrimp Mineral GH+!
+Una mineralización correcta y constante marca la diferencia en las gambas Caridina. Prepara siempre el agua con la misma metodología y evita cambios bruscos. Con **Bee Shrimp Mineral GH+** obtendrás un agua estable y adecuada para gambarios de caridinas.
 `;

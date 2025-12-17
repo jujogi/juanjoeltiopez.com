@@ -106,7 +106,7 @@ export default function ProductPage({ params }) {
     return (
       <Container maxW={"container.xl"} py={12}>
         <Heading>Producto no encontrado</Heading>
-        <Button as={NextLink} href="/shop" mt={4} leftIcon={<ArrowBackIcon />}>
+        <Button as={NextLink} href="/tienda" mt={4} leftIcon={<ArrowBackIcon />}>
           Volver a la tienda
         </Button>
       </Container>
@@ -135,7 +135,7 @@ export default function ProductPage({ params }) {
     <Container maxW={"container.xl"} py={12}>
       <Button
         as={NextLink}
-        href="/shop"
+        href="/tienda"
         variant={"ghost"}
         leftIcon={<ArrowBackIcon />}
         mb={6}
@@ -248,7 +248,7 @@ export default function ProductPage({ params }) {
               >
                 <Text fontSize="xs" color="dark.textSecondary" lineHeight="tall">
                   <strong>Crédito de imágenes:</strong> Las fotografías mostradas son propiedad de {product.brand || "la marca fabricante"} y
-                  se utilizan con fines informativos. El producto que recibes es 100% original, auténtico y sellado de fábrica.
+                  se utilizan con fines informativos.
                 </Text>
               </Box>
             </Box>
@@ -486,7 +486,7 @@ export default function ProductPage({ params }) {
 
                 {isInStock && (
                   <Text fontSize="xs" color="dark.textSecondary" textAlign="center">
-                    Contacta para consultar disponibilidad y entrega
+                    Contáctame para consultar disponibilidad y entrega
                   </Text>
                 )}
               </VStack>
@@ -514,7 +514,7 @@ export default function ProductPage({ params }) {
                     <Box
                       key={relatedProduct.id}
                       as={NextLink}
-                      href={`/shop/${relatedProduct.slug}`}
+                      href={`/tienda/${relatedProduct.slug}`}
                       display="block"
                       p={3}
                       rounded="md"

@@ -36,65 +36,49 @@ const SocialIcon = ({ icon, link, color, bgColor, platform }) => {
   );
 };
 
-const NavCard = ({ title, icon, href, description, isComingSoon = false }) => {
+const NavCard = ({ title, icon, href, description }) => {
   const handleClick = () => {
-    if (!isComingSoon) {
-      trackEvent(`me_page_${title}`, "Navigation");
-    }
+    trackEvent(`me_page_${title}`, "Navigation");
   };
-
-  const CardContent = (
-    <Box
-      p={{ base: 4, md: 5 }}
-      bg="dark.surface"
-      rounded="xl"
-      border="2px"
-      borderColor="dark.border"
-      _hover={{
-        borderColor: isComingSoon ? "dark.border" : "accent.cyan",
-        transform: isComingSoon ? "none" : "translateY(-4px)",
-        boxShadow: isComingSoon ? "none" : "0 8px 24px rgba(6, 182, 212, 0.2)",
-      }}
-      transition="all 0.3s"
-      cursor={isComingSoon ? "not-allowed" : "pointer"}
-      opacity={isComingSoon ? 0.6 : 1}
-      h="full"
-    >
-      <VStack spacing={3} align="center">
-        <Box
-          p={3}
-          bg="dark.bgAlt"
-          rounded="full"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Icon as={icon} color="accent.cyan" boxSize={{ base: 6, md: 7 }} />
-        </Box>
-        <VStack spacing={1}>
-          <Heading size="sm" color="white" textAlign="center">
-            {title}
-          </Heading>
-          <Text color="dark.textSecondary" fontSize="xs" textAlign="center">
-            {description}
-          </Text>
-          {isComingSoon && (
-            <Text color="accent.cyan" fontSize="xs" fontWeight="bold" textAlign="center">
-              Próximamente
-            </Text>
-          )}
-        </VStack>
-      </VStack>
-    </Box>
-  );
-
-  if (isComingSoon) {
-    return CardContent;
-  }
 
   return (
     <Box as={NextLink} href={href} onClick={handleClick}>
-      {CardContent}
+      <Box
+        p={{ base: 4, md: 5 }}
+        bg="dark.surface"
+        rounded="xl"
+        border="2px"
+        borderColor="dark.border"
+        _hover={{
+          borderColor: "accent.cyan",
+          transform: "translateY(-4px)",
+          boxShadow: "0 8px 24px rgba(6, 182, 212, 0.2)",
+        }}
+        transition="all 0.3s"
+        cursor="pointer"
+        h="full"
+      >
+        <VStack spacing={3} align="center">
+          <Box
+            p={3}
+            bg="dark.bgAlt"
+            rounded="full"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Icon as={icon} color="accent.cyan" boxSize={{ base: 6, md: 7 }} />
+          </Box>
+          <VStack spacing={1}>
+            <Heading size="sm" color="white" textAlign="center">
+              {title}
+            </Heading>
+            <Text color="dark.textSecondary" fontSize="xs" textAlign="center">
+              {description}
+            </Text>
+          </VStack>
+        </VStack>
+      </Box>
     </Box>
   );
 };
@@ -148,11 +132,11 @@ export default function MePage() {
               href="/asesoria"
               description="¿Necesitas ayuda? Consultas personalizadas para tu proyecto"
             />
-                        <NavCard
+            <NavCard
               title="Tienda"
               icon={FiShoppingCart}
+              href="/tienda"
               description="Encuentra productos ✨premium✨ para tu acuario"
-              isComingSoon={true}
             />
 
           </SimpleGrid>
