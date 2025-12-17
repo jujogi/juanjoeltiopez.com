@@ -1,6 +1,5 @@
 import { Providers } from "@/components/Providers";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import ConditionalLayout from "@/components/ConditionalLayout";
 import Script from "next/script";
 
 export const metadata = {
@@ -51,9 +50,7 @@ export default function RootLayout({ children }) {
     <html lang="es" suppressHydrationWarning>
       <body suppressHydrationWarning style={{ overflowX: "hidden" }}>
         <Providers>
-          <Navigation />
-          {children}
-          <Footer />
+          <ConditionalLayout>{children}</ConditionalLayout>
         </Providers>
 
         {/* Google Analytics - loaded after hydration */}

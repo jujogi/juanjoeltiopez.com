@@ -24,7 +24,7 @@ export const trackEvent = (name, category) => {
  * Track a CTA (Call To Action) click
  * @param {string} ctaName - The name of the CTA button
  */
-export const trackCtaClick = (ctaName) => {
+export const trackCtaClick = ctaName => {
   trackEvent(ctaName, "Button");
 };
 
@@ -32,7 +32,7 @@ export const trackCtaClick = (ctaName) => {
  * Track a video click
  * @param {string} videoName - The name of the video
  */
-export const trackVideoClick = (videoName) => {
+export const trackVideoClick = videoName => {
   trackEvent(videoName, "Video");
 };
 
@@ -40,6 +40,6 @@ export const trackVideoClick = (videoName) => {
  * Track a blog post click
  * @param {string} postTitle - The title of the blog post
  */
-export const trackBlogClick = (postTitle) => {
+export const trackBlogClick = postTitle => {
   trackEvent(postTitle, "Blog");
 };

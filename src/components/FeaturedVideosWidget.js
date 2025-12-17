@@ -107,10 +107,7 @@ export default function FeaturedVideosWidget({ posts, count = 6 }) {
   const [platform, setPlatform] = useState("tiktok");
 
   // Memoize random videos for both platforms to avoid reshuffling on every render
-  const videosByPlatform = useMemo(
-    () => getVideosForBothPlatforms(posts, count),
-    [posts, count]
-  );
+  const videosByPlatform = useMemo(() => getVideosForBothPlatforms(posts, count), [posts, count]);
 
   // Seleccionar los videos de la plataforma activa
   const availableVideos = videosByPlatform[platform];
