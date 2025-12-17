@@ -100,18 +100,18 @@ export default function AsesoriaPage() {
 
   return (
     <Container maxW="container.xl" py={8}>
-        <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={12}>
-          <GridItem>
-            {/* Hero Section */}
-            <VStack align="start" spacing={4} mb={12}>
-              <Heading fontSize={{ base: "3xl", md: "4xl" }} color="white">
-                Asesoría Personalizada
-              </Heading>
-              <Text color="dark.textSecondary" fontSize="lg">
-                ¿Necesitas ayuda específica con tu acuario? Te acompaño en cada paso para resolver tus
-                dudas y alcanzar tus objetivos.
-              </Text>
-            </VStack>
+      <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={12}>
+        <GridItem>
+          {/* Hero Section */}
+          <VStack align="start" spacing={4} mb={12}>
+            <Heading fontSize={{ base: "3xl", md: "4xl" }} color="white">
+              Asesoría Personalizada
+            </Heading>
+            <Text color="dark.textSecondary" fontSize="lg">
+              ¿Necesitas ayuda específica con tu acuario? Te acompaño en cada paso para resolver tus
+              dudas y alcanzar tus objetivos.
+            </Text>
+          </VStack>
 
           {/* Cuándo necesitas asesoría */}
           <Box bg="dark.surface" rounded="lg" p={8} border="1px" borderColor="dark.border" mb={8}>

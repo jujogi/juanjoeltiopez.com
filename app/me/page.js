@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Container,
-  VStack,
-  Heading,
-  Text,
-  Box,
-  HStack,
-  Icon,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Container, VStack, Heading, Text, Box, HStack, Icon, SimpleGrid } from "@chakra-ui/react";
 import { FaTiktok, FaInstagram } from "react-icons/fa";
 import { FiShoppingCart, FiMessageCircle, FiBook } from "react-icons/fi";
 import NextLink from "next/link";
@@ -88,12 +79,7 @@ const NavCard = ({ title, icon, href, description, isComingSoon = false }) => {
             {description}
           </Text>
           {isComingSoon && (
-            <Text
-              color="accent.cyan"
-              fontSize="xs"
-              fontWeight="bold"
-              textAlign="center"
-            >
+            <Text color="accent.cyan" fontSize="xs" fontWeight="bold" textAlign="center">
               Próximamente
             </Text>
           )}
@@ -137,26 +123,18 @@ export default function MePage() {
                 priority
               />
             </Box>
-            <Text
-              color="dark.textSecondary"
-              fontSize={{ base: "sm", md: "md" }}
-              maxW="xl"
-            >
+            <Text color="dark.textSecondary" fontSize={{ base: "sm", md: "md" }} maxW="xl">
               Aprende a{" "}
               <Box as="strong" color="accent.cyan">
                 cuidar y disfrutar de tu acuario
               </Box>{" "}
-              como nunca antes. Encuentra guías, consejos y toda la inspiración
-              para tus proyectos acuáticos.
+              como nunca antes. Encuentra guías, consejos y toda la inspiración para tus proyectos
+              acuáticos.
             </Text>
           </VStack>
 
           {/* Navigation Cards */}
-          <SimpleGrid
-            columns={{ base: 1, md: 3 }}
-            spacing={{ base: 4, md: 5 }}
-            w="full"
-          >
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 5 }} w="full">
             <NavCard
               title="Tienda"
               icon={FiShoppingCart}
