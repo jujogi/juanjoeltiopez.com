@@ -1,9 +1,9 @@
 export const metadata = {
-  title: "Links | JuanJo El Tío Pez",
+  title: "Links",
   description:
     "Encuentra todos los enlaces importantes de JuanJo El Tío Pez: Tienda, Asesorías, Blog y redes sociales. Tu guía completa de acuariofilia.",
   openGraph: {
-    title: "Links | JuanJo El Tío Pez",
+    title: "Links",
     description:
       "Encuentra todos los enlaces importantes de JuanJo El Tío Pez: Tienda, Asesorías, Blog y redes sociales.",
     type: "website",
