@@ -67,24 +67,12 @@ const ProductCard = ({ product }) => {
           style={{ objectFit: "cover" }}
         />
         {!isInStock && (
-          <Badge
-            position="absolute"
-            top={4}
-            right={4}
-            colorScheme="red"
-            fontSize="sm"
-          >
+          <Badge position="absolute" top={4} right={4} colorScheme="red" fontSize="sm">
             Agotado
           </Badge>
         )}
         {isLowStock && (
-          <Badge
-            position="absolute"
-            top={4}
-            right={4}
-            colorScheme="orange"
-            fontSize="sm"
-          >
+          <Badge position="absolute" top={4} right={4} colorScheme="orange" fontSize="sm">
             Pocas unidades
           </Badge>
         )}
@@ -93,7 +81,13 @@ const ProductCard = ({ product }) => {
       <VStack align="start" p={6} spacing={3}>
         <HStack spacing={2} flexWrap="wrap">
           {product.categories?.map((category, index) => (
-            <Badge key={index} colorScheme={category.color || "cyan"} fontSize="9px" px={2} py={0.5}>
+            <Badge
+              key={index}
+              colorScheme={category.color || "cyan"}
+              fontSize="9px"
+              px={2}
+              py={0.5}
+            >
               {category.label}
             </Badge>
           ))}
@@ -146,10 +140,11 @@ export default function ShopPage() {
               Tienda
             </Heading>
             <Text color="dark.textSecondary" fontSize={"lg"}>
-              Productos premium para tu acuario, ¡infaltables en mi {" "}
+              Productos premium para tu acuario, ¡infaltables en mi{" "}
               <Box as="strong" color="accent.cyan">
                 Fish Room
-              </Box>!
+              </Box>
+              !
             </Text>
           </VStack>
 
@@ -188,7 +183,6 @@ export default function ShopPage() {
             <AsesoriaWidget />
 
             <RelatedPostsWidget posts={posts.slice(0, 5)} title="Artículos destacados" />
-
           </VStack>
         </GridItem>
       </Grid>

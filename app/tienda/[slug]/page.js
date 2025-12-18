@@ -96,9 +96,7 @@ export default function ProductPage({ params }) {
     .filter(p => {
       if (p.id === product?.id) return false;
       // Verificar si comparten al menos una categoría
-      return product?.categories?.some(cat =>
-        p.categories?.some(pCat => pCat.label === cat.label)
-      );
+      return product?.categories?.some(cat => p.categories?.some(pCat => pCat.label === cat.label));
     })
     .slice(0, 3);
 
@@ -133,13 +131,7 @@ export default function ProductPage({ params }) {
 
   return (
     <Container maxW={"container.xl"} py={12}>
-      <Button
-        as={NextLink}
-        href="/tienda"
-        variant={"ghost"}
-        leftIcon={<ArrowBackIcon />}
-        mb={6}
-      >
+      <Button as={NextLink} href="/tienda" variant={"ghost"} leftIcon={<ArrowBackIcon />} mb={6}>
         Volver a la tienda
       </Button>
 
@@ -159,9 +151,7 @@ export default function ProductPage({ params }) {
                     {product.brand}
                   </Badge>
                 )}
-                {isLowStock && (
-                  <Badge colorScheme="orange">Pocas unidades</Badge>
-                )}
+                {isLowStock && <Badge colorScheme="orange">Pocas unidades</Badge>}
                 {!isInStock && <Badge colorScheme="red">Agotado</Badge>}
               </HStack>
 
@@ -215,9 +205,7 @@ export default function ProductPage({ params }) {
                       overflow="hidden"
                       cursor="pointer"
                       border="2px"
-                      borderColor={
-                        mainImage === index ? "accent.cyan" : "transparent"
-                      }
+                      borderColor={mainImage === index ? "accent.cyan" : "transparent"}
                       onClick={() => {
                         setMainImage(index);
                         setImageLoaded(false);
@@ -238,30 +226,17 @@ export default function ProductPage({ params }) {
               )}
 
               {/* Image Disclaimer */}
-              <Box
-                mt={3}
-                p={3}
-                bg="dark.bgAlt"
-                rounded="md"
-                border="1px"
-                borderColor="dark.border"
-              >
+              <Box mt={3} p={3} bg="dark.bgAlt" rounded="md" border="1px" borderColor="dark.border">
                 <Text fontSize="xs" color="dark.textSecondary" lineHeight="tall">
-                  <strong>Crédito de imágenes:</strong> Las fotografías mostradas son propiedad de {product.brand || "la marca fabricante"} y
-                  se utilizan con fines informativos.
+                  <strong>Crédito de imágenes:</strong> Las fotografías mostradas son propiedad de{" "}
+                  {product.brand || "la marca fabricante"} y se utilizan con fines informativos.
                 </Text>
               </Box>
             </Box>
 
             {/* Features */}
             {product.features && product.features.length > 0 && (
-              <Box
-                bg="dark.surface"
-                p={6}
-                rounded="lg"
-                border="1px"
-                borderColor="dark.border"
-              >
+              <Box bg="dark.surface" p={6} rounded="lg" border="1px" borderColor="dark.border">
                 <Heading size="md" mb={4} color="white">
                   Características principales
                 </Heading>
@@ -337,19 +312,13 @@ export default function ProductPage({ params }) {
             <Divider borderColor="dark.border" />
 
             {/* CTA */}
-            <Box
-              bg="dark.surface"
-              p={6}
-              rounded={"lg"}
-              border="1px"
-              borderColor="dark.border"
-            >
+            <Box bg="dark.surface" p={6} rounded={"lg"} border="1px" borderColor="dark.border">
               <Heading size={"md"} mb={2} color="white">
                 ¿Interesado en este producto?
               </Heading>
               <Text mb={4} color="dark.textSecondary">
-                Contáctame para consultar disponibilidad, realizar tu pedido o
-                resolver cualquier duda sobre este producto.
+                Contáctame para consultar disponibilidad, realizar tu pedido o resolver cualquier
+                duda sobre este producto.
               </Text>
               <Button
                 as="a"
@@ -369,20 +338,9 @@ export default function ProductPage({ params }) {
 
         {/* Sidebar */}
         <GridItem>
-          <VStack
-            spacing={6}
-            position={{ base: "relative", lg: "sticky" }}
-            top={4}
-            align="stretch"
-          >
+          <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
             {/* Price Card */}
-            <Box
-              bg="dark.surface"
-              p={6}
-              rounded="lg"
-              border="1px"
-              borderColor="dark.border"
-            >
+            <Box bg="dark.surface" p={6} rounded="lg" border="1px" borderColor="dark.border">
               <VStack align="stretch" spacing={4}>
                 {/* Variant Selector */}
                 {product.variants && product.variants.length > 1 && (
@@ -397,9 +355,7 @@ export default function ProductPage({ params }) {
                           p={3}
                           rounded="md"
                           border="2px"
-                          borderColor={
-                            selectedVariant === index ? "accent.cyan" : "dark.border"
-                          }
+                          borderColor={selectedVariant === index ? "accent.cyan" : "dark.border"}
                           cursor="pointer"
                           transition="all 0.2s"
                           _hover={{
@@ -453,18 +409,16 @@ export default function ProductPage({ params }) {
                 {/* Specifications */}
                 {currentVariant?.specifications && (
                   <VStack align="stretch" spacing={2}>
-                    {Object.entries(currentVariant.specifications).map(
-                      ([key, value]) => (
-                        <HStack key={key} justify="space-between" fontSize="sm">
-                          <Text color="dark.textSecondary" textTransform="capitalize">
-                            {key}:
-                          </Text>
-                          <Text color="white" fontWeight="medium">
-                            {value}
-                          </Text>
-                        </HStack>
-                      )
-                    )}
+                    {Object.entries(currentVariant.specifications).map(([key, value]) => (
+                      <HStack key={key} justify="space-between" fontSize="sm">
+                        <Text color="dark.textSecondary" textTransform="capitalize">
+                          {key}:
+                        </Text>
+                        <Text color="white" fontWeight="medium">
+                          {value}
+                        </Text>
+                      </HStack>
+                    ))}
                   </VStack>
                 )}
 
@@ -499,13 +453,7 @@ export default function ProductPage({ params }) {
 
             {/* Related Products */}
             {relatedProducts.length > 0 && (
-              <Box
-                bg="dark.surface"
-                p={6}
-                rounded="lg"
-                border="1px"
-                borderColor="dark.border"
-              >
+              <Box bg="dark.surface" p={6} rounded="lg" border="1px" borderColor="dark.border">
                 <Heading size="sm" mb={4} color="white">
                   Productos relacionados
                 </Heading>
@@ -545,19 +493,16 @@ export default function ProductPage({ params }) {
                           />
                         </Box>
                         <VStack align="start" spacing={1} flex={1}>
-                          <Text
-                            fontSize="sm"
-                            fontWeight="medium"
-                            color="white"
-                            noOfLines={2}
-                          >
+                          <Text fontSize="sm" fontWeight="medium" color="white" noOfLines={2}>
                             {relatedProduct.name}
                           </Text>
                           <Text fontSize="sm" fontWeight="bold" color="accent.cyan">
                             {relatedProduct.variants?.[0]
-                              ? formatPrice(relatedProduct.variants[0].price, relatedProduct.variants[0].currency)
-                              : "N/A"
-                            }
+                              ? formatPrice(
+                                  relatedProduct.variants[0].price,
+                                  relatedProduct.variants[0].currency
+                                )
+                              : "N/A"}
                           </Text>
                         </VStack>
                       </HStack>

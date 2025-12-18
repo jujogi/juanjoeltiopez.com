@@ -119,12 +119,11 @@ export default function MePage() {
 
           {/* Navigation Cards */}
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 5 }} w="full">
-
-                        <NavCard
-              title="Blog"
-              icon={FiBook}
-              href="/blog"
-              description="Guías, tutoriales y consejos para tus acuarios"
+            <NavCard
+              title="Tienda"
+              icon={FiShoppingCart}
+              href="/tienda"
+              description="¡Encuentra productos ✨premium✨ para tu acuario!"
             />
             <NavCard
               title="Asesorías"
@@ -133,12 +132,11 @@ export default function MePage() {
               description="¿Necesitas ayuda? Consultas personalizadas para tu proyecto"
             />
             <NavCard
-              title="Tienda"
-              icon={FiShoppingCart}
-              href="/tienda"
-              description="Encuentra productos ✨premium✨ para tu acuario"
+              title="Blog"
+              icon={FiBook}
+              href="/blog"
+              description="Guías, tutoriales y consejos para tus acuarios"
             />
-
           </SimpleGrid>
 
           {/* Social Media Icons */}

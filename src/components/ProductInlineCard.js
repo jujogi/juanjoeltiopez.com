@@ -40,7 +40,13 @@ export default function ProductInlineCard({ product }) {
       <VStack align="start" p={4} spacing={2} flex="1">
         <HStack spacing={1} flexWrap="wrap">
           {product.categories?.slice(0, 2).map((category, index) => (
-            <Badge key={index} colorScheme={category.color || "cyan"} fontSize="8px" px={2} py={0.5}>
+            <Badge
+              key={index}
+              colorScheme={category.color || "cyan"}
+              fontSize="8px"
+              px={2}
+              py={0.5}
+            >
               {category.label}
             </Badge>
           ))}

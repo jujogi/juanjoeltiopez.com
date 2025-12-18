@@ -93,7 +93,7 @@ export const videos = [
     emoji: "🥒",
     tags: ["gambitas", "alimentacion"],
   },
-    {
+  {
     id: "spinach-powder",
     name: "Espinaca en polvo para tus gambitas",
     url: {
@@ -373,7 +373,5 @@ export function getVideosByTag(tag) {
 
 export function getVideosByTags(tags) {
   if (!tags || tags.length === 0) return [];
-  return videos.filter(
-    video => video.tags && tags.some(tag => video.tags.includes(tag))
-  );
+  return videos.filter(video => video.tags && tags.some(tag => video.tags.includes(tag)));
 }

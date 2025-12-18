@@ -70,11 +70,7 @@ export const blogPosts = [
     readTime: "10 min lectura",
     image: "/images/mantenimientos.jpg",
     coverImage: "/images/mantenimientos-2.jpg",
-    videoIds: [
-      "mantenimiento-algas",
-      "mantenimiento-betta",
-      "mantenimiento-plantado",
-    ],
+    videoIds: ["mantenimiento-algas", "mantenimiento-betta", "mantenimiento-plantado"],
   },
   {
     id: "4",

@@ -68,20 +68,14 @@ export const products = [
       { label: "Gambitas", color: "pink" },
     ],
     brand: "SL Aqua",
-    images: [
-      "/images/products/spinach-powder-1.jpg",
-    ],
+    images: ["/images/products/spinach-powder-1.jpg"],
     features: [
       "100% espinaca natural",
       "Mejora la coloración",
       "Rico en nutrientes y vitaminas",
       "Favorece la reproducción",
     ],
-    videoIds: [
-      "spinach-powder",
-      "gambitas-alimento-premium",
-      "gambitas-5-consejos",
-    ],
+    videoIds: ["spinach-powder", "gambitas-alimento-premium", "gambitas-5-consejos"],
     variants: [
       {
         id: "2-40g",
@@ -112,20 +106,14 @@ export const products = [
       { label: "Gambitas", color: "pink" },
     ],
     brand: "SL Aqua",
-    images: [
-      "/images/products/z1-cleaner.jpg",
-    ],
+    images: ["/images/products/z1-cleaner.jpg"],
     features: [
       "Extracto de hierbas naturales",
       "Elimina planarias e hidras",
       "Seguro para gambitas y peces",
       "No afecta el filtro biológico del acuario",
     ],
-    videoIds: [
-      "gambitas-5-consejos",
-      "gambitas-3-tips",
-      "gambitas-alimento-premium",
-    ],
+    videoIds: ["gambitas-5-consejos", "gambitas-3-tips", "gambitas-alimento-premium"],
     variants: [
       {
         id: "3-10g",
@@ -157,20 +145,14 @@ export const products = [
       { label: "Gambitas", color: "pink" },
     ],
     brand: "SaltyShrimp",
-    images: [
-      "/images/products/bee-shrimp-gh.jpg",
-    ],
+    images: ["/images/products/bee-shrimp-gh.jpg"],
     features: [
       "Aumenta GH sin afectar KH",
       "Ideal para gambas caridinas",
       "Minerales y oligoelementos esenciales",
       "Incluye cucharita medidora",
     ],
-    videoIds: [
-      "gambitas-5-consejos",
-      "gambitas-3-tips",
-      "gambitas-alimento-premium",
-    ],
+    videoIds: ["gambitas-5-consejos", "gambitas-3-tips", "gambitas-alimento-premium"],
     variants: [
       {
         id: "4-50g",
@@ -204,7 +186,7 @@ export const products = [
     name: "SaltyShrimp Shrimp Mineral GH/KH+",
     slug: "saltyshrimp-shrimp-mineral-ghkh",
     excerpt:
-      "Mineralizador para agua neutra. Ideal para Neocaridina (Cherry, Blue Dream, etc.). Aumenta GH y KH para pH estable. Perfecto para camarones de agua neutra.",
+      "Remineralizador especialmente desarrollado para gambas neocaridinas. Aumenta GH y KH.",
     content: shrimpMineralGhkhContent,
     categories: [
       { label: "Acondicionador", color: "blue" },
@@ -212,9 +194,7 @@ export const products = [
       { label: "Gambitas", color: "pink" },
     ],
     brand: "SaltyShrimp",
-    images: [
-      "/images/products/shrimp-mineral-ghkh.jpg",
-    ],
+    images: ["/images/products/shrimp-mineral-ghkh.jpg"],
     features: [
       "Aumenta GH y KH",
       "Ideal para Neocaridina",
@@ -222,11 +202,7 @@ export const products = [
       "Minerales completos",
       "Incluye cucharita medidora",
     ],
-    videoIds: [
-      "gambitas-5-consejos",
-      "gambitas-3-tips",
-      "gambitas-alimento-premium",
-    ],
+    videoIds: ["gambitas-5-consejos", "gambitas-3-tips", "gambitas-alimento-premium"],
     variants: [
       {
         id: "5-50g",
@@ -268,9 +244,7 @@ export const products = [
       { label: "Gambitas", color: "pink" },
     ],
     brand: "SL Aqua",
-    images: [
-      "/images/products/magic-powder.jpg",
-    ],
+    images: ["/images/products/magic-powder.jpg"],
     features: [
       "Apoyo biológico para el gambario",
       "Favorece el desarrollo de microfauna y bacterias beneficiosas",
@@ -278,11 +252,7 @@ export const products = [
       "Ideal para acuarios y gambarios nuevos",
       "Aumenta tasa de supervivencia",
     ],
-    videoIds: [
-      "gambitas-5-consejos",
-      "gambitas-3-tips",
-      "gambitas-alimento-premium",
-    ],
+    videoIds: ["gambitas-5-consejos", "gambitas-3-tips", "gambitas-alimento-premium"],
     variants: [
       {
         id: "6-40g",
@@ -317,9 +287,7 @@ export function getProductById(id) {
 }
 
 export function getProductsByCategory(categoryLabel) {
-  return products.filter(product =>
-    product.categories?.some(cat => cat.label === categoryLabel)
-  );
+  return products.filter(product => product.categories?.some(cat => cat.label === categoryLabel));
 }
 
 export function getAllCategories() {

@@ -249,7 +249,9 @@ export default function BlogPost({ params }) {
                   if (productCard) {
                     const product = allProducts.find(p => p.slug === productCard.slug);
                     if (product) {
-                      parts.push(<ProductInlineCard key={`product-${position}`} product={product} />);
+                      parts.push(
+                        <ProductInlineCard key={`product-${position}`} product={product} />
+                      );
                     }
                   }
 
@@ -296,7 +298,9 @@ export default function BlogPost({ params }) {
         {/* Sidebar */}
         <GridItem>
           <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
-            {post.videoIds && post.videoIds.length > 0 && <RelatedVideosWidget videoIds={post.videoIds} />}
+            {post.videoIds && post.videoIds.length > 0 && (
+              <RelatedVideosWidget videoIds={post.videoIds} />
+            )}
             <AsesoriaWidget />
             <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" />
           </VStack>
