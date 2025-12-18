@@ -11,21 +11,22 @@ El **SL Aqua Z-1** (Planarian & Hydra Cleaner) es un tratamiento específico par
 - **Planarias**: gusanos planos que pueden atacar crías o gambas debilitadas.
 - **Hidras**: pólipos con tentáculos urticantes que pueden afectar a crías.
 
-## ⚠️ Atención con los caracoles
+## ⚠️ ¡Atención con los caracoles!
 - Puede afectar o eliminar **caracoles**.
 - Si quieres conservarlos, **retíralos antes** de iniciar el tratamiento.
 
 ## 🔧 Modo de uso
 - **Dosis:** 2 cucharadas medidoras por cada **50 L**.
-- **Duración del ciclo:** 7 días.
+- Cada ciclo debe durar 7 días.
 - Durante el ciclo: **no realizar cambios de agua**.
-- Si persiste la plaga al finalizar, **repetir** el ciclo.
+- Si persiste la plaga al finalizar, **empieza** un nuevo ciclo.
+
+## 💡 Consejos
+- Reduce la alimentación durante el tratamiento para evitar picos de amonio.
+- Mantén el filtro funcionando con normalidad y con muy buena oxigenación.
 
 ## 🧹 Después del tratamiento
 - Es normal ver restos de organismos muertos; si son muchos, puede aparecer **turbidez**.
 - Realiza un **cambio de agua del 50%** y sifona restos si es posible.
 
-## 💡 Consejos de uso
-- Reduce la alimentación durante el tratamiento para evitar picos de amonio.
-- Mantén el filtro funcionando con normalidad y con muy buena oxigenación.
 `;

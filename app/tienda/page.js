@@ -91,7 +91,7 @@ const ProductCard = ({ product }) => {
       <VStack align="start" p={6} spacing={3}>
         <HStack spacing={2} flexWrap="wrap">
           {product.categories?.map((category, index) => (
-            <Badge key={index} colorScheme={category.color || "cyan"} fontSize="xs">
+            <Badge key={index} colorScheme={category.color || "cyan"} fontSize="9px" px={2} py={0.5}>
               {category.label}
             </Badge>
           ))}
@@ -140,10 +140,13 @@ export default function ShopPage() {
         <GridItem>
           <VStack align="start" spacing={4} mb={8}>
             <Heading fontSize={"4xl"} color="white">
-              🛒 Tienda
+              Tienda
             </Heading>
             <Text color="dark.textSecondary" fontSize={"lg"}>
-              Productos premium para tu acuario, seleccionados con cuidado
+              Productos premium para tu acuario, ¡infaltables en mi {" "}
+              <Box as="strong" color="accent.cyan">
+                Fish Room
+              </Box>!
             </Text>
           </VStack>
 

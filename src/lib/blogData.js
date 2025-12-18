@@ -51,6 +51,10 @@ export const blogPosts = [
       "gambitas-snacks",
       "gambitas-3-tips",
     ],
+    productCards: [
+      { position: "after-food", slug: "sl-aqua-spinach-powder" },
+      { position: "after-planarias", slug: "sl-aqua-z1-cleaner" },
+    ],
   },
   {
     id: "3",
@@ -96,6 +100,10 @@ export const blogPosts = [
       "caridinas-pure-line",
       "caridinas-mudan",
       "caridinas-evolucion",
+    ],
+    productCards: [
+      { position: "after-osmosis", slug: "saltyshrimp-bee-shrimp-gh" },
+      { position: "after-bacteria", slug: "sl-aqua-magic-powder" },
     ],
   },
   {

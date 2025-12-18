@@ -79,9 +79,9 @@ export const products = [
       "Favorece la reproducción",
     ],
     videoIds: [
+      "spinach-powder",
       "gambitas-alimento-premium",
       "gambitas-5-consejos",
-      "gambitas-3-tips",
     ],
     variants: [
       {

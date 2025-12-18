@@ -93,6 +93,16 @@ export const videos = [
     emoji: "🥒",
     tags: ["gambitas", "alimentacion"],
   },
+    {
+    id: "spinach-powder",
+    name: "Espinaca en polvo para tus gambitas",
+    url: {
+      tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7579250487078259975",
+      instagram: "https://www.instagram.com/p/DRvUMTBjUxo/",
+    },
+    emoji: "🥗",
+    tags: ["gambitas", "alimentacion"],
+  },
   {
     id: "gambitas-snacks",
     name: "Snacks para consentir a tus camarones",

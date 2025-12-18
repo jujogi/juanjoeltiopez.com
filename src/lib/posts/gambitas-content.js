@@ -27,7 +27,9 @@ La alimentación es clave para mantener gambas saludables y con colores vibrante
 - Vegetales ocasionales como espinacas o calabacín
 - Proteína XP para complementar su dieta
 
+
 Es importante no sobrealimentar. Las gambitas son muy eficientes en aprovechar biofilm y algas presentes en el acuario.
+[PRODUCT:after-food]
 
 ![Gambitas comiendo Protein XP](/images/gambas-consejos/gambas-comiendo-protein-xp.jpg)
 *Gambas neocaridinas Bloody Mary disfrutando del alimento Protein XP de GlasGarten, fundamental para su crecimiento y coloración*
@@ -54,4 +56,6 @@ Uno de los problemas más comunes en gambarios son las **planarias**, pequeños 
 - Realizar cambios de agua regulares
 - Sifonar detritos del fondo
 - Mantener un acuario limpio y equilibrado
+
+[PRODUCT:after-planarias]
 `;

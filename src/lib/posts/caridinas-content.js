@@ -11,6 +11,8 @@ Las caridinas son especialmente sensibles a los cambios bruscos en los parámetr
 
 **💦 Agua de ósmosis y sales especiales:** Es importante utilizar agua de ósmosis, ya que está libre de impurezas y minerales que pueden alterar los parámetros del agua. Para aportar los minerales que sí necesitamos, haremos uso de sales específicas para gambas, logrando así un control exacto sobre la **dureza general (GH)** y los niveles de **TDS (sólidos disueltos totales)**.
 
+[PRODUCT:after-osmosis]
+
 ## Sustrato activo
 
 El sustrato nutritivo o activo es una pieza fundamental en el montaje de un gambario para caridinas. Este tipo de sustrato tiene la capacidad de:
@@ -39,6 +41,8 @@ Estos materiales ofrecen un amplio espacio para el desarrollo de **colonias de b
 **🌞 Promueve un ambiente saludable:** Contribuye al desarrollo de **biofilm**, que es una fuente de alimento esencial para las caridinas.
 
 Para este montaje, utilicé un powder desarrollado por **KW Shrimps**, una reconocida marca especializada en el desarrollo de productos para el cuidado y mantenimiento de gambas caridinas.
+
+[PRODUCT:after-bacteria]
 
 ![Biofilm en hojas del gambario](/images/gambario-caridinas/hoja-gambas.jpg)
 *El biofilm que se desarrolla sobre las hojas y superficies es una fuente esencial de alimento para las caridinas*
