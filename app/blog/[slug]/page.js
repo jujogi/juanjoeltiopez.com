@@ -24,7 +24,10 @@ import ReactMarkdown from "react-markdown";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
 import RelatedVideosWidget from "@/components/RelatedVideosWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
+import ShopWidget from "@/components/ShopWidget";
+import ProductInlineCard from "@/components/ProductInlineCard";
 import { trackCtaClick } from "@/lib/gtm";
+import { getAllProducts } from "@/lib/shopData";
 
 const PostSkeleton = () => (
   <Container maxW={"container.xl"} py={12}>
@@ -71,6 +74,7 @@ export default function BlogPost({ params }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const post = getPostBySlug(slug);
   const allPosts = getAllPosts();
+  const allProducts = getAllProducts();
 
   const handleVerTodosClick = () => {
     trackCtaClick("ver_todos_los_articulos");
@@ -221,7 +225,51 @@ export default function BlogPost({ params }) {
                 },
               }}
             >
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              {/* Split content by product markers and render inline cards */}
+              {(() => {
+                const content = post.content;
+                const productMarkerRegex = /\[PRODUCT:([^\]]+)\]/g;
+                const parts = [];
+                let lastIndex = 0;
+                let match;
+
+                while ((match = productMarkerRegex.exec(content)) !== null) {
+                  // Add markdown content before the marker
+                  if (match.index > lastIndex) {
+                    parts.push(
+                      <ReactMarkdown key={`md-${lastIndex}`}>
+                        {content.substring(lastIndex, match.index)}
+                      </ReactMarkdown>
+                    );
+                  }
+
+                  // Find product card for this position
+                  const position = match[1];
+                  const productCard = post.productCards?.find(pc => pc.position === position);
+
+                  if (productCard) {
+                    const product = allProducts.find(p => p.slug === productCard.slug);
+                    if (product) {
+                      parts.push(
+                        <ProductInlineCard key={`product-${position}`} product={product} />
+                      );
+                    }
+                  }
+
+                  lastIndex = match.index + match[0].length;
+                }
+
+                // Add remaining markdown content
+                if (lastIndex < content.length) {
+                  parts.push(
+                    <ReactMarkdown key={`md-${lastIndex}`}>
+                      {content.substring(lastIndex)}
+                    </ReactMarkdown>
+                  );
+                }
+
+                return parts.length > 0 ? parts : <ReactMarkdown>{content}</ReactMarkdown>;
+              })()}
             </Box>
 
             <Divider borderColor="dark.border" />
@@ -251,9 +299,12 @@ export default function BlogPost({ params }) {
         {/* Sidebar */}
         <GridItem>
           <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
-            {post.videos && post.videos.length > 0 && <RelatedVideosWidget videos={post.videos} />}
+            {post.videoIds && post.videoIds.length > 0 && (
+              <RelatedVideosWidget videoIds={post.videoIds} />
+            )}
+            <ShopWidget />
             <AsesoriaWidget />
-            <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" />
+            {/* <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" /> */}
           </VStack>
         </GridItem>
       </Grid>

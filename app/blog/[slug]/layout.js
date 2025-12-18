@@ -6,12 +6,12 @@ export async function generateMetadata({ params }) {
 
   if (!post) {
     return {
-      title: "Post no encontrado | JuanJo El Tío Pez 🐠",
+      title: "Post no encontrado",
     };
   }
 
   return {
-    title: `${post.title} | JuanJo El Tío Pez 🐠`,
+    title: `${post.title}`,
     description: post.excerpt,
     keywords: `${post.category}, ${post.title}, acuarios, JuanJo El Tío Pez, cuidado de peces, acuariofilia`,
     authors: [{ name: post.author }],
