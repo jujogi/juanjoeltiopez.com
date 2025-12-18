@@ -17,6 +17,8 @@ import { getAllProducts } from "@/lib/shopData";
 import { formatPrice } from "@/lib/priceUtils";
 import NextLink from "next/link";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
+import { getAllPosts } from "@/lib/blogData";
+import RelatedPostsWidget from "@/components/RelatedPostsWidget";
 
 const ProductCard = ({ product }) => {
   // Usar la primera variante para mostrar info básica
@@ -133,6 +135,7 @@ const ProductCard = ({ product }) => {
 
 export default function ShopPage() {
   const products = getAllProducts();
+  const posts = getAllPosts();
 
   return (
     <Container maxW={"container.xl"} py={8}>
@@ -182,36 +185,10 @@ export default function ShopPage() {
         {/* Sidebar */}
         <GridItem display={{ base: "none", lg: "block" }}>
           <VStack spacing={6} position="sticky" top={4}>
+            <AsesoriaWidget />
 
+            <RelatedPostsWidget posts={posts.slice(0, 5)} title="Artículos destacados" />
 
-            <Box
-              bg="dark.surface"
-              p={6}
-              rounded="lg"
-              border="1px"
-              borderColor="dark.border"
-            >
-              <Heading size="sm" mb={3} color="white">
-                💡 ¿Necesitas ayuda?
-              </Heading>
-              <Text fontSize="sm" color="dark.textSecondary" mb={4}>
-                Si tienes dudas sobre qué producto es mejor para tu acuario,
-                no dudes en contactarme.
-              </Text>
-              <Button
-                as={NextLink}
-                href="/asesoria"
-                size="sm"
-                w="full"
-                bg="accent.cyan"
-                color="white"
-                _hover={{ bg: "accent.cyanHover" }}
-              >
-                Solicitar asesoría
-              </Button>
-            </Box>
-
-                        <AsesoriaWidget />
           </VStack>
         </GridItem>
       </Grid>

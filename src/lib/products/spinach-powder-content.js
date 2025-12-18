@@ -18,5 +18,5 @@ El **SL Aqua Spinach Powder** es un alimento vegetal en polvo a base de **espina
 - Ideal como apoyo en gambarios con **crías**: pequeñas dosis frecuentes suelen funcionar mejor que una dosis grande.
 - Alterna con otros alimentos (proteicos y vegetales) para una **dieta completa**.
 
-¡Elimina las plagas de tu acuario de forma segura y efectiva con SL Aqua Z-1!
+¡Dale a tus gambitas un alimento 100% vegetal, natural y lleno de nutrientes esenciales!
 `;

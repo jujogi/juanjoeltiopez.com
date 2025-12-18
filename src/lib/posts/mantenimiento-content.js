@@ -25,5 +25,5 @@ En pocas semanas, con un ecosistema en equilibrio y maduro, las algas serán cos
 - **👨🏻‍🔬 Monitorea los parámetros del agua:** Usa kits de prueba para medir niveles de amonio, nitritos, nitratos y el pH. Esto te ayudará a detectar problemas antes de que se conviertan en una crisis.
 - **🧹 ¡No limpies todo el mismo día!** Evita limpiar el filtro, el sustrato y realizar un cambio de agua completo el mismo día, ya que podrías eliminar demasiadas bacterias beneficiosas.
 
-El mantenimiento regular no solo mejora la calidad de vida de los peces, sino que también reduce el riesgo de enfermedades, algas y problemas en el acuario. Mantener un acuario saludable no es díficil, pero requiere consistencia y amor.
+El mantenimiento regular no solo mejora la calidad de vida de los peces, sino que también reduce el riesgo de enfermedades, algas y problemas en el acuario. Mantener un acuario saludable no es difícil, pero requiere consistencia y amor.
 `;

@@ -101,7 +101,7 @@ export const products = [
   },
   {
     id: "3",
-    name: "SL Aqua Z-1 Eliminador de planarias e hidras",
+    name: "SL Aqua Z-1 Planarian & Hydra Cleaner",
     slug: "sl-aqua-z1-cleaner",
     excerpt:
       "Tratamiento especializado con extractos herbales para eliminar planarias e hidras de forma rápida y segura. Inofensivo para gambitas, peces y plantas.",
@@ -294,8 +294,6 @@ export const products = [
         specifications: {
           contenido: "40 gramos",
           origen: "Taiwan",
-          uso: "Sustrato nuevo / Con alimento",
-          duración: "2-4 meses",
         },
       },
     ],

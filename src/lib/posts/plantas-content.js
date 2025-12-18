@@ -9,7 +9,7 @@ Las **plantas acuáticas naturales** son mucho más que decoración en un acuari
 
 - **🫧 Producción de oxígeno**: Durante la fotosíntesis, las plantas liberan oxígeno al agua, lo que mejora la oxigenación en la columna de agua del acuario.
 - **💦 Purificación**: Las plantas se **alimentan de nitratos y fosfatos**, lo que te ayudará a evitar problemas como la proliferación de algas y la intoxicación en los peces.
-- **🏠 Hogar y refugio**: Sirven de refugio y porporcionar sobra para peces y gambas, ayudándolos a sentirse seguros y comportarse de manera más natural.
+- **🏠 Hogar y refugio**: Sirven de refugio y proporcionar sombra para peces y gambas, ayudándolos a sentirse seguros y comportarse de manera más natural.
 
 ## Requisitos básicos para añadir plantas en el acuario
 
@@ -31,7 +31,7 @@ Las plantas pueden vivir en un sustrato inerte, pero es importante elegir uno qu
 
 ### 🥤 Abono líquido
 
-Aunque las plantas absorben nutrientes del sustrato, es importante suplementarlas con abonos líquidos. Para no complicarte, podrás encontrar opciones en el mercado que incluyen los macronutrientes necesarios: **NPK** (Nitrógeno, Fósforo y Potasio). Con una dosis semanal después del manteniento y siguiendo las instrucciones del fabricante (inicia abonando menos de lo que dice el frasco), tus plantas estarán saludables.
+Aunque las plantas absorben nutrientes del sustrato, es importante suplementarlas con abonos líquidos. Para no complicarte, podrás encontrar opciones en el mercado que incluyen los macronutrientes necesarios: **NPK** (Nitrógeno, Fósforo y Potasio). Con una dosis semanal después del mantenimiento y siguiendo las instrucciones del fabricante (inicia abonando menos de lo que dice el frasco), tus plantas estarán saludables.
 
 ## Empezar es más fácil de lo que crees
 
@@ -47,7 +47,7 @@ Si eres principiante, puedes iniciar con plantas de **bajo requerimiento** que c
 - **🪴 Cryptocorynes**: Ideales para la zona media del acuario, muy resistentes y de fácil mantenimiento.
 - **🍃 Echinodorus**: Una planta robusta que añade un toque imponente al fondo del acuario.
 
-![Lámpara Chihiros WRGB2 para acuarios plantados](/images/plantas-acuaticas/lampara-chihirs-wrgb2.jpg)
+![Lámpara Chihiros WRGB2 para acuarios plantados](/images/plantas-acuaticas/lampara-chihiros-wrgb2.jpg)
 
 *Una lámpara como la Chihiros WRGB2 combinada con plantas de baja y media exigencia puede ser una excelente combinación para un proyecto de aquascaping. Su potencia y control del espectro te permitirán crear paisajes acuáticos impresionantes.*
 

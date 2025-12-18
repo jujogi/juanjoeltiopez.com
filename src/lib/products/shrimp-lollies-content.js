@@ -34,7 +34,7 @@ Musgo islandés, snow flakes, polen de flores e hibisco
 - Usa 1-2 veces por semana como suplemento
 - Alterna entre las diferentes variedades para una dieta variada
 - Perfecto como premio ocasional
-- ¡No debe sustitur la alimentación regular!
+- ¡No debe sustituir la alimentación regular!
 
 ¡Dale a tus gambitas una experiencia alimenticia divertida y nutritiva!
 `;
