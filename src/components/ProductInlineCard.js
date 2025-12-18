@@ -27,7 +27,7 @@ export default function ProductInlineCard({ product }) {
       transition="all 0.3s"
       onClick={handleClick}
     >
-      <Box position="relative" minW="120px" maxW="120px" h="120px" bg="dark.border">
+      <Box position="relative" minW="120px" maxW="120px" h="auto" bg="dark.border">
         <ChakraImage
           src={product.images[0]}
           alt={product.name}

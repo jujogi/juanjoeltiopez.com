@@ -85,7 +85,7 @@ export default function BlogPage() {
         <GridItem>
           <VStack align="start" spacing={4} mb={8}>
             <Heading fontSize={"4xl"} color="white">
-              👨🏻‍🏫 El Blog de Juanjo
+              Blog
             </Heading>
             <Text color="dark.textSecondary" fontSize={"lg"}>
               Guías, consejos y un poco de conocimiento para aplicar en este hobby

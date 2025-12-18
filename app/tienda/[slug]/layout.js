@@ -6,7 +6,7 @@ export async function generateMetadata({ params }) {
 
   if (!product) {
     return {
-      title: "Producto no encontrado | JuanJo El Tío Pez 🐠",
+      title: "Producto no encontrado",
     };
   }
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
   ].join(", ");
 
   return {
-    title: `${product.name} | Tienda JuanJo El Tío Pez 🐠`,
+    title: `${product.name} | JuanJo El Tío Pez`,
     description: `${product.excerpt} ${priceText ? `Precio: ${priceText}.` : ""} ${product.brand ? `Marca: ${product.brand}.` : ""} Compra productos premium para acuarios.`,
     keywords,
     robots: "index, follow",

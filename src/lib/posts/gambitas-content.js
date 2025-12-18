@@ -48,6 +48,8 @@ Es importante no sobrealimentar. Las gambitas son muy eficientes en aprovechar b
 
 Uno de los problemas más comunes en gambarios son las **planarias**, pequeños gusanos planos que pueden aparecer en acuarios con exceso de materia orgánica. Aunque no siempre son dañinas, en grandes cantidades pueden competir con las gambas por alimento y, en algunos casos, atacar gambas débiles o recién mudadas.
 
+[PRODUCT:after-planarias]
+
 ![Planarias con gamba neocaridina](/images/gambas-consejos/planarias-gamba-neo.jpg)
 *Las planarias pueden aparecer en el acuario si hay exceso de alimento. Mantén el acuario limpio y evita sobrealimentar para prevenir su aparición*
 
@@ -57,5 +59,5 @@ Uno de los problemas más comunes en gambarios son las **planarias**, pequeños 
 - Sifonar detritos del fondo
 - Mantener un acuario limpio y equilibrado
 
-[PRODUCT:after-planarias]
+
 `;

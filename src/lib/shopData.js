@@ -50,7 +50,6 @@ export const products = [
         specifications: {
           contenido: "8 palitos (2 de cada sabor)",
           origen: "Alemania",
-          longitud: "~20 cm por palito",
         },
       },
     ],
