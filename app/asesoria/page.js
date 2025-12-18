@@ -25,6 +25,7 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import { FaInstagram, FaVideo, FaClock, FaCheckCircle } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
+import ShopWidget from "@/components/ShopWidget";
 import ImageWithOverlay from "@/components/ImageWithOverlay";
 import { getAllPosts } from "@/lib/blogData";
 import { trackCtaClick } from "@/lib/gtm";
@@ -88,7 +89,7 @@ export default function AsesoriaPage() {
   const posts = getAllPosts();
 
   // Obtener artículos relacionados con cuidado y mantenimiento
-  const relatedPosts = posts.slice(0, 5);
+  const relatedPosts = posts.slice(0, 3);
 
   const handleAgendarSesionClick = () => {
     trackCtaClick("agendar_sesion_instagram");
@@ -423,9 +424,10 @@ export default function AsesoriaPage() {
 
         {/* Sidebar */}
         <GridItem display={{ base: "none", lg: "block" }}>
-          <Box position="sticky" top={4}>
+          <VStack spacing={6} position="sticky" top={4}>
+            <ShopWidget />
             <RelatedPostsWidget posts={relatedPosts} title="Artículos destacados" />
-          </Box>
+          </VStack>
         </GridItem>
       </Grid>
 

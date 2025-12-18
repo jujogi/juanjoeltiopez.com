@@ -5,6 +5,7 @@ import z1CleanerContent from "./products/z1-cleaner-content.js";
 import beeShrimpGhContent from "./products/bee-shrimp-gh-content.js";
 import shrimpMineralGhkhContent from "./products/shrimp-mineral-ghkh-content.js";
 import magicPowderContent from "./products/magic-powder-content.js";
+import aptFertilizerContent from "./products/2hr-aquarist-apt-content.js";
 
 export const products = [
   {
@@ -26,9 +27,8 @@ export const products = [
       "/images/products/shrimp-lollies-3.jpg",
     ],
     features: [
-      "4 variedades deliciosas",
+      "4 deliciosas variedades",
       "Mínima contaminación del agua",
-      "Hecho en Alemania",
       "Fácil de usar",
       "Para ~30 camarones por palito",
     ],
@@ -197,9 +197,8 @@ export const products = [
     images: ["/images/products/shrimp-mineral-ghkh.jpg"],
     features: [
       "Aumenta GH y KH",
-      "Ideal para Neocaridina",
-      "pH neutro estable",
-      "Minerales completos",
+      "Ideal para gambas neocaridina",
+      "Minerales y oligoelementos esenciales",
       "Incluye cucharita medidora",
     ],
     videoIds: ["gambitas-5-consejos", "gambitas-3-tips", "gambitas-alimento-premium"],
@@ -264,6 +263,74 @@ export const products = [
         specifications: {
           contenido: "40 gramos",
           origen: "Taiwan",
+        },
+      },
+    ],
+    relatedProducts: [],
+  },
+  {
+    id: "7",
+    name: "2hr Aquarist APT Fertilizantes",
+    slug: "2hr-aquarist-apt-fertilizer",
+    excerpt:
+      "Fertilizantes líquidos profesionales para acuarios plantados, diseñados para aportar una nutrición equilibrada y favorecer un crecimiento sano, mejor coloración y mayor estabilidad del acuario.",
+    content: aptFertilizerContent,
+    categories: [
+      { label: "Fertilizantes", color: "green" },
+      { label: "Plantas", color: "teal" },
+    ],
+    brand: "2hr Aquarist",
+    images: ["/images/products/2hr-apt.jpg", "/images/products/2hr-apt-plants-1.jpg", "/images/products/2hr-apt-plants-2.jpg"],
+    features: [
+      "Formulación científica profesional",
+      "Alta concentración y eficiencia",
+      "Minimiza el crecimiento de algas",
+      "Fácil de dosificar",
+      "Resultados comprobados",
+    ],
+    videoIds: [
+      "mantenimiento-plantado",
+      "plantas-no-plastico",
+      "paisajismo-primer-concurso",
+      "caridinas-plantando",
+      "plantas-anubias-bucephalandras",
+      "mantenimiento-algas",
+    ],
+    variants: [
+      {
+        id: "7-apt1",
+        name: "APT 1 - ZERO",
+        price: 160000,
+        currency: "$",
+        stock: "in_stock",
+        sku: "2HR-APT1-300",
+        specifications: {
+          contenido: "300 ml",
+          origen: "Singapur",
+        },
+      },
+      {
+        id: "7-apt3",
+        name: "APT 3 - COMPLETE",
+        price: 160000,
+        currency: "$",
+        stock: "in_stock",
+        sku: "2HR-APT3-300",
+        specifications: {
+          contenido: "300 ml",
+          origen: "Singapur",
+        },
+      },
+      {
+        id: "7-apte",
+        name: "APT E - EI",
+        price: 165000,
+        currency: "$",
+        stock: "in_stock",
+        sku: "2HR-APTE-300",
+        specifications: {
+          contenido: "300 ml",
+          origen: "Singapur",
         },
       },
     ],

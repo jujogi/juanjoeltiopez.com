@@ -50,9 +50,6 @@ const RelatedPostItem = ({ post }) => {
             <Badge colorScheme={post.categoryColor || "cyan"} fontSize="9px">
               {post.category}
             </Badge>
-            <Text fontSize="xs" color="dark.textSecondary">
-              {post.readTime}
-            </Text>
           </HStack>
         </VStack>
       </HStack>

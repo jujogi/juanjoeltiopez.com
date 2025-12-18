@@ -25,5 +25,5 @@ El **SaltyShrimp Shrimp Mineral GH/KH+** es un remineralizador para preparar **a
 - Medir y ajustar con un **TDS** o **test de gotas GH**.
 - Igualar temperatura antes del cambio de agua.
 
-Actualmente ofrecemos este producto **reenvasado (fraccionado)** para hacerlo más asequible para ti. Puedes estar tranquilo: el contenido es **SaltyShrimp GH/KH+ original**, fraccionado por nosotros con **manipulación higiénica**, **envase limpio y hermético**, y **almacenado en condiciones secas** para preservar su calidad y eficacia.
+Actualmente ofrecemos este producto reenvasado en 2 presentaciones para hacerlo más asequible para ti. Puedes estar tranquilo: el contenido es **SaltyShrimp GH/KH+ original**, fraccionado por nosotros con **manipulación higiénica**, **envase limpio y hermético**.
 `;

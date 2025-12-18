@@ -198,7 +198,7 @@ export default function ProductPage({ params }) {
                   {product.images.map((image, index) => (
                     <Box
                       key={index}
-                      h="80px"
+                      h="125px"
                       bg="dark.border"
                       rounded="md"
                       position="relative"
@@ -234,113 +234,15 @@ export default function ProductPage({ params }) {
               </Box>
             </Box>
 
-            {/* Features */}
-            {product.features && product.features.length > 0 && (
-              <Box bg="dark.surface" p={6} rounded="lg" border="1px" borderColor="dark.border">
-                <Heading size="md" mb={4} color="white">
-                  Características principales
-                </Heading>
-                <List spacing={2}>
-                  {product.features.map((feature, index) => (
-                    <ListItem key={index} color="dark.text">
-                      <ListIcon as={CheckCircleIcon} color="accent.cyan" />
-                      {feature}
-                    </ListItem>
-                  ))}
-                </List>
-              </Box>
-            )}
-
-            <Divider borderColor="dark.border" />
-
-            {/* Product Description */}
+            {/* Price Card - Mobile Only */}
             <Box
-              className="product-content"
-              color="dark.text"
-              sx={{
-                "& h1": {
-                  fontSize: "3xl",
-                  fontWeight: "bold",
-                  mb: 4,
-                  mt: 8,
-                  color: "white",
-                },
-                "& h2": {
-                  fontSize: "2xl",
-                  fontWeight: "bold",
-                  mb: 3,
-                  mt: 6,
-                  color: "accent.cyan",
-                },
-                "& h3": {
-                  fontSize: "xl",
-                  fontWeight: "semibold",
-                  mb: 2,
-                  mt: 4,
-                  color: "white",
-                },
-                "& p": {
-                  mb: 4,
-                  lineHeight: "tall",
-                  color: "dark.text",
-                },
-                "& ul, & ol": {
-                  mb: 4,
-                  pl: 6,
-                },
-                "& li": {
-                  mb: 2,
-                  color: "dark.text",
-                },
-                "& strong": {
-                  fontWeight: "bold",
-                  color: "accent.cyan",
-                },
-                "& code": {
-                  bg: "dark.surface",
-                  px: 2,
-                  py: 1,
-                  rounded: "md",
-                  fontSize: "sm",
-                  color: "accent.cyan",
-                },
-              }}
+              display={{ base: "block", lg: "none" }}
+              bg="dark.surface"
+              p={6}
+              rounded="lg"
+              border="1px"
+              borderColor="dark.border"
             >
-              <ReactMarkdown>{product.content}</ReactMarkdown>
-            </Box>
-
-            <Divider borderColor="dark.border" />
-
-            {/* CTA */}
-            <Box bg="dark.surface" p={6} rounded={"lg"} border="1px" borderColor="dark.border">
-              <Heading size={"md"} mb={2} color="white">
-                ¿Interesado en este producto?
-              </Heading>
-              <Text mb={4} color="dark.textSecondary">
-                Contáctame para consultar disponibilidad, realizar tu pedido o resolver cualquier
-                duda sobre este producto.
-              </Text>
-              <Button
-                as="a"
-                href="https://ig.me/m/juanjoeltiopez"
-                target="_blank"
-                rel="noopener noreferrer"
-                bg="accent.cyan"
-                color="white"
-                _hover={{ bg: "accent.cyanHover" }}
-                onClick={handleContactarClick}
-              >
-                Contactar por Instagram
-              </Button>
-            </Box>
-          </Stack>
-        </GridItem>
-
-        {/* Sidebar */}
-        <GridItem>
-          <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
-            {/* Price Card */}
-            <Box bg="dark.surface" p={6} rounded="lg" border="1px" borderColor="dark.border">
               <VStack align="stretch" spacing={4}>
                 {/* Variant Selector */}
                 {product.variants && product.variants.length > 1 && (
@@ -443,6 +345,299 @@ export default function ProductPage({ params }) {
                     Contáctame para consultar disponibilidad y entrega
                   </Text>
                 )}
+              </VStack>
+            </Box>
+
+            {/* Shipping Info - Mobile Only */}
+            <Box
+              display={{ base: "block", lg: "none" }}
+              bg="dark.surface"
+              p={6}
+              rounded="lg"
+              border="1px"
+              borderColor="dark.border"
+            >
+              <VStack spacing={2} align="start">
+                <Heading size="sm" mb={2} color="white">
+                  Información de envío
+                </Heading>
+                <Text fontSize="sm" color="dark.text">
+                  • Envíos disponibles solo para{" "}
+                  <Box as="strong" color="accent.cyan" fontWeight="bold">
+                    Colombia
+                  </Box>
+                </Text>
+                <Text fontSize="sm" color="dark.text">
+                  • El precio del producto{" "}
+                  <Box as="strong" color="accent.cyan" fontWeight="bold">
+                    no incluye
+                  </Box>{" "}
+                  el costo de envío
+                </Text>
+              </VStack>
+            </Box>
+
+            {/* Features */}
+            {product.features && product.features.length > 0 && (
+              <Box bg="dark.surface" p={6} rounded="lg" border="1px" borderColor="dark.border">
+                <Heading size="md" mb={4} color="white">
+                  Características principales
+                </Heading>
+                <List spacing={2}>
+                  {product.features.map((feature, index) => (
+                    <ListItem key={index} color="dark.text">
+                      <ListIcon as={CheckCircleIcon} color="accent.cyan" />
+                      {feature}
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            )}
+
+            <Divider borderColor="dark.border" />
+
+            {/* Product Description */}
+            <Box
+              className="product-content"
+              color="dark.text"
+              sx={{
+                "& h1": {
+                  fontSize: "3xl",
+                  fontWeight: "bold",
+                  mb: 4,
+                  mt: 8,
+                  color: "white",
+                },
+                "& h2": {
+                  fontSize: "2xl",
+                  fontWeight: "bold",
+                  mb: 3,
+                  mt: 6,
+                  color: "accent.cyan",
+                },
+                "& h3": {
+                  fontSize: "xl",
+                  fontWeight: "semibold",
+                  mb: 2,
+                  mt: 4,
+                  color: "white",
+                },
+                "& p": {
+                  mb: 4,
+                  lineHeight: "tall",
+                  color: "dark.text",
+                },
+                "& ul, & ol": {
+                  mb: 4,
+                  pl: 6,
+                },
+                "& li": {
+                  mb: 2,
+                  color: "dark.text",
+                },
+                "& strong": {
+                  fontWeight: "bold",
+                  color: "accent.cyan",
+                },
+                "& code": {
+                  bg: "dark.surface",
+                  px: 2,
+                  py: 1,
+                  rounded: "md",
+                  fontSize: "sm",
+                  color: "accent.cyan",
+                },
+              }}
+            >
+              <ReactMarkdown
+                components={{
+                  a: ({ node, ...props }) => {
+                    const isExternal = props.href?.startsWith("http");
+                    return (
+                      <a
+                        {...props}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                        style={{ color: "#00FFFF", fontWeight: "600", textDecoration: "underline" }}
+                      />
+                    );
+                  },
+                }}
+              >
+                {product.content}
+              </ReactMarkdown>
+            </Box>
+
+            <Divider borderColor="dark.border" />
+
+            {/* CTA */}
+            <Box bg="dark.surface" p={6} rounded={"lg"} border="1px" borderColor="dark.border">
+              <Heading size={"md"} mb={2} color="white">
+                ¿Interesado en este producto?
+              </Heading>
+              <Text mb={4} color="dark.textSecondary">
+                Contáctame para consultar disponibilidad, realizar tu pedido o resolver cualquier
+                duda sobre este producto.
+              </Text>
+              <Button
+                as="a"
+                href="https://ig.me/m/juanjoeltiopez"
+                target="_blank"
+                rel="noopener noreferrer"
+                bg="accent.cyan"
+                color="white"
+                _hover={{ bg: "accent.cyanHover" }}
+                onClick={handleContactarClick}
+              >
+                Contactar por Instagram
+              </Button>
+            </Box>
+          </Stack>
+        </GridItem>
+
+        {/* Sidebar */}
+        <GridItem>
+          <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
+            {/* Price Card - Desktop Only */}
+            <Box
+              display={{ base: "none", lg: "block" }}
+              bg="dark.surface"
+              p={6}
+              rounded="lg"
+              border="1px"
+              borderColor="dark.border"
+            >
+              <VStack align="stretch" spacing={4}>
+                {/* Variant Selector */}
+                {product.variants && product.variants.length > 1 && (
+                  <Box>
+                    <Text fontSize="sm" color="dark.textSecondary" mb={2}>
+                      Presentación
+                    </Text>
+                    <VStack spacing={2} align="stretch">
+                      {product.variants.map((variant, index) => (
+                        <Box
+                          key={variant.id}
+                          p={3}
+                          rounded="md"
+                          border="2px"
+                          borderColor={selectedVariant === index ? "accent.cyan" : "dark.border"}
+                          cursor="pointer"
+                          transition="all 0.2s"
+                          _hover={{
+                            borderColor: "accent.cyan",
+                            bg: "dark.bgAlt",
+                          }}
+                          onClick={() => setSelectedVariant(index)}
+                        >
+                          <HStack justify="space-between">
+                            <VStack align="start" spacing={0}>
+                              <Text
+                                fontSize="sm"
+                                fontWeight="medium"
+                                color={selectedVariant === index ? "accent.cyan" : "white"}
+                              >
+                                {variant.name}
+                              </Text>
+                              {variant.stock !== "in_stock" && (
+                                <Text fontSize="xs" color="red.400">
+                                  {variant.stock === "low_stock" ? "Pocas unidades" : "Agotado"}
+                                </Text>
+                              )}
+                            </VStack>
+                            <Text
+                              fontSize="md"
+                              fontWeight="bold"
+                              color={selectedVariant === index ? "accent.cyan" : "white"}
+                            >
+                              {formatPrice(variant.price, variant.currency)}
+                            </Text>
+                          </HStack>
+                        </Box>
+                      ))}
+                    </VStack>
+                  </Box>
+                )}
+
+                {product.variants && product.variants.length === 1 && (
+                  <Box>
+                    <Text fontSize="sm" color="dark.textSecondary" mb={1}>
+                      Precio
+                    </Text>
+                    <Text fontSize="3xl" fontWeight="bold" color="accent.cyan">
+                      {formatPrice(currentVariant.price, currentVariant.currency)}
+                    </Text>
+                  </Box>
+                )}
+
+                <Divider borderColor="dark.border" />
+
+                {/* Specifications */}
+                {currentVariant?.specifications && (
+                  <VStack align="stretch" spacing={2}>
+                    {Object.entries(currentVariant.specifications).map(([key, value]) => (
+                      <HStack key={key} justify="space-between" fontSize="sm">
+                        <Text color="dark.textSecondary" textTransform="capitalize">
+                          {key}:
+                        </Text>
+                        <Text color="white" fontWeight="medium">
+                          {value}
+                        </Text>
+                      </HStack>
+                    ))}
+                  </VStack>
+                )}
+
+                <Button
+                  as="a"
+                  href={isInStock ? "https://ig.me/m/juanjoeltiopez" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="lg"
+                  bg="accent.cyan"
+                  color="white"
+                  _hover={{ bg: "accent.cyanHover" }}
+                  isDisabled={!isInStock}
+                  w="full"
+                  onClick={handleComprarClick}
+                >
+                  {isInStock ? "¡Quiero comprarlo!" : "Agotado"}
+                </Button>
+
+                {isInStock && (
+                  <Text fontSize="xs" color="dark.textSecondary" textAlign="center">
+                    Contáctame para consultar disponibilidad y entrega
+                  </Text>
+                )}
+              </VStack>
+            </Box>
+
+            {/* Shipping Info - Desktop Only */}
+            <Box
+              display={{ base: "none", lg: "block" }}
+              bg="dark.surface"
+              p={6}
+              rounded="lg"
+              border="1px"
+              borderColor="dark.border"
+            >
+              <VStack spacing={2} align="start">
+                <Heading size="sm" mb={2} color="white">
+                  Información de envío
+                </Heading>
+                <Text fontSize="sm" color="dark.text">
+                  • Envíos disponibles solo para{" "}
+                  <Box as="strong" color="accent.cyan" fontWeight="bold">
+                    Colombia
+                  </Box>
+                </Text>
+                <Text fontSize="sm" color="dark.text">
+                  • El precio{" "}
+                  <Box as="strong" color="accent.cyan" fontWeight="bold">
+                    no incluye
+                  </Box>{" "}
+                  el costo de envío
+                </Text>
               </VStack>
             </Box>
 
