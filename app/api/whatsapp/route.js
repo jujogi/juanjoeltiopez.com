@@ -1,16 +1,10 @@
 import { NextResponse } from "next/server";
 
+// Número de WhatsApp (seguro en el servidor, no accesible desde el cliente)
+const WHATSAPP_NUMBER = "573104350594";
+
 export async function POST(request) {
   try {
-    // Verificar que el número de WhatsApp esté configurado
-    const whatsappNumber = process.env.WHATSAPP_NUMBER;
-    if (!whatsappNumber) {
-      console.error("WHATSAPP_NUMBER no está configurado en las variables de entorno");
-      return NextResponse.json(
-        { error: "Configuración del servidor incorrecta" },
-        { status: 500 }
-      );
-    }
 
     // Obtener datos del request
     const body = await request.json();
@@ -42,7 +36,7 @@ export async function POST(request) {
 
     // Generar link de WhatsApp
     const encodedMessage = encodeURIComponent(message);
-    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
     return NextResponse.json({ link: whatsappLink });
 
