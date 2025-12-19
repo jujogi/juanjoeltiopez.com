@@ -62,12 +62,12 @@ export default function SocialMediaWidget() {
   // Estos valores pueden ser actualizados manualmente o conectados a APIs más adelante
   const socialStats = {
     tiktok: {
-      followers: 88534,
+      followers: 88716,
       link: "https://www.tiktok.com/@juanjoeltiopez",
     },
     instagram: {
-      followers: 25751,
-      link: "https://ig.me/m/juanjoeltiopez",
+      followers: 25821,
+      link: "https://www.instagram.com/juanjoeltiopez/",
     },
   };
 

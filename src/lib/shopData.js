@@ -280,7 +280,11 @@ export const products = [
       { label: "Plantas", color: "teal" },
     ],
     brand: "2hr Aquarist",
-    images: ["/images/products/2hr-apt.jpg", "/images/products/2hr-apt-plants-1.jpg", "/images/products/2hr-apt-plants-2.jpg"],
+    images: [
+      "/images/products/2hr-apt.jpg",
+      "/images/products/2hr-apt-plants-1.jpg",
+      "/images/products/2hr-apt-plants-2.jpg",
+    ],
     features: [
       "Formulación científica profesional",
       "Alta concentración y eficiencia",

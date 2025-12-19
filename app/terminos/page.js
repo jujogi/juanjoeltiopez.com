@@ -62,19 +62,19 @@ export default function TerminosPage() {
           <Text as="span" color="accent.cyan" fontWeight="semibold">
             intermediario
           </Text>{" "}
-          en la venta de productos premium para acuariofilia. Todos los productos ofrecidos en nuestra
-          tienda han sido{" "}
+          en la venta de productos premium para acuariofilia. Todos los productos ofrecidos en
+          nuestra tienda han sido{" "}
           <Text as="span" color="accent.cyan" fontWeight="semibold">
             cuidadosamente seleccionados
           </Text>{" "}
-          a través de alianzas estratégicas con marcas reconocidas, escogidas con gran detenimiento para
-          asegurar la{" "}
+          a través de alianzas estratégicas con marcas reconocidas, escogidas con gran detenimiento
+          para asegurar la{" "}
           <Text as="span" color="accent.cyan" fontWeight="semibold">
             más alta calidad
           </Text>{" "}
-          en cada artículo. Los envíos están disponibles únicamente para Colombia, y el precio de los
-          productos no incluye los costos de envío. Para consultas sobre disponibilidad, precios y
-          métodos de pago, contáctanos directamente.
+          en cada artículo. Los envíos están disponibles únicamente para Colombia, y el precio de
+          los productos no incluye los costos de envío. Para consultas sobre disponibilidad, precios
+          y métodos de pago, contáctanos directamente.
         </Section>
 
         <Section title="6. Limitación de Responsabilidad">

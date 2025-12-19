@@ -122,16 +122,15 @@ export default function ProductPage({ params }) {
   const isInStock = currentVariant?.stock === "in_stock";
   const isLowStock = currentVariant?.stock === "low_stock";
 
-  const handleComprarClick = async () => {
+  // Generar link de WhatsApp con el nombre del producto y variante
+  const whatsappLink = getWhatsAppProductLink(product.name, currentVariant?.name);
+
+  const handleComprarClick = () => {
     trackCtaClick(`comprar_producto_${product.slug}`);
-    const link = await getWhatsAppProductLink(product.name, currentVariant?.name);
-    window.open(link, "_blank", "noopener,noreferrer");
   };
 
-  const handleContactarClick = async () => {
+  const handleContactarClick = () => {
     trackCtaClick(`contactar_producto_${product.slug}`);
-    const link = await getWhatsAppProductLink(product.name, currentVariant?.name);
-    window.open(link, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -330,6 +329,10 @@ export default function ProductPage({ params }) {
                 )}
 
                 <Button
+                  as="a"
+                  href={isInStock ? whatsappLink : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   size="lg"
                   bg="accent.cyan"
                   color="white"
@@ -481,6 +484,10 @@ export default function ProductPage({ params }) {
                 cualquier duda sobre este producto.
               </Text>
               <Button
+                as="a"
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 bg="accent.cyan"
                 color="white"
                 _hover={{ bg: "accent.cyanHover" }}
@@ -586,6 +593,10 @@ export default function ProductPage({ params }) {
                 )}
 
                 <Button
+                  as="a"
+                  href={isInStock ? whatsappLink : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   size="lg"
                   bg="accent.cyan"
                   color="white"

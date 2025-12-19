@@ -92,16 +92,12 @@ export default function AsesoriaPage() {
   // Obtener artículos relacionados con cuidado y mantenimiento
   const relatedPosts = posts.slice(0, 3);
 
-  const handleAgendarSesionClick = async () => {
+  const handleAgendarSesionClick = () => {
     trackCtaClick("agendar_sesion_instagram");
-    const link = await getWhatsAppAsesoriaLink();
-    window.open(link, "_blank", "noopener,noreferrer");
   };
 
-  const handleContactarClick = async () => {
+  const handleContactarClick = () => {
     trackCtaClick("contactar_instagram");
-    const link = await getWhatsAppAsesoriaLink();
-    window.open(link, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -292,6 +288,10 @@ export default function AsesoriaPage() {
               />
             </SimpleGrid>
             <Button
+              as="a"
+              href={getWhatsAppAsesoriaLink()}
+              target="_blank"
+              rel="noopener noreferrer"
               size="lg"
               bg="accent.cyan"
               color="white"
@@ -407,6 +407,10 @@ export default function AsesoriaPage() {
               Escríbeme por WhatsApp y hablemos sobre cómo puedo ayudarte
             </Text>
             <Button
+              as="a"
+              href={getWhatsAppAsesoriaLink()}
+              target="_blank"
+              rel="noopener noreferrer"
               bg="accent.cyan"
               color="white"
               leftIcon={<Icon as={FaWhatsapp} />}

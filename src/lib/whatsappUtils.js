@@ -1,65 +1,34 @@
-// Utilidad para generar URLs de WhatsApp usando la API
+// Utilidad para generar URLs de WhatsApp con mensajes predefinidos
+
+const WHATSAPP_NUMBER = "573104350594";
 
 /**
- * Llama a la API para obtener un link de WhatsApp
- * @param {Object} params - Parámetros para la API
- * @returns {Promise<string>} URL de WhatsApp
+ * Genera un link de WhatsApp con un mensaje predefinido
+ * @param {string} message - El mensaje a enviar
+ * @returns {string} URL de WhatsApp
  */
-async function fetchWhatsAppLink(params) {
-  try {
-    const response = await fetch("/api/whatsapp", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(params),
-    });
-
-    if (!response.ok) {
-      throw new Error("Error al obtener el link de WhatsApp");
-    }
-
-    const data = await response.json();
-    return data.link;
-  } catch (error) {
-    console.error("Error al generar link de WhatsApp:", error);
-    // Fallback: retornar enlace genérico
-    return "https://wa.me/";
-  }
+export function getWhatsAppLink(message) {
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 }
 
 /**
  * Genera un link de WhatsApp para consultar sobre un producto
  * @param {string} productName - Nombre del producto
  * @param {string} variantName - Nombre de la variante (opcional)
- * @returns {Promise<string>} URL de WhatsApp
+ * @returns {string} URL de WhatsApp
  */
-export async function getWhatsAppProductLink(productName, variantName = null) {
-  return await fetchWhatsAppLink({
-    type: "product",
-    productName,
-    variantName,
-  });
+export function getWhatsAppProductLink(productName, variantName = null) {
+  const variant = variantName ? ` (${variantName})` : "";
+  const message = `Hola, quiero información sobre el producto: ${productName}${variant}`;
+  return getWhatsAppLink(message);
 }
 
 /**
  * Genera un link de WhatsApp para asesoría
- * @returns {Promise<string>} URL de WhatsApp
+ * @returns {string} URL de WhatsApp
  */
-export async function getWhatsAppAsesoriaLink() {
-  return await fetchWhatsAppLink({
-    type: "asesoria",
-  });
-}
-
-/**
- * Genera un link de WhatsApp con un mensaje personalizado
- * @param {string} message - El mensaje a enviar
- * @returns {Promise<string>} URL de WhatsApp
- */
-export async function getWhatsAppLink(message) {
-  return await fetchWhatsAppLink({
-    type: "general",
-    message,
-  });
+export function getWhatsAppAsesoriaLink() {
+  const message = "Hola, quiero información sobre las asesorías personalizadas";
+  return getWhatsAppLink(message);
 }
