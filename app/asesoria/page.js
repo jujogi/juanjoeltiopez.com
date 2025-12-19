@@ -22,13 +22,14 @@ import {
   AccordionIcon,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-import { FaInstagram, FaVideo, FaClock, FaCheckCircle } from "react-icons/fa";
+import { FaWhatsapp, FaVideo, FaClock, FaCheckCircle } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
 import ShopWidget from "@/components/ShopWidget";
 import ImageWithOverlay from "@/components/ImageWithOverlay";
 import { getAllPosts } from "@/lib/blogData";
 import { trackCtaClick } from "@/lib/gtm";
+import { getWhatsAppAsesoriaLink } from "@/lib/whatsappUtils";
 
 // Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
 const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWidget"), {
@@ -91,12 +92,16 @@ export default function AsesoriaPage() {
   // Obtener artículos relacionados con cuidado y mantenimiento
   const relatedPosts = posts.slice(0, 3);
 
-  const handleAgendarSesionClick = () => {
+  const handleAgendarSesionClick = async () => {
     trackCtaClick("agendar_sesion_instagram");
+    const link = await getWhatsAppAsesoriaLink();
+    window.open(link, "_blank", "noopener,noreferrer");
   };
 
-  const handleContactarClick = () => {
+  const handleContactarClick = async () => {
     trackCtaClick("contactar_instagram");
+    const link = await getWhatsAppAsesoriaLink();
+    window.open(link, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -184,7 +189,7 @@ export default function AsesoriaPage() {
               <StepCard
                 number="1"
                 title="Contáctame"
-                description="Envíame un DM en Instagram explicando brevemente tu caso"
+                description="Envíame un mensaje de WhatsApp explicando brevemente tu caso"
               />
               <StepCard
                 number="2"
@@ -287,18 +292,14 @@ export default function AsesoriaPage() {
               />
             </SimpleGrid>
             <Button
-              as="a"
-              href="https://ig.me/m/juanjoeltiopez"
-              target="_blank"
-              rel="noopener noreferrer"
               size="lg"
               bg="accent.cyan"
               color="white"
-              leftIcon={<Icon as={FaInstagram} />}
+              leftIcon={<Icon as={FaWhatsapp} />}
               _hover={{ bg: "accent.cyanHover" }}
               onClick={handleAgendarSesionClick}
             >
-              Agendar sesión por Instagram
+              Agendar sesión por WhatsApp
             </Button>
           </Box>
 
@@ -331,9 +332,8 @@ export default function AsesoriaPage() {
                   <AccordionIcon color="accent.cyan" />
                 </AccordionButton>
                 <AccordionPanel pb={4} color="dark.textSecondary">
-                  Una vez confirmemos la cita por Instagram, te comparto los datos para
-                  transferencia bancaria o Nequi. El pago se debe realizar antes de agendar la
-                  sesión.
+                  Una vez confirmemos la cita por WhatsApp, te comparto los datos para transferencia
+                  bancaria o Nequi. El pago se debe realizar antes de agendar la sesión.
                 </AccordionPanel>
               </AccordionItem>
 
@@ -404,20 +404,16 @@ export default function AsesoriaPage() {
               ¿Listo para llevar tu acuario al siguiente nivel?
             </Heading>
             <Text color="dark.textSecondary" mb={6}>
-              Escríbeme por Instagram y hablemos sobre cómo puedo ayudarte
+              Escríbeme por WhatsApp y hablemos sobre cómo puedo ayudarte
             </Text>
             <Button
-              as="a"
-              href="https://ig.me/m/juanjoeltiopez"
-              target="_blank"
-              rel="noopener noreferrer"
               bg="accent.cyan"
               color="white"
-              leftIcon={<Icon as={FaInstagram} />}
+              leftIcon={<Icon as={FaWhatsapp} />}
               _hover={{ bg: "accent.cyanHover" }}
               onClick={handleContactarClick}
             >
-              Contactar por Instagram
+              Contactar por WhatsApp
             </Button>
           </Box>
         </GridItem>

@@ -24,6 +24,7 @@ import { ArrowBackIcon, CheckCircleIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import { getProductBySlug, getAllProducts } from "@/lib/shopData";
 import { formatPrice } from "@/lib/priceUtils";
+import { getWhatsAppProductLink } from "@/lib/whatsappUtils";
 import NextLink from "next/link";
 import ReactMarkdown from "react-markdown";
 import RelatedVideosWidget from "@/components/RelatedVideosWidget";
@@ -121,12 +122,16 @@ export default function ProductPage({ params }) {
   const isInStock = currentVariant?.stock === "in_stock";
   const isLowStock = currentVariant?.stock === "low_stock";
 
-  const handleComprarClick = () => {
+  const handleComprarClick = async () => {
     trackCtaClick(`comprar_producto_${product.slug}`);
+    const link = await getWhatsAppProductLink(product.name, currentVariant?.name);
+    window.open(link, "_blank", "noopener,noreferrer");
   };
 
-  const handleContactarClick = () => {
+  const handleContactarClick = async () => {
     trackCtaClick(`contactar_producto_${product.slug}`);
+    const link = await getWhatsAppProductLink(product.name, currentVariant?.name);
+    window.open(link, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -325,10 +330,6 @@ export default function ProductPage({ params }) {
                 )}
 
                 <Button
-                  as="a"
-                  href={isInStock ? "https://ig.me/m/juanjoeltiopez" : undefined}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   size="lg"
                   bg="accent.cyan"
                   color="white"
@@ -342,7 +343,7 @@ export default function ProductPage({ params }) {
 
                 {isInStock && (
                   <Text fontSize="xs" color="dark.textSecondary" textAlign="center">
-                    Contáctame para consultar disponibilidad y entrega
+                    Contáctame por WhatsApp para consultar disponibilidad
                   </Text>
                 )}
               </VStack>
@@ -476,20 +477,16 @@ export default function ProductPage({ params }) {
                 ¿Interesado en este producto?
               </Heading>
               <Text mb={4} color="dark.textSecondary">
-                Contáctame para consultar disponibilidad, realizar tu pedido o resolver cualquier
-                duda sobre este producto.
+                Contáctame por WhatsApp para consultar disponibilidad, realizar tu pedido o resolver
+                cualquier duda sobre este producto.
               </Text>
               <Button
-                as="a"
-                href="https://ig.me/m/juanjoeltiopez"
-                target="_blank"
-                rel="noopener noreferrer"
                 bg="accent.cyan"
                 color="white"
                 _hover={{ bg: "accent.cyanHover" }}
                 onClick={handleContactarClick}
               >
-                Contactar por Instagram
+                Contactar por WhatsApp
               </Button>
             </Box>
           </Stack>
@@ -589,10 +586,6 @@ export default function ProductPage({ params }) {
                 )}
 
                 <Button
-                  as="a"
-                  href={isInStock ? "https://ig.me/m/juanjoeltiopez" : undefined}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   size="lg"
                   bg="accent.cyan"
                   color="white"
@@ -606,7 +599,7 @@ export default function ProductPage({ params }) {
 
                 {isInStock && (
                   <Text fontSize="xs" color="dark.textSecondary" textAlign="center">
-                    Contáctame para consultar disponibilidad y entrega
+                    Contáctame por WhatsApp para consultar disponibilidad
                   </Text>
                 )}
               </VStack>
