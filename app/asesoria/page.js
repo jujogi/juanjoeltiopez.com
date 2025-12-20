@@ -278,7 +278,7 @@ export default function AsesoriaPage() {
               />
               <FeatureCard
                 icon={FaClock}
-                title="60-90 min"
+                title="60-80 min"
                 description="Tiempo suficiente para resolver tus dudas"
               />
               <FeatureCard

@@ -55,7 +55,7 @@ export default function AsesoriaWidget() {
             <HStack spacing={2}>
               <Icon as={FaVideo} color="accent.cyan" boxSize={4} />
               <Text color="dark.text" fontSize="sm">
-                Sesión virtual de 60-90 min
+                Sesión virtual de 60-80 min
               </Text>
             </HStack>
             <HStack spacing={2}>

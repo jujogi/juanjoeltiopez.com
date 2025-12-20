@@ -44,7 +44,7 @@ const NavCard = ({ title, icon, href, description }) => {
   return (
     <Box as={NextLink} href={href} onClick={handleClick}>
       <Box
-        p={{ base: 4, md: 5 }}
+        p={{ base: 3, md: 5 }}
         bg="dark.surface"
         rounded="xl"
         border="2px"
@@ -58,16 +58,16 @@ const NavCard = ({ title, icon, href, description }) => {
         cursor="pointer"
         h="full"
       >
-        <VStack spacing={3} align="center">
+        <VStack spacing={{ base: 2, md: 3 }} align="center">
           <Box
-            p={3}
+            p={{ base: 2, md: 3 }}
             bg="dark.bgAlt"
             rounded="full"
             display="flex"
             alignItems="center"
             justifyContent="center"
           >
-            <Icon as={icon} color="accent.cyan" boxSize={{ base: 6, md: 7 }} />
+            <Icon as={icon} color="accent.cyan" boxSize={{ base: 5, md: 7 }} />
           </Box>
           <VStack spacing={1}>
             <Heading size="sm" color="white" textAlign="center">
@@ -85,34 +85,33 @@ const NavCard = ({ title, icon, href, description }) => {
 
 export default function MePage() {
   return (
-    <Box
-      minH="100vh"
-      bg="dark.bg"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      px={4}
-    >
-      <Container maxW="container.md">
-        <VStack spacing={{ base: 6, md: 8 }} align="center">
+    <Box minH="100vh" bg="dark.bg" px={4} py={{ base: 6, md: 0 }} display="flex" alignItems="center">
+      <Container
+        maxW="container.md"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        minH={{ base: "auto", md: "100vh" }}
+      >
+        <VStack spacing={{ base: 6, md: 8 }} align="center" w="full">
           {/* Header Section */}
           <VStack spacing={3} textAlign="center">
-            <Box position="relative" h="60px" w="300px">
+            <Box position="relative" h="60px" w="200px">
               <Image
                 src="/images/juanjoeltiopez.svg"
                 alt="JuanJo El Tío Pez"
                 fill
-                sizes="300px"
+                sizes="200px"
                 style={{ objectFit: "contain" }}
                 priority
               />
             </Box>
-            <Text color="dark.textSecondary" fontSize={{ base: "sm", md: "md" }} maxW="xl">
+            <Text color="dark.textSecondary" fontSize={{ base: "xs", md: "md" }} maxW="xl">
               Aprende a{" "}
               <Box as="strong" color="accent.cyan">
                 cuidar y disfrutar de tu acuario
               </Box>{" "}
-              como nunca antes. Encuentra guías, consejos y toda la inspiración para tus proyectos
+              como nunca antes. Encuentra guías, consejos, productos y toda la inspiración para tus proyectos
               acuáticos.
             </Text>
           </VStack>

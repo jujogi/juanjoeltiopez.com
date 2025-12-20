@@ -41,7 +41,7 @@ export const metadata = {
       "Aprende a cuidar y disfrutar de tu acuario como nunca antes. Peces, consejos, cuidados y toda la inspiración que necesitas para tus proyectos acuáticos",
   },
   verification: {
-    google: "google-site-verification-code",
+    google: "b98XGVguumJBgcv1mNA4la_3PktBBr9F7X-3BiTkZys",
   },
 };
 
