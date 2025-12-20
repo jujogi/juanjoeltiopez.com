@@ -40,6 +40,16 @@ const nextConfig = {
         destination: "/blog",
         permanent: true,
       },
+      {
+        source: "/gambario-caridinas.html",
+        destination: "/blog/caridinas-gambario-montaje",
+        permanent: true,
+      },
+      {
+        source: "/gambitas.html",
+        destination: "/blog/gambitas-acuario-cuidados",
+        permanent: true,
+      },
       // Redirecciones sin .html (por si acaso)
       {
         source: "/pez-betta",
@@ -59,6 +69,16 @@ const nextConfig = {
       {
         source: "/videos",
         destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/gambario-caridinas",
+        destination: "/blog/caridinas-gambario-montaje",
+        permanent: true,
+      },
+      {
+        source: "/gambitas",
+        destination: "/blog/gambitas-acuario-cuidados",
         permanent: true,
       },
     ];
