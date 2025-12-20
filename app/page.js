@@ -10,7 +10,9 @@ import {
   HStack,
   VStack,
   Badge,
+  Button,
 } from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
@@ -197,6 +199,27 @@ export default function Home() {
               <PostListItem key={post.id} post={post} />
             ))}
           </VStack>
+
+          {/* Ver más artículos button */}
+          <Box mt={4}>
+            <Button
+              as={NextLink}
+              href="/blog"
+              w="full"
+              variant="outline"
+              borderColor="dark.border"
+              color="accent.cyan"
+              rightIcon={<ArrowForwardIcon />}
+              _hover={{
+                borderColor: "accent.cyan",
+                bg: "dark.bgAlt",
+                transform: "translateX(4px)",
+              }}
+              transition="all 0.3s"
+            >
+              Ver todos los artículos
+            </Button>
+          </Box>
         </GridItem>
 
         {/* Sidebar */}

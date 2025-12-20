@@ -5,6 +5,7 @@ import mantenimientoContent from "./posts/mantenimiento-content.js";
 import caridinasContent from "./posts/caridinas-content.js";
 import plantasContent from "./posts/plantas-content.js";
 import paisajismoContent from "./posts/paisajismo-content.js";
+import osmosisContent from "./posts/osmosis-content.js";
 
 export const blogPosts = [
   {
@@ -70,7 +71,7 @@ export const blogPosts = [
     readTime: "10 min lectura",
     image: "/images/mantenimientos.jpg",
     coverImage: "/images/mantenimientos-2.jpg",
-    videoIds: ["mantenimiento-algas", "mantenimiento-betta", "mantenimiento-plantado"],
+    videoIds: ["mantenimiento-algas", "mantenimiento-betta", "mantenimiento-plantado", "mantenimiento-filtro"],
   },
   {
     id: "4",
@@ -145,6 +146,27 @@ export const blogPosts = [
       "paisajismo-ciclado",
       "paisajismo-peces",
       "paisajismo-nuevo",
+    ],
+  },
+  {
+    id: "7",
+    title: "Agua de ósmosis inversa vs. agua de grifo",
+    slug: "osmosis-inversa-vs-agua-grifo",
+    excerpt:
+      "El tipo de agua que utilizas en tu acuario plantado puede marcar una diferencia enorme. Descubre cuándo usar agua de ósmosis inversa y cuándo el agua de grifo es suficiente.",
+    content: osmosisContent,
+    category: "Agua y Parámetros",
+    categoryColor: "blue",
+    date: "2025-12-17T12:00:00Z",
+    author: "Jesús - Kleiner Fish Aquarium",
+    authorLink: "https://www.instagram.com/kleineraquarium/",
+    isGuestAuthor: true,
+    readTime: "8 min lectura",
+    image: "/images/osmosis-grifo.jpg",
+    coverImage: "/images/osmosis-grifo.jpg",
+    videoIds: ["osmosis-filtro"],
+    productCards: [
+      { position: "after-remineralizacion", slug: "saltyshrimp-bee-shrimp-gh" },
     ],
   },
 ];

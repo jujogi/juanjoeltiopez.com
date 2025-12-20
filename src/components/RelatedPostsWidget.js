@@ -1,6 +1,7 @@
 "use client";
 
-import { Box, VStack, Heading, Text, HStack, Badge } from "@chakra-ui/react";
+import { Box, VStack, Heading, Text, HStack, Badge, Button } from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import Image from "next/image";
 
@@ -70,6 +71,25 @@ export default function RelatedPostsWidget({ posts, title = "Artículos relacion
             <RelatedPostItem key={post.id} post={post} />
           ))}
         </VStack>
+
+        <Button
+          as={NextLink}
+          href="/blog"
+          w="full"
+          size="sm"
+          variant="outline"
+          borderColor="dark.border"
+          color="accent.cyan"
+          rightIcon={<ArrowForwardIcon />}
+          _hover={{
+            borderColor: "accent.cyan",
+            bg: "dark.bgAlt",
+            transform: "translateX(4px)",
+          }}
+          transition="all 0.3s"
+        >
+          Ver todos los artículos
+        </Button>
       </VStack>
     </Box>
   );

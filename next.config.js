@@ -16,6 +16,54 @@ const nextConfig = {
   // Optimización de producción
   swcMinify: true,
 
+  // Redirecciones permanentes (301) para mantener SEO
+  async redirects() {
+    return [
+      // Redirecciones con .html
+      {
+        source: "/pez-betta.html",
+        destination: "/blog/cuidado-pez-betta",
+        permanent: true,
+      },
+      {
+        source: "/mantenimientos.html",
+        destination: "/blog/mantenimiento-acuario-rutina",
+        permanent: true,
+      },
+      {
+        source: "/acuario-plantado.html",
+        destination: "/blog/plantas-naturales-acuario",
+        permanent: true,
+      },
+      {
+        source: "/videos.html",
+        destination: "/blog",
+        permanent: true,
+      },
+      // Redirecciones sin .html (por si acaso)
+      {
+        source: "/pez-betta",
+        destination: "/blog/cuidado-pez-betta",
+        permanent: true,
+      },
+      {
+        source: "/mantenimientos",
+        destination: "/blog/mantenimiento-acuario-rutina",
+        permanent: true,
+      },
+      {
+        source: "/acuario-plantado",
+        destination: "/blog/plantas-naturales-acuario",
+        permanent: true,
+      },
+      {
+        source: "/videos",
+        destination: "/blog",
+        permanent: true,
+      },
+    ];
+  },
+
   // Headers de seguridad y performance
   async headers() {
     return [

@@ -155,6 +155,16 @@ export const videos = [
     emoji: "🌿",
     tags: ["mantenimiento", "plantas"],
   },
+  {
+    id: "mantenimiento-filtro",
+    name: "¡Limpia el filtro de tu acuario!",
+    url: {
+      tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7484651882560884023",
+      instagram: "https://www.instagram.com/p/DHe_3pEsxQf/",
+    },
+    emoji: "🧽",
+    tags: ["mantenimiento", "filtro"],
+  },
 
   // Caridinas Videos
   {
@@ -350,6 +360,18 @@ export const videos = [
     },
     emoji: "🖼️",
     tags: ["paisajismo"],
+  },
+
+  // Agua y Parámetros Videos
+  {
+    id: "osmosis-filtro",
+    name: "Filtro de ósmosis inversa",
+    url: {
+      tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7512872647399656760",
+      instagram: "https://www.instagram.com/p/DKikKtuoLff/",
+    },
+    emoji: "💧",
+    tags: ["osmosis", "agua", "filtro"],
   },
 ];
 

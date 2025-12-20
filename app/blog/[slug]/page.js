@@ -138,7 +138,21 @@ export default function BlogPost({ params }) {
             {post.title}
           </Heading>
           <Stack direction={"row"} spacing={4} color={"dark.textSecondary"} fontSize={"sm"}>
-            <Text>{post.author}</Text>
+            {post.isGuestAuthor && post.authorLink ? (
+              <Text
+                as="a"
+                href={post.authorLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                color="accent.cyan"
+                fontWeight="500"
+                _hover={{ textDecoration: "underline" }}
+              >
+                {post.author}
+              </Text>
+            ) : (
+              <Text>{post.author}</Text>
+            )}
             <Text>•</Text>
             <Text>{formatDateLong(post.date)}</Text>
             <Text>•</Text>
