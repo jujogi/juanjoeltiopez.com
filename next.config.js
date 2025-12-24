@@ -13,9 +13,6 @@ const nextConfig = {
   // Compresión
   compress: true,
 
-  // Optimización de producción
-  swcMinify: true,
-
   // Redirecciones permanentes (301) para mantener SEO
   async redirects() {
     return [

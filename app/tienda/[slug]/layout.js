@@ -1,4 +1,5 @@
 import { getProductBySlug, getAllProducts } from "@/lib/shopData";
+import Script from "next/script";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -23,23 +24,25 @@ export async function generateMetadata({ params }) {
     product.brand,
     ...categoryLabels,
     ...product.features.slice(0, 3),
-    "acuarios",
+    "acuarios Colombia",
     "JuanJo El Tío Pez",
     "tienda acuarios Colombia",
+    "productos acuarios Colombia",
+    "acuariofilia Colombia",
   ].join(", ");
 
   return {
     title: `${product.name} | JuanJo El Tío Pez`,
-    description: `${product.excerpt} ${priceText ? `Precio: ${priceText}.` : ""} ${product.brand ? `Marca: ${product.brand}.` : ""} Compra productos premium para acuarios.`,
+    description: `${product.excerpt} ${priceText ? `Precio: ${priceText}.` : ""} ${product.brand ? `Marca: ${product.brand}.` : ""} Compra productos premium para acuarios en Colombia. Envíos a todo el país.`,
     keywords,
     robots: "index, follow",
     alternates: {
-      canonical: `https://juanjoeltiopez.com/shop/${product.slug}`,
+      canonical: `https://juanjoeltiopez.com/tienda/${product.slug}`,
     },
     openGraph: {
       title: `${product.name} - ${product.brand || "Tienda"}`,
       description: product.excerpt,
-      url: `https://juanjoeltiopez.com/shop/${product.slug}`,
+      url: `https://juanjoeltiopez.com/tienda/${product.slug}`,
       siteName: "JuanJo El Tío Pez",
       locale: "es_CO",
       type: "website",
@@ -65,6 +68,9 @@ export async function generateMetadata({ params }) {
       "product:availability": defaultVariant?.stock === "in_stock" ? "in stock" : "out of stock",
       "product:brand": product.brand,
       "product:category": product.categories?.[0]?.label || "",
+      "geo.region": "CO",
+      "geo.placename": "Colombia",
+      "geo.position": "4.570868;-74.297333",
     },
   };
 }
@@ -76,6 +82,57 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductLayout({ children }) {
-  return children;
+export default async function ProductLayout({ children, params }) {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+
+  if (!product) {
+    return children;
+  }
+
+  const defaultVariant = product.variants?.[0];
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.excerpt,
+    image: product.images,
+    brand: {
+      "@type": "Brand",
+      name: product.brand || "JuanJo El Tío Pez",
+    },
+    offers: {
+      "@type": "Offer",
+      price: defaultVariant?.price,
+      priceCurrency: defaultVariant?.currency || "COP",
+      availability:
+        defaultVariant?.stock === "in_stock"
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+      url: `https://juanjoeltiopez.com/tienda/${product.slug}`,
+      seller: {
+        "@type": "Organization",
+        name: "JuanJo El Tío Pez",
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Colombia",
+      },
+    },
+    category: product.categories?.map(cat => cat.label).join(", "),
+  };
+
+  return (
+    <>
+      <Script
+        id={`product-schema-${product.id}`}
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(productSchema)}
+      </Script>
+      {children}
+    </>
+  );
 }

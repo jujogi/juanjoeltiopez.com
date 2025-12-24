@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${post.title}`,
     description: post.excerpt,
-    keywords: `${post.category}, ${post.title}, acuarios, JuanJo El Tío Pez, cuidado de peces, acuariofilia`,
+    keywords: `${post.category}, ${post.title}, acuarios Colombia, JuanJo El Tío Pez, cuidado de peces, acuariofilia Colombia`,
     authors: [{ name: post.author }],
     robots: "index, follow",
     alternates: {
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
       description: post.excerpt,
       url: `https://juanjoeltiopez.com/blog/${post.slug}`,
       siteName: "JuanJo El Tío Pez",
-      locale: "es_ES",
+      locale: "es_CO",
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
@@ -42,6 +42,11 @@ export async function generateMetadata({ params }) {
       title: post.title,
       description: post.excerpt,
       images: [post.coverImage || post.image],
+    },
+    other: {
+      "geo.region": "CO",
+      "geo.placename": "Colombia",
+      "geo.position": "4.570868;-74.297333",
     },
   };
 }

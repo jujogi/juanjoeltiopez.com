@@ -8,7 +8,7 @@ export const metadata = {
     title: "Tienda | JuanJo El Tío Pez",
     description:
       "Productos premium para acuarios: alimento para gambitas, sustratos, acondicionadores y más. Calidad garantizada para el cuidado de tu acuario.",
-    url: "https://juanjoeltiopez.com/shop",
+    url: "https://juanjoeltiopez.com/tienda",
     siteName: "JuanJo El Tío Pez",
     locale: "es_CO",
     type: "website",
@@ -21,7 +21,7 @@ export const metadata = {
   },
   robots: "index, follow",
   alternates: {
-    canonical: "https://juanjoeltiopez.com/shop",
+    canonical: "https://juanjoeltiopez.com/tienda",
   },
 };
 
