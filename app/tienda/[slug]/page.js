@@ -393,7 +393,7 @@ export default function ProductPage({ params }) {
                 Contáctame por WhatsApp para consultar disponibilidad, realizar tu pedido o resolver
                 cualquier duda sobre este producto.
               </Text>
-                              <Button
+              <Button
                 as="a"
                 href={whatsappLink}
                 target="_blank"

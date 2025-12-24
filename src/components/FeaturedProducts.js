@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Box,
-  Heading,
-  Text,
-  Button,
-  VStack,
-  HStack,
-  Badge,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Button, VStack, HStack, Badge, SimpleGrid } from "@chakra-ui/react";
 import NextLink from "next/link";
 import Image from "next/image";
 import { getAllProducts } from "@/lib/shopData";
