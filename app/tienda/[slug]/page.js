@@ -28,6 +28,7 @@ import { getWhatsAppProductLink } from "@/lib/whatsappUtils";
 import NextLink from "next/link";
 import ReactMarkdown from "react-markdown";
 import RelatedVideosWidget from "@/components/RelatedVideosWidget";
+import ProductPurchaseCard from "@/components/ProductPurchaseCard";
 import { trackCtaClick } from "@/lib/gtm";
 
 const ProductSkeleton = () => (
@@ -171,7 +172,7 @@ export default function ProductPage({ params }) {
             {/* Product Images */}
             <Box>
               <Box
-                h={"400px"}
+                h={{ base: "400px", md: "475px" }}
                 bg={"dark.border"}
                 rounded={"lg"}
                 position={"relative"}
@@ -211,8 +212,10 @@ export default function ProductPage({ params }) {
                       border="2px"
                       borderColor={mainImage === index ? "accent.cyan" : "transparent"}
                       onClick={() => {
-                        setMainImage(index);
-                        setImageLoaded(false);
+                        if (mainImage !== index) {
+                          setMainImage(index);
+                          setImageLoaded(false);
+                        }
                       }}
                       transition="all 0.2s"
                       _hover={{ borderColor: "accent.cyan" }}
@@ -223,6 +226,7 @@ export default function ProductPage({ params }) {
                         fill
                         sizes="100px"
                         style={{ objectFit: "cover" }}
+                        priority
                       />
                     </Box>
                   ))}
@@ -247,109 +251,15 @@ export default function ProductPage({ params }) {
               border="1px"
               borderColor="dark.border"
             >
-              <VStack align="stretch" spacing={4}>
-                {/* Variant Selector */}
-                {product.variants && product.variants.length > 1 && (
-                  <Box>
-                    <Text fontSize="sm" color="dark.textSecondary" mb={2}>
-                      Presentación
-                    </Text>
-                    <VStack spacing={2} align="stretch">
-                      {product.variants.map((variant, index) => (
-                        <Box
-                          key={variant.id}
-                          p={3}
-                          rounded="md"
-                          border="2px"
-                          borderColor={selectedVariant === index ? "accent.cyan" : "dark.border"}
-                          cursor="pointer"
-                          transition="all 0.2s"
-                          _hover={{
-                            borderColor: "accent.cyan",
-                            bg: "dark.bgAlt",
-                          }}
-                          onClick={() => setSelectedVariant(index)}
-                        >
-                          <HStack justify="space-between">
-                            <VStack align="start" spacing={0}>
-                              <Text
-                                fontSize="sm"
-                                fontWeight="medium"
-                                color={selectedVariant === index ? "accent.cyan" : "white"}
-                              >
-                                {variant.name}
-                              </Text>
-                              {variant.stock !== "in_stock" && (
-                                <Text fontSize="xs" color="red.400">
-                                  {variant.stock === "low_stock" ? "Pocas unidades" : "Agotado"}
-                                </Text>
-                              )}
-                            </VStack>
-                            <Text
-                              fontSize="md"
-                              fontWeight="bold"
-                              color={selectedVariant === index ? "accent.cyan" : "white"}
-                            >
-                              {formatPrice(variant.price, variant.currency)}
-                            </Text>
-                          </HStack>
-                        </Box>
-                      ))}
-                    </VStack>
-                  </Box>
-                )}
-
-                {product.variants && product.variants.length === 1 && (
-                  <Box>
-                    <Text fontSize="sm" color="dark.textSecondary" mb={1}>
-                      Precio
-                    </Text>
-                    <Text fontSize="3xl" fontWeight="bold" color="accent.cyan">
-                      {formatPrice(currentVariant.price, currentVariant.currency)}
-                    </Text>
-                  </Box>
-                )}
-
-                <Divider borderColor="dark.border" />
-
-                {/* Specifications */}
-                {currentVariant?.specifications && (
-                  <VStack align="stretch" spacing={2}>
-                    {Object.entries(currentVariant.specifications).map(([key, value]) => (
-                      <HStack key={key} justify="space-between" fontSize="sm">
-                        <Text color="dark.textSecondary" textTransform="capitalize">
-                          {key}:
-                        </Text>
-                        <Text color="white" fontWeight="medium">
-                          {value}
-                        </Text>
-                      </HStack>
-                    ))}
-                  </VStack>
-                )}
-
-                <Button
-                  as="a"
-                  href={isInStock ? whatsappLink : undefined}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  size="lg"
-                  bg="accent.cyan"
-                  color="white"
-                  _hover={{ bg: "accent.cyanHover" }}
-                  isDisabled={!isInStock}
-                  w="full"
-                  onClick={handleComprarClick}
-                >
-                  {isInStock ? "¡Quiero comprarlo!" : "Agotado"}
-                </Button>
-
-                {isInStock && (
-                  <Text fontSize="xs" color="dark.textSecondary" textAlign="center">
-                    Contáctame por WhatsApp para consultar disponibilidad
-                  </Text>
-                )}
-              </VStack>
+              <ProductPurchaseCard
+                product={product}
+                selectedVariant={selectedVariant}
+                setSelectedVariant={setSelectedVariant}
+                currentVariant={currentVariant}
+                isInStock={isInStock}
+                whatsappLink={whatsappLink}
+                handleComprarClick={handleComprarClick}
+              />
             </Box>
 
             {/* Shipping Info - Mobile Only */}
@@ -483,7 +393,7 @@ export default function ProductPage({ params }) {
                 Contáctame por WhatsApp para consultar disponibilidad, realizar tu pedido o resolver
                 cualquier duda sobre este producto.
               </Text>
-              <Button
+                              <Button
                 as="a"
                 href={whatsappLink}
                 target="_blank"
@@ -511,109 +421,15 @@ export default function ProductPage({ params }) {
               border="1px"
               borderColor="dark.border"
             >
-              <VStack align="stretch" spacing={4}>
-                {/* Variant Selector */}
-                {product.variants && product.variants.length > 1 && (
-                  <Box>
-                    <Text fontSize="sm" color="dark.textSecondary" mb={2}>
-                      Presentación
-                    </Text>
-                    <VStack spacing={2} align="stretch">
-                      {product.variants.map((variant, index) => (
-                        <Box
-                          key={variant.id}
-                          p={3}
-                          rounded="md"
-                          border="2px"
-                          borderColor={selectedVariant === index ? "accent.cyan" : "dark.border"}
-                          cursor="pointer"
-                          transition="all 0.2s"
-                          _hover={{
-                            borderColor: "accent.cyan",
-                            bg: "dark.bgAlt",
-                          }}
-                          onClick={() => setSelectedVariant(index)}
-                        >
-                          <HStack justify="space-between">
-                            <VStack align="start" spacing={0}>
-                              <Text
-                                fontSize="sm"
-                                fontWeight="medium"
-                                color={selectedVariant === index ? "accent.cyan" : "white"}
-                              >
-                                {variant.name}
-                              </Text>
-                              {variant.stock !== "in_stock" && (
-                                <Text fontSize="xs" color="red.400">
-                                  {variant.stock === "low_stock" ? "Pocas unidades" : "Agotado"}
-                                </Text>
-                              )}
-                            </VStack>
-                            <Text
-                              fontSize="md"
-                              fontWeight="bold"
-                              color={selectedVariant === index ? "accent.cyan" : "white"}
-                            >
-                              {formatPrice(variant.price, variant.currency)}
-                            </Text>
-                          </HStack>
-                        </Box>
-                      ))}
-                    </VStack>
-                  </Box>
-                )}
-
-                {product.variants && product.variants.length === 1 && (
-                  <Box>
-                    <Text fontSize="sm" color="dark.textSecondary" mb={1}>
-                      Precio
-                    </Text>
-                    <Text fontSize="3xl" fontWeight="bold" color="accent.cyan">
-                      {formatPrice(currentVariant.price, currentVariant.currency)}
-                    </Text>
-                  </Box>
-                )}
-
-                <Divider borderColor="dark.border" />
-
-                {/* Specifications */}
-                {currentVariant?.specifications && (
-                  <VStack align="stretch" spacing={2}>
-                    {Object.entries(currentVariant.specifications).map(([key, value]) => (
-                      <HStack key={key} justify="space-between" fontSize="sm">
-                        <Text color="dark.textSecondary" textTransform="capitalize">
-                          {key}:
-                        </Text>
-                        <Text color="white" fontWeight="medium">
-                          {value}
-                        </Text>
-                      </HStack>
-                    ))}
-                  </VStack>
-                )}
-
-                <Button
-                  as="a"
-                  href={isInStock ? whatsappLink : undefined}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  size="lg"
-                  bg="accent.cyan"
-                  color="white"
-                  _hover={{ bg: "accent.cyanHover" }}
-                  isDisabled={!isInStock}
-                  w="full"
-                  onClick={handleComprarClick}
-                >
-                  {isInStock ? "¡Quiero comprarlo!" : "Agotado"}
-                </Button>
-
-                {isInStock && (
-                  <Text fontSize="xs" color="dark.textSecondary" textAlign="center">
-                    Contáctame por WhatsApp para consultar disponibilidad
-                  </Text>
-                )}
-              </VStack>
+              <ProductPurchaseCard
+                product={product}
+                selectedVariant={selectedVariant}
+                setSelectedVariant={setSelectedVariant}
+                currentVariant={currentVariant}
+                isInStock={isInStock}
+                whatsappLink={whatsappLink}
+                handleComprarClick={handleComprarClick}
+              />
             </Box>
 
             {/* Shipping Info - Desktop Only */}

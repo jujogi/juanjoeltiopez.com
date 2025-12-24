@@ -19,8 +19,8 @@ export function getWhatsAppLink(message) {
  * @returns {string} URL de WhatsApp
  */
 export function getWhatsAppProductLink(productName, variantName = null) {
-  const variant = variantName ? ` (${variantName})` : "";
-  const message = `Hola, quiero información sobre el producto: ${productName}${variant}`;
+  const variant = variantName ? ` - ${variantName}` : "";
+  const message = `Hola! Me interesa este producto: ${productName}${variant}. ¿Está disponible?`;
   return getWhatsAppLink(message);
 }
 
@@ -29,6 +29,6 @@ export function getWhatsAppProductLink(productName, variantName = null) {
  * @returns {string} URL de WhatsApp
  */
 export function getWhatsAppAsesoriaLink() {
-  const message = "Hola, quiero información sobre las asesorías personalizadas";
+  const message = `Hola! Me interesa una asesoría personalizada. ¿Me puedes dar más información?`;
   return getWhatsAppLink(message);
 }
