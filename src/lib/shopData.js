@@ -48,7 +48,7 @@ export const products = [
         stock: "in_stock", // in_stock, low_stock, out_of_stock
         sku: "GG-SL-8",
         specifications: {
-          contenido: "8 palitos (2 de cada sabor)",
+          contenido: "8 palitos",
           origen: "Alemania",
         },
       },

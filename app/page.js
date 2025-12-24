@@ -21,6 +21,7 @@ import { getAllPosts } from "@/lib/blogData";
 import { formatDateShort } from "@/lib/dateUtils";
 import SocialMediaWidget from "@/components/SocialMediaWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
+import FeaturedProducts from "@/components/FeaturedProducts";
 import { trackBlogClick } from "@/lib/gtm";
 
 // Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
@@ -97,64 +98,11 @@ export default function Home() {
   // Determinar qué posts mostrar según la pestaña activa
   const displayPosts = activeTab === "recientes" ? recentPosts : trendingPosts;
 
-  // Featured post sobre JuanJo el Tío Pez
-  const aboutJuanJo = {
-    title: "¿Quién es JuanJo el Tío Pez?",
-    excerpt:
-      "Desde que nació Juanjo el Tío Pez, la misión siempre ha sido la misma: promover una acuariofilia responsable y consciente. Comparto tips sencillos, experiencia real y productos que realmente ayudan, para que disfrutes al 100% de este maravilloso hobby.",
-    image: "/images/juanjoeltiopez.jpg",
-    date: "",
-    readTime: "",
-  };
-
   return (
     <Container maxW="container.xl" py={8}>
-      {/* Featured Post - Acerca de JuanJo - 100% ancho */}
+      {/* Featured Products Section - 100% width */}
       <Box mb={8}>
-        <Box
-          as={NextLink}
-          href="/sobre-mi"
-          display="block"
-          bg="dark.surface"
-          rounded="lg"
-          overflow="hidden"
-          border="1px"
-          borderColor="dark.border"
-          _hover={{ borderColor: "accent.cyan", cursor: "pointer" }}
-          transition="all 0.3s"
-        >
-          <Grid templateColumns={{ base: "1fr", md: "2fr 3fr" }} gap={0}>
-            <Box
-              bg="dark.border"
-              h={{ base: "200px", md: "full" }}
-              minH="340px"
-              position="relative"
-              overflow="hidden"
-            >
-              <Image
-                src={aboutJuanJo.image}
-                alt={aboutJuanJo.title}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 40vw"
-                style={{ objectFit: "cover" }}
-              />
-            </Box>
-            <Box p={8}>
-              <VStack align="start" spacing={4}>
-                <Badge colorScheme="purple" fontSize="9px">
-                  Acerca de
-                </Badge>
-                <Heading size="lg" color="white" lineHeight="1.3">
-                  {aboutJuanJo.title}
-                </Heading>
-                <Text color="dark.textSecondary" lineHeight="tall">
-                  {aboutJuanJo.excerpt}
-                </Text>
-              </VStack>
-            </Box>
-          </Grid>
-        </Box>
+        <FeaturedProducts count={3} />
       </Box>
 
       <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={{ base: 8, lg: 12 }}>

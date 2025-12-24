@@ -71,7 +71,12 @@ export const blogPosts = [
     readTime: "10 min lectura",
     image: "/images/mantenimientos.jpg",
     coverImage: "/images/mantenimientos-2.jpg",
-    videoIds: ["mantenimiento-algas", "mantenimiento-betta", "mantenimiento-plantado", "mantenimiento-filtro"],
+    videoIds: [
+      "mantenimiento-algas",
+      "mantenimiento-betta",
+      "mantenimiento-plantado",
+      "mantenimiento-filtro",
+    ],
   },
   {
     id: "4",
@@ -165,9 +170,7 @@ export const blogPosts = [
     image: "/images/osmosis-grifo.jpg",
     coverImage: "/images/osmosis-grifo.jpg",
     videoIds: ["osmosis-filtro"],
-    productCards: [
-      { position: "after-remineralizacion", slug: "saltyshrimp-bee-shrimp-gh" },
-    ],
+    productCards: [{ position: "after-remineralizacion", slug: "saltyshrimp-bee-shrimp-gh" }],
   },
 ];
 

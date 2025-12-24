@@ -59,16 +59,13 @@ export default function RootLayout({ children }) {
         </Providers>
 
         {/* JSON-LD Structured Data for Organization */}
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          strategy="afterInteractive"
-        >
+        <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             name: "JuanJo El Tío Pez",
-            description: "Tienda especializada en acuariofilia con productos premium para acuarios, peces tropicales, gambas y plantas acuáticas en Colombia.",
+            description:
+              "Tienda especializada en acuariofilia con productos premium para acuarios, peces tropicales, gambas y plantas acuáticas en Colombia.",
             url: "https://juanjoeltiopez.com",
             logo: "https://juanjoeltiopez.com/images/favicon.png",
             image: "https://juanjoeltiopez.com/images/favicon.png",

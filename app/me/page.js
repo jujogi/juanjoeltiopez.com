@@ -85,7 +85,14 @@ const NavCard = ({ title, icon, href, description }) => {
 
 export default function MePage() {
   return (
-    <Box minH="100vh" bg="dark.bg" px={4} py={{ base: 6, md: 0 }} display="flex" alignItems="center">
+    <Box
+      minH="100vh"
+      bg="dark.bg"
+      px={4}
+      py={{ base: 6, md: 0 }}
+      display="flex"
+      alignItems="center"
+    >
       <Container
         maxW="container.md"
         display="flex"
@@ -111,8 +118,8 @@ export default function MePage() {
               <Box as="strong" color="accent.cyan">
                 cuidar y disfrutar de tu acuario
               </Box>{" "}
-              como nunca antes. Encuentra guías, consejos, productos y toda la inspiración para tus proyectos
-              acuáticos.
+              como nunca antes. Encuentra guías, consejos, productos y toda la inspiración para tus
+              proyectos acuáticos.
             </Text>
           </VStack>
 
