@@ -16,6 +16,18 @@ const nextConfig = {
   // Redirecciones permanentes (301) para mantener SEO
   async redirects() {
     return [
+      // Redirección de index.html a homepage
+      {
+        source: "/index.html",
+        destination: "/",
+        permanent: true,
+      },
+      // Redirecciones de /shop/ a /tienda/
+      {
+        source: "/shop/:slug*",
+        destination: "/tienda/:slug*",
+        permanent: true,
+      },
       // Redirecciones con .html
       {
         source: "/pez-betta.html",

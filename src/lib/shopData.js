@@ -87,7 +87,6 @@ export const products = [
         specifications: {
           contenido: "40 gramos",
           origen: "Taiwan",
-          dosificación: "1 cucharadita por 20-30 camarones",
         },
       },
     ],
