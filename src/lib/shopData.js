@@ -44,7 +44,7 @@ export const products = [
         id: "1-8pack",
         name: "Caja de 8 palitos",
         price: 78000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock", // in_stock, low_stock, out_of_stock
         sku: "GG-SL-8",
         specifications: {
@@ -81,7 +81,7 @@ export const products = [
         id: "2-40g",
         name: "40 gramos",
         price: 108000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "SLA-SP-40",
         specifications: {
@@ -118,7 +118,7 @@ export const products = [
         id: "3-10g",
         name: "10 gramos",
         price: 108000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "SLA-Z1-10",
         specifications: {
@@ -157,7 +157,7 @@ export const products = [
         id: "4-50g",
         name: "50 gramos",
         price: 45000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "SS-BSGH-50",
         specifications: {
@@ -169,7 +169,7 @@ export const products = [
         id: "4-100g",
         name: "100 gramos",
         price: 85000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "SS-BSGH-100",
         specifications: {
@@ -206,7 +206,7 @@ export const products = [
         id: "5-50g",
         name: "50 gramos",
         price: 60000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "SS-SMGHKH-50",
         specifications: {
@@ -218,7 +218,7 @@ export const products = [
         id: "5-100g",
         name: "100 gramos",
         price: 110000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "SS-SMGHKH-100",
         specifications: {
@@ -256,7 +256,7 @@ export const products = [
         id: "6-40g",
         name: "40 gramos",
         price: 138000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "SLA-MP-40",
         specifications: {
@@ -304,7 +304,7 @@ export const products = [
         id: "7-apt1",
         name: "APT 1 - ZERO",
         price: 160000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "2HR-APT1-300",
         specifications: {
@@ -316,7 +316,7 @@ export const products = [
         id: "7-apt3",
         name: "APT 3 - COMPLETE",
         price: 160000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "2HR-APT3-300",
         specifications: {
@@ -328,7 +328,7 @@ export const products = [
         id: "7-apte",
         name: "APT E - EI",
         price: 165000,
-        currency: "$",
+        currency: "COP",
         stock: "in_stock",
         sku: "2HR-APTE-300",
         specifications: {

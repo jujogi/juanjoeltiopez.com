@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   // Obtener la primera variante para el precio
   const defaultVariant = product.variants?.[0];
   const priceText = defaultVariant
-    ? `${defaultVariant.currency} ${defaultVariant.price.toLocaleString("es-CO")}`
+    ? `$ ${defaultVariant.price.toLocaleString("es-CO")} COP`
     : "";
 
   // Keywords basadas en categorías, marca y características
@@ -118,6 +118,34 @@ export default async function ProductLayout({ children, params }) {
       areaServed: {
         "@type": "Country",
         name: "Colombia",
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "CO",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          businessDays: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 3,
+            maxValue: 5,
+            unitCode: "DAY",
+          },
+        },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "CO",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 30,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn",
       },
     },
     category: product.categories?.map(cat => cat.label).join(", "),

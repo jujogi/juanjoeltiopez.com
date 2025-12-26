@@ -15,7 +15,7 @@ import Image from "next/image";
 import { getAllPosts } from "@/lib/blogData";
 import { formatDateWithYear } from "@/lib/dateUtils";
 import NextLink from "next/link";
-import SubscriptionSidebar from "@/components/SubscriptionSidebar";
+import ShopWidget from "@/components/ShopWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
 import { trackBlogClick } from "@/lib/gtm";
 
@@ -103,7 +103,7 @@ export default function BlogPage() {
         <GridItem display={{ base: "none", lg: "block" }}>
           <VStack spacing={6} position="sticky" top={4}>
             <AsesoriaWidget />
-            <SubscriptionSidebar />
+            <ShopWidget />
           </VStack>
         </GridItem>
       </Grid>
