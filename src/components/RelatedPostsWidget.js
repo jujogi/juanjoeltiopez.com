@@ -62,7 +62,7 @@ export default function RelatedPostsWidget({ posts, title = "Artículos relacion
   return (
     <Box bg="dark.surface" rounded="lg" p={6} border="1px" borderColor="dark.border" w="full">
       <VStack align="start" spacing={4} w="full">
-        <Heading fontSize="xl" color="white">
+        <Heading fontSize="lg" color="white">
           {title}
         </Heading>
 
@@ -71,8 +71,7 @@ export default function RelatedPostsWidget({ posts, title = "Artículos relacion
             <RelatedPostItem key={post.id} post={post} />
           ))}
         </VStack>
-
-        <Button
+        {/* <Button
           as={NextLink}
           href="/blog"
           w="full"
@@ -89,7 +88,7 @@ export default function RelatedPostsWidget({ posts, title = "Artículos relacion
           transition="all 0.3s"
         >
           Ver todos los artículos
-        </Button>
+        </Button> */}
       </VStack>
     </Box>
   );

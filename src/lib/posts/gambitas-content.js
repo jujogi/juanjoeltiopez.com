@@ -5,11 +5,11 @@ Las gambitas de acuario son diminutas criaturas pero llenas de carácter y ternu
 
 ## Requisitos básicos del acuario
 
-**📏 Tamaño del acuario:** Las gambitas necesitan un acuario de al menos **20 litros** para garantizar un espacio adecuado donde puedan moverse libremente. Cuanto más grande sea el acuario, más fácil será mantener los parámetros estables.
+**Tamaño del acuario:** Las gambitas necesitan un acuario de al menos **20 litros** para garantizar un espacio adecuado donde puedan moverse libremente. Cuanto más grande sea el acuario, más fácil será mantener los parámetros estables.
 
-**♨️ Temperatura:** Mantén la temperatura del agua entre **22 y 26 °C**, dependiendo de la especie (Caridina o Neocaridina). Usa un calentador confiable si la temperatura de tu hogar no es constante.
+**Temperatura:** Mantén la temperatura del agua entre **22 y 26 °C**, dependiendo de la especie (Caridina o Neocaridina). Usa un calentador confiable si la temperatura de tu hogar no es constante.
 
-**🌡️ Parámetros del agua:** Controla el pH y la dureza del agua. Las Caridinas prefieren aguas más blandas y un pH de **6.0 a 6.8**, mientras que las Neocaridinas son más flexibles, prosperando en un pH entre **6.5 y 7.5**.
+**Parámetros del agua:** Controla el pH y la dureza del agua. Las Caridinas prefieren aguas más blandas y un pH de **6.0 a 6.8**, mientras que las Neocaridinas son más flexibles, prosperando en un pH entre **6.5 y 7.5**.
 
 ## Plantas y decoración
 
@@ -36,13 +36,13 @@ Es importante no sobrealimentar. Las gambitas son muy eficientes en aprovechar b
 
 ## Mantenimiento del agua
 
-**💦 Cambios de agua:** Realiza cambios de agua regulares de **10-20%** semanalmente. Usa agua tratada para eliminar cloro y otras sustancias nocivas. Los cambios bruscos en los parámetros del agua pueden estresar a tus gambitas.
+**Cambios de agua:** Realiza cambios de agua regulares de **10-20%** semanalmente. Usa agua tratada para eliminar cloro y otras sustancias nocivas. Los cambios bruscos en los parámetros del agua pueden estresar a tus gambitas.
 
-**🔍 Observación:** Observa sus comportamientos y muda de exoesqueleto. Una muda exitosa indica que están creciendo y viviendo en un entorno saludable.
+**Observación:** Observa sus comportamientos y muda de exoesqueleto. Una muda exitosa indica que están creciendo y viviendo en un entorno saludable.
 
 ## Compañeros de tanque
 
-**🐟 Compatibilidad:** Evita mantenerlas con peces grandes o agresivos. Buenos compañeros de tanque incluyen **caracoles** y peces pacíficos como **Otocinclus** o **rasboras**.
+**Compatibilidad:** Evita mantenerlas con peces grandes o agresivos. Buenos compañeros de tanque incluyen **caracoles** y peces pacíficos como **Otocinclus** o **rasboras**.
 
 ## Cuidado con la microfauna
 

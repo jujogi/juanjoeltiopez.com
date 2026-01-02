@@ -123,6 +123,16 @@ export const videos = [
     emoji: "💕",
     tags: ["gambitas", "tips", "cuidado"],
   },
+    {
+    id: "mantenimiento-gambario-neocaridinas",
+    name: "Mantenimiento en el gambario",
+    url: {
+      tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7589917228426857735",
+      instagram: "https://www.instagram.com/p/DS7nLdgDYpG/",
+    },
+    emoji: "🧽",
+    tags: ["gambitas", "tips", "cuidado"],
+  },
 
   // Mantenimiento Videos
   {

@@ -75,10 +75,10 @@ export default function AsesoriaWidget() {
           {/* Precio */}
           <Box w="full" textAlign="center" py={3} borderTop="1px" borderColor="dark.border">
             <Text color="dark.textSecondary" fontSize="sm" textDecoration="line-through" mb={1}>
-              $137.500 COP
+              $125.000 COP
             </Text>
             <Heading size="lg" color="accent.cyan" mb={1}>
-              $110.000 COP
+              $100.000 COP
             </Heading>
             <Text color="dark.textSecondary" fontSize="xs">
               por sesión

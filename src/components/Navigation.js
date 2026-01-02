@@ -72,7 +72,6 @@ export default function Navigation() {
   const Links = [
     { name: "Inicio", href: "/" },
     { name: "Blog", href: "/blog" },
-    { name: "Guías", href: "/guias" },
     { name: "Asesorías", href: "/asesoria" },
     { name: "Acerca de", href: "/sobre-mi" },
     { name: "Tienda", href: "/tienda" },
