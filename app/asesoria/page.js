@@ -262,10 +262,10 @@ export default function AsesoriaPage() {
               🎉 20% de descuento
             </Box>
             <Text color="dark.textSecondary" fontSize="xl" textDecoration="line-through" mb={1}>
-              $137.500 COP
+              $125.000 COP
             </Text>
             <Heading fontSize="4xl" mb={2} color="accent.cyan">
-              $110.000 COP
+              $100.000 COP
             </Heading>
             <Text color="dark.textSecondary" mb={6}>
               por sesión virtual

@@ -3,7 +3,7 @@ Los Betta son peces fascinantes pero necesitan un entorno adecuado para estar bi
 
 Aquí tienes algunos consejos esenciales para mantenerlos felices y saludables:
 
-## 📏 Tamaño del Acuario
+## Tamaño del Acuario
 
 Asegúrate de que tu Betta viva en un acuario de al menos **15 litros**. Un espacio adecuado le permitirá nadar y explorar con libertad, lo que es fundamental para su bienestar.
 
@@ -14,7 +14,7 @@ Asegúrate de que tu Betta viva en un acuario de al menos **15 litros**. Un espa
 - Acuarios largos son mejores que altos
 - Proporciona espacio para explorar y ejercitarse
 
-## ♨️ Temperatura del Agua
+## Temperatura del agua
 
 Como peces tropicales, los Bettas requieren un **calentador** que mantenga el agua entre **24 y 28 °C**. Mantener una temperatura constante es esencial para su salud.
 
@@ -25,7 +25,7 @@ Como peces tropicales, los Bettas requieren un **calentador** que mantenga el ag
 - La temperatura baja puede causar letargo y enfermedades
 - Sin calentador, tu Betta solo sobrevivirá, no vivirá bien
 
-## 🧽 Filtración Adecuada
+## Filtración Adecuada
 
 Instala un filtro con **esponjas** y **canutillos**, que te permita regular el flujo de agua. Los Bettas prefieren aguas tranquilas y sin corrientes fuertes, por lo que un filtro de flujo suave es ideal.
 
@@ -38,7 +38,7 @@ Instala un filtro con **esponjas** y **canutillos**, que te permita regular el f
 
 **Tip:** Si el flujo es muy fuerte, puedes colocar una esponja en la salida del filtro o dirigirlo hacia la pared del acuario.
 
-## 🌱 Plantas Naturales
+## Plantas Naturales
 
 Decora el acuario con plantas naturales como **anubias**, **bucephalandras** y **helechos de Java**. Además de mejorar la estética, las plantas ofrecen refugio, zonas de descanso y ayudan a mantener la calidad del agua.
 
@@ -56,7 +56,7 @@ Decora el acuario con plantas naturales como **anubias**, **bucephalandras** y *
 - Reducen el estrés del pez
 - Crean un ambiente más natural
 
-## 🍔 Alimentación Correcta
+## Alimentación Correcta
 
 Alimenta a tu Betta con **pequeñas cantidades** de comida, evitando sobrealimentarlo. Su estómago es casi **del tamaño de su ojo**, por lo que pequeñas porciones son suficientes. Varía su dieta con alimentos de calidad, como pellets y alimento vivo o congelados para asegurar una nutrición equilibrada.
 
@@ -70,7 +70,7 @@ Alimenta a tu Betta con **pequeñas cantidades** de comida, evitando sobrealimen
 
 **Importante:** La obesidad es común en Bettas. ¡No sobrealimentes!
 
-## 😤 Compañeros de Acuario
+## Compañeros de Acuario
 
 No todos los Bettas son aptos para acuarios comunitarios. Aunque pueden convivir con peces de fondo como **Corydoras** u **Otocinclus**, es importante monitorear cualquier signo de agresión y separarlos si es necesario.
 
@@ -90,7 +90,7 @@ No todos los Bettas son aptos para acuarios comunitarios. Aunque pueden convivir
 
 **Nota:** Cada Betta tiene su propio temperamento. Algunos son pacíficos, otros muy territoriales. Observa siempre el comportamiento y ten un plan de contingencia.
 
-## 💦 Mantenimiento del Agua
+## Mantenimiento del Agua
 
 Realiza cambios de agua regulares y controla los parámetros del agua. Mantén los niveles de **amonio, nitritos y nitratos** en valores bajos para prevenir enfermedades y asegurar un ambiente saludable.
 

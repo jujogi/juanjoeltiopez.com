@@ -7,9 +7,9 @@ A continuación, te comparto el proceso que estoy siguiendo para montar este gam
 
 Las caridinas son especialmente sensibles a los cambios bruscos en los parámetros del agua:
 
-**🧂 KH bajo:** Un KH bajo es importante porque permite que el pH se mantenga estable en niveles ácidos. ¡No queremos fluctuaciones!
+**KH bajo:** Un KH bajo es importante porque permite que el pH se mantenga estable en niveles ácidos. ¡No queremos fluctuaciones!
 
-**💦 Agua de ósmosis y sales especiales:** Es importante utilizar agua de ósmosis, ya que está libre de impurezas y minerales que pueden alterar los parámetros del agua. Para aportar los minerales que sí necesitamos, haremos uso de sales específicas para gambas, logrando así un control exacto sobre la **dureza general (GH)** y los niveles de **TDS (sólidos disueltos totales)**.
+**Agua de ósmosis y sales especiales:** Es importante utilizar agua de ósmosis, ya que está libre de impurezas y minerales que pueden alterar los parámetros del agua. Para aportar los minerales que sí necesitamos, haremos uso de sales específicas para gambas, logrando así un control exacto sobre la **dureza general (GH)** y los niveles de **TDS (sólidos disueltos totales)**.
 
 [PRODUCT:after-osmosis]
 
@@ -17,9 +17,9 @@ Las caridinas son especialmente sensibles a los cambios bruscos en los parámetr
 
 El sustrato nutritivo o activo es una pieza fundamental en el montaje de un gambario para caridinas. Este tipo de sustrato tiene la capacidad de:
 
-**🍋 Mantener el pH ácido:** Las caridinas prefieren vivir en aguas ligeramente ácidas, un pH entre **5.5 y 6.5** sería lo ideal. El sustrato activo ayuda a amortiguar los cambios de pH.
+**Mantener el pH ácido:** Las caridinas prefieren vivir en aguas ligeramente ácidas, un pH entre **5.5 y 6.5** sería lo ideal. El sustrato activo ayuda a amortiguar los cambios de pH.
 
-**⛓️‍💥 Liberar nutrientes controladamente:** Este tipo de sustratos suelen ser ricos en nutrientes, lo que beneficiará a las plantas y microorganismos del gambario.
+**Liberar nutrientes controladamente:** Este tipo de sustratos suelen ser ricos en nutrientes, lo que beneficiará a las plantas y microorganismos del gambario.
 
 En este caso, estoy utilizando el sustrato de la marca **Brightwell Aquatics**.
 
@@ -36,9 +36,9 @@ Estos materiales ofrecen un amplio espacio para el desarrollo de **colonias de b
 
 **Bacteria powder** es un suplemento muy útil en el montaje de gambarios, ya que ayuda a acelerar el establecimiento del ecosistema biológico. El powder ayudará a:
 
-**🦠 Crecimiento de bacterias:** Ayuda a colonizar el sustrato y los materiales biológicos del filtro con bacterias nitrificantes.
+**Crecimiento de bacterias:** Ayuda a colonizar el sustrato y los materiales biológicos del filtro con bacterias nitrificantes.
 
-**🌞 Promueve un ambiente saludable:** Contribuye al desarrollo de **biofilm**, que es una fuente de alimento esencial para las caridinas.
+**Promueve un ambiente saludable:** Contribuye al desarrollo de **biofilm**, que es una fuente de alimento esencial para las caridinas.
 
 Para este montaje, utilicé un powder desarrollado por **KW Shrimps**, una reconocida marca especializada en el desarrollo de productos para el cuidado y mantenimiento de gambas caridinas.
 
@@ -51,9 +51,9 @@ Para este montaje, utilicé un powder desarrollado por **KW Shrimps**, una recon
 
 Uno de los errores más comunes al montar un gambario para caridinas es pensar que con ciclar el acuario es suficiente. Sin embargo, madurar el gambario va más allá de simplemente establecer el **ciclo del nitrógeno**.
 
-**👴🏽 Maduración:** Debemos permitir que el ecosistema del acuario se desarrolle completamente. Esto incluye no solo las bacterias nitrificantes, sino también microorganismos y biofilm que son una fuente de alimento para las caridinas.
+**Maduración:** Debemos permitir que el ecosistema del acuario se desarrolle completamente. Esto incluye no solo las bacterias nitrificantes, sino también microorganismos y biofilm que son una fuente de alimento para las caridinas.
 
-**🤸🏻‍♀️ Estabilidad:** Un acuario maduro es mucho más estable y capaz de resistir fluctuaciones que podrían ser peligrosas para las gambas.
+**Estabilidad:** Un acuario maduro es mucho más estable y capaz de resistir fluctuaciones que podrían ser peligrosas para las gambas.
 
 ## Equipamiento
 

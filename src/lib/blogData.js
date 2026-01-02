@@ -6,6 +6,7 @@ import caridinasContent from "./posts/caridinas-content.js";
 import plantasContent from "./posts/plantas-content.js";
 import paisajismoContent from "./posts/paisajismo-content.js";
 import osmosisContent from "./posts/osmosis-content.js";
+import filtroMantenimientoContent from "./posts/filtro-mantenimiento-content.js";
 
 export const blogPosts = [
   {
@@ -47,6 +48,7 @@ export const blogPosts = [
     image: "/images/gambitas.jpg",
     coverImage: "/images/gambitas-2.jpg",
     videoIds: [
+      "mantenimiento-gambario-neocaridinas",
       "gambitas-5-consejos",
       "gambitas-alimento-premium",
       "gambitas-snacks",
@@ -77,6 +79,8 @@ export const blogPosts = [
       "mantenimiento-plantado",
       "mantenimiento-filtro",
     ],
+    relatedPostSlugs: ["mantenimiento-filtro-algas"],
+
   },
   {
     id: "4",
@@ -132,7 +136,7 @@ export const blogPosts = [
   },
   {
     id: "6",
-    title: "Paisajismo Acuático: Arte bajo el agua",
+    title: "Paisajismo acuático: Arte bajo el agua",
     slug: "paisajismo-acuatico-guia",
     excerpt:
       "El paisajismo acuático no es solo una ventana a lo natural, sino una forma de transmitir y sentir el arte. Aprende a crear ecosistemas armoniosos y visualmente deslumbrantes.",
@@ -171,6 +175,26 @@ export const blogPosts = [
     coverImage: "/images/osmosis-grifo.jpg",
     videoIds: ["osmosis-filtro"],
     productCards: [{ position: "after-remineralizacion", slug: "saltyshrimp-bee-shrimp-gh" }],
+  },
+  {
+    id: "8",
+    title: "¿Algas? El problema podría estar en tu filtro",
+    slug: "mantenimiento-filtro-algas",
+    excerpt:
+      "Muchos acuaristas son estrictos con el mantenimiento pero ignoran el filtro. Descubre por qué un filtro saturado es la causa principal de la aparición de algas en tu acuario.",
+    content: filtroMantenimientoContent,
+    category: "Mantenimiento",
+    categoryColor: "cyan",
+    date: "2026-01-01T12:00:00Z",
+    author: "JuanJo El Tío Pez",
+    readTime: "8 min lectura",
+    image: "/images/mantenimiento-filtro/filtro-cascada.jpg",
+    coverImage: "/images/acuarios-paisajismo.jpg",
+    videoIds: ["mantenimiento-filtro"],
+    relatedPostSlugs: ["mantenimiento-acuario-rutina"],
+    productCards: [
+      { position: "after-bacteria", slug: "sl-aqua-magic-powder" },
+    ],
   },
 ];
 

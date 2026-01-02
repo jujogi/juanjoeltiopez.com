@@ -94,18 +94,12 @@ export default function BlogPost({ params }) {
     setImageLoaded(false);
   }, [slug]);
 
-  // Obtener posts relacionados (misma categoría, excluyendo el actual)
-  const relatedPosts = allPosts
-    .filter(p => p.category === post?.category && p.id !== post?.id)
-    .slice(0, 3);
-
-  // Si no hay suficientes posts de la misma categoría, completar con otros posts
-  if (relatedPosts.length < 3) {
-    const otherPosts = allPosts
-      .filter(p => p.id !== post?.id && !relatedPosts.find(rp => rp.id === p.id))
-      .slice(0, 3 - relatedPosts.length);
-    relatedPosts.push(...otherPosts);
-  }
+  // Obtener posts relacionados solo si están definidos en relatedPostSlugs
+  const relatedPosts = post?.relatedPostSlugs
+    ? post.relatedPostSlugs
+        .map(slug => allPosts.find(p => p.slug === slug))
+        .filter(Boolean) // Filtrar undefined si algún slug no existe
+    : [];
 
   if (!post) {
     return (
@@ -316,9 +310,11 @@ export default function BlogPost({ params }) {
             {post.videoIds && post.videoIds.length > 0 && (
               <RelatedVideosWidget videoIds={post.videoIds} />
             )}
+            {post.relatedPostSlugs && post.relatedPostSlugs.length > 0 && relatedPosts.length > 0 && (
+              <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" />
+            )}
             <ShopWidget />
             <AsesoriaWidget />
-            {/* <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" /> */}
           </VStack>
         </GridItem>
       </Grid>
