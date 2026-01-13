@@ -55,6 +55,55 @@ export const products = [
     ],
     relatedProducts: [], // IDs de productos relacionados
   },
+    {
+    id: "5",
+    name: "SaltyShrimp Shrimp Mineral GH/KH+",
+    slug: "saltyshrimp-shrimp-mineral-ghkh",
+    excerpt:
+      "Remineralizador especialmente desarrollado para gambas neocaridinas. Aumenta GH y KH.",
+    content: shrimpMineralGhkhContent,
+    categories: [
+      { label: "Acondicionador", color: "blue" },
+      { label: "Invertebrados", color: "orange" },
+      { label: "Gambitas", color: "pink" },
+    ],
+    brand: "SaltyShrimp",
+    images: ["/images/products/shrimp-mineral-ghkh.jpg"],
+    features: [
+      "Aumenta GH y KH",
+      "Ideal para gambas neocaridina",
+      "Minerales y oligoelementos esenciales",
+      "Incluye cucharita medidora",
+    ],
+    videoIds: ["gambitas-5-consejos", "gambitas-3-tips", "gambitas-alimento-premium"],
+    variants: [
+      {
+        id: "5-50g",
+        name: "50 gramos",
+        price: 60000,
+        currency: "COP",
+        stock: "in_stock",
+        sku: "SS-SMGHKH-50",
+        specifications: {
+          contenido: "50 gramos",
+          origen: "Alemania",
+        },
+      },
+      {
+        id: "5-100g",
+        name: "100 gramos",
+        price: 110000,
+        currency: "COP",
+        stock: "in_stock",
+        sku: "SS-SMGHKH-100",
+        specifications: {
+          contenido: "100 gramos",
+          origen: "Alemania",
+        },
+      },
+    ],
+    relatedProducts: [],
+  },
   {
     id: "2",
     name: "SL Aqua Spinach Powder",
@@ -181,55 +230,6 @@ export const products = [
     relatedProducts: [],
   },
   {
-    id: "5",
-    name: "SaltyShrimp Shrimp Mineral GH/KH+",
-    slug: "saltyshrimp-shrimp-mineral-ghkh",
-    excerpt:
-      "Remineralizador especialmente desarrollado para gambas neocaridinas. Aumenta GH y KH.",
-    content: shrimpMineralGhkhContent,
-    categories: [
-      { label: "Acondicionador", color: "blue" },
-      { label: "Invertebrados", color: "orange" },
-      { label: "Gambitas", color: "pink" },
-    ],
-    brand: "SaltyShrimp",
-    images: ["/images/products/shrimp-mineral-ghkh.jpg"],
-    features: [
-      "Aumenta GH y KH",
-      "Ideal para gambas neocaridina",
-      "Minerales y oligoelementos esenciales",
-      "Incluye cucharita medidora",
-    ],
-    videoIds: ["gambitas-5-consejos", "gambitas-3-tips", "gambitas-alimento-premium"],
-    variants: [
-      {
-        id: "5-50g",
-        name: "50 gramos",
-        price: 60000,
-        currency: "COP",
-        stock: "in_stock",
-        sku: "SS-SMGHKH-50",
-        specifications: {
-          contenido: "50 gramos",
-          origen: "Alemania",
-        },
-      },
-      {
-        id: "5-100g",
-        name: "100 gramos",
-        price: 110000,
-        currency: "COP",
-        stock: "in_stock",
-        sku: "SS-SMGHKH-100",
-        specifications: {
-          contenido: "100 gramos",
-          origen: "Alemania",
-        },
-      },
-    ],
-    relatedProducts: [],
-  },
-  {
     id: "6",
     name: "SL Aqua Magic Powder",
     slug: "sl-aqua-magic-powder",
@@ -342,10 +342,7 @@ export const products = [
 ];
 
 export function getAllProducts() {
-  return [...products].sort((a, b) => {
-    // Ordenar por nombre por defecto
-    return a.name.localeCompare(b.name);
-  });
+  return [...products];
 }
 
 export function getProductBySlug(slug) {

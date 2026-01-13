@@ -27,7 +27,9 @@ import dynamic from "next/dynamic";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
 import ShopWidget from "@/components/ShopWidget";
 import ImageWithOverlay from "@/components/ImageWithOverlay";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { getAllPosts } from "@/lib/blogData";
+import { getAllTestimonials } from "@/lib/testimonialsData";
 import { trackCtaClick } from "@/lib/gtm";
 import { getWhatsAppAsesoriaLink } from "@/lib/whatsappUtils";
 
@@ -38,7 +40,7 @@ const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWi
 
 const FeatureCard = ({ icon, title, description }) => {
   return (
-    <Box textAlign="center" p={6}>
+    <Box textAlign="center" p={{ base: 4, md: 6 }}>
       <Icon as={icon} boxSize={12} color="accent.cyan" mb={4} />
       <Heading fontSize="lg" mb={3} color="white">
         {title}
@@ -55,7 +57,7 @@ const StepCard = ({ number, title, description }) => {
     <Box
       bg="dark.surface"
       rounded="lg"
-      p={6}
+      p={{ base: 4, md: 6 }}
       border="1px"
       borderColor="dark.border"
       position="relative"
@@ -88,6 +90,7 @@ const StepCard = ({ number, title, description }) => {
 
 export default function AsesoriaPage() {
   const posts = getAllPosts();
+  const testimonials = getAllTestimonials();
 
   // Obtener artículos relacionados con cuidado y mantenimiento
   const relatedPosts = posts.slice(0, 3);
@@ -102,12 +105,12 @@ export default function AsesoriaPage() {
 
   return (
     <Container maxW="container.xl" py={8}>
-      <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={12}>
+      <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={{ base: 6, md: 8, lg: 12 }}>
         <GridItem>
           {/* Hero Section */}
           <VStack align="start" spacing={4} mb={12}>
             <Heading fontSize={{ base: "3xl", md: "4xl" }} color="white">
-              Asesoría Personalizada
+              Asesorías
             </Heading>
             <Text color="dark.textSecondary" fontSize="lg">
               ¿Necesitas ayuda específica con tu acuario? Te acompaño en cada paso para resolver tus
@@ -116,9 +119,9 @@ export default function AsesoriaPage() {
           </VStack>
 
           {/* Cuándo necesitas asesoría */}
-          <Box bg="dark.surface" rounded="lg" p={8} border="1px" borderColor="dark.border" mb={8}>
+          <Box bg="dark.surface" rounded="lg" p={{ base: 4, md: 6, lg: 8 }} border="1px" borderColor="dark.border" mb={8}>
             <Heading fontSize="2xl" mb={6} color="accent.cyan">
-              ¿Cuándo necesitaría asesoría personalizada?
+              ¿Cuándo necesitaría una asesoría personalizada?
             </Heading>
             <Text color="dark.text" mb={6}>
               El contenido que comparto en redes sociales y en esta página está diseñado para
@@ -201,7 +204,7 @@ export default function AsesoriaPage() {
           </Box>
 
           {/* Qué incluye */}
-          <Box bg="dark.surface" rounded="lg" p={8} border="1px" borderColor="dark.border" mb={8}>
+          <Box bg="dark.surface" rounded="lg" p={{ base: 4, md: 6, lg: 8 }} border="1px" borderColor="dark.border" mb={8}>
             <Heading fontSize="2xl" mb={6} color="white">
               ¿Qué incluye la sesión?
             </Heading>
@@ -233,12 +236,15 @@ export default function AsesoriaPage() {
             </List>
           </Box>
 
+          {/* Testimonials Carousel */}
+          <TestimonialsCarousel testimonials={testimonials} />
+
           {/* Pricing Card */}
           <Box
             bg="gradient.card"
             bgGradient="linear(to-br, dark.surface, dark.bgAlt)"
             rounded="lg"
-            p={8}
+            p={{ base: 4, md: 6, lg: 8 }}
             border="2px"
             borderColor="accent.cyan"
             textAlign="center"
@@ -315,7 +321,7 @@ export default function AsesoriaPage() {
             mt={8}
             bg="dark.surface"
             rounded="lg"
-            p={8}
+            p={{ base: 4, md: 6, lg: 8 }}
             border="1px"
             borderColor="dark.border"
             mb={8}
@@ -395,7 +401,7 @@ export default function AsesoriaPage() {
           <Box
             bg="dark.surface"
             rounded="lg"
-            p={8}
+            p={{ base: 4, md: 6, lg: 8 }}
             border="1px"
             borderColor="dark.border"
             textAlign="center"
