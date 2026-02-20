@@ -79,7 +79,7 @@ export default function TestimonialsCarousel({ testimonials }) {
   return (
     <Box bg="dark.surface" rounded="lg" p={{ base: 4, md: 6, lg: 8 }} border="1px" borderColor="dark.border" mb={8}>
       <Heading fontSize="2xl" mb={6} color="white" textAlign="center">
-        Lo que dicen mis clientes
+             ¿Qué opinan algunos de mis clientes?
       </Heading>
 
       <Box position="relative">

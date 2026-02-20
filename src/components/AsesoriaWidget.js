@@ -11,26 +11,7 @@ export default function AsesoriaWidget() {
   };
 
   return (
-    <Box position="relative" pt={3} w="full">
-      {/* Badge de descuento */}
-      <Box
-        position="absolute"
-        top="0"
-        right="15px"
-        bg="gradient.card"
-        bgGradient="linear(to-r, #ef4444, #dc2626)"
-        color="white"
-        px={3}
-        py={1}
-        rounded="full"
-        fontWeight="bold"
-        fontSize="xs"
-        boxShadow="lg"
-        zIndex={1}
-      >
-        🎉 20% OFF
-      </Box>
-
+    <Box position="relative" w="full">
       <Box
         bg="dark.surface"
         rounded="lg"
@@ -74,11 +55,8 @@ export default function AsesoriaWidget() {
 
           {/* Precio */}
           <Box w="full" textAlign="center" py={3} borderTop="1px" borderColor="dark.border">
-            <Text color="dark.textSecondary" fontSize="sm" textDecoration="line-through" mb={1}>
-              $125.000 COP
-            </Text>
             <Heading size="lg" color="accent.cyan" mb={1}>
-              $100.000 COP
+              $130.000 COP
             </Heading>
             <Text color="dark.textSecondary" fontSize="xs">
               por sesión
