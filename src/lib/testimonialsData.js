@@ -28,6 +28,13 @@ export const testimonials = [
     text: "En esta asesoría pude entender qué le hacía falta a mi acuario y a mis peces para estar sanos. Ahora tengo un acuario en equilibrio que cada día disfruto más.",
     rating: 5,
   },
+    {
+    id: "5",
+    name: "Carlos Vargas",
+    location: "Bogotá, Colombia",
+    text: "Quería agradecerte de corazón por toda la asesoría con mi primer aquascaping. Gracias por compartir tus datos, estar tan pendiente en cada momento y estar siempre disponible para resolver mis dudas. Sin tu ayuda no habría quedado igual. ¡Un gran abrazo!",
+    rating: 5,
+  },
 ];
 
 export function getAllTestimonials() {
