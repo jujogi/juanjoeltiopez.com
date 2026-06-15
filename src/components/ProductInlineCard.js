@@ -52,7 +52,7 @@ export default function ProductInlineCard({ product }) {
           ))}
         </HStack>
 
-        <Text color="white" fontWeight="bold" fontSize="lg" lineHeight="1.3" noOfLines={2}>
+        <Text color="white" fontWeight="bold" fontSize={{ base: "md", lg: "lg" }} lineHeight="1.3" noOfLines={2}>
           {product.name}
         </Text>
       </VStack>

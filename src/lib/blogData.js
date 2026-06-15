@@ -42,7 +42,7 @@ export const blogPosts = [
     content: gambitasContent,
     category: "Invertebrados",
     categoryColor: "orange",
-    date: "2024-11-28T12:00:00Z",
+    date: "2026-06-15T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "12 min lectura",
     image: "/images/gambitas.jpg",

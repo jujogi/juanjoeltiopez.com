@@ -47,8 +47,8 @@ export default function sitemap() {
     {
       url: `${baseUrl}/asesoria`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/sobre-mi`,

@@ -3,13 +3,22 @@ Las gambitas de acuario son diminutas criaturas pero llenas de carácter y ternu
 
 ⚠️ Si estás iniciando en el mundo de los camarones de agua dulce, te recomiendo comenzar con **Neocaridinas**, ya que son más resistentes y pueden adaptarse a un rango más amplio de parámetros en comparación con las Caridinas. Estas gambitas son ideales para aprender y disfrutar de este maravilloso hobby.
 
+## Neocaridinas vs Caridinas: ¿cuál elegir?
+
+Antes de comprar, vale la pena entender la diferencia entre los dos grandes grupos:
+
+- **Neocaridinas** (Cherry Red, Bloody Mary, Blue Velvet, Yellow Fire): robustas, toleran variaciones en los parámetros y se reproducen con facilidad. Ideales para empezar. Este artículo está dedicado a ellas.
+- **Caridinas** (Crystal Red, Taiwan Bee): requieren agua de ósmosis, un pH bajo y parámetros muy estables. Son más exigentes, pero sus colores y patrones no tienen comparación. Si quieres profundizar en estas últimas, [tengo un artículo dedicado a ellas](/blog/caridinas-gambario-montaje).
+
 ## Requisitos básicos del acuario
 
 **Tamaño del acuario:** Las gambitas necesitan un acuario de al menos **20 litros** para garantizar un espacio adecuado donde puedan moverse libremente. Cuanto más grande sea el acuario, más fácil será mantener los parámetros estables.
 
-**Temperatura:** Mantén la temperatura del agua entre **22 y 26 °C**, dependiendo de la especie (Caridina o Neocaridina). Usa un calentador confiable si la temperatura de tu hogar no es constante.
+**Temperatura:** Mantén la temperatura del agua entre **24 y 26 °C**. Usa un calentador si la temperatura de tu hogar no es constante y puede variar en las noches.
 
-**Parámetros del agua:** Controla el pH y la dureza del agua. Las Caridinas prefieren aguas más blandas y un pH de **6.0 a 6.8**, mientras que las Neocaridinas son más flexibles, prosperando en un pH entre **6.5 y 7.5**.
+**Parámetros del agua:** Controla el pH y la dureza del agua. Las Caridinas prefieren aguas más blandas y un pH de **6.0 a 6.8**, mientras que las Neocaridinas son más flexibles, tolerando un pH entre **6.5 y 7.5**. También te recomiendo monitorear el **GH** (dureza general): para Neocaridinas, un GH entre 6 y 8 es ideal.
+
+ +**Filtración:** Este punto es clave y muchos lo ignoran al principio. Para gambas, lo mejor es usar un **filtro de esponja** (tipo pulmón o similar). Son biológicamente eficientes y, lo más importante, no tienen riesgo de succionar las crías recién nacidas, que son diminutas. Si usas un filtro con entrada de agua abierta, como un filtro Canister o Cascada, cúbrela con una malla fina o esponja de pre-filtro.
 
 ## Plantas y decoración
 
@@ -22,13 +31,12 @@ La decoración del acuario no es solo estética, es fundamental para el bienesta
 
 La alimentación es clave para mantener gambas saludables y con colores vibrantes. Alimenta a tus gambitas con una dieta variada que incluya:
 
-- Alimentos específicos para gambas de alta calidad
+- Alimento comercial específico para gambas ornamentales
 - Hojas de almendro indio
 - Vegetales ocasionales como espinacas o calabacín
-- Proteína XP para complementar su dieta
 
 
-Es importante no sobrealimentar. Las gambitas son muy eficientes en aprovechar biofilm y algas presentes en el acuario.
+Es importante no sobrealimentar. Las gambitas prefieren alimentarse del biofilm y algas presentes en el acuario. ¡A mis gambas las alimento cada 2 días y en muy pequeñas cantidades!
 [PRODUCT:after-food]
 
 ![Gambitas comiendo Protein XP](/images/gambas-consejos/gambas-comiendo-protein-xp.jpg)
@@ -36,17 +44,16 @@ Es importante no sobrealimentar. Las gambitas son muy eficientes en aprovechar b
 
 ## Mantenimiento del agua
 
-**Cambios de agua:** Realiza cambios de agua regulares de **10-20%** semanalmente. Usa agua tratada para eliminar cloro y otras sustancias nocivas. Los cambios bruscos en los parámetros del agua pueden estresar a tus gambitas.
+**Cambios de agua:** Realiza cambios de agua regulares de **10-20%** semanalmente. Utiliza acondicionadores para eliminar cloro y otras sustancias nocivas para tus camarones y peces. Los cambios bruscos de parámetros pueden estresar a tus gambitas. Tómate tu tiempo a la hora de rellenar... sin afanes.
 
-**Observación:** Observa sus comportamientos y muda de exoesqueleto. Una muda exitosa indica que están creciendo y viviendo en un entorno saludable.
 
 ## Compañeros de tanque
 
-**Compatibilidad:** Evita mantenerlas con peces grandes o agresivos. Buenos compañeros de tanque incluyen **caracoles** y peces pacíficos como **Otocinclus** o **rasboras**.
+**Compatibilidad:** Siempre voy a recomendar tener a tus gambas solas, es la única forma de verlas en su estado natural, sin estrés alguno. Sin embargo, podrías tenerlas en un acuario comunitario con peces pequeños o pacíficos. Algunos buenos compañeros  podrían ser **caracoles** y peces como **Otocinclus** o **rasboras**.
 
 ## Cuidado con la microfauna
 
-Uno de los problemas más comunes en gambarios son las **planarias**, pequeños gusanos planos que pueden aparecer en acuarios con exceso de materia orgánica. Aunque no siempre son dañinas, en grandes cantidades pueden competir con las gambas por alimento y, en algunos casos, atacar gambas débiles o recién mudadas.
+Uno de los problemas más comunes en gambarios son las **planarias**, pequeños gusanos planos que pueden aparecer en acuarios con exceso de materia orgánica. Aunque no siempre son dañinas, en grandes cantidades pueden competir con las gambas por alimento y, en algunos casos, atacar gambas muy pequeñas, débiles o recién mudadas.
 
 [PRODUCT:after-planarias]
 
@@ -56,8 +63,5 @@ Uno de los problemas más comunes en gambarios son las **planarias**, pequeños 
 **Prevención:**
 - No sobrealimentar
 - Realizar cambios de agua regulares
-- Sifonar detritos del fondo
-- Mantener un acuario limpio y equilibrado
-
-
-`;
+- Sifonar detritos
+- Mantener un acuario limpio y equilibrado`;
