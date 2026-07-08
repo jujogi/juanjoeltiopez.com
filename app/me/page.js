@@ -2,7 +2,7 @@
 
 import { Container, VStack, Heading, Text, Box, HStack, Icon, SimpleGrid } from "@chakra-ui/react";
 import { FaTiktok, FaInstagram } from "react-icons/fa";
-import { FiShoppingCart, FiMessageCircle, FiBook } from "react-icons/fi";
+import { FiMessageCircle, FiBook } from "react-icons/fi";
 import NextLink from "next/link";
 import Image from "next/image";
 import { trackEvent } from "@/lib/gtm";
@@ -124,13 +124,7 @@ export default function MePage() {
           </VStack>
 
           {/* Navigation Cards */}
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 5 }} w="full">
-            <NavCard
-              title="Tienda"
-              icon={FiShoppingCart}
-              href="/tienda"
-              description="¡Encuentra productos ✨premium✨ para tu acuario!"
-            />
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 5 }} w="full">
             <NavCard
               title="Asesorías"
               icon={FiMessageCircle}

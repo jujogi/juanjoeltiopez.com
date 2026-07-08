@@ -17,13 +17,6 @@ export default function FloatingWhatsAppButton() {
 
   // Determinar el mensaje según la página
   const getMessage = () => {
-    if (pathname.startsWith("/tienda/")) {
-      // Estamos en una página de producto individual
-      return "¡Hola, Juanjo! Me interesa un producto de la tienda. ¿Me regalas más información?";
-    }
-    if (pathname === "/tienda") {
-       return "¡Hola, Juanjo! Me interesa un producto de la tienda. ¿Me regalas más información?"
-    }
     if (pathname === "/asesoria") {
       return "¡Hola, Juanjo! Me interesa una asesoría personalizada. ¿Me puedes dar más información?";
     }

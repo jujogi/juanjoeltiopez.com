@@ -1,14 +1,10 @@
 import { getAllPosts } from "@/lib/blogData";
-import { getAllProducts } from "@/lib/shopData";
 
 export default function sitemap() {
   const baseUrl = "https://juanjoeltiopez.com";
 
-  // Obtener todos los posts y productos
   const posts = getAllPosts();
-  const products = getAllProducts();
 
-  // URLs de posts del blog
   const blogUrls = posts.map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
@@ -16,15 +12,6 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  // URLs de productos
-  const productUrls = products.map(product => ({
-    url: `${baseUrl}/tienda/${product.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
-
-  // URLs estáticas principales
   const staticUrls = [
     {
       url: baseUrl,
@@ -34,12 +21,6 @@ export default function sitemap() {
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tienda`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.9,
@@ -58,5 +39,5 @@ export default function sitemap() {
     },
   ];
 
-  return [...staticUrls, ...blogUrls, ...productUrls];
+  return [...staticUrls, ...blogUrls];
 }

@@ -21,7 +21,6 @@ import { getAllPosts } from "@/lib/blogData";
 import { formatDateShort } from "@/lib/dateUtils";
 import SocialMediaWidget from "@/components/SocialMediaWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
-import FeaturedProducts from "@/components/FeaturedProducts";
 import { trackBlogClick } from "@/lib/gtm";
 
 // Import FeaturedVideosWidget dynamically with no SSR to avoid hydration issues
@@ -100,11 +99,6 @@ export default function Home() {
 
   return (
     <Container maxW="container.xl" py={8}>
-      {/* Featured Products Section - 100% width */}
-      <Box mb={8}>
-        <FeaturedProducts count={3} />
-      </Box>
-
       <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={{ base: 8, lg: 12 }}>
         <GridItem>
           {/* Tabs */}
@@ -173,8 +167,8 @@ export default function Home() {
         {/* Sidebar */}
         <GridItem>
           <VStack spacing={6} position="sticky" top={4} w="full">
-            <SocialMediaWidget />
             <AsesoriaWidget />
+            <SocialMediaWidget />
           </VStack>
         </GridItem>
       </Grid>

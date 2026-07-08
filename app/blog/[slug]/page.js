@@ -24,7 +24,6 @@ import ReactMarkdown from "react-markdown";
 import RelatedPostsWidget from "@/components/RelatedPostsWidget";
 import RelatedVideosWidget from "@/components/RelatedVideosWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
-import ShopWidget from "@/components/ShopWidget";
 import ProductInlineCard from "@/components/ProductInlineCard";
 import { trackCtaClick } from "@/lib/gtm";
 import { getAllProducts } from "@/lib/shopData";
@@ -313,7 +312,6 @@ export default function BlogPost({ params }) {
             {post.relatedPostSlugs && post.relatedPostSlugs.length > 0 && relatedPosts.length > 0 && (
               <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" />
             )}
-            <ShopWidget />
             <AsesoriaWidget />
           </VStack>
         </GridItem>
