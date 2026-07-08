@@ -71,10 +71,9 @@ export default function Navigation() {
 
   const Links = [
     { name: "Inicio", href: "/" },
-    { name: "Blog", href: "/blog" },
     { name: "Asesorías", href: "/asesoria" },
+    { name: "Blog", href: "/blog" },
     { name: "Acerca de", href: "/sobre-mi" },
-    { name: "Tienda", href: "/tienda" },
   ];
 
   const isActiveLink = href => {

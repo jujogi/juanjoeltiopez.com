@@ -22,11 +22,21 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
-      // Redirecciones de /shop/ a /tienda/
+      // Tienda temporalmente desactivada
+      {
+        source: "/tienda/:slug*",
+        destination: "/",
+        permanent: false,
+      },
+      {
+        source: "/tienda",
+        destination: "/",
+        permanent: false,
+      },
       {
         source: "/shop/:slug*",
-        destination: "/tienda/:slug*",
-        permanent: true,
+        destination: "/",
+        permanent: false,
       },
       // Redirecciones con .html
       {

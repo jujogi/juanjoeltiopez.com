@@ -9,9 +9,9 @@ export const metadata = {
     template: "%s | JuanJo El Tío Pez",
   },
   description:
-    "Aprende a cuidar y disfrutar de tu acuario como nunca antes. Peces, consejos, cuidados y toda la inspiración que necesitas para tus proyectos acuáticos. Tienda especializada en Colombia con productos premium para acuariofilia.",
+    "Aprende a cuidar y disfrutar de tu acuario como nunca antes. Peces, consejos, cuidados y toda la inspiración que necesitas para tus proyectos acuáticos.",
   keywords:
-    "JuanJo El Tío Pez, acuarios Colombia, peces tropicales, gambarios, plantas acuáticas, cuidado de peces, acuarios naturales, acuarismo Colombia, consejos acuarios, vida acuática, peces de agua dulce, acuarios sostenibles, gambas, tienda acuarios Colombia, acuariofilia Colombia",
+    "JuanJo El Tío Pez, acuarios Colombia, peces tropicales, gambarios, plantas acuáticas, cuidado de peces, acuarios naturales, acuarismo Colombia, consejos acuarios, vida acuática, peces de agua dulce, acuarios sostenibles, gambas, acuariofilia Colombia",
   authors: [{ name: "JuanJo El Tío Pez" }],
   creator: "JuanJo El Tío Pez",
   publisher: "JuanJo El Tío Pez",
