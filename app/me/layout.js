@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/me" },
   title: "Links",
   description:
     "Encuentra todos los enlaces importantes de JuanJo El Tío Pez: Tienda, Asesorías, Blog y redes sociales. Tu guía completa de acuariofilia.",

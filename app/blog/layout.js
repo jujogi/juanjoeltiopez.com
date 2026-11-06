@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/blog" },
   title: "Blog",
   description:
     "Artículos sobre acuariofilia, cuidado de peces, gambitas, plantas acuáticas y todo lo que necesitas saber para mantener tu acuario saludable y hermoso.",

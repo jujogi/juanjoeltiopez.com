@@ -1,6 +1,7 @@
 import Script from "next/script";
 
 export const metadata = {
+  alternates: { canonical: "/asesoria" },
   title: "Asesoría Personalizada para Acuarios Plantados | Consultoría Online",
   description:
     "Asesoría virtual 1 a 1 para acuarios plantados en Colombia. Resuelve problemas de algas, plantas enfermas y parámetros inestables. Plan de acción personalizado + seguimiento 7 días. $130.000 COP por sesión.",

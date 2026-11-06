@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/sobre-mi" },
   title: "Sobre mí",
   description:
     "Conoce a JuanJo El Tío Pez. Promoviendo una acuariofilia responsable y consciente. Tips, experiencia real y productos que realmente ayudan para disfrutar al 100% de este hobby.",

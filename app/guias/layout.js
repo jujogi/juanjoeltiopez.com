@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/guias" },
   title: "Guías",
   description:
     "Guías completas sobre acuariofilia. Aprende paso a paso cómo cuidar tus peces, mantener plantas acuáticas, configurar equipos y más.",

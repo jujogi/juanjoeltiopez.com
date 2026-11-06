@@ -1,5 +1,6 @@
 "use client";
 
+import { socialProfiles, totalFollowers } from "@/lib/siteConfig";
 import {
   Box,
   VStack,
@@ -59,19 +60,14 @@ const SocialPlatform = ({ icon, platform, followers, color, link }) => {
 };
 
 export default function SocialMediaWidget() {
-  // Estos valores pueden ser actualizados manualmente o conectados a APIs más adelante
+  // Valores centralizados en src/lib/siteConfig.js
   const socialStats = {
-    tiktok: {
-      followers: 89968,
-      link: "https://www.tiktok.com/@juanjoeltiopez",
-    },
+    tiktok: { followers: socialProfiles.tiktok.followers, link: socialProfiles.tiktok.url },
     instagram: {
-      followers: 26843,
-      link: "https://www.instagram.com/juanjoeltiopez/",
+      followers: socialProfiles.instagram.followers,
+      link: socialProfiles.instagram.url,
     },
   };
-
-  const totalFollowers = socialStats.tiktok.followers + socialStats.instagram.followers;
 
   return (
     <Box bg="dark.surface" rounded="lg" p={6} border="1px" borderColor="dark.border" w="full">

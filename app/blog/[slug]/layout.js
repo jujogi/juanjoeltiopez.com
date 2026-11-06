@@ -27,6 +27,7 @@ export async function generateMetadata({ params }) {
       locale: "es_CO",
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.updated || post.date,
       authors: [post.author],
       images: [
         {
