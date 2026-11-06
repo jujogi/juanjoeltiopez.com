@@ -141,15 +141,8 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: "/_next/static/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
+      // /_next/static ya recibe "immutable" de Next.js en producción.
+      // Definirlo aquí también lo aplicaba en desarrollo y el navegador ejecutaba código viejo.
     ];
   },
 
