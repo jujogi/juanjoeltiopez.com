@@ -1,5 +1,24 @@
 import { extendTheme } from "@chakra-ui/react";
 
+// Paleta "deep water": fondos de agua profunda, acento verde acuático y arena cálida.
+// Se conservan los nombres de tokens existentes (dark.*, accent.cyan) para que
+// todas las páginas adopten la nueva paleta sin cambios.
+const palette = {
+  bg: "#06171f",
+  bgAlt: "#0a222c",
+  surface: "#0f2f3b",
+  surfaceRaised: "#143947",
+  border: "#1d4554",
+  text: "#e4efee",
+  textSecondary: "#9fbcc0",
+  textMuted: "#7b9ca1",
+  accent: "#3ecf9e",
+  accentHover: "#62dcb2",
+  sand: "#e6c88f",
+  sky: "#6cc3e6",
+  ink: "#04141a",
+};
+
 const theme = extendTheme({
   config: {
     initialColorMode: "dark",
@@ -7,44 +26,67 @@ const theme = extendTheme({
   },
   colors: {
     dark: {
-      bg: "#0f1419",
-      bgAlt: "#1a1d2e",
-      surface: "#252936",
-      border: "#2d3142",
-      text: "#e8eaed",
-      textSecondary: "#9ca3af",
+      bg: palette.bg,
+      bgAlt: palette.bgAlt,
+      surface: palette.surface,
+      surfaceRaised: palette.surfaceRaised,
+      border: palette.border,
+      text: palette.text,
+      textSecondary: palette.textSecondary,
+      textMuted: palette.textMuted,
     },
     accent: {
-      cyan: "#06b6d4",
-      cyanHover: "#0891b2",
-      blue: "#3b82f6",
+      // "cyan" se mantiene como nombre por compatibilidad: ahora es verde acuático
+      cyan: palette.accent,
+      cyanHover: palette.accentHover,
+      blue: palette.sky,
+      sand: palette.sand,
+    },
+    water: {
+      950: palette.ink,
     },
   },
   fonts: {
-    heading: `'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
-    body: `'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
+    heading: `var(--font-heading), Georgia, "Times New Roman", serif`,
+    body: `var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
   },
   styles: {
     global: {
       "*": {
         boxSizing: "border-box",
       },
+      html: {
+        scrollBehavior: "smooth",
+      },
       "html, body": {
-        bg: "#0f1419",
-        color: "#e8eaed",
-        overflowX: "hidden",
+        bg: palette.bg,
+        color: palette.text,
+        overflowX: "clip",
         width: "100%",
         maxWidth: "100vw",
         margin: 0,
         padding: 0,
+        WebkitFontSmoothing: "antialiased",
+      },
+      body: {
+        backgroundImage: `radial-gradient(ellipse 80% 40% at 50% -10%, rgba(62, 207, 158, 0.08), transparent 70%)`,
+        backgroundRepeat: "no-repeat",
+      },
+      "::selection": {
+        bg: "rgba(62, 207, 158, 0.3)",
+        color: "white",
       },
       "#__next": {
-        overflowX: "hidden",
+        overflowX: "clip",
         width: "100%",
         maxWidth: "100vw",
       },
       "*::placeholder": {
-        color: "#6b7280",
+        color: palette.textMuted,
+      },
+      ":focus-visible": {
+        outline: `2px solid ${palette.accent}`,
+        outlineOffset: "2px",
       },
     },
   },
@@ -75,25 +117,42 @@ const theme = extendTheme({
       },
     },
     Button: {
+      baseStyle: {
+        fontWeight: "600",
+        rounded: "full",
+      },
       variants: {
+        // Texto oscuro sobre el acento: mejor contraste que blanco sobre verde claro
         solid: {
           bg: "accent.cyan",
-          color: "white",
+          color: "water.950",
           _hover: {
             bg: "accent.cyanHover",
           },
         },
         ghost: {
-          color: "#e8eaed",
+          color: palette.text,
           _hover: {
             bg: "dark.surface",
           },
         },
       },
     },
+    Badge: {
+      baseStyle: {
+        rounded: "full",
+        px: 2.5,
+        py: 0.5,
+        letterSpacing: "0.04em",
+        fontWeight: "600",
+      },
+      defaultProps: {
+        variant: "subtle",
+      },
+    },
     Link: {
       baseStyle: {
-        color: "#e8eaed",
+        color: palette.text,
         _hover: {
           color: "accent.cyan",
           textDecoration: "none",
@@ -108,6 +167,8 @@ const theme = extendTheme({
     },
     Heading: {
       baseStyle: {
+        fontWeight: "600",
+        letterSpacing: "-0.01em",
         wordWrap: "break-word",
         overflowWrap: "break-word",
       },

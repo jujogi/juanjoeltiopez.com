@@ -69,7 +69,7 @@ export default function AsesoriaWidget() {
             href="/asesoria"
             w="full"
             bg="accent.cyan"
-            color="white"
+            color="water.950"
             _hover={{ bg: "accent.cyanHover", transform: "translateY(-2px)" }}
             transition="all 0.3s"
             size="md"

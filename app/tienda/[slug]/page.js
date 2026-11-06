@@ -399,7 +399,7 @@ export default function ProductPage({ params }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 bg="accent.cyan"
-                color="white"
+                color="water.950"
                 _hover={{ bg: "accent.cyanHover" }}
                 onClick={handleContactarClick}
               >

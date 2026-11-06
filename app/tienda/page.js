@@ -115,7 +115,7 @@ const ProductCard = ({ product }) => {
           <Button
             size="sm"
             bg="accent.cyan"
-            color="white"
+            color="water.950"
             _hover={{ bg: "accent.cyanHover" }}
             isDisabled={!isInStock}
           >
