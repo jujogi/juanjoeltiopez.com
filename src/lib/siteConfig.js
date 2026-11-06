@@ -36,4 +36,8 @@ export const formatFollowers = n =>
 
 export const asesoria = {
   price: "$130.000 COP",
+  priceValue: 130000,
+  currency: "COP",
+  duration: "60-80 minutos",
+  followUpDays: 7,
 };

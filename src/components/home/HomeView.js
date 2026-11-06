@@ -28,6 +28,7 @@ import { trackCtaClick } from "@/lib/gtm";
 import PostCard, { FeaturedPostCard } from "@/components/PostCard";
 import AsesoriaBand from "@/components/AsesoriaBand";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import { Eyebrow, SectionHeader } from "@/components/ui/SectionHeading";
 
 // Los videos se eligen al azar: solo en cliente para evitar diferencias de hidratación
 const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWidget"), {
@@ -36,36 +37,6 @@ const FeaturedVideosWidget = dynamic(() => import("@/components/FeaturedVideosWi
 
 // Guía destacada en la home: la primera de esta lista que exista
 const FEATURED_SLUGS = ["gambitas-acuario-cuidados", "cuidado-pez-betta"];
-
-const Eyebrow = ({ children, color = "accent.cyan" }) => (
-  <Text
-    fontSize="xs"
-    fontWeight="700"
-    textTransform="uppercase"
-    letterSpacing="0.12em"
-    color={color}
-  >
-    {children}
-  </Text>
-);
-
-const SectionHeader = ({ eyebrow, title, id, action }) => (
-  <Flex
-    justify="space-between"
-    align={{ base: "start", md: "end" }}
-    direction={{ base: "column", md: "row" }}
-    gap={4}
-    mb={{ base: 6, md: 8 }}
-  >
-    <Box>
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <Heading as="h2" id={id} fontSize={{ base: "2xl", md: "4xl" }} color="white" mt={2}>
-        {title}
-      </Heading>
-    </Box>
-    {action}
-  </Flex>
-);
 
 const Stat = ({ value, label }) => (
   <Box>
