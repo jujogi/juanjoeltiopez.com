@@ -7,7 +7,7 @@ import NextLink from "next/link";
 // items: [{ label, href? }] — los elementos sin href se muestran como la página actual
 export default function Breadcrumbs({ items }) {
   return (
-    <Box as="nav" aria-label="Migas de pan" fontSize="sm">
+    <Box as="nav" aria-label="Ruta de navegación" fontSize="sm">
       <HStack as="ol" spacing={1.5} listStyleType="none" flexWrap="wrap" color="dark.textMuted">
         {items.map((item, i) => {
           const isLast = i === items.length - 1;

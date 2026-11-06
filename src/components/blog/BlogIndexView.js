@@ -80,7 +80,7 @@ export default function BlogIndexView({ categorySlug }) {
         <Text fontSize={{ base: "lg", md: "xl" }} color="dark.textSecondary" lineHeight="1.6">
           {category
             ? category.description
-            : "Guías, consejos y experiencia real para cuidar mejor tus peces, gambitas y plantas acuáticas."}
+            : "Guías, consejos y un poco de conocimiento para aplicar en este hobby."}
         </Text>
       </Box>
 

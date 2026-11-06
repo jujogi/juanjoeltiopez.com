@@ -7,32 +7,32 @@ const CATEGORY_INFO = [
   {
     name: "Cuidado de Peces",
     description:
-      "Cuidados reales para peces tropicales: espacio, temperatura, alimentación y compañeros de acuario, empezando por el pez Betta.",
+      "Lo que necesita tu pez para vivir bien y no solo sobrevivir: espacio, temperatura, alimentación y compañeros de acuario.",
   },
   {
     name: "Invertebrados",
     description:
-      "Gambitas Neocaridina y Caridina: parámetros, montaje del gambario, alimentación y cómo mantener colonias sanas.",
+      "Gambitas Neocaridina y Caridina: parámetros, montaje del gambario, alimentación y cómo tener una colonia sana.",
   },
   {
     name: "Plantas",
     description:
-      "Plantas acuáticas naturales: por qué usarlas, cuáles elegir para empezar y cómo ayudan a la calidad del agua.",
+      "Adiós a las plantas de plástico: por qué usar plantas naturales, cuáles elegir si estás iniciando y cómo ayudan a la calidad del agua.",
   },
   {
     name: "Aquascaping",
     description:
-      "Paisajismo acuático: hardscape, composición y cómo crear acuarios que se ven como paisajes naturales.",
+      "Paisajismo acuático: hardscape, composición y cómo crear acuarios que parecen paisajes naturales.",
   },
   {
     name: "Agua y Parámetros",
     description:
-      "Calidad del agua: ósmosis inversa, agua de grifo, remineralización y los parámetros que de verdad importan.",
+      "Calidad del agua: ósmosis inversa, agua de la llave, remineralización y los parámetros que de verdad importan.",
   },
   {
     name: "Mantenimiento",
     description:
-      "Rutinas de mantenimiento, cambios de agua, limpieza de filtros y cómo prevenir la aparición de algas.",
+      "Rutinas de mantenimiento, cambios de agua, limpieza del filtro y cómo evitar las algas.",
   },
 ];
 

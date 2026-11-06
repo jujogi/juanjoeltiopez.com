@@ -50,7 +50,7 @@ export default function AsesoriaBand({ trackingId = "asesoria_band" }) {
             lineHeight="1.15"
             mb={4}
           >
-            ¿Tu acuario tiene un problema que no logras resolver?
+            ¿Tu acuario tiene un problema que no has podido resolver?
           </Heading>
           <Text color="dark.textSecondary" fontSize={{ base: "md", md: "lg" }} maxW="52ch">
             Algas que vuelven, plantas que no crecen, parámetros inestables o un montaje desde cero:
@@ -89,7 +89,7 @@ export default function AsesoriaBand({ trackingId = "asesoria_band" }) {
             size="lg"
             onClick={() => trackCtaClick(trackingId)}
           >
-            Conocer la asesoría
+            Conocer más
           </Button>
         </VStack>
       </Grid>

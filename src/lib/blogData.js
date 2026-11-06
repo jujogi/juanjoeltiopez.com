@@ -38,14 +38,14 @@ export const blogPosts = [
     faq: [
       {
         q: "¿Cuántos litros necesita un pez Betta?",
-        a: "Mínimo 15 litros, idealmente 20 o más. Evita las peceras pequeñas tipo «betteras»: un acuario largo le da espacio para nadar, explorar y ejercitarse.",
+        a: "Mínimo 15 litros, idealmente 20 o más. Evita las peceras pequeñas tipo \"betteras\": un acuario largo le da espacio para nadar, explorar y ejercitarse.",
       },
       {
         q: "¿El Betta necesita calentador?",
         a: "Sí. Es un pez tropical y necesita el agua estable entre 24 y 28 °C. Sin calentador solo sobrevive, no vive bien: la temperatura baja le causa letargo y enfermedades.",
       },
       {
-        q: "¿Cuántas veces al día se alimenta un Betta?",
+        q: "¿Cuántas veces al día debo alimentar a mi Betta?",
         a: "2–3 pellets, 1–2 veces al día, con un día de ayuno a la semana. Su estómago es casi del tamaño de su ojo, así que la sobrealimentación es el error más común.",
       },
       {
@@ -103,8 +103,8 @@ export const blogPosts = [
         a: "Un filtro de esponja: es eficiente biológicamente y no succiona las crías. Si usas un filtro canister o de cascada, cubre la entrada con una malla fina o una esponja de pre-filtro.",
       },
       {
-        q: "¿Cada cuánto se alimenta a las gambitas?",
-        a: "Cada 2 días y en muy pequeñas cantidades. Las gambitas se alimentan también del biofilm y las algas presentes en el acuario.",
+        q: "¿Cada cuánto debo alimentar a mis gambitas?",
+        a: "¡A mis gambas las alimento cada 2 días y en muy pequeñas cantidades! Ellas también se alimentan del biofilm y las algas que hay en el acuario, así que no hace falta más.",
       },
     ],
     videoIds: [

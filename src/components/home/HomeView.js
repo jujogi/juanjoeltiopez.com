@@ -97,10 +97,11 @@ const Hero = ({ postCount }) => (
             mt={4}
             mb={6}
           >
-            Acuarios sanos, explicados{" "}
+            No es lo mismo{" "}
             <Text as="span" color="accent.cyan" fontStyle="italic">
-              sin complicaciones
-            </Text>
+              vivir
+            </Text>{" "}
+            que sobrevivir
           </Heading>
           <Text
             fontSize={{ base: "lg", md: "xl" }}
@@ -109,8 +110,9 @@ const Hero = ({ postCount }) => (
             maxW="54ch"
             mb={8}
           >
-            Guías prácticas sobre peces Betta, gambitas, acuarios plantados y calidad del agua,
-            basadas en la experiencia real de {mainAuthor.name}.
+            Tips y guías prácticas sobre peces Betta, gambitas, acuarios plantados y calidad del
+            agua. Te comparto lo que me ha funcionado en mis acuarios (y lo que no), explicado
+            fácil.
           </Text>
           <Stack direction={{ base: "column", sm: "row" }} spacing={4} mb={10}>
             <Button
@@ -120,7 +122,7 @@ const Hero = ({ postCount }) => (
               rightIcon={<ArrowForwardIcon />}
               onClick={() => trackCtaClick("home_hero_guias")}
             >
-              Explorar las guías
+              Ver las guías
             </Button>
             <Button
               as={NextLink}
@@ -180,7 +182,7 @@ const Hero = ({ postCount }) => (
                 {mainAuthor.name}
               </Text>
               <Text fontSize="xs" color="dark.textMuted">
-                Acuarista y divulgador
+                Acuarista y creador de contenido
               </Text>
             </Box>
           </HStack>

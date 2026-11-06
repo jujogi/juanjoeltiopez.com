@@ -45,7 +45,7 @@ export default function AuthorBox({ post }) {
               )}
             </Heading>
             <Text fontSize="sm" color="dark.textSecondary" mt={1}>
-              Publicado en {mainAuthor.name} como parte de nuestra comunidad de acuaristas.
+              Acuarista invitado de nuestra comunidad. ¡Gracias por compartir tu experiencia!
             </Text>
           </Box>
         </Flex>

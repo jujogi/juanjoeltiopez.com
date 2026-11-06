@@ -90,7 +90,7 @@ const siteSchema = {
       url: SITE_URL,
       logo: absoluteUrl("/images/favicon.png"),
       description:
-        "Divulgación y asesorías de acuariofilia responsable: peces tropicales, gambitas y acuarios plantados en Colombia.",
+        "Contenido y asesorías de acuariofilia responsable: peces tropicales, gambitas y acuarios plantados en Colombia.",
       areaServed: { "@type": "Country", name: "Colombia" },
       sameAs,
     },

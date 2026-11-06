@@ -25,7 +25,7 @@ export const mainAuthor = {
   image: "/images/juanjoeltiopez.jpg",
   url: `${SITE_URL}/sobre-mi`,
   shortBio:
-    "Acuarista colombiano y creador de contenido. Comparto lo que funciona (y lo que no) en peces, gambitas y acuarios plantados, con un único objetivo: promover una acuariofilia responsable.",
+    "Acuarista colombiano y creador de contenido. Te comparto lo que me ha funcionado (y lo que no) con peces, gambitas y acuarios plantados. Mi misión: promover una acuariofilia responsable.",
 };
 
 export const absoluteUrl = path => (path?.startsWith("http") ? path : `${SITE_URL}${path || ""}`);
