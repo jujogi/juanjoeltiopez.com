@@ -33,3 +33,7 @@ export const absoluteUrl = path => (path?.startsWith("http") ? path : `${SITE_UR
 // Formatea seguidores como "116 mil"
 export const formatFollowers = n =>
   n >= 1000 ? `${Math.floor(n / 1000).toLocaleString("es-CO")} mil` : n.toLocaleString("es-CO");
+
+export const asesoria = {
+  price: "$130.000 COP",
+};

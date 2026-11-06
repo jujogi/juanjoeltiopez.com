@@ -4,6 +4,7 @@ import { Box, Heading, Text, Button, VStack, HStack, Icon } from "@chakra-ui/rea
 import { FaVideo, FaCheckCircle } from "react-icons/fa";
 import NextLink from "next/link";
 import { trackCtaClick } from "@/lib/gtm";
+import { asesoria } from "@/lib/siteConfig";
 
 export default function AsesoriaWidget() {
   const handleConocerMasClick = () => {
@@ -56,7 +57,7 @@ export default function AsesoriaWidget() {
           {/* Precio */}
           <Box w="full" textAlign="center" py={3} borderTop="1px" borderColor="dark.border">
             <Heading size="lg" color="accent.cyan" mb={1}>
-              $130.000 COP
+              {asesoria.price}
             </Heading>
             <Text color="dark.textSecondary" fontSize="xs">
               por sesión
