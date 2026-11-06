@@ -18,7 +18,7 @@ Antes de comprar, vale la pena entender la diferencia entre los dos grandes grup
 
 **Parámetros del agua:** Controla el pH y la dureza del agua. Las Caridinas prefieren aguas más blandas y un pH de **6.0 a 6.8**, mientras que las Neocaridinas son más flexibles, tolerando un pH entre **6.5 y 7.5**. También te recomiendo monitorear el **GH** (dureza general): para Neocaridinas, un GH entre 6 y 8 es ideal.
 
- +**Filtración:** Este punto es clave y muchos lo ignoran al principio. Para gambas, lo mejor es usar un **filtro de esponja** (tipo pulmón o similar). Son biológicamente eficientes y, lo más importante, no tienen riesgo de succionar las crías recién nacidas, que son diminutas. Si usas un filtro con entrada de agua abierta, como un filtro Canister o Cascada, cúbrela con una malla fina o esponja de pre-filtro.
+**Filtración:** Este punto es clave y muchos lo ignoran al principio. Para gambas, lo mejor es usar un **filtro de esponja** (tipo pulmón o similar). Son biológicamente eficientes y, lo más importante, no tienen riesgo de succionar las crías recién nacidas, que son diminutas. Si usas un filtro con entrada de agua abierta, como un filtro Canister o Cascada, cúbrela con una malla fina o esponja de pre-filtro.
 
 ## Plantas y decoración
 

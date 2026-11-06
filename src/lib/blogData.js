@@ -23,6 +23,36 @@ export const blogPosts = [
     readTime: "10 min lectura",
     image: "/images/betta-acuario-1.jpg",
     coverImage: "/images/betta-acuario-2.jpg",
+    level: "Principiante",
+    careSheet: {
+      species: "Betta splendens",
+      items: [
+        { key: "volume", label: "Acuario mínimo", value: "15 L (ideal 20+)" },
+        { key: "temp", label: "Temperatura", value: "24–28 °C" },
+        { key: "ph", label: "pH", value: "6.5–7.5" },
+        { key: "hardness", label: "GH / KH", value: "5–15 / 3–8" },
+        { key: "food", label: "Alimentación", value: "2–3 pellets, 1–2 veces/día" },
+        { key: "lifespan", label: "Esperanza de vida", value: "3–5 años o más" },
+      ],
+    },
+    faq: [
+      {
+        q: "¿Cuántos litros necesita un pez Betta?",
+        a: "Mínimo 15 litros, idealmente 20 o más. Evita las peceras pequeñas tipo «betteras»: un acuario largo le da espacio para nadar, explorar y ejercitarse.",
+      },
+      {
+        q: "¿El Betta necesita calentador?",
+        a: "Sí. Es un pez tropical y necesita el agua estable entre 24 y 28 °C. Sin calentador solo sobrevive, no vive bien: la temperatura baja le causa letargo y enfermedades.",
+      },
+      {
+        q: "¿Cuántas veces al día se alimenta un Betta?",
+        a: "2–3 pellets, 1–2 veces al día, con un día de ayuno a la semana. Su estómago es casi del tamaño de su ojo, así que la sobrealimentación es el error más común.",
+      },
+      {
+        q: "¿Con qué peces puede vivir un Betta?",
+        a: "Con peces de fondo pacíficos como Corydoras u Otocinclus, caracoles y rasboras. Evita otros Bettas, peces de aletas largas como los guppys y peces mordedores de aletas.",
+      },
+    ],
     videoIds: [
       "betta-taninos",
       "betta-feliz",
@@ -47,6 +77,36 @@ export const blogPosts = [
     readTime: "12 min lectura",
     image: "/images/gambitas.jpg",
     coverImage: "/images/gambitas-2.jpg",
+    level: "Principiante",
+    careSheet: {
+      species: "Neocaridina davidi",
+      items: [
+        { key: "volume", label: "Acuario mínimo", value: "20 L" },
+        { key: "temp", label: "Temperatura", value: "24–26 °C" },
+        { key: "ph", label: "pH", value: "6.5–7.5" },
+        { key: "hardness", label: "GH", value: "6–8" },
+        { key: "filter", label: "Filtro", value: "Esponja" },
+        { key: "water", label: "Cambios de agua", value: "10–20% semanal" },
+      ],
+    },
+    faq: [
+      {
+        q: "¿Qué gambitas son mejores para principiantes?",
+        a: "Las Neocaridinas (Cherry Red, Bloody Mary, Blue Velvet, Yellow Fire): son resistentes, se reproducen con facilidad y toleran un rango de parámetros más amplio que las Caridinas.",
+      },
+      {
+        q: "¿Cuántos litros necesitan las gambitas?",
+        a: "Al menos 20 litros. Cuanto más grande sea el acuario, más fácil es mantener los parámetros estables.",
+      },
+      {
+        q: "¿Qué filtro usar en un gambario?",
+        a: "Un filtro de esponja: es eficiente biológicamente y no succiona las crías. Si usas un filtro canister o de cascada, cubre la entrada con una malla fina o una esponja de pre-filtro.",
+      },
+      {
+        q: "¿Cada cuánto se alimenta a las gambitas?",
+        a: "Cada 2 días y en muy pequeñas cantidades. Las gambitas se alimentan también del biofilm y las algas presentes en el acuario.",
+      },
+    ],
     videoIds: [
       "mantenimiento-gambario-neocaridinas",
       "gambitas-5-consejos",
@@ -80,7 +140,6 @@ export const blogPosts = [
       "mantenimiento-filtro",
     ],
     relatedPostSlugs: ["mantenimiento-filtro-algas"],
-
   },
   {
     id: "4",
@@ -96,6 +155,16 @@ export const blogPosts = [
     readTime: "15 min lectura",
     image: "/images/gambario.jpg",
     coverImage: "/images/gambario.jpg",
+    level: "Avanzado",
+    careSheet: {
+      species: "Caridina sp. (Crystal Red, Taiwan Bee)",
+      items: [
+        { key: "ph", label: "pH", value: "5.5–6.5" },
+        { key: "hardness", label: "KH", value: "Bajo" },
+        { key: "water", label: "Agua", value: "Ósmosis + sales" },
+        { key: "substrate", label: "Sustrato", value: "Activo" },
+      ],
+    },
     videoIds: [
       "caridinas-montaje",
       "caridinas-ciclado",
@@ -192,9 +261,7 @@ export const blogPosts = [
     coverImage: "/images/acuarios-paisajismo.jpg",
     videoIds: ["mantenimiento-filtro"],
     relatedPostSlugs: ["mantenimiento-acuario-rutina"],
-    productCards: [
-      { position: "after-bacteria", slug: "sl-aqua-magic-powder" },
-    ],
+    productCards: [{ position: "after-bacteria", slug: "sl-aqua-magic-powder" }],
   },
 ];
 
