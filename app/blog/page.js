@@ -1,110 +1,33 @@
-"use client";
-
-import {
-  Container,
-  Heading,
-  Text,
-  Grid,
-  GridItem,
-  Box,
-  VStack,
-  HStack,
-  Badge,
-} from "@chakra-ui/react";
-import Image from "next/image";
+import BlogIndexView from "@/components/blog/BlogIndexView";
+import JsonLd from "@/components/JsonLd";
 import { getAllPosts } from "@/lib/blogData";
-import { formatDateWithYear } from "@/lib/dateUtils";
-import NextLink from "next/link";
-import AsesoriaWidget from "@/components/AsesoriaWidget";
-import { trackBlogClick } from "@/lib/gtm";
-
-const PostListItem = ({ post }) => {
-  const handlePostClick = () => {
-    trackBlogClick(post.title);
-  };
-
-  return (
-    <Box
-      as={NextLink}
-      href={`/blog/${post.slug}`}
-      display="block"
-      py={4}
-      borderBottom="1px"
-      borderColor="dark.border"
-      _hover={{ "& h3": { color: "accent.cyan" } }}
-      transition="all 0.3s"
-      onClick={handlePostClick}
-    >
-      <Grid templateColumns={{ base: "1fr", md: "3fr 120px" }} gap={4}>
-        <VStack align="start" spacing={2} order={{ base: 2, md: 1 }}>
-          <Heading size="md" color="white" transition="color 0.3s">
-            {post.title}
-          </Heading>
-          <Text color="dark.textSecondary" fontSize="sm" noOfLines={2}>
-            {post.excerpt}
-          </Text>
-          <HStack spacing={3} fontSize="xs" color="dark.textSecondary">
-            <Text>{formatDateWithYear(post.date)}</Text>
-            <Text>•</Text>
-            <Badge colorScheme={post.categoryColor || "cyan"} fontSize="9px">
-              {post.category}
-            </Badge>
-            <Text>•</Text>
-            <Text>{post.readTime}</Text>
-          </HStack>
-        </VStack>
-        <Box
-          bg="dark.border"
-          h={{ base: "220px", md: "80px" }}
-          w={{ base: "full", md: "120px" }}
-          rounded="md"
-          position="relative"
-          overflow="hidden"
-          order={{ base: 1, md: 2 }}
-        >
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 120px"
-            style={{ objectFit: "cover" }}
-          />
-        </Box>
-      </Grid>
-    </Box>
-  );
-};
+import { SITE_URL } from "@/lib/siteConfig";
 
 export default function BlogPage() {
   const posts = getAllPosts();
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Guías y artículos de acuariofilia",
+    url: `${SITE_URL}/blog`,
+    inLanguage: "es-CO",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: posts.map((post, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
+  };
+
   return (
-    <Container maxW={"container.xl"} py={8}>
-      <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={12}>
-        <GridItem>
-          <VStack align="start" spacing={4} mb={8}>
-            <Heading fontSize={"4xl"} color="white">
-              Blog
-            </Heading>
-            <Text color="dark.textSecondary" fontSize={"lg"}>
-              Guías, consejos y un poco de conocimiento para aplicar en este hobby
-            </Text>
-          </VStack>
-
-          <VStack align="stretch" spacing={0}>
-            {posts.map(post => (
-              <PostListItem key={post.id} post={post} />
-            ))}
-          </VStack>
-        </GridItem>
-
-        {/* Sidebar */}
-        <GridItem display={{ base: "none", lg: "block" }}>
-          <VStack spacing={6} position="sticky" top={4}>
-            <AsesoriaWidget />
-          </VStack>
-        </GridItem>
-      </Grid>
-    </Container>
+    <>
+      <JsonLd data={schema} />
+      <BlogIndexView />
+    </>
   );
 }

@@ -4,7 +4,7 @@ import { Box, HStack, Text, Link } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 
-// items: [{ label, href? }] — el último elemento es la página actual
+// items: [{ label, href? }] — los elementos sin href se muestran como la página actual
 export default function Breadcrumbs({ items }) {
   return (
     <Box as="nav" aria-label="Migas de pan" fontSize="sm">
@@ -13,7 +13,7 @@ export default function Breadcrumbs({ items }) {
           const isLast = i === items.length - 1;
           return (
             <HStack as="li" key={item.label} spacing={1.5}>
-              {item.href && !isLast ? (
+              {item.href ? (
                 <Link
                   as={NextLink}
                   href={item.href}

@@ -20,6 +20,7 @@ import { getAllProducts } from "@/lib/shopData";
 import { formatDateLong } from "@/lib/dateUtils";
 import { getHeadings } from "@/lib/articleUtils";
 import { mainAuthor } from "@/lib/siteConfig";
+import { categoryHref } from "@/lib/categories";
 import Breadcrumbs from "./Breadcrumbs";
 import CareSheet from "./CareSheet";
 import TableOfContents from "./TableOfContents";
@@ -58,7 +59,7 @@ export default function ArticleView({ slug }) {
           items={[
             { label: "Inicio", href: "/" },
             { label: "Blog", href: "/blog" },
-            { label: post.category },
+            { label: post.category, href: categoryHref(post.category) },
           ]}
         />
 

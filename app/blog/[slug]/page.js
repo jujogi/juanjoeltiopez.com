@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/lib/blogData";
 import { SITE_URL, absoluteUrl } from "@/lib/siteConfig";
+import { categoryHref } from "@/lib/categories";
 import JsonLd from "@/components/JsonLd";
 import ArticleView from "@/components/article/ArticleView";
 
@@ -40,7 +41,13 @@ export default async function BlogPost({ params }) {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
           { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
-          { "@type": "ListItem", position: 3, name: post.title, item: url },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: post.category,
+            item: `${SITE_URL}${categoryHref(post.category)}`,
+          },
+          { "@type": "ListItem", position: 4, name: post.title, item: url },
         ],
       },
       ...(post.faq?.length
