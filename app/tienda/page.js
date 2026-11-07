@@ -54,7 +54,6 @@ const ProductCard = ({ product }) => {
       transition="all 0.3s"
       _hover={{
         transform: "translateY(-4px)",
-        borderColor: "accent.cyan",
         boxShadow: "0 4px 20px rgba(0, 255, 255, 0.1)",
       }}
     >
@@ -115,7 +114,7 @@ const ProductCard = ({ product }) => {
           <Button
             size="sm"
             bg="accent.cyan"
-            color="white"
+            color="water.950"
             _hover={{ bg: "accent.cyanHover" }}
             isDisabled={!isInStock}
           >
@@ -179,7 +178,7 @@ export default function ShopPage() {
 
         {/* Sidebar */}
         <GridItem display={{ base: "none", lg: "block" }}>
-          <VStack spacing={6} position="sticky" top={4}>
+          <VStack spacing={6} position="sticky" top={20}>
             <AsesoriaWidget />
 
             <RelatedPostsWidget posts={posts.slice(0, 5)} title="Artículos destacados" />

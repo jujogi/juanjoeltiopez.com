@@ -218,7 +218,6 @@ export default function ProductPage({ params }) {
                         }
                       }}
                       transition="all 0.2s"
-                      _hover={{ borderColor: "accent.cyan" }}
                     >
                       <Image
                         src={image}
@@ -399,7 +398,7 @@ export default function ProductPage({ params }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 bg="accent.cyan"
-                color="white"
+                color="water.950"
                 _hover={{ bg: "accent.cyanHover" }}
                 onClick={handleContactarClick}
               >
@@ -411,7 +410,12 @@ export default function ProductPage({ params }) {
 
         {/* Sidebar */}
         <GridItem>
-          <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
+          <VStack
+            spacing={6}
+            position={{ base: "relative", lg: "sticky" }}
+            top={20}
+            align="stretch"
+          >
             {/* Price Card - Desktop Only */}
             <Box
               display={{ base: "none", lg: "block" }}
@@ -485,7 +489,6 @@ export default function ProductPage({ params }) {
                       borderColor="dark.border"
                       transition="all 0.2s"
                       _hover={{
-                        borderColor: "accent.cyan",
                         bg: "dark.bg",
                       }}
                     >

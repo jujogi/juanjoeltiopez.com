@@ -1,4 +1,5 @@
 import { getPostBySlug, getAllPosts } from "@/lib/blogData";
+import { getCategories } from "@/lib/categories";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -10,10 +11,13 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  // Palabras clave del tema del artículo, no genéricas de todo el sitio
+  const topicKeywords = getCategories().find(c => c.name === post.category)?.keywords;
+
   return {
     title: `${post.title}`,
     description: post.excerpt,
-    keywords: `${post.category}, ${post.title}, acuarios Colombia, JuanJo El Tío Pez, cuidado de peces, acuariofilia Colombia`,
+    keywords: [topicKeywords, "JuanJo El Tío Pez"].filter(Boolean).join(", "),
     authors: [{ name: post.author }],
     robots: "index, follow",
     alternates: {
@@ -27,6 +31,7 @@ export async function generateMetadata({ params }) {
       locale: "es_CO",
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.updated || post.date,
       authors: [post.author],
       images: [
         {

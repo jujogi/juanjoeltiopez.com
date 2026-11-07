@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/terminos" },
   title: "Términos y Condiciones",
   description:
     "Términos y condiciones de uso del sitio web de JuanJo El Tío Pez. Información sobre propiedad intelectual, uso del contenido y servicios.",

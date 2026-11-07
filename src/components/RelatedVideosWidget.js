@@ -1,52 +1,37 @@
 "use client";
 
 import { useState } from "react";
-import { Box, VStack, HStack, Text, Heading, Button, List, ListItem, Icon } from "@chakra-ui/react";
-import { FaTiktok, FaInstagram, FaExternalLinkAlt } from "react-icons/fa";
+import { Box, VStack, HStack, Text, Heading, List, ListItem, Icon } from "@chakra-ui/react";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import PlatformToggle from "@/components/ui/PlatformToggle";
+import PlayBadge from "@/components/ui/PlayBadge";
 import { getVideosByIds } from "@/lib/videosData";
 
-const VideoItem = ({ name, url, emoji, platform }) => {
+const VideoItem = ({ name, url, platform }) => {
   const link = platform === "tiktok" ? url.tiktok : url.instagram;
 
   return (
     <ListItem>
-      <Box
+      <HStack
         as="a"
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        display="block"
+        spacing={3}
         p={3}
         bg="dark.bgAlt"
         rounded="md"
         border="1px"
         borderColor="dark.border"
-        _hover={{
-          borderColor: platform === "tiktok" ? "#000000" : "#E1306C",
-          transform: "translateY(-2px)",
-          transition: "all 0.3s",
-        }}
-        transition="all 0.3s"
-        cursor="pointer"
+        transition="background 0.2s"
+        _hover={{ bg: "dark.surfaceRaised" }}
       >
-        <HStack spacing={2} align="center">
-          <Text fontSize="xl" flexShrink={0}>
-            {emoji}
-          </Text>
-          <VStack align="start" spacing={0} flex="1">
-            <Text fontSize="xs" color="white" fontWeight="500" lineHeight="1.4">
-              {name}
-            </Text>
-          </VStack>
-          <Icon
-            as={FaExternalLinkAlt}
-            color="dark.textSecondary"
-            boxSize={3}
-            flexShrink={0}
-            mt={0.5}
-          />
-        </HStack>
-      </Box>
+        <PlayBadge />
+        <Text flex="1" fontSize="xs" color="white" fontWeight="500" lineHeight="1.4">
+          {name}
+        </Text>
+        <Icon as={FaExternalLinkAlt} color="dark.textMuted" boxSize={3} flexShrink={0} />
+      </HStack>
     </ListItem>
   );
 };
@@ -73,43 +58,7 @@ export default function RelatedVideosWidget({ videos, videoIds }) {
           </Text>
         </Box>
 
-        {/* Platform Toggle */}
-        <HStack spacing={2} w="full">
-          <Button
-            size="sm"
-            flex="1"
-            fontSize="xs"
-            bg={platform === "tiktok" ? "#E1306C" : "dark.bgAlt"}
-            color="white"
-            border="1px"
-            borderColor={platform === "tiktok" ? "#000000" : "dark.border"}
-            _hover={{
-              bg: "#000000",
-              borderColor: "#000000",
-            }}
-            onClick={() => setPlatform("tiktok")}
-            leftIcon={<Icon as={FaTiktok} boxSize={3} />}
-          >
-            TikTok
-          </Button>
-          <Button
-            size="sm"
-            flex="1"
-            fontSize="xs"
-            bg={platform === "instagram" ? "#E1306C" : "dark.bgAlt"}
-            color="white"
-            border="1px"
-            borderColor={platform === "instagram" ? "#E1306C" : "dark.border"}
-            _hover={{
-              bg: "#E1306C",
-              borderColor: "#E1306C",
-            }}
-            onClick={() => setPlatform("instagram")}
-            leftIcon={<Icon as={FaInstagram} boxSize={3} />}
-          >
-            Instagram
-          </Button>
-        </HStack>
+        <PlatformToggle value={platform} onChange={setPlatform} w="full" />
 
         {/* Video List */}
         <List spacing={2} w="full">
@@ -118,7 +67,6 @@ export default function RelatedVideosWidget({ videos, videoIds }) {
               key={video.id || index}
               name={video.name}
               url={video.url}
-              emoji={video.emoji}
               platform={platform}
             />
           ))}

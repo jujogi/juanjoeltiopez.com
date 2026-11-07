@@ -7,7 +7,7 @@ import NextLink from "next/link";
 import Image from "next/image";
 import { trackEvent } from "@/lib/gtm";
 
-const SocialIcon = ({ icon, link, color, bgColor, platform }) => {
+const SocialIcon = ({ icon, link, color, bgColor, platform, label }) => {
   const handleClick = () => {
     trackEvent(`me_page_${platform}`, "Social_Media");
   };
@@ -18,6 +18,7 @@ const SocialIcon = ({ icon, link, color, bgColor, platform }) => {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={label}
       p={2}
       bg={bgColor}
       rounded="full"
@@ -50,7 +51,6 @@ const NavCard = ({ title, icon, href, description }) => {
         border="2px"
         borderColor="dark.border"
         _hover={{
-          borderColor: "accent.cyan",
           transform: "translateY(-4px)",
           boxShadow: "0 8px 24px rgba(6, 182, 212, 0.2)",
         }}
@@ -118,8 +118,8 @@ export default function MePage() {
               <Box as="strong" color="accent.cyan">
                 cuidar y disfrutar de tu acuario
               </Box>{" "}
-              como nunca antes. Encuentra guías, consejos, productos y toda la inspiración para tus
-              proyectos acuáticos.
+              como nunca antes. Encuentra guías, consejos y toda la inspiración para tus proyectos
+              acuáticos.
             </Text>
           </VStack>
 
@@ -147,6 +147,7 @@ export default function MePage() {
               color="white"
               bgColor="#000000"
               platform="tiktok"
+              label="TikTok"
             />
             <SocialIcon
               icon={FaInstagram}
@@ -154,6 +155,7 @@ export default function MePage() {
               color="white"
               bgColor="#E1306C"
               platform="instagram"
+              label="Instagram"
             />
           </HStack>
         </VStack>

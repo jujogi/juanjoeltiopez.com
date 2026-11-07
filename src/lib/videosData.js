@@ -363,7 +363,7 @@ export const videos = [
   },
   {
     id: "paisajismo-nuevo",
-    name: "Mi nuevo acuario de paisajimos acuático",
+    name: "Mi nuevo acuario de paisajismo acuático",
     url: {
       tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7565750458711657746",
       instagram: "https://www.instagram.com/p/DQUNtS8jZt7/",

@@ -1,321 +1,76 @@
-"use client";
+import { notFound } from "next/navigation";
+import { getPostBySlug } from "@/lib/blogData";
+import { SITE_URL, absoluteUrl } from "@/lib/siteConfig";
+import { categoryHref } from "@/lib/categories";
+import JsonLd from "@/components/JsonLd";
+import ArticleView from "@/components/article/ArticleView";
 
-import { use, useState, useEffect } from "react";
-import {
-  Container,
-  Heading,
-  Text,
-  Box,
-  Stack,
-  Badge,
-  Divider,
-  Button,
-  Grid,
-  GridItem,
-  VStack,
-  Skeleton,
-} from "@chakra-ui/react";
-import { ArrowBackIcon } from "@chakra-ui/icons";
-import Image from "next/image";
-import { getPostBySlug, getAllPosts } from "@/lib/blogData";
-import { formatDateLong } from "@/lib/dateUtils";
-import NextLink from "next/link";
-import ReactMarkdown from "react-markdown";
-import RelatedPostsWidget from "@/components/RelatedPostsWidget";
-import RelatedVideosWidget from "@/components/RelatedVideosWidget";
-import AsesoriaWidget from "@/components/AsesoriaWidget";
-import ProductInlineCard from "@/components/ProductInlineCard";
-import { trackCtaClick } from "@/lib/gtm";
-import { getAllProducts } from "@/lib/shopData";
-
-const PostSkeleton = () => (
-  <Container maxW={"container.xl"} py={12}>
-    <Skeleton height="40px" width="150px" mb={6} />
-
-    <Stack spacing={6} mb={8}>
-      <Box>
-        <Skeleton height="24px" width="120px" mb={4} />
-        <Skeleton height="48px" width="80%" mb={4} />
-        <Stack direction={"row"} spacing={4}>
-          <Skeleton height="20px" width="100px" />
-          <Skeleton height="20px" width="8px" />
-          <Skeleton height="20px" width="150px" />
-          <Skeleton height="20px" width="8px" />
-          <Skeleton height="20px" width="80px" />
-        </Stack>
-      </Box>
-
-      <Skeleton height={"400px"} rounded={"lg"} />
-    </Stack>
-
-    <Grid templateColumns={{ base: "1fr", lg: "7fr 3fr" }} gap={12}>
-      <GridItem>
-        <Stack spacing={6}>
-          <Skeleton height="600px" rounded={"lg"} />
-          <Divider borderColor="dark.border" />
-          <Skeleton height="200px" rounded={"lg"} />
-        </Stack>
-      </GridItem>
-
-      <GridItem>
-        <VStack spacing={6} align="stretch">
-          <Skeleton height="300px" rounded={"lg"} />
-          <Skeleton height="300px" rounded={"lg"} />
-        </VStack>
-      </GridItem>
-    </Grid>
-  </Container>
-);
-
-export default function BlogPost({ params }) {
-  const { slug } = use(params);
-  const [isLoading, setIsLoading] = useState(true);
-  const [imageLoaded, setImageLoaded] = useState(false);
+// Componente de servidor: el artículo completo llega en el HTML inicial (indexable)
+export default async function BlogPost({ params }) {
+  const { slug } = await params;
   const post = getPostBySlug(slug);
-  const allPosts = getAllPosts();
-  const allProducts = getAllProducts();
+  if (!post) notFound();
 
-  const handleVerTodosClick = () => {
-    trackCtaClick("ver_todos_los_articulos");
+  const url = `${SITE_URL}/blog/${post.slug}`;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#article`,
+        headline: post.title,
+        description: post.excerpt,
+        image: [absoluteUrl(post.coverImage || post.image)],
+        datePublished: post.date,
+        dateModified: post.updated || post.date,
+        inLanguage: "es-CO",
+        articleSection: post.category,
+        mainEntityOfPage: url,
+        author: post.isGuestAuthor
+          ? {
+              "@type": "Person",
+              name: post.author,
+              ...(post.authorLink && { url: post.authorLink }),
+            }
+          : { "@id": `${SITE_URL}/#juanjo` },
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: post.category,
+            item: `${SITE_URL}${categoryHref(post.category)}`,
+          },
+          { "@type": "ListItem", position: 4, name: post.title, item: url },
+        ],
+      },
+      ...(post.faq?.length
+        ? [
+            {
+              "@type": "FAQPage",
+              mainEntity: post.faq.map(item => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: { "@type": "Answer", text: item.a },
+              })),
+            },
+          ]
+        : []),
+    ],
   };
 
-  // Simular carga del backend
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800); // 800ms de delay para simular carga
-
-    return () => clearTimeout(timer);
-  }, [slug]);
-
-  // Reset image loaded state when slug changes
-  useEffect(() => {
-    setImageLoaded(false);
-  }, [slug]);
-
-  // Obtener posts relacionados solo si están definidos en relatedPostSlugs
-  const relatedPosts = post?.relatedPostSlugs
-    ? post.relatedPostSlugs
-        .map(slug => allPosts.find(p => p.slug === slug))
-        .filter(Boolean) // Filtrar undefined si algún slug no existe
-    : [];
-
-  if (!post) {
-    return (
-      <Container maxW={"container.xl"} py={12}>
-        <Heading>Post not found</Heading>
-        <Button as={NextLink} href="/blog" mt={4} leftIcon={<ArrowBackIcon />}>
-          Back to Blog
-        </Button>
-      </Container>
-    );
-  }
-
-  // Mostrar skeleton mientras carga
-  if (isLoading) {
-    return <PostSkeleton />;
-  }
-
   return (
-    <Container maxW={"container.xl"} py={12}>
-      <Button as={NextLink} href="/blog" variant={"ghost"} leftIcon={<ArrowBackIcon />} mb={6}>
-        Volver al Blog
-      </Button>
-
-      <Stack spacing={6} mb={8}>
-        <Box>
-          <Badge colorScheme={post.categoryColor || "cyan"} mb={4}>
-            {post.category}
-          </Badge>
-          <Heading fontSize={"4xl"} mb={4} color="white">
-            {post.title}
-          </Heading>
-          <Stack direction={"row"} spacing={4} color={"dark.textSecondary"} fontSize={"sm"}>
-            {post.isGuestAuthor && post.authorLink ? (
-              <Text
-                as="a"
-                href={post.authorLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                color="accent.cyan"
-                fontWeight="500"
-                _hover={{ textDecoration: "underline" }}
-              >
-                {post.author}
-              </Text>
-            ) : (
-              <Text>{post.author}</Text>
-            )}
-            <Text>•</Text>
-            <Text>{formatDateLong(post.date)}</Text>
-            <Text>•</Text>
-            <Text>{post.readTime}</Text>
-          </Stack>
-        </Box>
-
-        <Box
-          h={"400px"}
-          bg={"dark.border"}
-          rounded={"lg"}
-          position={"relative"}
-          overflow={"hidden"}
-        >
-          {!imageLoaded && <Skeleton h="full" w="full" position="absolute" top={0} left={0} />}
-          <Image
-            src={post.coverImage || post.image}
-            alt={post.title}
-            fill
-            sizes="(max-width: 1280px) 100vw, 1280px"
-            style={{
-              objectFit: "cover",
-              opacity: imageLoaded ? 1 : 0,
-              transition: "opacity 0.3s ease-in-out",
-            }}
-            priority
-            onLoad={() => setImageLoaded(true)}
-          />
-        </Box>
-      </Stack>
-
-      <Grid templateColumns={{ base: "1fr", lg: "7fr 3fr" }} gap={12}>
-        <GridItem>
-          <Stack spacing={6}>
-            <Box
-              className="blog-content"
-              color="dark.text"
-              sx={{
-                "& h1": {
-                  fontSize: "3xl",
-                  fontWeight: "bold",
-                  mb: 4,
-                  mt: 8,
-                  color: "white",
-                },
-                "& h2": {
-                  fontSize: "2xl",
-                  fontWeight: "bold",
-                  mb: 3,
-                  mt: 6,
-                  color: "accent.cyan",
-                },
-                "& h3": {
-                  fontSize: "xl",
-                  fontWeight: "semibold",
-                  mb: 2,
-                  mt: 4,
-                  color: "white",
-                },
-                "& p": {
-                  mb: 4,
-                  lineHeight: "tall",
-                  color: "dark.text",
-                },
-                "& ul, & ol": {
-                  mb: 4,
-                  pl: 6,
-                },
-                "& li": {
-                  mb: 2,
-                  color: "dark.text",
-                },
-                "& strong": {
-                  fontWeight: "bold",
-                  color: "accent.cyan",
-                },
-                "& code": {
-                  bg: "dark.surface",
-                  px: 2,
-                  py: 1,
-                  rounded: "md",
-                  fontSize: "sm",
-                  color: "accent.cyan",
-                },
-              }}
-            >
-              {/* Split content by product markers and render inline cards */}
-              {(() => {
-                const content = post.content;
-                const productMarkerRegex = /\[PRODUCT:([^\]]+)\]/g;
-                const parts = [];
-                let lastIndex = 0;
-                let match;
-
-                while ((match = productMarkerRegex.exec(content)) !== null) {
-                  // Add markdown content before the marker
-                  if (match.index > lastIndex) {
-                    parts.push(
-                      <ReactMarkdown key={`md-${lastIndex}`}>
-                        {content.substring(lastIndex, match.index)}
-                      </ReactMarkdown>
-                    );
-                  }
-
-                  // Find product card for this position
-                  const position = match[1];
-                  const productCard = post.productCards?.find(pc => pc.position === position);
-
-                  if (productCard) {
-                    const product = allProducts.find(p => p.slug === productCard.slug);
-                    if (product) {
-                      parts.push(
-                        <ProductInlineCard key={`product-${position}`} product={product} />
-                      );
-                    }
-                  }
-
-                  lastIndex = match.index + match[0].length;
-                }
-
-                // Add remaining markdown content
-                if (lastIndex < content.length) {
-                  parts.push(
-                    <ReactMarkdown key={`md-${lastIndex}`}>
-                      {content.substring(lastIndex)}
-                    </ReactMarkdown>
-                  );
-                }
-
-                return parts.length > 0 ? parts : <ReactMarkdown>{content}</ReactMarkdown>;
-              })()}
-            </Box>
-
-            <Divider borderColor="dark.border" />
-
-            <Box bg="dark.surface" p={6} rounded={"lg"} border="1px" borderColor="dark.border">
-              <Heading size={"md"} mb={2} color="white">
-                ¿Te gustó este artículo?
-              </Heading>
-              <Text mb={4} color="dark.textSecondary">
-                ¡Explora las otras guías y consejos de nuestro blog para convertirte en un mejor
-                acuarista!
-              </Text>
-              <Button
-                as={NextLink}
-                href="/blog"
-                bg="accent.cyan"
-                color="white"
-                _hover={{ bg: "accent.cyanHover" }}
-                onClick={handleVerTodosClick}
-              >
-                Ver todos los artículos
-              </Button>
-            </Box>
-          </Stack>
-        </GridItem>
-
-        {/* Sidebar */}
-        <GridItem>
-          <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
-            {post.videoIds && post.videoIds.length > 0 && (
-              <RelatedVideosWidget videoIds={post.videoIds} />
-            )}
-            {post.relatedPostSlugs && post.relatedPostSlugs.length > 0 && relatedPosts.length > 0 && (
-              <RelatedPostsWidget posts={relatedPosts} title="Artículos relacionados" />
-            )}
-            <AsesoriaWidget />
-          </VStack>
-        </GridItem>
-      </Grid>
-    </Container>
+    <>
+      <JsonLd data={schema} />
+      <ArticleView slug={post.slug} />
+    </>
   );
 }
+
+export const dynamicParams = false;

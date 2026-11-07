@@ -32,7 +32,6 @@ export default function ProductPurchaseCard({
                 cursor="pointer"
                 transition="all 0.2s"
                 _hover={{
-                  borderColor: "accent.cyan",
                   bg: "dark.bgAlt",
                 }}
                 onClick={() => setSelectedVariant(index)}

@@ -27,7 +27,7 @@ export default function SubscriptionSidebar() {
           />
           <Button
             bg="accent.cyan"
-            color="white"
+            color="water.950"
             _hover={{ bg: "accent.cyanHover" }}
             w="full"
             disabled

@@ -9,9 +9,8 @@ Las caridinas son especialmente sensibles a los cambios bruscos en los parámetr
 
 **KH bajo:** Un KH bajo es importante porque permite que el pH se mantenga estable en niveles ácidos. ¡No queremos fluctuaciones!
 
-**Agua de ósmosis y sales especiales:** Es importante utilizar agua de ósmosis, ya que está libre de impurezas y minerales que pueden alterar los parámetros del agua. Para aportar los minerales que sí necesitamos, haremos uso de sales específicas para gambas, logrando así un control exacto sobre la **dureza general (GH)** y los niveles de **TDS (sólidos disueltos totales)**.
+**Agua de ósmosis y sales especiales:** Es importante utilizar agua de ósmosis, ya que está libre de impurezas y minerales que pueden alterar los parámetros del agua. Para aportar los minerales que sí necesitamos, haremos uso de sales específicas para gambas, logrando así un control exacto sobre la **dureza general (GH)** y los niveles de **TDS (sólidos disueltos totales)**. Para las caridinas te recomiendo un GH entre **4 y 6**.
 
-[PRODUCT:after-osmosis]
 
 ## Sustrato activo
 
@@ -42,7 +41,6 @@ Estos materiales ofrecen un amplio espacio para el desarrollo de **colonias de b
 
 Para este montaje, utilicé un powder desarrollado por **KW Shrimps**, una reconocida marca especializada en el desarrollo de productos para el cuidado y mantenimiento de gambas caridinas.
 
-[PRODUCT:after-bacteria]
 
 ![Biofilm en hojas del gambario](/images/gambario-caridinas/hoja-gambas.jpg)
 *El biofilm que se desarrolla sobre las hojas y superficies es una fuente esencial de alimento para las caridinas*

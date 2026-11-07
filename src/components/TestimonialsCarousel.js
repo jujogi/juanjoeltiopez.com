@@ -5,7 +5,7 @@ import { Box, Heading, Text, VStack, HStack, IconButton, SimpleGrid, Icon } from
 import { FaChevronLeft, FaChevronRight, FaStar, FaQuoteLeft } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const TestimonialCard = ({ testimonial }) => {
   return (

@@ -18,7 +18,6 @@ const RelatedPostItem = ({ post }) => {
       border="1px"
       borderColor="dark.border"
       _hover={{
-        borderColor: "accent.cyan",
         transform: "translateY(-2px)",
         transition: "all 0.3s",
       }}
@@ -81,7 +80,6 @@ export default function RelatedPostsWidget({ posts, title = "Artículos relacion
           color="accent.cyan"
           rightIcon={<ArrowForwardIcon />}
           _hover={{
-            borderColor: "accent.cyan",
             bg: "dark.bgAlt",
             transform: "translateX(4px)",
           }}
