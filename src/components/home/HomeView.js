@@ -62,17 +62,16 @@ const Hero = ({ postCount }) => (
           <Heading
             as="h1"
             id="hero-title"
-            fontSize={{ base: "4xl", md: "6xl" }}
+            fontSize={{ base: "4xl", md: "5xl", xl: "6xl" }}
             lineHeight="1.05"
             color="white"
             mt={4}
             mb={6}
           >
-            No es lo mismo{" "}
+            Toda la inspiración e información que necesitas para{" "}
             <Text as="span" color="accent.cyan" fontStyle="italic">
-              vivir
-            </Text>{" "}
-            que sobrevivir
+              tus acuarios
+            </Text>
           </Heading>
           <Text
             fontSize={{ base: "lg", md: "xl" }}
