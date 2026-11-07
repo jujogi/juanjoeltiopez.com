@@ -82,7 +82,7 @@ const Hero = () => (
     <Container maxW="container.xl">
       <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Asesorías personalizadas" }]} />
       <Grid
-        templateColumns={{ base: "1fr", lg: "1.1fr 1fr" }}
+        templateColumns={{ base: "minmax(0, 1fr)", lg: "1.1fr 1fr" }}
         gap={{ base: 10, lg: 16 }}
         alignItems="center"
         mt={{ base: 6, md: 10 }}
@@ -109,12 +109,7 @@ const Hero = () => (
             ¡Resuelve problemas persistentes, optimiza tu montaje y lleva tu acuario al siguiente
             nivel!
           </Text>
-          <Stack
-            direction={{ base: "column", sm: "row" }}
-            spacing={4}
-            align={{ sm: "center" }}
-            mb={8}
-          >
+          <Stack direction="row" wrap="wrap" spacing={4} align="center" mb={8}>
             <WhatsAppButton trackingId="asesoria_hero_whatsapp" />
             <Button
               as="a"

@@ -53,7 +53,7 @@ const Hero = ({ postCount }) => (
   <Box as="section" aria-labelledby="hero-title" pt={{ base: 8, md: 16 }} pb={{ base: 12, md: 20 }}>
     <Container maxW="container.xl">
       <Grid
-        templateColumns={{ base: "1fr", lg: "1.05fr 1fr" }}
+        templateColumns={{ base: "minmax(0, 1fr)", lg: "1.05fr 1fr" }}
         gap={{ base: 10, lg: 16 }}
         alignItems="center"
       >
@@ -84,7 +84,7 @@ const Hero = ({ postCount }) => (
             agua. Te comparto lo que me ha funcionado en mis acuarios (y lo que no), explicado
             fácil.
           </Text>
-          <Stack direction={{ base: "column", sm: "row" }} spacing={4} mb={10}>
+          <Stack direction="row" wrap="wrap" spacing={3} mb={10}>
             <Button
               as={NextLink}
               href="/blog"

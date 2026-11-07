@@ -118,6 +118,9 @@ export default function AuthorBox({ post }) {
             as={NextLink}
             href="/asesoria"
             size="md"
+            whiteSpace="normal"
+            h="auto"
+            py={2.5}
             onClick={() => trackCtaClick("author_box_asesoria")}
           >
             Agenda una asesoría personalizada
