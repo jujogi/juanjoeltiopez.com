@@ -160,6 +160,7 @@ export const blogPosts = [
       species: "Caridina sp. (Crystal Red, Taiwan Bee)",
       items: [
         { key: "ph", label: "pH", value: "5.5–6.5" },
+        { key: "hardness", label: "GH", value: "4–6" },
         { key: "hardness", label: "KH", value: "Bajo" },
         { key: "water", label: "Agua", value: "Ósmosis + sales" },
         { key: "substrate", label: "Sustrato", value: "Activo" },
