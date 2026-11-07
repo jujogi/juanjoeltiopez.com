@@ -43,7 +43,6 @@ No realices el mantenimiento del filtro el mismo día que el del acuario. Ambos 
 
 Recupera las bacterias después de una limpieza profunda. Utiliza productos como **SL Aqua Magic Powder**, **Seachem Stability** o **Seachem Pristine** para repoblar rápidamente la colonia de bacterias.
 
-[PRODUCT:after-bacteria]
 
 ## Conclusión
 

@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { getPostBySlug, getAllPosts } from "@/lib/blogData";
-import { getAllProducts } from "@/lib/shopData";
 import { formatDateLong } from "@/lib/dateUtils";
 import { getHeadings } from "@/lib/articleUtils";
 import { mainAuthor } from "@/lib/siteConfig";
@@ -46,7 +45,6 @@ function getRelatedPosts(post, allPosts, count = 3) {
 export default function ArticleView({ slug }) {
   const post = getPostBySlug(slug);
   const allPosts = getAllPosts();
-  const products = getAllProducts();
   const headings = getHeadings(post.content);
   const relatedPosts = getRelatedPosts(post, allPosts);
   const updated = post.updated && post.updated !== post.date ? post.updated : null;
@@ -166,7 +164,7 @@ export default function ArticleView({ slug }) {
                 </Box>
               )}
 
-              <ArticleBody post={post} products={products} />
+              <ArticleBody post={post} />
 
               {post.faq?.length > 0 && (
                 <Box maxW="68ch">

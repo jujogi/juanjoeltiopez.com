@@ -4,7 +4,6 @@ import { Box, Heading, HStack, Icon, Text } from "@chakra-ui/react";
 import { FaLightbulb, FaExclamationTriangle, FaInfoCircle } from "react-icons/fa";
 import NextLink from "next/link";
 import ReactMarkdown from "react-markdown";
-import ProductInlineCard from "@/components/ProductInlineCard";
 import { slugifyHeading, childrenToText } from "@/lib/articleUtils";
 
 // Párrafos que empiezan con "**Tip:**", "**Importante:**", etc. se muestran como avisos
@@ -176,42 +175,10 @@ const Markdown = ({ children }) => (
   <ReactMarkdown components={markdownComponents}>{children}</ReactMarkdown>
 );
 
-// Renderiza el markdown y sustituye los marcadores [PRODUCT:posición] por tarjetas
-export default function ArticleBody({ post, products = [] }) {
-  const content = post.content || "";
-  const productMarkerRegex = /\[PRODUCT:([^\]]+)\]/g;
-  const parts = [];
-  let lastIndex = 0;
-  let match;
-
-  while ((match = productMarkerRegex.exec(content)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push(
-        <Markdown key={`md-${lastIndex}`}>{content.substring(lastIndex, match.index)}</Markdown>
-      );
-    }
-
-    const position = match[1];
-    const productCard = post.productCards?.find(pc => pc.position === position);
-    const product = productCard && products.find(p => p.slug === productCard.slug);
-    if (product) {
-      parts.push(
-        <Box key={`product-${position}`} my={8}>
-          <ProductInlineCard product={product} />
-        </Box>
-      );
-    }
-
-    lastIndex = match.index + match[0].length;
-  }
-
-  if (lastIndex < content.length) {
-    parts.push(<Markdown key={`md-${lastIndex}`}>{content.substring(lastIndex)}</Markdown>);
-  }
-
+export default function ArticleBody({ post }) {
   return (
     <Box className="article-body" sx={proseStyles}>
-      {parts}
+      <Markdown>{post.content || ""}</Markdown>
     </Box>
   );
 }

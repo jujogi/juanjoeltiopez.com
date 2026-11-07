@@ -114,10 +114,6 @@ export const blogPosts = [
       "gambitas-snacks",
       "gambitas-3-tips",
     ],
-    productCards: [
-      { position: "after-food", slug: "sl-aqua-spinach-powder" },
-      { position: "after-planarias", slug: "sl-aqua-z1-cleaner" },
-    ],
   },
   {
     id: "3",
@@ -176,10 +172,6 @@ export const blogPosts = [
       "caridinas-pure-line",
       "caridinas-mudan",
       "caridinas-evolucion",
-    ],
-    productCards: [
-      { position: "after-osmosis", slug: "saltyshrimp-bee-shrimp-gh" },
-      { position: "after-bacteria", slug: "sl-aqua-magic-powder" },
     ],
   },
   {
@@ -244,7 +236,6 @@ export const blogPosts = [
     image: "/images/osmosis-grifo.jpg",
     coverImage: "/images/osmosis-grifo.jpg",
     videoIds: ["osmosis-filtro"],
-    productCards: [{ position: "after-remineralizacion", slug: "saltyshrimp-bee-shrimp-gh" }],
   },
   {
     id: "8",
@@ -262,7 +253,6 @@ export const blogPosts = [
     coverImage: "/images/acuarios-paisajismo.jpg",
     videoIds: ["mantenimiento-filtro"],
     relatedPostSlugs: ["mantenimiento-acuario-rutina"],
-    productCards: [{ position: "after-bacteria", slug: "sl-aqua-magic-powder" }],
   },
 ];
 

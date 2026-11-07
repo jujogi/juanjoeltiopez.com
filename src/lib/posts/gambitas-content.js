@@ -37,7 +37,6 @@ La alimentación es clave para mantener gambas saludables y con colores vibrante
 
 
 Es importante no sobrealimentar. Las gambitas prefieren alimentarse del biofilm y algas presentes en el acuario. ¡A mis gambas las alimento cada 2 días y en muy pequeñas cantidades!
-[PRODUCT:after-food]
 
 ![Gambitas comiendo Protein XP](/images/gambas-consejos/gambas-comiendo-protein-xp.jpg)
 *Gambas neocaridinas Bloody Mary disfrutando del alimento Protein XP de GlasGarten, fundamental para su crecimiento y coloración*
@@ -55,7 +54,6 @@ Es importante no sobrealimentar. Las gambitas prefieren alimentarse del biofilm 
 
 Uno de los problemas más comunes en gambarios son las **planarias**, pequeños gusanos planos que pueden aparecer en acuarios con exceso de materia orgánica. Aunque no siempre son dañinas, en grandes cantidades pueden competir con las gambas por alimento y, en algunos casos, atacar gambas muy pequeñas, débiles o recién mudadas.
 
-[PRODUCT:after-planarias]
 
 ![Planarias con gamba neocaridina](/images/gambas-consejos/planarias-gamba-neo.jpg)
 *Las planarias pueden aparecer en el acuario si hay exceso de alimento. Mantén el acuario limpio y evita sobrealimentar para prevenir su aparición*

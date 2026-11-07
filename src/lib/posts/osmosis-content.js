@@ -18,7 +18,6 @@ El uso de una u otra opción depende directamente de la calidad del agua disponi
 
 Si bien el agua de ósmosis es una excelente opción para el acuario, por sí sola resulta limitada. Su verdadera utilidad radica en su alta maleabilidad, es decir, en la facilidad con la que se pueden **ajustar sus parámetros** según las necesidades del acuario plantado. Al contener una cantidad mínima de minerales disueltos, **es necesario remineralizarla** mediante productos comerciales o con la ayuda de sales como los sulfatos de calcio y magnesio. Al añadir estos minerales, se incrementa la dureza general del agua (GH) hasta niveles óptimos para el crecimiento de las plantas.
 
-[PRODUCT:after-remineralizacion]
 
 Algunos acuaristas optan por aumentar también la dureza de carbonatos (KH), sin embargo, en un acuario plantado esto no suele tener una utilidad real, más allá de elevar el pH del agua y mantenerlo en un rango más alto, o en casos específicos como la cría de peces que requieren niveles elevados de carbonatos. Fuera de estas situaciones, su adición no es necesaria. Si bien muchas plantas resistentes pueden prosperar en presencia de carbonatos incluso cuando estos son elevados, muchas otras se desarrollan mejor en valores de KH bajos, generalmente dentro de un rango de **0 a 3 °dKH**.
 
