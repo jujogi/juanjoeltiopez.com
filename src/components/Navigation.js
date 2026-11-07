@@ -26,9 +26,6 @@ const LINKS = [
 
 const CTA = { name: "Asesorías personalizadas", href: "/asesoria" };
 
-// Altura de la barra: los elementos sticky y los anclas la usan como referencia
-export const NAV_HEIGHT = 16;
-
 const NavLink = ({ href, children, isActive, isMobile, onClick }) => (
   <Link
     as={NextLink}
@@ -110,7 +107,7 @@ export default function Navigation() {
       borderColor="dark.border"
     >
       <Container maxW="container.xl">
-        <Flex h={NAV_HEIGHT} alignItems="center" justifyContent="space-between" gap={4}>
+        <Flex h={16} alignItems="center" justifyContent="space-between" gap={4}>
           <Link as={NextLink} href="/" _hover={{ textDecoration: "none" }} aria-label="Inicio">
             <Box position="relative" h="40px" w="180px">
               <Image

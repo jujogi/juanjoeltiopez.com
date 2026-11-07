@@ -68,7 +68,7 @@ export default function Footer() {
       mt={{ base: 20, md: 28 }}
     >
       <Container maxW="container.xl" py={{ base: 12, md: 16 }}>
-        <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={{ base: 10, lg: 12 }}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={{ base: 10, lg: 12 }}>
           <Box>
             <Box position="relative" h="40px" w="180px" mb={4}>
               <Image

@@ -224,7 +224,7 @@ export default function HomeView() {
         {/* Temas */}
         <Box as="section" aria-labelledby="temas" mb={{ base: 16, md: 24 }}>
           <SectionHeader eyebrow="Explora por tema" title="¿Qué quieres aprender hoy?" id="temas" />
-          <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={5}>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
             {categories.map(c => (
               <TopicCard key={c.slug} category={c} />
             ))}
