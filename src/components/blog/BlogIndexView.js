@@ -26,7 +26,6 @@ const CategoryChip = ({ href, label, count, isActive }) => (
     bg={isActive ? "accent.cyan" : "dark.surface"}
     color={isActive ? "water.950" : "dark.text"}
     _hover={{
-      borderColor: "accent.cyan",
       color: isActive ? "water.950" : "accent.cyan",
     }}
   >

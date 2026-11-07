@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/lib/blogData";
-import { getCategories } from "@/lib/categories";
+import { getCategories, MIN_POSTS_TO_INDEX } from "@/lib/categories";
 
 export default function sitemap() {
   const baseUrl = "https://juanjoeltiopez.com";
@@ -40,14 +40,16 @@ export default function sitemap() {
     },
   ];
 
-  const categoryUrls = getCategories().map(category => ({
-    url: `${baseUrl}${category.href}`,
-    lastModified: new Date(
-      getAllPosts().find(p => p.category === category.name)?.date || Date.now()
-    ),
-    changeFrequency: "weekly",
-    priority: 0.7,
-  }));
+  const categoryUrls = getCategories()
+    .filter(category => category.count >= MIN_POSTS_TO_INDEX)
+    .map(category => ({
+      url: `${baseUrl}${category.href}`,
+      lastModified: new Date(
+        getAllPosts().find(p => p.category === category.name)?.date || Date.now()
+      ),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    }));
 
   return [...staticUrls, ...categoryUrls, ...blogUrls];
 }

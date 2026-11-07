@@ -1,15 +1,15 @@
 export default `
-El tipo de agua que utilizas en tu acuario plantado puede marcar una diferencia enorme en el crecimiento de las plantas, la aparición de algas y la estabilidad general del sistema. ¿Agua de grifo u ósmosis inversa? Ambas opciones pueden funcionar, pero **no en todos los casos ni con los mismos resultados**.
+El tipo de agua que utilizas en tu acuario plantado puede marcar una diferencia enorme en el crecimiento de las plantas, la aparición de algas y la estabilidad general del sistema. ¿Agua de la llave u ósmosis inversa? Ambas opciones pueden funcionar, pero **no en todos los casos ni con los mismos resultados**.
 
 En este artículo analizamos las diferencias entre ambas, cuándo conviene usar cada una y por qué el agua de ósmosis se ha convertido en una herramienta clave para muchos acuarios plantados.
 
-## Agua de ósmosis inversa vs agua de grifo: ventajas y usos en el acuario
+## Agua de ósmosis inversa vs agua de la llave: ventajas y usos en el acuario
 
 La **ósmosis inversa** es un sistema de filtración capaz de eliminar hasta el 99% de las impurezas, proporcionando agua de alta pureza que, en condiciones óptimas, presenta **0-20 ppm de TDS, 0 °dGH y 0 °dKH**. Este tipo de agua es especialmente útil en acuarios plantados, ya que al partir de una base prácticamente pura se evita la introducción de elementos no deseados o posibles desequilibrios en los parámetros del sistema.
 
-En contraste, el agua del grifo puede contener elementos perjudiciales para plantas, peces o gambas, sin embargo, **su calidad depende en gran medida de la región**. Algunos acuaristas gozan de agua de grifo de excelente calidad, mientras que, para otros, utilizarla puede convertirse en el camino directo al desastre dentro del acuario.
+En contraste, el agua de la llave puede contener elementos perjudiciales para plantas, peces o gambas, sin embargo, **su calidad depende en gran medida de la región**. Algunos acuaristas gozan de agua de la llave de excelente calidad, mientras que, para otros, utilizarla puede convertirse en el camino directo al desastre dentro del acuario.
 
-El uso de una u otra opción depende directamente de la calidad del agua disponible y de las necesidades de las plantas. **Conocer tu agua** es, técnicamente, la mejor forma de determinar si es adecuada para el acuario. Los test de gota para acuarios ofrecen una visión general de las condiciones del agua del grifo, pero debemos señalar que siguen existiendo limitaciones, ya que resulta poco práctico para un aficionado contar con pruebas para todos los parámetros posibles. En estos casos, la experiencia previa de otros aficionados de la zona puede ser una referencia valiosa.
+El uso de una u otra opción depende directamente de la calidad del agua disponible y de las necesidades de las plantas. **Conocer tu agua** es, técnicamente, la mejor forma de determinar si es adecuada para el acuario. Los test de gota para acuarios ofrecen una visión general de las condiciones del agua de la llave, pero debemos señalar que siguen existiendo limitaciones, ya que resulta poco práctico para un aficionado contar con pruebas para todos los parámetros posibles. En estos casos, la experiencia previa de otros aficionados de la zona puede ser una referencia valiosa.
 
 ![Acuario plantado con agua de ósmosis](/images/acuario-osmosis.jpg)
 *Este acuario mantiene un GH de 5 y un KH entre 0 y 1. Con la inyección de CO2, el pH varía diariamente en 1.2 puntos.*
@@ -32,9 +32,9 @@ Por otro lado, aún persiste el antiguo mito de que un KH bajo provoca inestabil
 - El agua de tu zona presenta una calidad deficiente
 - Priorizas un **mayor control de los parámetros**
 
-### Usa agua del grifo cuando:
+### Usa agua de la llave cuando:
 
-- Tienes experiencia previa y buenos resultados con agua del grifo
+- Tienes experiencia previa y buenos resultados con agua de la llave
 - Mantienes plantas resistentes o que prefieren aguas duras
 - Mantienes peces que requieren **agua dura y alcalina**
 - El agua es apta incluso para plantas exigentes de agua blanda

@@ -22,6 +22,24 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      // "Agua de grifo" pasó a "agua de la llave" (español de Colombia)
+      {
+        source: "/blog/osmosis-inversa-vs-agua-grifo",
+        destination: "/blog/osmosis-inversa-vs-agua-de-la-llave",
+        permanent: true,
+      },
+      // El tema "Aquascaping" pasó a llamarse "Paisajismo acuático"
+      {
+        source: "/blog/categoria/aquascaping",
+        destination: "/blog/categoria/paisajismo-acuatico",
+        permanent: true,
+      },
+      // La página de guías se eliminó: el contenido vive en el blog
+      {
+        source: "/guias",
+        destination: "/blog",
+        permanent: true,
+      },
       // Tienda temporalmente desactivada
       {
         source: "/tienda/:slug*",

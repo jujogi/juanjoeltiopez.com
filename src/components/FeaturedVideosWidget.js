@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Box, VStack, HStack, Text, Heading, Button, SimpleGrid, Icon } from "@chakra-ui/react";
-import { FaTiktok, FaInstagram, FaExternalLinkAlt } from "react-icons/fa";
+import { Box, VStack, HStack, Text, Heading, SimpleGrid, Icon } from "@chakra-ui/react";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import PlatformToggle from "@/components/ui/PlatformToggle";
+import PlayBadge from "@/components/ui/PlayBadge";
 import { trackVideoClick } from "@/lib/gtm";
 
 const VideoCard = ({ video, platform }) => {
@@ -28,7 +30,6 @@ const VideoCard = ({ video, platform }) => {
       border="1px"
       borderColor="dark.border"
       _hover={{
-        borderColor: platform === "tiktok" ? "#000000" : "#E1306C",
         transform: "translateY(-4px)",
         transition: "all 0.3s",
       }}
@@ -38,7 +39,7 @@ const VideoCard = ({ video, platform }) => {
       onClick={handleVideoClick}
     >
       <VStack spacing={3} align="center" h="full" justify="space-between">
-        <Text fontSize="4xl">{video.emoji}</Text>
+        <PlayBadge size={12} />
         <VStack spacing={1} flex="1" justify="center">
           <Text
             fontSize="sm"
@@ -131,45 +132,11 @@ export default function FeaturedVideosWidget({ posts, count = 6 }) {
             Videos destacados
           </Heading>
 
-          {/* Platform Toggle */}
-          <HStack spacing={2}>
-            <Button
-              size="sm"
-              fontSize="xs"
-              bg={platform === "tiktok" ? "#000000" : "dark.surface"}
-              color="white"
-              border="1px"
-              borderColor={platform === "tiktok" ? "#000000" : "dark.border"}
-              _hover={{
-                bg: "#000000",
-                borderColor: "#000000",
-              }}
-              onClick={() => setPlatform("tiktok")}
-              leftIcon={<Icon as={FaTiktok} boxSize={3} />}
-            >
-              TikTok
-            </Button>
-            <Button
-              size="sm"
-              fontSize="xs"
-              bg={platform === "instagram" ? "#E1306C" : "dark.surface"}
-              color="white"
-              border="1px"
-              borderColor={platform === "instagram" ? "#E1306C" : "dark.border"}
-              _hover={{
-                bg: "#E1306C",
-                borderColor: "#E1306C",
-              }}
-              onClick={() => setPlatform("instagram")}
-              leftIcon={<Icon as={FaInstagram} boxSize={3} />}
-            >
-              Instagram
-            </Button>
-          </HStack>
+          <PlatformToggle value={platform} onChange={setPlatform} />
         </HStack>
 
         {/* Video Grid */}
-        <SimpleGrid columns={{ base: 2, sm: 3, md: 4, lg: 6 }} spacing={4} w="full">
+        <SimpleGrid columns={{ base: 2, md: 4, lg: 6 }} spacing={4} w="full">
           {availableVideos.map((video, index) => (
             <VideoCard key={index} video={video} platform={platform} />
           ))}

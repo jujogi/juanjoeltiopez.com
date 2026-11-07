@@ -38,7 +38,7 @@ export const blogPosts = [
     faq: [
       {
         q: "¿Cuántos litros necesita un pez Betta?",
-        a: "Mínimo 15 litros, idealmente 20 o más. Evita las peceras pequeñas tipo \"betteras\": un acuario largo le da espacio para nadar, explorar y ejercitarse.",
+        a: 'Mínimo 15 litros, idealmente 20 o más. Evita las peceras pequeñas tipo "betteras": un acuario largo le da espacio para nadar, explorar y ejercitarse.',
       },
       {
         q: "¿El Betta necesita calentador?",
@@ -203,7 +203,7 @@ export const blogPosts = [
     excerpt:
       "El paisajismo acuático no es solo una ventana a lo natural, sino una forma de transmitir y sentir el arte. Aprende a crear ecosistemas armoniosos y visualmente deslumbrantes.",
     content: paisajismoContent,
-    category: "Aquascaping",
+    category: "Paisajismo acuático",
     categoryColor: "purple",
     date: "2024-12-07T12:00:00Z",
     author: "JuanJo El Tío Pez",
@@ -221,10 +221,10 @@ export const blogPosts = [
   },
   {
     id: "7",
-    title: "Agua de ósmosis inversa vs. agua de grifo",
-    slug: "osmosis-inversa-vs-agua-grifo",
+    title: "Agua de ósmosis inversa vs. agua de la llave",
+    slug: "osmosis-inversa-vs-agua-de-la-llave",
     excerpt:
-      "El tipo de agua que utilizas en tu acuario plantado puede marcar una diferencia enorme. Descubre cuándo usar agua de ósmosis inversa y cuándo el agua de grifo es suficiente.",
+      "El tipo de agua que utilizas en tu acuario plantado puede marcar una diferencia enorme. Descubre cuándo usar agua de ósmosis inversa y cuándo el agua de la llave es suficiente.",
     content: osmosisContent,
     category: "Agua y Parámetros",
     categoryColor: "blue",

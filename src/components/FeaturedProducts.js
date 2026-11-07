@@ -27,7 +27,6 @@ const ProductCard = ({ product, isPriority = false }) => {
       border="1px"
       borderColor="dark.border"
       _hover={{
-        borderColor: "accent.cyan",
         transform: "translateY(-4px)",
         boxShadow: "0 8px 16px rgba(0, 255, 255, 0.1)",
       }}

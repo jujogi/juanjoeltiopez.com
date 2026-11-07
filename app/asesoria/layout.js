@@ -4,12 +4,12 @@ import { faq } from "@/lib/asesoriaData";
 
 export const metadata = {
   alternates: { canonical: "/asesoria" },
-  title: "Asesoría Personalizada para Acuarios Plantados | Consultoría Online",
-  description: `Asesoría virtual 1 a 1 para acuarios plantados en Colombia. Resuelve problemas de algas, plantas enfermas y parámetros inestables. Plan de acción personalizado + seguimiento 7 días. ${asesoria.price} por sesión.`,
+  title: "Asesorías personalizadas para tu acuario",
+  description: `Sesión virtual 1 a 1 para resolver algas, plantas enfermas o parámetros inestables. Plan de acción personalizado y 7 días de seguimiento. ${asesoria.price}.`,
   keywords:
     "asesoría acuarios plantados, consultoría acuarismo Colombia, asesoría acuario plantado Colombia, consultor acuarios plantados, problemas algas acuario, plantas acuario enfermas, parámetros inestables acuario, aquascaping Colombia, asesoría online acuarios, acuario plantado desde cero, mantenimiento acuario plantado, CO2 acuario plantas, peces enfermos acuario, diagnóstico acuario personalizado",
   openGraph: {
-    title: "Asesoría Personalizada para Acuarios Plantados | JuanJo El Tío Pez",
+    title: "Asesorías personalizadas para tu acuario | JuanJo El Tío Pez",
     description:
       "Sesiones virtuales 1 a 1 para resolver problemas en tu acuario plantado. Plan personalizado + seguimiento 7 días. Atiendo toda Colombia.",
     images: [
@@ -23,7 +23,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Asesoría Personalizada para Acuarios Plantados | JuanJo El Tío Pez",
+    title: "Asesorías personalizadas para tu acuario | JuanJo El Tío Pez",
     description: `Sesiones virtuales 1 a 1 para resolver problemas en tu acuario plantado. Plan personalizado + seguimiento 7 días. ${asesoria.price}.`,
     images: ["/images/concurso-2.jpg"],
   },

@@ -20,9 +20,8 @@ const CATEGORY_INFO = [
       "Adiós a las plantas de plástico: por qué usar plantas naturales, cuáles elegir si estás iniciando y cómo ayudan a la calidad del agua.",
   },
   {
-    name: "Aquascaping",
-    description:
-      "Paisajismo acuático: hardscape, composición y cómo crear acuarios que parecen paisajes naturales.",
+    name: "Paisajismo acuático",
+    description: "Hardscape, composición y cómo crear acuarios que parecen paisajes naturales.",
   },
   {
     name: "Agua y Parámetros",
@@ -39,6 +38,9 @@ const CATEGORY_INFO = [
 export const categorySlug = name => slugifyHeading(name);
 
 export const categoryHref = name => `/blog/categoria/${categorySlug(name)}`;
+
+// Un tema con un solo artículo es una página casi vacía: no se indexa ni va al sitemap
+export const MIN_POSTS_TO_INDEX = 2;
 
 // Solo devuelve categorías con al menos un artículo publicado
 export function getCategories() {

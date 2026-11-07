@@ -11,6 +11,9 @@ export const metadata = {
     title: "Guías y artículos sobre acuariofilia | JuanJo El Tío Pez",
     description:
       "Artículos sobre acuariofilia, cuidado de peces, gambitas, plantas acuáticas y todo lo que necesitas saber para mantener tu acuario saludable.",
+    images: [
+      { url: "/images/acuarios-plantados.jpg", alt: "Acuarios plantados de JuanJo El Tío Pez" },
+    ],
   },
 };
 

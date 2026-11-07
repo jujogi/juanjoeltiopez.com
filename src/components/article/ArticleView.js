@@ -13,7 +13,9 @@ import {
   Avatar,
   SimpleGrid,
   Divider,
+  Icon,
 } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import { getPostBySlug, getAllPosts } from "@/lib/blogData";
 import { formatDateLong } from "@/lib/dateUtils";
@@ -150,17 +152,42 @@ export default function ArticleView({ slug }) {
             <VStack align="stretch" spacing={10}>
               {post.careSheet && <CareSheet careSheet={post.careSheet} level={post.level} />}
 
-              {/* Índice en móvil */}
+              {/* Índice en móvil: plegado para que el artículo empiece pronto */}
               {headings.length >= 2 && (
                 <Box
+                  as="details"
                   display={{ base: "block", lg: "none" }}
                   bg="dark.bgAlt"
                   border="1px"
                   borderColor="dark.border"
                   rounded="xl"
-                  p={5}
+                  sx={{
+                    "&[open] .toc-chevron": { transform: "rotate(180deg)" },
+                    "& summary::-webkit-details-marker": { display: "none" },
+                  }}
                 >
-                  <TableOfContents headings={headings} />
+                  <Box
+                    as="summary"
+                    listStyleType="none"
+                    cursor="pointer"
+                    px={5}
+                    py={4}
+                    display="flex"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    fontSize="sm"
+                    fontWeight="600"
+                    color="white"
+                  >
+                    En este artículo · {headings.length} secciones
+                    <Icon
+                      as={ChevronDownIcon}
+                      className="toc-chevron"
+                      boxSize={5}
+                      transition="transform 0.2s"
+                    />
+                  </Box>
+                  <TableOfContents headings={headings} showTitle={false} px={5} pb={5} />
                 </Box>
               )}
 

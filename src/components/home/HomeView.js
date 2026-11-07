@@ -101,7 +101,7 @@ const Hero = ({ postCount }) => (
               variant="outline"
               borderColor="dark.border"
               color="white"
-              _hover={{ borderColor: "accent.cyan", color: "accent.cyan" }}
+              _hover={{ color: "accent.cyan" }}
               onClick={() => trackCtaClick("home_hero_asesoria")}
             >
               Asesorías personalizadas
@@ -173,8 +173,8 @@ const TopicCard = ({ category }) => (
     minH={{ base: "180px", md: "220px" }}
     display="flex"
     alignItems="flex-end"
-    transition="border-color 0.2s, transform 0.2s"
-    _hover={{ borderColor: "accent.cyan", transform: "translateY(-3px)" }}
+    transition="transform 0.2s"
+    _hover={{ transform: "translateY(-3px)" }}
     sx={{ "&:hover img": { transform: "scale(1.05)" } }}
   >
     {category.image && (

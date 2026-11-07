@@ -13,45 +13,15 @@ import {
   Icon,
   Flex,
 } from "@chakra-ui/react";
-import {
-  FaTiktok,
-  FaInstagram,
-  FaHeart,
-  FaBookOpen,
-  FaUsers,
-  FaVideo,
-  FaThumbsUp,
-  FaHandsHelping,
-} from "react-icons/fa";
+import { FaTiktok, FaInstagram, FaVideo, FaThumbsUp, FaHandsHelping } from "react-icons/fa";
 import { GiTropicalFish, GiTestTubes, GiSprout } from "react-icons/gi";
 import Image from "next/image";
 import Breadcrumbs from "@/components/article/Breadcrumbs";
 import AsesoriaBand from "@/components/AsesoriaBand";
-import { Eyebrow, SectionHeader } from "@/components/ui/SectionHeading";
+import { Eyebrow } from "@/components/ui/SectionHeading";
 import { socialProfiles, formatFollowers } from "@/lib/siteConfig";
 
 const SOCIAL_ICONS = { tiktok: FaTiktok, instagram: FaInstagram };
-
-const VALUES = [
-  {
-    icon: FaHeart,
-    title: "Acuariofilia responsable",
-    description:
-      "Creemos que cada pez merece una vida digna, saludable y sin sufrimiento. Promovemos prácticas que respeten la vida y el bienestar de cada ser acuático.",
-  },
-  {
-    icon: FaBookOpen,
-    title: "Educación",
-    description:
-      "Compartimos conocimientos prácticos, simples y aplicables. Nada de complicarse: explicamos lo que funciona, lo que no y por qué, para que cualquier persona pueda disfrutar un acuario vibrante.",
-  },
-  {
-    icon: FaUsers,
-    title: "Comunidad",
-    description:
-      "No solo hablamos de acuarios: construimos un espacio donde todos aprendemos, compartimos y nos apoyamos. Una comunidad cercana donde la pasión por los peces nos conecta.",
-  },
-];
 
 const TOPICS = [
   {
@@ -63,7 +33,8 @@ const TOPICS = [
   {
     icon: GiTestTubes,
     title: "Solución a problemas",
-    description: "Guías prácticas para enfrentar algas, parámetros inestables y otros retos del acuario.",
+    description:
+      "Guías prácticas para enfrentar algas, parámetros inestables y otros retos del acuario.",
   },
   {
     icon: FaVideo,
@@ -95,10 +66,10 @@ const Section = ({ children, ...props }) => (
   </Box>
 );
 
-const IconBadge = ({ icon, size = 11 }) => (
+const IconBadge = ({ icon }) => (
   <Flex
-    w={size}
-    h={size}
+    w={11}
+    h={11}
     flexShrink={0}
     rounded="xl"
     align="center"
@@ -106,13 +77,18 @@ const IconBadge = ({ icon, size = 11 }) => (
     bg="rgba(62, 207, 158, 0.12)"
     color="accent.cyan"
   >
-    <Icon as={icon} boxSize={size === 11 ? 5 : 6} />
+    <Icon as={icon} boxSize={5} />
   </Flex>
 );
 
 // 1. Portada: foto, nombre y redes
 const Hero = () => (
-  <Box as="section" aria-labelledby="sobre-mi-title" pt={{ base: 6, md: 10 }} pb={{ base: 16, md: 24 }}>
+  <Box
+    as="section"
+    aria-labelledby="sobre-mi-title"
+    pt={{ base: 6, md: 10 }}
+    pb={{ base: 16, md: 24 }}
+  >
     <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Sobre mí" }]} />
     <Grid
       templateColumns={{ base: "1fr", lg: "1.05fr 1fr" }}
@@ -159,7 +135,7 @@ const Hero = () => (
               h="auto"
               py={3}
               leftIcon={<Icon as={SOCIAL_ICONS[key]} boxSize={5} color="accent.cyan" />}
-              _hover={{ bg: "dark.surface", borderColor: "accent.cyan" }}
+              _hover={{ bg: "dark.surface" }}
             >
               <Box textAlign="left">
                 <Text fontSize="md" lineHeight="1.2">
@@ -198,7 +174,11 @@ const Hero = () => (
 // 2. Misión, junto a la foto del fishroom
 const Mission = () => (
   <Section aria-labelledby="mision">
-    <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 8, lg: 16 }} alignItems="center">
+    <Grid
+      templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+      gap={{ base: 8, lg: 16 }}
+      alignItems="center"
+    >
       <Box as="figure" m={0}>
         <Box
           position="relative"
@@ -244,40 +224,23 @@ const Mission = () => (
   </Section>
 );
 
-// 3. Valores
-const Values = () => (
-  <Section aria-labelledby="valores">
-    <SectionHeader eyebrow="Lo que nos mueve" title="¿Qué representamos?" id="valores" />
-    <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
-      {VALUES.map(value => (
-        <Box
-          key={value.title}
-          bg="dark.surface"
-          border="1px"
-          borderColor="dark.border"
-          rounded="2xl"
-          p={{ base: 6, md: 7 }}
-        >
-          <IconBadge icon={value.icon} size={12} />
-          <Heading as="h3" fontSize="xl" color="white" mt={5}>
-            {value.title}
-          </Heading>
-          <Text color="dark.textSecondary" mt={3} lineHeight="tall">
-            {value.description}
-          </Text>
-        </Box>
-      ))}
-    </SimpleGrid>
-  </Section>
-);
-
-// 4. Qué encontrarás: foto a un lado, temas al otro
+// 3. Qué encontrarás: foto a un lado, temas al otro
 const Topics = () => (
   <Section aria-labelledby="que-encontraras">
-    <Grid templateColumns={{ base: "1fr", lg: "1fr 1.6fr" }} gap={{ base: 8, lg: 12 }} alignItems="start">
+    <Grid
+      templateColumns={{ base: "1fr", lg: "1fr 1.6fr" }}
+      gap={{ base: 8, lg: 12 }}
+      alignItems="start"
+    >
       <Box position={{ lg: "sticky" }} top={{ lg: 24 }}>
         <Eyebrow>El contenido</Eyebrow>
-        <Heading as="h2" id="que-encontraras" fontSize={{ base: "2xl", md: "4xl" }} color="white" mt={2}>
+        <Heading
+          as="h2"
+          id="que-encontraras"
+          fontSize={{ base: "2xl", md: "4xl" }}
+          color="white"
+          mt={2}
+        >
           ¿Qué encontrarás aquí?
         </Heading>
         <Box
@@ -333,7 +296,6 @@ export default function SobreMiView() {
     <Container maxW="container.xl" pb={{ base: 16, md: 24 }}>
       <Hero />
       <Mission />
-      <Values />
       <Topics />
       <AsesoriaBand trackingId="sobre_mi_asesoria" />
     </Container>

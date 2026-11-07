@@ -26,7 +26,7 @@ export const metadata = {
     template: "%s | JuanJo El Tío Pez",
   },
   description:
-    "Guías prácticas de acuariofilia: peces Betta, gambitas, acuarios plantados, calidad del agua y mantenimiento. Aprende a cuidar tu acuario con JuanJo El Tío Pez, acuarista en Colombia.",
+    "Guías prácticas de acuariofilia: peces Betta, gambitas, acuarios plantados y calidad del agua. Aprende a cuidar tu acuario con JuanJo El Tío Pez.",
   keywords:
     "JuanJo El Tío Pez, acuarios Colombia, peces tropicales, gambarios, plantas acuáticas, cuidado de peces, acuarios naturales, acuarismo Colombia, consejos acuarios, vida acuática, peces de agua dulce, acuarios sostenibles, gambas, acuariofilia Colombia",
   authors: [{ name: SITE_NAME, url: mainAuthor.url }],

@@ -25,8 +25,8 @@ const cardStyles = {
   borderColor: "dark.border",
   rounded: "xl",
   overflow: "hidden",
-  transition: "border-color 0.2s, transform 0.2s",
-  _hover: { borderColor: "accent.cyan", transform: "translateY(-3px)" },
+  transition: "transform 0.2s",
+  _hover: { transform: "translateY(-3px)" },
   sx: { "&:hover img": { transform: "scale(1.03)" } },
 };
 

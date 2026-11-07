@@ -99,7 +99,7 @@ export default function Footer() {
                   border="1px"
                   borderColor="dark.border"
                   color="dark.text"
-                  _hover={{ borderColor: "accent.cyan", color: "accent.cyan" }}
+                  _hover={{ color: "accent.cyan" }}
                 >
                   <Icon as={SOCIAL_ICONS[key]} />
                 </Link>

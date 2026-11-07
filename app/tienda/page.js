@@ -54,7 +54,6 @@ const ProductCard = ({ product }) => {
       transition="all 0.3s"
       _hover={{
         transform: "translateY(-4px)",
-        borderColor: "accent.cyan",
         boxShadow: "0 4px 20px rgba(0, 255, 255, 0.1)",
       }}
     >

@@ -37,7 +37,7 @@ Los canister son filtros externos muy potentes, ideales para acuarios medianos y
 
 ## Reglas para el mantenimiento
 
-Distingue entre filtración **mecánica** y **biológica.** Las espumas atrapan partículas, mientras que los canutillos cerámicos, bio-bolas y otros medios porosos albergan la mayor parte de las bacterias benéficas. Las espumas pueden limpiarse con agua del grifo sin problema. ¡El material biológico **siempre** debe enjuagarse con agua del mismo acuario!
+Distingue entre filtración **mecánica** y **biológica.** Las espumas atrapan partículas, mientras que los canutillos cerámicos, bio-bolas y otros medios porosos albergan la mayor parte de las bacterias benéficas. Las espumas pueden limpiarse con agua de la llave sin problema. ¡El material biológico **siempre** debe enjuagarse con agua del mismo acuario!
 
 No realices el mantenimiento del filtro el mismo día que el del acuario. Ambos procesos generan estrés y pérdidas en la colonia bacteriana. Si haces el mantenimiento de tu acuario los domingos, limpia el filtro a mitad de semana. Espaciar estas tareas permite que las bacterias se recuperen y el ciclo del nitrógeno se mantenga estable.
 

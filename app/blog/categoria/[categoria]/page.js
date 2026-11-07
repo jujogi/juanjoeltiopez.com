@@ -1,7 +1,12 @@
 import { notFound } from "next/navigation";
 import BlogIndexView from "@/components/blog/BlogIndexView";
 import JsonLd from "@/components/JsonLd";
-import { getCategories, getCategoryBySlug, getPostsByCategory } from "@/lib/categories";
+import {
+  getCategories,
+  getCategoryBySlug,
+  getPostsByCategory,
+  MIN_POSTS_TO_INDEX,
+} from "@/lib/categories";
 import { SITE_URL } from "@/lib/siteConfig";
 
 export function generateStaticParams() {
@@ -20,6 +25,7 @@ export async function generateMetadata({ params }) {
     title,
     description: category.description,
     alternates: { canonical: `/blog/categoria/${category.slug}` },
+    ...(category.count < MIN_POSTS_TO_INDEX && { robots: { index: false, follow: true } }),
     openGraph: {
       title: `${title} | JuanJo El Tío Pez`,
       description: category.description,

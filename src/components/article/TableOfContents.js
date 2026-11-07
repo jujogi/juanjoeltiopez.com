@@ -4,7 +4,12 @@ import { useEffect, useState } from "react";
 import { Box, Heading, VStack, Link } from "@chakra-ui/react";
 
 // Tabla de contenidos con resaltado de la sección activa
-export default function TableOfContents({ headings, title = "En este artículo", ...props }) {
+export default function TableOfContents({
+  headings,
+  title = "En este artículo",
+  showTitle = true,
+  ...props
+}) {
   const [activeId, setActiveId] = useState(headings[0]?.id);
 
   useEffect(() => {
@@ -38,18 +43,20 @@ export default function TableOfContents({ headings, title = "En este artículo",
 
   return (
     <Box as="nav" aria-label={title} {...props}>
-      <Heading
-        as="p"
-        fontFamily="body"
-        fontSize="xs"
-        fontWeight="700"
-        textTransform="uppercase"
-        letterSpacing="0.1em"
-        color="dark.textMuted"
-        mb={3}
-      >
-        {title}
-      </Heading>
+      {showTitle && (
+        <Heading
+          as="p"
+          fontFamily="body"
+          fontSize="xs"
+          fontWeight="700"
+          textTransform="uppercase"
+          letterSpacing="0.1em"
+          color="dark.textMuted"
+          mb={3}
+        >
+          {title}
+        </Heading>
+      )}
       <VStack
         as="ol"
         align="stretch"

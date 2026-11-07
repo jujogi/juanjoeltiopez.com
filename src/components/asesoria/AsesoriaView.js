@@ -80,7 +80,9 @@ const Hero = () => (
     pb={{ base: 16, md: 24 }}
   >
     <Container maxW="container.xl">
-      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Asesorías personalizadas" }]} />
+      <Breadcrumbs
+        items={[{ label: "Inicio", href: "/" }, { label: "Asesorías personalizadas" }]}
+      />
       <Grid
         templateColumns={{ base: "minmax(0, 1fr)", lg: "1.1fr 1fr" }}
         gap={{ base: 10, lg: 16 }}
@@ -200,8 +202,6 @@ const SituationCard = ({ situation }) => (
     borderColor="dark.border"
     rounded="xl"
     p={{ base: 5, md: 6 }}
-    transition="border-color 0.2s"
-    _hover={{ borderColor: "accent.cyan" }}
   >
     <Flex
       w={12}
