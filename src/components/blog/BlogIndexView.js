@@ -83,23 +83,21 @@ export default function BlogIndexView({ categorySlug }) {
         </Text>
       </Box>
 
-      <Box as="nav" aria-label="Temas del blog" mb={{ base: 8, md: 12 }}>
-        <Wrap spacing={3}>
-          <WrapItem>
-            <CategoryChip href="/blog" label="Todas" count={allPosts.length} isActive={!category} />
-          </WrapItem>
-          {categories.map(c => (
-            <WrapItem key={c.slug}>
-              <CategoryChip
-                href={c.href}
-                label={c.name}
-                count={c.count}
-                isActive={category?.slug === c.slug}
-              />
+      {/* Los temas solo se listan en el índice general; dentro de un tema se vuelve con la ruta */}
+      {!category && (
+        <Box as="nav" aria-label="Temas del blog" mb={{ base: 8, md: 12 }}>
+          <Wrap spacing={3}>
+            <WrapItem>
+              <CategoryChip href="/blog" label="Todas" count={allPosts.length} isActive />
             </WrapItem>
-          ))}
-        </Wrap>
-      </Box>
+            {categories.map(c => (
+              <WrapItem key={c.slug}>
+                <CategoryChip href={c.href} label={c.name} count={c.count} />
+              </WrapItem>
+            ))}
+          </Wrap>
+        </Box>
+      )}
 
       {showFeatured && (
         <Box mb={{ base: 8, md: 10 }}>

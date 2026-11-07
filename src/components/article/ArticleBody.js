@@ -1,5 +1,6 @@
 "use client";
 
+import { Children } from "react";
 import { Box, Heading, HStack, Icon, Text } from "@chakra-ui/react";
 import { FaLightbulb, FaExclamationTriangle, FaInfoCircle } from "react-icons/fa";
 import NextLink from "next/link";
@@ -34,6 +35,13 @@ function getCalloutType(node) {
   }
   return null;
 }
+
+// El aviso ya muestra su ícono: se quita el emoji "⚠️" del inicio del texto para no repetirlo
+const WARNING_EMOJI = /^\s*\u26A0\uFE0F?\s*/;
+const stripWarningEmoji = children =>
+  Children.map(children, (child, i) =>
+    i === 0 && typeof child === "string" ? child.replace(WARNING_EMOJI, "") : child
+  );
 
 function isCaption(node) {
   return (
@@ -78,7 +86,7 @@ const markdownComponents = {
   h3: ({ children }) => <Heading as="h3">{children}</Heading>,
   p: ({ node, children }) => {
     const type = getCalloutType(node);
-    if (type) return <Callout type={type}>{children}</Callout>;
+    if (type) return <Callout type={type}>{stripWarningEmoji(children)}</Callout>;
     if (isCaption(node)) {
       return (
         <Text as="p" className="caption">
@@ -110,17 +118,17 @@ export const proseStyles = {
   "& p": { mb: 5 },
   "& .article-h2": {
     fontSize: { base: "2xl", md: "3xl" },
-    color: "white",
+    color: "accent.cyan",
     mt: { base: 10, md: 14 },
     mb: 4,
     lineHeight: 1.2,
     scrollMarginTop: "88px",
   },
   "& .article-h2 a": { color: "inherit", textDecoration: "none" },
-  "& .article-h2 a:hover": { color: "accent.cyan" },
+  "& .article-h2 a:hover": { color: "accent.cyanHover" },
   "& h3": {
     fontSize: { base: "xl", md: "2xl" },
-    color: "white",
+    color: "accent.cyan",
     mt: 8,
     mb: 3,
   },

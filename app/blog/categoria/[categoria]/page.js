@@ -20,10 +20,12 @@ export async function generateMetadata({ params }) {
   const category = getCategoryBySlug(categoria);
   if (!category) return { title: "Tema no encontrado" };
 
-  const title = `${category.name}: guías de acuariofilia`;
+  // Un tema nuevo sin seoTitle en categories.js usa el título genérico
+  const title = category.seoTitle ?? `${category.name}: guías de acuariofilia`;
   return {
     title,
     description: category.description,
+    ...(category.keywords && { keywords: category.keywords }),
     alternates: { canonical: `/blog/categoria/${category.slug}` },
     ...(category.count < MIN_POSTS_TO_INDEX && { robots: { index: false, follow: true } }),
     openGraph: {
@@ -31,6 +33,12 @@ export async function generateMetadata({ params }) {
       description: category.description,
       url: `${SITE_URL}/blog/categoria/${category.slug}`,
       ...(category.image && { images: [{ url: category.image, alt: category.name }] }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | JuanJo El Tío Pez`,
+      description: category.description,
+      ...(category.image && { images: [category.image] }),
     },
   };
 }

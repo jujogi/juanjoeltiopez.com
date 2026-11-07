@@ -80,9 +80,7 @@ const Hero = ({ postCount }) => (
             maxW="54ch"
             mb={8}
           >
-            Tips y guías prácticas sobre peces Betta, gambitas, acuarios plantados y calidad del
-            agua. Te comparto lo que me ha funcionado en mis acuarios (y lo que no), explicado
-            fácil.
+            Tips y guías prácticas sobre peces, gambitas y acuarios plantados.
           </Text>
           <Stack direction="row" wrap="wrap" spacing={3} mb={10}>
             <Button
@@ -175,7 +173,10 @@ const TopicCard = ({ category }) => (
     alignItems="flex-end"
     transition="transform 0.2s"
     _hover={{ transform: "translateY(-3px)" }}
-    sx={{ "&:hover img": { transform: "scale(1.05)" } }}
+    sx={{
+      "&:hover img": { transform: "scale(1.05)" },
+      "&:hover .topic-shade": { opacity: 0 },
+    }}
   >
     {category.image && (
       <Image
@@ -186,10 +187,19 @@ const TopicCard = ({ category }) => (
         style={{ objectFit: "cover", transition: "transform 0.4s ease" }}
       />
     )}
+    {/* Degradado fijo solo detrás del texto, para que siga legible */}
     <Box
       position="absolute"
       inset={0}
-      bgGradient="linear(to-t, rgba(4,20,26,0.97) 25%, rgba(4,20,26,0.6) 65%, rgba(4,20,26,0.15))"
+      bgGradient="linear(to-t, rgba(4,20,26,0.92) 0%, rgba(4,20,26,0.55) 40%, rgba(4,20,26,0) 70%)"
+    />
+    {/* Capa oscura que desaparece al pasar el mouse: la foto se ve brillante */}
+    <Box
+      className="topic-shade"
+      position="absolute"
+      inset={0}
+      bg="rgba(4,20,26,0.55)"
+      transition="opacity 0.3s ease"
     />
     <Box position="relative" p={5} w="full">
       <Heading as="h3" fontSize="xl" color="white" mb={1}>
