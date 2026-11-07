@@ -9,7 +9,7 @@ export default function BlogPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Guías y artículos de acuariofilia",
+    name: "Guías y artículos sobre acuariofilia",
     url: `${SITE_URL}/blog`,
     inLanguage: "es-CO",
     isPartOf: { "@id": `${SITE_URL}/#website` },

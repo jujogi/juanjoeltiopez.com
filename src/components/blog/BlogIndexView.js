@@ -75,7 +75,7 @@ export default function BlogIndexView({ categorySlug }) {
           color="white"
           mb={4}
         >
-          {category ? category.name : "Guías y artículos de acuariofilia"}
+          {category ? category.name : "Guías y artículos sobre acuariofilia"}
         </Heading>
         <Text fontSize={{ base: "lg", md: "xl" }} color="dark.textSecondary" lineHeight="1.6">
           {category
