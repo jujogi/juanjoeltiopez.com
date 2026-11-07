@@ -185,7 +185,7 @@ export default function ArticleView({ slug }) {
               {post.videoIds?.length > 0 && <RelatedVideosWidget videoIds={post.videoIds} />}
               <AsesoriaWidget />
               {/* El índice queda fijo mientras se lee el resto del artículo */}
-              <Box display={{ base: "none", lg: "block" }} position="sticky" top={6} pt={2}>
+              <Box display={{ base: "none", lg: "block" }} position="sticky" top={24} pt={2}>
                 <TableOfContents headings={headings} />
               </Box>
             </VStack>

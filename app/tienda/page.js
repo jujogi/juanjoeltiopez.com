@@ -179,7 +179,7 @@ export default function ShopPage() {
 
         {/* Sidebar */}
         <GridItem display={{ base: "none", lg: "block" }}>
-          <VStack spacing={6} position="sticky" top={4}>
+          <VStack spacing={6} position="sticky" top={20}>
             <AsesoriaWidget />
 
             <RelatedPostsWidget posts={posts.slice(0, 5)} title="Artículos destacados" />

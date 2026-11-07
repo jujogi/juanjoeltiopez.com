@@ -115,7 +115,7 @@ export const proseStyles = {
     mt: { base: 10, md: 14 },
     mb: 4,
     lineHeight: 1.2,
-    scrollMarginTop: "24px",
+    scrollMarginTop: "88px",
   },
   "& .article-h2 a": { color: "inherit", textDecoration: "none" },
   "& .article-h2 a:hover": { color: "accent.cyan" },

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import {
   Box,
   Flex,
@@ -9,142 +10,176 @@ import {
   IconButton,
   useDisclosure,
   Stack,
-  Badge,
+  Button,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { trackCtaClick } from "@/lib/gtm";
 
-const NavLink = ({ href, children, isActive, comingSoon, onClick }) => {
-  if (comingSoon) {
-    return (
-      <Box
-        px={3}
-        py={2}
-        fontSize="sm"
-        fontWeight="500"
-        color="dark.textSecondary"
-        cursor="not-allowed"
-        opacity={0.6}
-        display="flex"
-        alignItems="center"
-        gap={2}
-      >
-        {children}
-        <Badge colorScheme="gray" fontSize="8px" px={1.5} py={0.5}>
-          Próximamente
-        </Badge>
-      </Box>
-    );
-  }
+const LINKS = [
+  { name: "Inicio", href: "/" },
+  { name: "Blog", href: "/blog" },
+  { name: "Sobre mí", href: "/sobre-mi" },
+];
 
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
+const CTA = { name: "Asesoría 1 a 1", href: "/asesoria" };
+
+// Altura de la barra: los elementos sticky y los anclas la usan como referencia
+export const NAV_HEIGHT = 16;
+
+const NavLink = ({ href, children, isActive, isMobile, onClick }) => (
+  <Link
+    as={NextLink}
+    href={href}
+    onClick={onClick}
+    aria-current={isActive ? "page" : undefined}
+    position="relative"
+    px={isMobile ? 2 : 3}
+    py={isMobile ? 3 : 2}
+    fontSize={isMobile ? "lg" : "sm"}
+    fontWeight={isMobile ? "600" : "500"}
+    color={isActive ? "white" : "dark.textSecondary"}
+    borderBottom={isMobile ? "1px" : undefined}
+    borderColor="dark.border"
+    _hover={{ textDecoration: "none", color: "white" }}
+    _after={
+      isMobile
+        ? undefined
+        : {
+            content: '""',
+            position: "absolute",
+            left: 3,
+            right: 3,
+            bottom: "-1px",
+            h: "2px",
+            rounded: "full",
+            bg: "accent.cyan",
+            transform: isActive ? "scaleX(1)" : "scaleX(0)",
+            transition: "transform 0.2s ease",
+          }
     }
-  };
+  >
+    {children}
+  </Link>
+);
 
-  return (
-    <Link
-      as={NextLink}
-      px={3}
-      py={2}
-      fontSize="sm"
-      fontWeight="500"
-      color={isActive ? "accent.cyan" : "dark.text"}
-      _hover={{
-        textDecoration: "none",
-        color: "accent.cyan",
-      }}
-      href={href}
-      onClick={handleClick}
-    >
-      {children}
-    </Link>
-  );
-};
+const CtaButton = ({ onClick, ...props }) => (
+  <Button
+    as={NextLink}
+    href={CTA.href}
+    size="sm"
+    onClick={() => {
+      trackCtaClick("nav_asesoria");
+      onClick?.();
+    }}
+    {...props}
+  >
+    {CTA.name}
+  </Button>
+);
 
 export default function Navigation() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onToggle, onClose } = useDisclosure();
   const pathname = usePathname();
 
-  const Links = [
-    { name: "Inicio", href: "/" },
-    { name: "Asesorías", href: "/asesoria" },
-    { name: "Blog", href: "/blog" },
-    { name: "Acerca de", href: "/sobre-mi" },
-  ];
+  // Cierra el menú móvil al cambiar de página o con Escape
+  useEffect(() => {
+    onClose();
+  }, [pathname, onClose]);
 
-  const isActiveLink = href => {
-    if (href === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(href);
-  };
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = e => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen, onClose]);
+
+  const isActiveLink = href => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
-    <Box bg="dark.bgAlt" borderBottom="1px" borderColor="dark.border">
+    <Box
+      as="header"
+      position="sticky"
+      top={0}
+      zIndex="sticky"
+      bg="rgba(6, 23, 31, 0.85)"
+      backdropFilter="saturate(160%) blur(12px)"
+      borderBottom="1px"
+      borderColor="dark.border"
+    >
       <Container maxW="container.xl">
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          {/* Logo */}
-          <Link as={NextLink} href="/" _hover={{ textDecoration: "none" }} onClick={onClose}>
-            <Box position="relative" h="40px" w="180px" suppressHydrationWarning>
+        <Flex h={NAV_HEIGHT} alignItems="center" justifyContent="space-between" gap={4}>
+          <Link as={NextLink} href="/" _hover={{ textDecoration: "none" }} aria-label="Inicio">
+            <Box position="relative" h="40px" w="180px">
               <Image
                 src="/images/juanjoeltiopez.svg"
                 alt="JuanJo El Tío Pez"
                 fill
                 sizes="180px"
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain", objectPosition: "left center" }}
                 priority
               />
             </Box>
           </Link>
 
-          {/* Desktop Navigation */}
-          <HStack as={"nav"} spacing={1} display={{ base: "none", lg: "flex" }}>
-            {Links.map(link => (
-              <NavLink
-                key={link.name}
-                href={link.href}
-                isActive={isActiveLink(link.href)}
-                comingSoon={link.comingSoon}
-              >
-                {link.name}
-              </NavLink>
-            ))}
+          {/* Escritorio */}
+          <HStack spacing={6} display={{ base: "none", lg: "flex" }}>
+            <HStack as="nav" aria-label="Principal" spacing={1}>
+              {LINKS.map(link => (
+                <NavLink key={link.href} href={link.href} isActive={isActiveLink(link.href)}>
+                  {link.name}
+                </NavLink>
+              ))}
+            </HStack>
+            <CtaButton />
           </HStack>
 
-          {/* Mobile menu button */}
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ lg: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-            variant="ghost"
-          />
+          {/* Móvil */}
+          <HStack spacing={2} display={{ base: "flex", lg: "none" }}>
+            <CtaButton display={{ base: "none", md: "inline-flex" }} />
+            <IconButton
+              icon={isOpen ? <CloseIcon boxSize={3.5} /> : <HamburgerIcon boxSize={5} />}
+              aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={isOpen}
+              aria-controls="menu-movil"
+              onClick={onToggle}
+              variant="ghost"
+              color="white"
+            />
+          </HStack>
         </Flex>
+      </Container>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <Box pb={4} display={{ lg: "none" }}>
-            <Stack as={"nav"} spacing={2}>
-              {Links.map(link => (
+      {isOpen && (
+        <Box
+          id="menu-movil"
+          display={{ lg: "none" }}
+          borderTop="1px"
+          borderColor="dark.border"
+          bg="dark.bg"
+          maxH={`calc(100dvh - 64px)`}
+          overflowY="auto"
+        >
+          <Container maxW="container.xl" py={4}>
+            <Stack as="nav" aria-label="Principal" spacing={0}>
+              {LINKS.map(link => (
                 <NavLink
-                  key={link.name}
+                  key={link.href}
                   href={link.href}
                   isActive={isActiveLink(link.href)}
-                  comingSoon={link.comingSoon}
+                  isMobile
                   onClick={onClose}
                 >
                   {link.name}
                 </NavLink>
               ))}
             </Stack>
-          </Box>
-        )}
-      </Container>
+            <CtaButton size="lg" w="full" mt={6} onClick={onClose} />
+          </Container>
+        </Box>
+      )}
     </Box>
   );
 }

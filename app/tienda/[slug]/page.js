@@ -411,7 +411,7 @@ export default function ProductPage({ params }) {
 
         {/* Sidebar */}
         <GridItem>
-          <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={4} align="stretch">
+          <VStack spacing={6} position={{ base: "relative", lg: "sticky" }} top={20} align="stretch">
             {/* Price Card - Desktop Only */}
             <Box
               display={{ base: "none", lg: "block" }}
