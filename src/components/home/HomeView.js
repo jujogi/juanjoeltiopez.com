@@ -105,7 +105,7 @@ const Hero = ({ postCount }) => (
               _hover={{ borderColor: "accent.cyan", color: "accent.cyan" }}
               onClick={() => trackCtaClick("home_hero_asesoria")}
             >
-              Asesoría 1 a 1
+              Asesorías personalizadas
             </Button>
           </Stack>
           <HStack spacing={{ base: 6, md: 10 }} align="start">

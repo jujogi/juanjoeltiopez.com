@@ -24,7 +24,7 @@ const LINKS = [
   { name: "Sobre mí", href: "/sobre-mi" },
 ];
 
-const CTA = { name: "Asesoría 1 a 1", href: "/asesoria" };
+const CTA = { name: "Asesorías personalizadas", href: "/asesoria" };
 
 // Altura de la barra: los elementos sticky y los anclas la usan como referencia
 export const NAV_HEIGHT = 16;

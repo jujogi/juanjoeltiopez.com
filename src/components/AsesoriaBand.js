@@ -12,7 +12,7 @@ const FEATURES = [
   { icon: FaComments, text: "Seguimiento durante 7 días" },
 ];
 
-// Franja de llamada a la acción para la asesoría 1 a 1
+// Franja de llamada a la acción para las asesorías personalizadas
 export default function AsesoriaBand({ trackingId = "asesoria_band" }) {
   return (
     <Box
@@ -40,7 +40,7 @@ export default function AsesoriaBand({ trackingId = "asesoria_band" }) {
             color="accent.cyan"
             mb={3}
           >
-            Asesoría 1 a 1
+            Asesorías personalizadas
           </Text>
           <Heading
             as="h2"

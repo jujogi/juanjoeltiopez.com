@@ -120,7 +120,7 @@ export default function AuthorBox({ post }) {
             size="md"
             onClick={() => trackCtaClick("author_box_asesoria")}
           >
-            Agenda una asesoría 1 a 1
+            Agenda una asesoría personalizada
           </Button>
         </Box>
       </Flex>

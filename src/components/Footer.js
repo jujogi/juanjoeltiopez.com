@@ -138,7 +138,7 @@ export default function Footer() {
               <FooterLink href="https://ig.me/m/juanjoeltiopez" isExternal>
                 Escríbeme por Instagram
               </FooterLink>
-              <FooterLink href="/asesoria">Agenda una asesoría 1 a 1</FooterLink>
+              <FooterLink href="/asesoria">Agenda una asesoría personalizada</FooterLink>
             </VStack>
           </Box>
         </SimpleGrid>

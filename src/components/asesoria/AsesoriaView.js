@@ -80,7 +80,7 @@ const Hero = () => (
     pb={{ base: 16, md: 24 }}
   >
     <Container maxW="container.xl">
-      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Asesoría 1 a 1" }]} />
+      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Asesorías personalizadas" }]} />
       <Grid
         templateColumns={{ base: "1fr", lg: "1.1fr 1fr" }}
         gap={{ base: 10, lg: 16 }}
@@ -88,7 +88,7 @@ const Hero = () => (
         mt={{ base: 6, md: 10 }}
       >
         <GridItem>
-          <Eyebrow>Asesoría 1 a 1</Eyebrow>
+          <Eyebrow>Asesorías personalizadas</Eyebrow>
           <Heading
             as="h1"
             id="asesoria-title"
