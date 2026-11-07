@@ -10,6 +10,14 @@ Antes de comprar, vale la pena entender la diferencia entre los dos grandes grup
 - **Neocaridinas** (Cherry Red, Bloody Mary, Blue Velvet, Yellow Fire): robustas, toleran variaciones en los parámetros y se reproducen con facilidad. Ideales para empezar. Este artículo está dedicado a ellas.
 - **Caridinas** (Crystal Red, Taiwan Bee): requieren agua de ósmosis, un pH bajo y parámetros muy estables. Son más exigentes, pero sus colores y patrones no tienen comparación. Si quieres profundizar en estas últimas, [tengo un artículo dedicado a ellas](/blog/caridinas-gambario-montaje).
 
+| | Neocaridinas | Caridinas |
+|---|---|---|
+| Ejemplos | Cherry Red, Bloody Mary, Blue Velvet, Yellow Fire | Crystal Red, Taiwan Bee |
+| Nivel | Principiante | Avanzado |
+| pH | 6.5 – 7.5 | 5.5 – 6.5 |
+| GH | 6 – 8 | 4 – 6 |
+| Agua | Toleran variaciones en los parámetros | Ósmosis con sales para gambas y parámetros muy estables |
+
 ## Requisitos básicos del acuario
 
 **Tamaño del acuario:** Las gambitas necesitan un acuario de al menos **20 litros** para garantizar un espacio adecuado donde puedan moverse libremente. Cuanto más grande sea el acuario, más fácil será mantener los parámetros estables.

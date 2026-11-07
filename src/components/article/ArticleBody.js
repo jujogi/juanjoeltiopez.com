@@ -5,6 +5,7 @@ import { Box, Heading, HStack, Icon, Text } from "@chakra-ui/react";
 import { FaLightbulb, FaExclamationTriangle, FaInfoCircle } from "react-icons/fa";
 import NextLink from "next/link";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { slugifyHeading, childrenToText } from "@/lib/articleUtils";
 
 // Párrafos que empiezan con "**Tip:**", "**Importante:**", etc. se muestran como avisos
@@ -75,6 +76,18 @@ const Callout = ({ type, children }) => {
 };
 
 const markdownComponents = {
+  // Las tablas se desplazan dentro de su caja en móvil, sin ensanchar la página
+  table: ({ children }) => (
+    <Box
+      className="table-wrap"
+      overflowX="auto"
+      tabIndex={0}
+      role="region"
+      aria-label="Tabla comparativa"
+    >
+      <table>{children}</table>
+    </Box>
+  ),
   h2: ({ children }) => {
     const id = slugifyHeading(childrenToText(children));
     return (
@@ -177,10 +190,31 @@ export const proseStyles = {
     color: "accent.cyan",
   },
   "& hr": { borderColor: "dark.border", my: 10 },
+  "& .table-wrap": {
+    my: 6,
+    border: "1px solid",
+    borderColor: "dark.border",
+    rounded: "xl",
+  },
+  "& table": { w: "full", borderCollapse: "collapse", fontSize: "md", lineHeight: 1.5 },
+  "& th, & td": {
+    textAlign: "left",
+    verticalAlign: "top",
+    px: 4,
+    py: 3,
+    borderBottom: "1px solid",
+    borderColor: "dark.border",
+    minW: "140px",
+  },
+  "& th": { bg: "dark.surface", color: "white", fontWeight: "700" },
+  "& tbody tr:last-of-type td": { borderBottom: "none" },
+  "& td:first-of-type": { color: "white", fontWeight: "600" },
 };
 
 const Markdown = ({ children }) => (
-  <ReactMarkdown components={markdownComponents}>{children}</ReactMarkdown>
+  <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+    {children}
+  </ReactMarkdown>
 );
 
 export default function ArticleBody({ post }) {

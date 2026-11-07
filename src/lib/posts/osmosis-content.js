@@ -25,6 +25,13 @@ Por otro lado, aún persiste el antiguo mito de que un KH bajo provoca inestabil
 
 ## En resumen
 
+| | Agua de ósmosis inversa | Agua de la llave |
+|---|---|---|
+| Pureza | Elimina hasta el 99% de las impurezas: 0–20 ppm de TDS, 0 °dGH y 0 °dKH | Depende en gran medida de la región |
+| Minerales | Hay que remineralizarla para subir el GH | Trae los minerales de tu zona, que no controlas |
+| Control de parámetros | Total: ajustas el agua a lo que necesitan las plantas | Limitado a la calidad del agua disponible |
+| Ideal para | Plantas sensibles al KH alto y zonas con agua de mala calidad | Plantas resistentes y peces de agua dura y alcalina |
+
 ### Usa agua de ósmosis cuando:
 
 - Mantienes **plantas sensibles** a valores altos de KH

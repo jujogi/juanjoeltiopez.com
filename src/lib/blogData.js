@@ -73,6 +73,7 @@ export const blogPosts = [
     category: "Invertebrados",
     categoryColor: "orange",
     date: "2026-06-15T12:00:00Z",
+    updated: "2026-11-07T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "12 min lectura",
     image: "/images/gambitas.jpg",
@@ -125,10 +126,25 @@ export const blogPosts = [
     category: "Mantenimiento",
     categoryColor: "cyan",
     date: "2024-11-25T12:00:00Z",
+    updated: "2026-11-07T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "10 min lectura",
     image: "/images/mantenimientos.jpg",
     coverImage: "/images/mantenimientos-2.jpg",
+    faq: [
+      {
+        q: "¿Cada cuánto debo cambiar el agua del acuario?",
+        a: "Cada semana, entre un 20% y 30% del agua. Usa un sifón para aspirar los desechos del sustrato y acondiciona el agua de la llave antes de agregarla, para eliminar cloro, cloraminas y metales pesados.",
+      },
+      {
+        q: "¿Es normal que salgan algas en un acuario recién montado?",
+        a: "Sí, es completamente normal en las primeras semanas: las bacterias beneficiosas todavía se están estableciendo. Cuando el ecosistema madura y se equilibra, las algas desaparecen.",
+      },
+      {
+        q: "¿Puedo limpiar el filtro el mismo día del cambio de agua?",
+        a: "No es recomendable. Si limpias el filtro, el sustrato y haces un cambio de agua grande el mismo día, puedes eliminar demasiadas bacterias beneficiosas. Separa estas tareas.",
+      },
+    ],
     videoIds: [
       "mantenimiento-algas",
       "mantenimiento-betta",
@@ -147,10 +163,29 @@ export const blogPosts = [
     category: "Invertebrados",
     categoryColor: "orange",
     date: "2024-12-09T12:00:00Z",
+    updated: "2026-11-07T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "15 min lectura",
     image: "/images/gambario.jpg",
     coverImage: "/images/gambario.jpg",
+    faq: [
+      {
+        q: "¿Qué parámetros necesitan las caridinas?",
+        a: "Un pH entre 5.5 y 6.5, un GH entre 4 y 6 y un KH bajo. Lo mejor es usar agua de ósmosis con sales específicas para gambas, así controlas con exactitud el GH y los TDS.",
+      },
+      {
+        q: "¿Por qué usar sustrato activo en un gambario de caridinas?",
+        a: "Porque mantiene el pH ácido que necesitan y amortigua sus cambios. Además libera nutrientes de forma controlada para las plantas y los microorganismos del gambario.",
+      },
+      {
+        q: "¿Basta con ciclar el gambario antes de meter las caridinas?",
+        a: "No. Además del ciclo del nitrógeno, el gambario tiene que madurar: desarrollar microorganismos y biofilm, que son su alimento, y ganar estabilidad para resistir fluctuaciones.",
+      },
+      {
+        q: "¿Para qué sirve el bacteria powder?",
+        a: "Acelera el establecimiento del ecosistema: ayuda a colonizar el sustrato y el filtro con bacterias nitrificantes y favorece el biofilm, una fuente de alimento esencial para las caridinas.",
+      },
+    ],
     level: "Avanzado",
     careSheet: {
       species: "Caridina sp. (Crystal Red, Taiwan Bee)",
@@ -184,10 +219,29 @@ export const blogPosts = [
     category: "Plantas",
     categoryColor: "green",
     date: "2024-12-08T12:00:00Z",
+    updated: "2026-11-07T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "8 min lectura",
     image: "/images/acuario-plantado.jpg",
     coverImage: "/images/acuario-plantado-2.jpg",
+    faq: [
+      {
+        q: "¿Son mejores las plantas naturales que las de plástico?",
+        a: "Sí. Las naturales producen oxígeno, se alimentan de nitratos y fosfatos (lo que ayuda a evitar algas) y dan refugio a peces y gambas. Las de plástico no aportan nada al ecosistema y sus bordes rígidos pueden dañar las aletas.",
+      },
+      {
+        q: "¿Qué plantas acuáticas son fáciles para principiantes?",
+        a: "Las de bajo requerimiento, que crecen con luz moderada y sin CO2 presurizado: Anubias, Bucephalandras, helecho de Java, Cabomba, cola de zorro, Cryptocorynes y Echinodorus.",
+      },
+      {
+        q: "¿Puedo tener plantas naturales con arena o grava?",
+        a: "Sí. Si usas un sustrato inerte como arena o grava, compleméntalo con pastillas fertilizantes, que liberan nutrientes directamente en las raíces.",
+      },
+      {
+        q: "¿Cada cuánto debo abonar las plantas del acuario?",
+        a: "Una dosis semanal de abono líquido con NPK, después del mantenimiento y siguiendo las instrucciones del fabricante. Empieza abonando menos de lo que dice el frasco.",
+      },
+    ],
     videoIds: [
       "plantas-no-plastico",
       "plantas-montaje-betta",
@@ -206,10 +260,29 @@ export const blogPosts = [
     category: "Paisajismo acuático",
     categoryColor: "purple",
     date: "2024-12-07T12:00:00Z",
+    updated: "2026-11-07T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "12 min lectura",
     image: "/images/concurso.jpg",
     coverImage: "/images/concurso-2.jpg",
+    faq: [
+      {
+        q: "¿Qué filtro necesito para un acuario de paisajismo?",
+        a: "Uno que mueva al menos 5 veces el volumen del acuario por hora: para un acuario de 100 litros, mínimo 500 litros por hora. Que tenga buen espacio para material biológico.",
+      },
+      {
+        q: "¿Cuánto tarda en ciclar un acuario?",
+        a: "Entre 4 y 6 semanas. Puedes añadir unas hojuelas de alimento para generar amonio y bacterias comerciales para acelerar el proceso, midiendo amonio, nitritos y nitratos.",
+      },
+      {
+        q: "¿Qué es el ciclado a oscuras?",
+        a: "Ciclar el acuario sin iluminación para limitar el crecimiento de algas en las primeras semanas. Es muy útil con sustrato nutritivo. Al terminar, vuelve a introducir la luz de forma gradual.",
+      },
+      {
+        q: "¿La roca Seiryu sube el pH del acuario?",
+        a: "Sí, puede liberar carbonatos que aumentan la dureza y el pH del agua. Tenlo en cuenta si tus plantas o peces necesitan agua blanda.",
+      },
+    ],
     videoIds: [
       "paisajismo-primer-concurso",
       "paisajismo-hardscape",
@@ -229,12 +302,31 @@ export const blogPosts = [
     category: "Agua y Parámetros",
     categoryColor: "blue",
     date: "2025-12-17T12:00:00Z",
+    updated: "2026-11-07T12:00:00Z",
     author: "Jesús - Kleiner Fish Aquarium",
     authorLink: "https://www.instagram.com/kleineraquarium/",
     isGuestAuthor: true,
     readTime: "8 min lectura",
     image: "/images/osmosis-grifo.jpg",
     coverImage: "/images/osmosis-grifo.jpg",
+    faq: [
+      {
+        q: "¿El agua de ósmosis sirve sola para el acuario?",
+        a: "No. Casi no tiene minerales, así que hay que remineralizarla con productos comerciales o con sales como los sulfatos de calcio y magnesio, para subir el GH a niveles óptimos para las plantas.",
+      },
+      {
+        q: "¿Qué KH es ideal para un acuario plantado?",
+        a: "Muchas plantas se desarrollan mejor con un KH bajo, generalmente entre 0 y 3 °dKH. Subir el KH solo tiene sentido en casos específicos, como peces que necesitan agua dura.",
+      },
+      {
+        q: "¿Un KH bajo hace inestable el pH?",
+        a: "No, es un mito. En la práctica no existe esa inestabilidad ni un riesgo real cuando la fuente de CO2 es estable.",
+      },
+      {
+        q: "¿Cuándo es mejor usar agua de la llave?",
+        a: "Cuando el agua de tu zona es de buena calidad y te ha dado buenos resultados, tienes plantas resistentes o que prefieren aguas duras, o peces que requieren agua dura y alcalina.",
+      },
+    ],
     videoIds: ["osmosis-filtro"],
   },
   {
@@ -247,10 +339,29 @@ export const blogPosts = [
     category: "Mantenimiento",
     categoryColor: "cyan",
     date: "2026-01-01T12:00:00Z",
+    updated: "2026-11-07T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "8 min lectura",
     image: "/images/mantenimiento-filtro/filtro-cascada.jpg",
     coverImage: "/images/acuarios-paisajismo.jpg",
+    faq: [
+      {
+        q: "¿Cada cuánto se limpia un filtro de cascada?",
+        a: "La esponja o prefiltro, cada una o dos semanas. El material biológico puede esperar hasta un mes.",
+      },
+      {
+        q: "¿Cada cuánto se limpia un filtro canister?",
+        a: "Cada 2 meses es el tiempo ideal. Aprovecha para limpiar también las mangueras, que acumulan biofilm y suciedad.",
+      },
+      {
+        q: "¿Un filtro sucio puede causar algas?",
+        a: "Sí. Un filtro saturado no procesa bien los compuestos orgánicos: los nitratos y fosfatos se acumulan y se convierten en el fertilizante perfecto para algas filamentosas, puntos verdes y alga pincel.",
+      },
+      {
+        q: "¿Con qué agua se lava el material biológico del filtro?",
+        a: "Siempre con agua del mismo acuario, para no eliminar las bacterias. Las espumas, en cambio, sí puedes lavarlas con agua de la llave.",
+      },
+    ],
     videoIds: ["mantenimiento-filtro"],
     relatedPostSlugs: ["mantenimiento-acuario-rutina"],
   },
