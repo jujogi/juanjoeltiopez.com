@@ -439,10 +439,10 @@ export default function AsesoriaView() {
               <Icon as={FaShieldAlt} color="accent.sand" boxSize={5} mt={0.5} flexShrink={0} />
               <Text fontSize="sm" color="dark.textSecondary">
                 <Text as="span" color="white" fontWeight="600">
-                  Mi compromiso contigo:{" "}
+                  Mi compromiso:{" "}
                 </Text>
-                si al finalizar la sesión sientes que no aprendiste nada nuevo, te devuelvo tu
-                dinero. Sin preguntas, sin complicaciones.
+                Si al finalizar la sesión sientes que no aprendiste nada nuevo, y que son más las
+                dudas que las respuestas... te devolveré tu dinero.
               </Text>
             </HStack>
           </Box>

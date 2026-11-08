@@ -103,7 +103,7 @@ export const faq = [
   },
   {
     q: "¿Ofreces asesorías presenciales?",
-    a: "Por el momento solo ofrezco sesiones virtuales. Esto me permite atender a acuaristas de todo el país (y otros países) sin limitaciones geográficas, y mantener un precio accesible para todos.",
+    a: "¡Sí, si vives en Cali! Puedo ir a tu casa y revisar el acuario en persona. En ese caso el precio puede aumentar un poco por el desplazamiento: escríbeme por WhatsApp y lo coordinamos. Para el resto del país (y otros países) las sesiones son virtuales.",
   },
   {
     q: "¿Qué pasa si no puedo asistir a la sesión agendada?",
