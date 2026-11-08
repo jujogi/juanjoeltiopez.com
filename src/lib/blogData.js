@@ -16,6 +16,8 @@ export const blogPosts = [
     excerpt:
       "Los Betta son peces fascinantes pero necesitan un entorno adecuado para estar bien. ¡Recuerda que no es lo mismo vivir que sobrevivir!",
     content: bettaContent,
+    summary:
+      "Un Betta necesita un acuario de mínimo 15 litros (ideal 20 o más), calentador para mantener el agua entre 24 y 28 °C, un filtro de flujo suave y plantas naturales. Dale 2–3 pellets una o dos veces al día, con un día de ayuno a la semana, y cambia el 25–30 % del agua cada semana.",
     category: "Cuidado de Peces",
     categoryColor: "blue",
     date: "2024-12-01T12:00:00Z",
@@ -70,6 +72,8 @@ export const blogPosts = [
     excerpt:
       "Las gambitas de acuario son diminutas criaturas llenas de carácter y ternura que pueden ser un verdadero espectáculo en tu acuario.",
     content: gambitasContent,
+    summary:
+      "Si estás empezando, elige Neocaridinas: son mucho más resistentes que las Caridinas. Necesitan un acuario de al menos 20 litros, agua entre 24 y 26 °C, pH de 6.5 a 7.5 y GH de 6 a 8, un filtro de esponja que no succione las crías y musgos donde refugiarse. Aliméntalas cada 2 días y en muy poca cantidad.",
     category: "Invertebrados",
     categoryColor: "orange",
     date: "2026-06-15T12:00:00Z",
@@ -123,10 +127,12 @@ export const blogPosts = [
     excerpt:
       "Mantener un acuario es mucho más que solo alimentar peces. Requiere cuidados regulares para asegurar que el ecosistema acuático funcione de la mejor manera.",
     content: mantenimientoContent,
+    summary:
+      "Cambia entre el 20 y el 30 % del agua cada semana, sifoneando el sustrato y tratando el agua de la llave con acondicionador. Lava las esponjas del filtro con agua de la llave y el material biológico con agua del acuario, mide amonio, nitritos, nitratos y pH, y nunca limpies el filtro, el sustrato y el agua el mismo día.",
     category: "Mantenimiento",
     categoryColor: "cyan",
     date: "2024-11-25T12:00:00Z",
-    updated: "2026-11-07T12:00:00Z",
+    updated: "2026-11-08T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "10 min lectura",
     image: "/images/mantenimientos.jpg",
@@ -160,6 +166,8 @@ export const blogPosts = [
     excerpt:
       "Las caridinas son de las especies de gambas más fascinantes, pero requieren cuidados especiales. Aprende cómo montar un gambario ideal para ellas.",
     content: caridinasContent,
+    summary:
+      "Las caridinas necesitan agua de ósmosis remineralizada con sales para gambas, un GH entre 4 y 6, KH bajo y pH entre 5.5 y 6.5. Para lograrlo, monta el gambario con sustrato activo, sobrefiltración y bacteria powder, y dale tiempo de madurar: no basta con ciclarlo, también necesita biofilm.",
     category: "Invertebrados",
     categoryColor: "orange",
     date: "2024-12-09T12:00:00Z",
@@ -216,6 +224,8 @@ export const blogPosts = [
     excerpt:
       "Si aún decoras tu acuario con plantas de plástico, ¡es momento de hacer un cambio! Descubre por qué las plantas naturales son esenciales.",
     content: plantasContent,
+    summary:
+      "Las plantas naturales oxigenan el agua, absorben nitratos y fosfatos (lo que frena las algas) y dan refugio a peces y gambas; las de plástico no aportan nada. Para empezar necesitas una lámpara LED para acuarios plantados, abono líquido con NPK y plantas fáciles como anubias, helecho de Java o cryptocorynes.",
     category: "Plantas",
     categoryColor: "green",
     date: "2024-12-08T12:00:00Z",
@@ -257,6 +267,8 @@ export const blogPosts = [
     excerpt:
       "El paisajismo acuático no es solo una ventana a lo natural, sino una forma de transmitir y sentir el arte. Aprende a crear ecosistemas armoniosos y visualmente deslumbrantes.",
     content: paisajismoContent,
+    summary:
+      "Un acuario de paisajismo necesita un filtro que mueva al menos 5 veces su volumen por hora, iluminación para plantas y, según las plantas, CO2. Diseña el hardscape con rocas y troncos, cicla el acuario entre 4 y 6 semanas antes de meter peces y, al principio, cambia el 30–50 % del agua 2–3 veces por semana.",
     category: "Paisajismo acuático",
     categoryColor: "purple",
     date: "2024-12-07T12:00:00Z",
@@ -299,6 +311,8 @@ export const blogPosts = [
     excerpt:
       "El tipo de agua que utilizas en tu acuario plantado puede marcar una diferencia enorme. Descubre cuándo usar agua de ósmosis inversa y cuándo el agua de la llave es suficiente.",
     content: osmosisContent,
+    summary:
+      "El agua de ósmosis inversa elimina hasta el 99 % de las impurezas (0–20 ppm de TDS, 0 °dGH y 0 °dKH) y te da control total de los parámetros, pero hay que remineralizarla para subir el GH. El agua de la llave también puede servir, aunque su calidad depende mucho de la región: conoce tu agua antes de decidir.",
     category: "Agua y Parámetros",
     categoryColor: "blue",
     date: "2025-12-17T12:00:00Z",
@@ -336,10 +350,12 @@ export const blogPosts = [
     excerpt:
       "Muchos acuaristas son estrictos con el mantenimiento pero ignoran el filtro. Descubre por qué un filtro saturado es la causa principal de la aparición de algas en tu acuario.",
     content: filtroMantenimientoContent,
+    summary:
+      "En un filtro de cascada, enjuaga la esponja cada una o dos semanas y el material biológico cada mes; un filtro canister se limpia cada 2 meses. El material biológico siempre se enjuaga con agua del mismo acuario, y nunca el mismo día que el mantenimiento del acuario. Un filtro sucio acumula nitratos y fosfatos que alimentan las algas.",
     category: "Mantenimiento",
     categoryColor: "cyan",
     date: "2026-01-01T12:00:00Z",
-    updated: "2026-11-07T12:00:00Z",
+    updated: "2026-11-08T12:00:00Z",
     author: "JuanJo El Tío Pez",
     readTime: "8 min lectura",
     image: "/images/mantenimiento-filtro/filtro-cascada.jpg",

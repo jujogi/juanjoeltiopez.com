@@ -38,8 +38,8 @@ import { getWhatsAppAsesoriaLink } from "@/lib/whatsappUtils";
 
 const QUICK_FACTS = [
   { icon: FaVideo, title: "100% Virtual" },
-  { icon: FaClock, title: "60-80 minutos" },
-  { icon: FaCheckCircle, title: "7 días de seguimiento" },
+  { icon: FaClock, title: asesoria.duration },
+  { icon: FaCheckCircle, title: asesoria.followUp },
 ];
 
 // Botón verde de WhatsApp: se mantiene el color de la marca para que se reconozca
@@ -423,7 +423,7 @@ export default function AsesoriaView() {
               {asesoria.price}
             </Text>
             <Text color="dark.textSecondary" mt={3} mb={8}>
-              por sesión virtual · Pago único. Incluye 7 días de seguimiento.
+              por sesión virtual · Pago único. Incluye {asesoria.followUp}.
             </Text>
             <WhatsAppButton trackingId="agendar_sesion_instagram" />
             <HStack

@@ -1,44 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import { Box, VStack, HStack, Text, Heading, List, ListItem, Icon } from "@chakra-ui/react";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import PlatformToggle from "@/components/ui/PlatformToggle";
-import PlayBadge from "@/components/ui/PlayBadge";
+import { Box, VStack, HStack, Text, Heading, List, ListItem, Button, Icon } from "@chakra-ui/react";
+import { FaTiktok, FaInstagram } from "react-icons/fa";
 import { getVideosByIds } from "@/lib/videosData";
+import { trackVideoClick } from "@/lib/gtm";
 
-const VideoItem = ({ name, url, platform }) => {
-  const link = platform === "tiktok" ? url.tiktok : url.instagram;
+const PLATFORMS = [
+  { key: "tiktok", label: "TikTok", icon: FaTiktok },
+  { key: "instagram", label: "Instagram", icon: FaInstagram },
+];
 
-  return (
-    <ListItem>
-      <HStack
-        as="a"
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        spacing={3}
-        p={3}
-        bg="dark.bgAlt"
-        rounded="md"
-        border="1px"
-        borderColor="dark.border"
-        transition="background 0.2s"
-        _hover={{ bg: "dark.surfaceRaised" }}
-      >
-        <PlayBadge />
-        <Text flex="1" fontSize="xs" color="white" fontWeight="500" lineHeight="1.4">
-          {name}
-        </Text>
-        <Icon as={FaExternalLinkAlt} color="dark.textMuted" boxSize={3} flexShrink={0} />
-      </HStack>
-    </ListItem>
-  );
-};
+// Cada video muestra sus dos enlaces, sin selector oculto: se ve a dónde lleva cada botón
+const VideoItem = ({ video }) => (
+  <ListItem bg="dark.bgAlt" rounded="md" border="1px" borderColor="dark.border" p={3}>
+    <Text fontSize="sm" color="white" fontWeight="500" lineHeight="1.4" mb={2.5}>
+      {video.name}
+    </Text>
+    <HStack spacing={2}>
+      {PLATFORMS.filter(p => video.url?.[p.key]).map(p => (
+        <Button
+          key={p.key}
+          as="a"
+          href={video.url[p.key]}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="xs"
+          variant="outline"
+          borderColor="dark.border"
+          color="dark.textSecondary"
+          _hover={{ color: "white", bg: "dark.surfaceRaised" }}
+          leftIcon={<Icon as={p.icon} boxSize={3} />}
+          aria-label={`Ver "${video.name}" en ${p.label}`}
+          onClick={() => trackVideoClick(video.name)}
+        >
+          {p.label}
+        </Button>
+      ))}
+    </HStack>
+  </ListItem>
+);
 
 export default function RelatedVideosWidget({ videos, videoIds }) {
-  const [platform, setPlatform] = useState("tiktok");
-
   // Si se pasan videoIds, buscar los videos
   const videosList = videoIds ? getVideosByIds(videoIds) : videos;
 
@@ -54,21 +56,13 @@ export default function RelatedVideosWidget({ videos, videoIds }) {
             Videos relacionados
           </Heading>
           <Text fontSize="xs" color="dark.textSecondary" mt={1}>
-            Selecciona la plataforma de tu preferencia
+            Míralos en TikTok o Instagram
           </Text>
         </Box>
 
-        <PlatformToggle value={platform} onChange={setPlatform} w="full" />
-
-        {/* Video List */}
         <List spacing={2} w="full">
           {videosList.map((video, index) => (
-            <VideoItem
-              key={video.id || index}
-              name={video.name}
-              url={video.url}
-              platform={platform}
-            />
+            <VideoItem key={video.id || index} video={video} />
           ))}
         </List>
       </VStack>

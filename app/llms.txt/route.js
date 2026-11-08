@@ -1,6 +1,13 @@
 import { getAllPosts } from "@/lib/blogData";
 import { getCategories, MIN_POSTS_TO_INDEX } from "@/lib/categories";
-import { SITE_URL, SITE_NAME, asesoria, mainAuthor, socialProfiles } from "@/lib/siteConfig";
+import {
+  SITE_URL,
+  SITE_NAME,
+  asesoria,
+  contestsText,
+  mainAuthor,
+  socialProfiles,
+} from "@/lib/siteConfig";
 
 // Resumen del sitio para asistentes de IA (formato llmstxt.org), generado con los mismos datos del sitio
 export const dynamic = "force-static";
@@ -30,7 +37,7 @@ ${topics.map(c => `- [${c.name}](${SITE_URL}${c.href}): ${c.description}`).join(
 
 ## Sobre ${SITE_NAME}
 
-- [Sobre mí](${SITE_URL}/sobre-mi): quién es ${SITE_NAME} y su misión de promover una acuariofilia responsable.
+- [Sobre mí](${SITE_URL}/sobre-mi): quién es ${SITE_NAME} y su misión de promover una acuariofilia responsable. Acuarista desde 2020; concursos: ${contestsText}.
 ${social}
 `;
 

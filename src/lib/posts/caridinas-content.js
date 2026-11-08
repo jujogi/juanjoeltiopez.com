@@ -3,7 +3,7 @@ Las caridinas son unas de las especies de gambas más fascinantes que puedes ten
 
 A continuación, te comparto el proceso que estoy siguiendo para montar este gambario, el cual ha causado tanto revuelo en redes 😅.
 
-## Caridinas y sus necesidades
+## ¿Qué parámetros de agua necesitan las caridinas?
 
 Las caridinas son especialmente sensibles a los cambios bruscos en los parámetros del agua:
 
@@ -12,7 +12,7 @@ Las caridinas son especialmente sensibles a los cambios bruscos en los parámetr
 **Agua de ósmosis y sales especiales:** Es importante utilizar agua de ósmosis, ya que está libre de impurezas y minerales que pueden alterar los parámetros del agua. Para aportar los minerales que sí necesitamos, haremos uso de sales específicas para gambas, logrando así un control exacto sobre la **dureza general (GH)** y los niveles de **TDS (sólidos disueltos totales)**. Para las caridinas te recomiendo un GH entre **4 y 6**.
 
 
-## Sustrato activo
+## ¿Por qué usar sustrato activo en un gambario?
 
 El sustrato nutritivo o activo es una pieza fundamental en el montaje de un gambario para caridinas. Este tipo de sustrato tiene la capacidad de:
 
@@ -31,7 +31,7 @@ Una sobrefiltración es muy importante para garantizar un agua cristalina y libr
 
 Estos materiales ofrecen un amplio espacio para el desarrollo de **colonias de bacterias beneficiosas**, las cuales van a descomponer todos los desechos orgánicos, llevándolos a su más mínima expresión: los **nitratos**.
 
-## Uso de Bacteria Powder
+## ¿Para qué sirve el bacteria powder?
 
 **Bacteria powder** es un suplemento muy útil en el montaje de gambarios, ya que ayuda a acelerar el establecimiento del ecosistema biológico. El powder ayudará a:
 

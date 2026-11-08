@@ -37,7 +37,7 @@ export default function AsesoriaWidget() {
             <HStack spacing={2}>
               <Icon as={FaVideo} color="accent.cyan" boxSize={4} />
               <Text color="dark.text" fontSize="sm">
-                Sesión virtual de 60-80 min
+                Sesión virtual de {asesoria.durationShort}
               </Text>
             </HStack>
             <HStack spacing={2}>
@@ -49,7 +49,7 @@ export default function AsesoriaWidget() {
             <HStack spacing={2}>
               <Icon as={FaCheckCircle} color="accent.cyan" boxSize={4} />
               <Text color="dark.text" fontSize="sm">
-                Seguimiento durante 7 días
+                Seguimiento durante {asesoria.followUpDays} días
               </Text>
             </HStack>
           </VStack>

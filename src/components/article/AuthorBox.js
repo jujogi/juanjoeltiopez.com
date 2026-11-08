@@ -3,7 +3,13 @@
 import { Box, Flex, Avatar, Heading, Text, HStack, Button, Link, Icon } from "@chakra-ui/react";
 import { FaTiktok, FaInstagram } from "react-icons/fa";
 import NextLink from "next/link";
-import { mainAuthor, socialProfiles, totalFollowers, formatFollowers } from "@/lib/siteConfig";
+import {
+  mainAuthor,
+  contestsText,
+  socialProfiles,
+  totalFollowers,
+  formatFollowers,
+} from "@/lib/siteConfig";
 import { trackCtaClick } from "@/lib/gtm";
 
 const SOCIAL_ICONS = { tiktok: FaTiktok, instagram: FaInstagram };
@@ -92,6 +98,9 @@ export default function AuthorBox({ post }) {
           </Heading>
           <Text color="dark.textSecondary" lineHeight="tall" mb={4}>
             {mainAuthor.shortBio}
+          </Text>
+          <Text fontSize="sm" color="dark.textMuted" lineHeight="tall" mb={4}>
+            Concursos: {contestsText}
           </Text>
           <HStack spacing={4} mb={5} flexWrap="wrap">
             <Text fontSize="sm" color="dark.text" fontWeight="600">

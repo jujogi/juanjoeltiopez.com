@@ -3,7 +3,7 @@ El paisajismo acuático no es solo una ventana a lo natural, sino una forma de t
 
 No hay mejor forma de diseñar un acuario de **paisajismo acuático** que buscando inspiración en otros proyectos. Observa acuarios realizados por aficionados o profesionales y como no, explora la naturaleza misma. Los paisajes de nuestro día a día, como montañas, ríos y bosques, son fuentes inagotables de ideas.
 
-## Equipamiento: ¡La base del éxito!
+## ¿Qué equipo necesita un acuario de paisajismo?
 
 Para un acuario de **paisajismo acuático**, tener los equipos adecuados es crucial.
 
@@ -35,7 +35,7 @@ El hardscape es la **estructura principal** de tu acuario y define la estética 
 - Algunas rocas, como la **Seiryu**, pueden alterar los parámetros del agua al liberar carbonatos que aumentan la dureza y el pH.
 - Los troncos suelen liberar **taninos**, los cuales tiñen el agua de un color marrón. Aunque este efecto es natural y puede ser beneficioso para ciertos peces, si prefieres agua cristalina, puedes solucionarlo utilizando productos como Purigen en tu sistema de filtración.
 
-## Ciclado del acuario
+## ¿Cuánto tarda en ciclarse un acuario?
 
 Antes de introducir peces, es esencial **ciclar el acuario**. Este proceso permite que las **bacterias benéficas** se establezcan en el filtro y sustrato, asegurando que los compuestos tóxicos como el amonio y nitritos sean oxidados y transformados en nitratos.
 
@@ -45,7 +45,7 @@ El ciclado puede tardar **entre 4 y 6 semanas**. Durante este tiempo, puedes añ
 
 Un método muy utilizado para evitar la aparición de algas en las fases iniciales es el ciclado a oscuras. Durante este proceso, mantén el acuario sin iluminación para limitar el crecimiento de algas. Esto es especialmente útil cuando utilizas sustrato nutritivo, que puede liberar nutrientes al agua durante las primeras semanas. Una vez completado el ciclado, puedes comenzar a introducir luz de forma gradual.
 
-## Plantas acuáticas
+## ¿Qué plantas poner en cada zona del acuario?
 
 La elección de plantas dependerá del diseño y de las condiciones de tu acuario. Aquí tienes algunas opciones populares:
 

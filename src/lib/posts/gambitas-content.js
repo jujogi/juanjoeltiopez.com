@@ -18,7 +18,7 @@ Antes de comprar, vale la pena entender la diferencia entre los dos grandes grup
 | GH | 6 – 8 | 4 – 6 |
 | Agua | Toleran variaciones en los parámetros | Ósmosis con sales para gambas y parámetros muy estables |
 
-## Requisitos básicos del acuario
+## ¿Qué acuario necesitan las gambitas?
 
 **Tamaño del acuario:** Las gambitas necesitan un acuario de al menos **20 litros** para garantizar un espacio adecuado donde puedan moverse libremente. Cuanto más grande sea el acuario, más fácil será mantener los parámetros estables.
 
@@ -35,7 +35,7 @@ La decoración del acuario no es solo estética, es fundamental para el bienesta
 ![Musgos y anubias en gambario](/images/gambas-consejos/musgos-anubias-gambas.jpg)
 *Musgos como el musgo de Java y plantas epífitas como anubias crean el ambiente ideal para tus gambitas, ofreciendo refugio y zonas de pastoreo*
 
-## Alimentación balanceada
+## ¿Qué comen las gambitas y cada cuánto alimentarlas?
 
 La alimentación es clave para mantener gambas saludables y con colores vibrantes. Alimenta a tus gambitas con una dieta variada que incluya:
 
@@ -54,7 +54,7 @@ Es importante no sobrealimentar. Las gambitas prefieren alimentarse del biofilm 
 **Cambios de agua:** Realiza cambios de agua regulares de **10-20%** semanalmente. Utiliza acondicionadores para eliminar cloro y otras sustancias nocivas para tus camarones y peces. Los cambios bruscos de parámetros pueden estresar a tus gambitas. Tómate tu tiempo a la hora de rellenar... sin afanes.
 
 
-## Compañeros de tanque
+## ¿Con qué peces pueden vivir las gambitas?
 
 **Compatibilidad:** Siempre voy a recomendar tener a tus gambas solas, es la única forma de verlas en su estado natural, sin estrés alguno. Sin embargo, podrías tenerlas en un acuario comunitario con peces pequeños o pacíficos. Algunos buenos compañeros  podrían ser **caracoles** y peces como **Otocinclus** o **rasboras**.
 
