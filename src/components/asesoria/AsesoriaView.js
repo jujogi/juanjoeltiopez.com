@@ -154,6 +154,7 @@ const Hero = () => (
               alt="JuanJo El Tío Pez en el computador, con sus acuarios plantados al fondo"
               fill
               priority
+              fetchPriority="high"
               sizes="(max-width: 960px) 100vw, 560px"
               style={{ objectFit: "cover" }}
             />

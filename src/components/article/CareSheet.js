@@ -78,11 +78,13 @@ export default function CareSheet({ careSheet, level }) {
 
       <SimpleGrid as="dl" columns={{ base: 2, md: 3 }} spacing={0}>
         {careSheet.items.map(item => (
-          <HStack
+          // Dentro de <dl> cada grupo solo puede tener <dt> y <dd>: el ícono va dentro del <dt>
+          <Box
             key={item.label}
-            align="start"
-            spacing={3}
-            p={{ base: 4, md: 5 }}
+            position="relative"
+            py={{ base: 4, md: 5 }}
+            pr={{ base: 4, md: 5 }}
+            pl={{ base: 10, md: 12 }}
             borderRight="1px"
             borderBottom="1px"
             borderColor="dark.border"
@@ -90,28 +92,28 @@ export default function CareSheet({ careSheet, level }) {
             mr="-1px"
             mb="-1px"
           >
-            <Icon
-              as={ICONS[item.key] || FaTint}
-              color="accent.cyan"
-              boxSize={4}
-              mt={1}
-              flexShrink={0}
-            />
-            <Box>
-              <Text
-                as="dt"
-                fontSize="xs"
-                color="dark.textMuted"
-                textTransform="uppercase"
-                letterSpacing="0.06em"
-              >
-                {item.label}
-              </Text>
-              <Text as="dd" fontSize={{ base: "sm", md: "md" }} fontWeight="600" color="white">
-                {item.value}
-              </Text>
-            </Box>
-          </HStack>
+            <Text
+              as="dt"
+              fontSize="xs"
+              color="dark.textMuted"
+              textTransform="uppercase"
+              letterSpacing="0.06em"
+            >
+              <Icon
+                as={ICONS[item.key] || FaTint}
+                aria-hidden="true"
+                color="accent.cyan"
+                boxSize={4}
+                position="absolute"
+                left={{ base: 4, md: 5 }}
+                top={{ base: 5, md: 6 }}
+              />
+              {item.label}
+            </Text>
+            <Text as="dd" fontSize={{ base: "sm", md: "md" }} fontWeight="600" color="white">
+              {item.value}
+            </Text>
+          </Box>
         ))}
       </SimpleGrid>
     </Box>

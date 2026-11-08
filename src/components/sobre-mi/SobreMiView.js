@@ -165,6 +165,7 @@ const Hero = () => (
           alt="JuanJo El Tío Pez explicando un acuario plantado en una charla"
           fill
           priority
+          fetchPriority="high"
           sizes="(max-width: 1024px) 100vw, 50vw"
           style={{ objectFit: "cover", objectPosition: "30% center" }}
         />

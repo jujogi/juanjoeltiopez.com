@@ -127,6 +127,7 @@ const Hero = ({ postCount }) => (
               alt="Tres acuarios plantados con paisajismo natural montados por JuanJo El Tío Pez"
               fill
               priority
+              fetchPriority="high"
               sizes="(max-width: 960px) 100vw, 600px"
               style={{ objectFit: "cover", objectPosition: "center 80%" }}
             />
@@ -144,7 +145,7 @@ const Hero = ({ postCount }) => (
             spacing={3}
             boxShadow="0 12px 30px rgba(0, 0, 0, 0.45)"
           >
-            <Avatar src={mainAuthor.image} name={mainAuthor.name} size="sm" />
+            <Avatar src={mainAuthor.avatar} name={mainAuthor.name} size="sm" />
             <Box>
               <Text fontSize="sm" fontWeight="600" color="white" lineHeight="1.2">
                 {mainAuthor.name}
