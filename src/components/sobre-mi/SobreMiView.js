@@ -267,8 +267,8 @@ const Topics = () => (
           display={{ base: "none", lg: "block" }}
         >
           <Image
-            src="/images/mantenimientos.jpg"
-            alt="Poda de plantas en un acuario plantado durante el mantenimiento"
+            src="/images/juanjo-sobre-mi.jpg"
+            alt="JuanJo El Tío Pez sonriendo, con una camiseta de acuariofilia"
             fill
             sizes="35vw"
             style={{ objectFit: "cover" }}

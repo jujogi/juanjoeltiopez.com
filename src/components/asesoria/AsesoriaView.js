@@ -150,12 +150,12 @@ const Hero = () => (
             boxShadow="0 30px 80px -20px rgba(0, 0, 0, 0.6)"
           >
             <Image
-              src={mainAuthor.image}
-              alt="JuanJo El Tío Pez explicando un acuario plantado"
+              src="/images/juanjo-asesoria.jpg"
+              alt="JuanJo El Tío Pez en el computador, con sus acuarios plantados al fondo"
               fill
               priority
               sizes="(max-width: 960px) 100vw, 560px"
-              style={{ objectFit: "cover", objectPosition: "30% center" }}
+              style={{ objectFit: "cover" }}
             />
           </Box>
           <Box
