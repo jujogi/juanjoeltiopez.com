@@ -7,9 +7,9 @@ import { trackCtaClick } from "@/lib/gtm";
 import { asesoria } from "@/lib/siteConfig";
 
 const FEATURES = [
-  { icon: FaVideo, text: "Sesión virtual de 60–80 min" },
+  { icon: FaVideo, text: `Sesión virtual de ${asesoria.durationShort}` },
   { icon: FaClipboardList, text: "Plan de acción personalizado" },
-  { icon: FaComments, text: "Seguimiento durante 7 días" },
+  { icon: FaComments, text: `Seguimiento durante ${asesoria.followUpDays} días` },
 ];
 
 // Franja de llamada a la acción para las asesorías personalizadas

@@ -3,7 +3,7 @@ El filtro de tu acuario es mucho más que un simple accesorio. Es su corazón, e
 
 Entender cómo mantener tu filtro correctamente es una de las responsabilidades más importantes como acuarista. Con el enfoque adecuado, el mantenimiento es sencillo y los resultados se reflejan en un acuario saludable.
 
-## Ciclo del nitrógeno
+## ¿Qué hace el filtro? El ciclo del nitrógeno
 
 Cada vez que tus peces comen o defecan, producen **amonio**. Este compuesto es extremadamente tóxico... ¡Aquí es donde el filtro cumple su función!
 
@@ -19,7 +19,7 @@ Muchos acuaristas son estrictos con el mantenimiento de su acuario: Sifonean el 
 
 Un filtro saturado no procesa correctamente los compuestos orgánicos. Los **nitratos** y **fosfatos** se acumulan, convirtiéndose en el fertilizante perfecto para la aparición de algas filamentosas, puntos verdes y alga pincel, entre otras. Por más disciplinado que seas con tu rutina de mantenimiento, si el filtro está sucio, las algas seguirán apareciendo.
 
-## Frecuencia de mantenimiento
+## ¿Cada cuánto limpiar el filtro del acuario?
 
 ### Filtros de cascada
 
@@ -35,9 +35,9 @@ Los canister son filtros externos muy potentes, ideales para acuarios medianos y
 ![Filtro Oase Biomaster 350](/images/mantenimiento-filtro/filtro-canister.jpg)
 *Este Oase Biomaster 350 es el corazón de uno de mis acuarios. Tener un acuario sobrefiltrado y que mueva más litros por hora, siempre tendrá mayores beneficios.*
 
-## Reglas para el mantenimiento
+## ¿Cómo limpiar el filtro sin perder las bacterias?
 
-Distingue entre filtración **mecánica** y **biológica.** Las espumas atrapan partículas, mientras que los canutillos cerámicos, bio-bolas y otros medios porosos albergan la mayor parte de las bacterias benéficas. Las espumas pueden limpiarse con agua de la llave sin problema. ¡El material biológico **siempre** debe enjuagarse con agua del mismo acuario!
+Distingue entre filtración **mecánica** y **biológica.** Las espumas atrapan partículas, mientras que los canutillos cerámicos, bio-bolas y otros medios porosos albergan la mayor parte de las bacterias benéficas. Las espumas pueden limpiarse con agua de la llave sin problema: la mayoría de las bacterias no viven ahí, sino en el material biológico. ¡El material biológico **siempre** debe enjuagarse con agua del mismo acuario!
 
 No realices el mantenimiento del filtro el mismo día que el del acuario. Ambos procesos generan estrés y pérdidas en la colonia bacteriana. Si haces el mantenimiento de tu acuario los domingos, limpia el filtro a mitad de semana. Espaciar estas tareas permite que las bacterias se recuperen y el ciclo del nitrógeno se mantenga estable.
 

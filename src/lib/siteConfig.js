@@ -25,8 +25,17 @@ export const mainAuthor = {
   image: "/images/juanjoeltiopez.jpg",
   url: `${SITE_URL}/sobre-mi`,
   shortBio:
-    "Acuarista colombiano y creador de contenido. Te comparto lo que me ha funcionado (y lo que no) con peces, gambitas y acuarios plantados. Mi misión: promover una acuariofilia responsable.",
+    "Acuarista colombiano desde 2020 y creador de contenido. Te comparto lo que me ha funcionado (y lo que no) con peces, gambitas y acuarios plantados. Mi misión: promover una acuariofilia responsable.",
+  // Concursos internacionales de paisajismo acuático en los que ha participado
+  contests: [
+    { name: "IAPLC (International Aquatic Plants Layout Contest)", year: 2026, rank: 1191 },
+    { name: "Chihiros International Aquatic Design Contest", year: 2024, rank: 536 },
+  ],
 };
+
+export const contestsText = mainAuthor.contests
+  .map(c => `${c.name} ${c.year}, puesto ${c.rank}`)
+  .join(" · ");
 
 export const absoluteUrl = path => (path?.startsWith("http") ? path : `${SITE_URL}${path || ""}`);
 
@@ -34,10 +43,19 @@ export const absoluteUrl = path => (path?.startsWith("http") ? path : `${SITE_UR
 export const formatFollowers = n =>
   n >= 1000 ? `${Math.floor(n / 1000).toLocaleString("es-CO")} mil` : n.toLocaleString("es-CO");
 
+// Datos de la asesoría: cambia aquí el precio, la duración o el seguimiento
+// y se actualizan en todo el sitio (páginas, metadatos, datos estructurados y llms.txt)
+const ASESORIA_PRICE_COP = 120000;
+const ASESORIA_MINUTES = 60;
+const ASESORIA_FOLLOW_UP_DAYS = 7;
+
 export const asesoria = {
-  price: "$130.000 COP",
-  priceValue: 130000,
+  priceValue: ASESORIA_PRICE_COP,
   currency: "COP",
-  duration: "60-80 minutos",
-  followUpDays: 7,
+  price: `$${ASESORIA_PRICE_COP.toLocaleString("es-CO")} COP`,
+  durationMinutes: ASESORIA_MINUTES,
+  duration: `${ASESORIA_MINUTES} minutos`,
+  durationShort: `${ASESORIA_MINUTES} min`,
+  followUpDays: ASESORIA_FOLLOW_UP_DAYS,
+  followUp: `${ASESORIA_FOLLOW_UP_DAYS} días de seguimiento`,
 };

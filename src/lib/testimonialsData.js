@@ -35,6 +35,13 @@ export const testimonials = [
     text: "Quería agradecerte de corazón por toda la asesoría con mi primer aquascaping. Gracias por compartir tus datos, estar tan pendiente en cada momento y estar siempre disponible para resolver mis dudas. Sin tu ayuda no habría quedado igual. ¡Un gran abrazo!",
     rating: 5,
   },
+  {
+    id: "6",
+    name: "Sofía Muñoz",
+    location: "Cali, Colombia",
+    text: "Montamos mi acuario plantado desde cero y hoy tengo un plantado muy bonito con un cardumen de cardenales.",
+    rating: 5,
+  },
 ];
 
 export function getAllTestimonials() {

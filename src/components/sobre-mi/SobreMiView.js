@@ -12,6 +12,8 @@ import {
   SimpleGrid,
   Icon,
   Flex,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 import { FaTiktok, FaInstagram, FaVideo, FaThumbsUp, FaHandsHelping } from "react-icons/fa";
 import { GiTropicalFish, GiTestTubes, GiSprout } from "react-icons/gi";
@@ -19,7 +21,7 @@ import Image from "next/image";
 import Breadcrumbs from "@/components/article/Breadcrumbs";
 import AsesoriaBand from "@/components/AsesoriaBand";
 import { Eyebrow } from "@/components/ui/SectionHeading";
-import { socialProfiles, formatFollowers } from "@/lib/siteConfig";
+import { mainAuthor, socialProfiles, formatFollowers } from "@/lib/siteConfig";
 
 const SOCIAL_ICONS = { tiktok: FaTiktok, instagram: FaInstagram };
 
@@ -197,7 +199,7 @@ const Mission = () => (
           />
         </Box>
         <Text as="figcaption" fontSize="sm" color="dark.textMuted" mt={3}>
-          Mi fishroom, donde están mis acuarios.
+          Mi fishroom. Cali, Colombia.
         </Text>
       </Box>
 
@@ -219,6 +221,17 @@ const Mission = () => (
           . Queremos construir la mejor comunidad acuarista, donde el amor por la vida sea lo
           primero.
         </Text>
+        <Text fontSize={{ base: "md", md: "lg" }} color="dark.text" lineHeight="tall" mt={4}>
+          Estoy en el hobby desde 2020 y he llevado mis acuarios a concursos internacionales de
+          paisajismo acuático:
+        </Text>
+        <UnorderedList mt={3} spacing={1.5} color="dark.textSecondary">
+          {mainAuthor.contests.map(c => (
+            <ListItem key={c.name}>
+              {c.name} {c.year}: puesto {c.rank}
+            </ListItem>
+          ))}
+        </UnorderedList>
       </Box>
     </Grid>
   </Section>
@@ -254,8 +267,8 @@ const Topics = () => (
           display={{ base: "none", lg: "block" }}
         >
           <Image
-            src="/images/mantenimientos.jpg"
-            alt="Poda de plantas en un acuario plantado durante el mantenimiento"
+            src="/images/juanjo-sobre-mi.jpg"
+            alt="JuanJo El Tío Pez sonriendo, con una camiseta de acuariofilia"
             fill
             sizes="35vw"
             style={{ objectFit: "cover" }}

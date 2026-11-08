@@ -3,7 +3,7 @@ Si aún decoras tu acuario con **plantas de plástico**, ¡es momento de hacer u
 
 Las **plantas acuáticas** no solo embellecen, sino que transforman tu acuario en un ecosistema vibrante y saludable. Te cuento por qué son necesarias y cómo puedes empezar a realizar esta transición:
 
-## Beneficios de las plantas acuáticas
+## ¿Qué beneficios tienen las plantas acuáticas?
 
 Las **plantas acuáticas naturales** son mucho más que decoración en un acuario; son una pieza clave para mantener un ecosistema acuático saludable y en equilibrio. Si aún usas **plantas y decoración de plástico**, aquí tienes varias razones para considerar el cambio a plantas vivas y cómo puedes empezar fácilmente.
 
@@ -11,7 +11,7 @@ Las **plantas acuáticas naturales** son mucho más que decoración en un acuari
 - **Purificación**: Las plantas se **alimentan de nitratos y fosfatos**, lo que te ayudará a evitar problemas como la proliferación de algas y la intoxicación en los peces.
 - **Hogar y refugio**: Sirven de refugio y proporcionar sombra para peces y gambas, ayudándolos a sentirse seguros y comportarse de manera más natural.
 
-## Requisitos básicos para añadir plantas en el acuario
+## ¿Qué necesitan las plantas acuáticas para crecer?
 
 ### Iluminación
 

@@ -21,7 +21,7 @@ En pocas semanas, con un ecosistema en equilibrio y maduro, las algas serán cos
 
 - **Cambios de agua regulares:** Cambia entre un 20% y 30% del agua de tu acuario cada semana. Usa un sifón para aspirar los desechos acumulados en el sustrato. No hay problema si decides hacer un cambio de agua mayor a la mitad, ya que la colonia bacteriana se encuentra principalmente en el filtro.
 - **Usa agua acondicionada:** Elimina cloro, cloraminas y metales pesados del agua de la llave con un buen acondicionador antes de agregarla al acuario.
-- **Limpia el filtro periódicamente:** Lava las esponjas y otros medios filtrantes en un balde con agua del mismo acuario para no eliminar bacterias benéficas. Entre más pequeño sea el filtro, más mantenimiento tendrás que realizarle.
+- **Limpia el filtro periódicamente:** Las esponjas puedes lavarlas con agua de la llave sin problema: la mayoría de las bacterias no viven ahí, sino en el material biológico (canutillos, biobolas). Ese material sí enjuágalo en un balde con agua del mismo acuario para no eliminar bacterias benéficas. Entre más pequeño sea el filtro, más mantenimiento tendrás que realizarle.
 - **Monitorea los parámetros del agua:** Usa kits de prueba para medir niveles de amonio, nitritos, nitratos y el pH. Esto te ayudará a detectar problemas antes de que se conviertan en una crisis.
 - **¡No limpies todo el mismo día!** Evita limpiar el filtro, el sustrato y realizar un cambio de agua completo el mismo día, ya que podrías eliminar demasiadas bacterias beneficiosas.
 

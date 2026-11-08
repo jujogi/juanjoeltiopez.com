@@ -38,8 +38,8 @@ import { getWhatsAppAsesoriaLink } from "@/lib/whatsappUtils";
 
 const QUICK_FACTS = [
   { icon: FaVideo, title: "100% Virtual" },
-  { icon: FaClock, title: "60-80 minutos" },
-  { icon: FaCheckCircle, title: "7 días de seguimiento" },
+  { icon: FaClock, title: asesoria.duration },
+  { icon: FaCheckCircle, title: asesoria.followUp },
 ];
 
 // Botón verde de WhatsApp: se mantiene el color de la marca para que se reconozca
@@ -150,12 +150,12 @@ const Hero = () => (
             boxShadow="0 30px 80px -20px rgba(0, 0, 0, 0.6)"
           >
             <Image
-              src={mainAuthor.image}
-              alt="JuanJo El Tío Pez explicando un acuario plantado"
+              src="/images/juanjo-asesoria.jpg"
+              alt="JuanJo El Tío Pez en el computador, con sus acuarios plantados al fondo"
               fill
               priority
               sizes="(max-width: 960px) 100vw, 560px"
-              style={{ objectFit: "cover", objectPosition: "30% center" }}
+              style={{ objectFit: "cover" }}
             />
           </Box>
           <Box
@@ -423,7 +423,7 @@ export default function AsesoriaView() {
               {asesoria.price}
             </Text>
             <Text color="dark.textSecondary" mt={3} mb={8}>
-              por sesión virtual · Pago único. Incluye 7 días de seguimiento.
+              por sesión virtual · Pago único. Incluye {asesoria.followUp}.
             </Text>
             <WhatsAppButton trackingId="agendar_sesion_instagram" />
             <HStack
@@ -439,10 +439,10 @@ export default function AsesoriaView() {
               <Icon as={FaShieldAlt} color="accent.sand" boxSize={5} mt={0.5} flexShrink={0} />
               <Text fontSize="sm" color="dark.textSecondary">
                 <Text as="span" color="white" fontWeight="600">
-                  Mi compromiso contigo:{" "}
+                  Mi compromiso:{" "}
                 </Text>
-                si al finalizar la sesión sientes que no aprendiste nada nuevo, te devuelvo tu
-                dinero. Sin preguntas, sin complicaciones.
+                Si al finalizar la sesión sientes que no aprendiste nada nuevo, y que son más las
+                dudas que las respuestas... te devolveré tu dinero.
               </Text>
             </HStack>
           </Box>

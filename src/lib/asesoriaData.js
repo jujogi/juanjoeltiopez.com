@@ -1,6 +1,8 @@
 // Contenido de la página de asesoría (texto original de JuanJo).
 // Se usa en la página y en los datos estructurados, para no duplicarlo.
 
+import { asesoria } from "./siteConfig";
+
 export const situations = [
   {
     title: "Problemas persistentes de algas",
@@ -50,13 +52,13 @@ export const steps = [
   },
   {
     title: "Sesión virtual 1 a 1",
-    description: "60-80 minutos analizando tu caso y creando un plan de acción único para ti",
+    description: `${asesoria.duration} analizando tu caso y creando un plan de acción único para ti`,
   },
 ];
 
 export const includes = [
   {
-    title: "Sesión virtual 1 a 1 de 60-80 minutos",
+    title: `Sesión virtual 1 a 1 de ${asesoria.duration}`,
     description: "Videollamada donde revisamos tu caso a fondo",
   },
   {
@@ -81,7 +83,7 @@ export const includes = [
 export const faq = [
   {
     q: "¿Una sesión es suficiente para resolver mi problema?",
-    a: "En la mayoría de casos, sí. Una sesión es suficiente para hacer un diagnóstico completo y entregarte un plan de acción que puedes implementar por tu cuenta. El seguimiento de 7 días está incluido para resolver dudas durante la implementación. Si después necesitas una segunda sesión de seguimiento, podemos coordinarla.",
+    a: `En la mayoría de casos, sí. Una sesión es suficiente para hacer un diagnóstico completo y entregarte un plan de acción que puedes implementar por tu cuenta. El seguimiento de ${asesoria.followUpDays} días está incluido para resolver dudas durante la implementación. Si después necesitas una segunda sesión de seguimiento, podemos coordinarla.`,
   },
   {
     q: "¿Qué debo preparar antes de la sesión?",
@@ -101,7 +103,7 @@ export const faq = [
   },
   {
     q: "¿Ofreces asesorías presenciales?",
-    a: "Por el momento solo ofrezco sesiones virtuales. Esto me permite atender a acuaristas de todo el país (y otros países) sin limitaciones geográficas, y mantener un precio accesible para todos.",
+    a: "¡Sí, si vives en Cali! Puedo ir a tu casa y revisar el acuario en persona. En ese caso el precio puede aumentar un poco por el desplazamiento: escríbeme por WhatsApp y lo coordinamos. Para el resto del país (y otros países) las sesiones son virtuales.",
   },
   {
     q: "¿Qué pasa si no puedo asistir a la sesión agendada?",

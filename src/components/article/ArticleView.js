@@ -26,6 +26,7 @@ import Breadcrumbs from "./Breadcrumbs";
 import CareSheet from "./CareSheet";
 import TableOfContents from "./TableOfContents";
 import ArticleBody from "./ArticleBody";
+import QuickAnswer from "./QuickAnswer";
 import ArticleFAQ from "./ArticleFAQ";
 import AuthorBox from "./AuthorBox";
 import PostCard from "@/components/PostCard";
@@ -150,6 +151,7 @@ export default function ArticleView({ slug }) {
         >
           <GridItem minW={0}>
             <VStack align="stretch" spacing={10}>
+              <QuickAnswer summary={post.summary} />
               {post.careSheet && <CareSheet careSheet={post.careSheet} level={post.level} />}
 
               {/* Índice en móvil: plegado para que el artículo empiece pronto */}
