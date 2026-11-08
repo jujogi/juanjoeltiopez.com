@@ -123,7 +123,7 @@ export const videos = [
     emoji: "💕",
     tags: ["gambitas", "tips", "cuidado"],
   },
-    {
+  {
     id: "mantenimiento-gambario-neocaridinas",
     name: "Mantenimiento en el gambario",
     url: {
@@ -370,6 +370,40 @@ export const videos = [
     },
     emoji: "🖼️",
     tags: ["paisajismo"],
+  },
+
+  // Planarias
+  {
+    id: "planarias-z1",
+    name: "Eliminando planarias con Z-1",
+    url: {
+      tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7655169200326987015",
+      instagram: "https://www.instagram.com/reel/DZ-4V_1ys06/",
+    },
+    emoji: "🪱",
+    tags: ["gambitas", "planarias", "z-1"],
+  },
+  {
+    id: "planarias-z1-resultados",
+    name: "Resultados del Z-1 contra planarias",
+    url: {
+      tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7659596372919766279",
+      instagram: "https://www.instagram.com/reel/DaQg07jhb6v/",
+    },
+    emoji: "✅",
+    tags: ["gambitas", "planarias", "z-1"],
+  },
+
+  // Betta con gambitas
+  {
+    id: "betta-gambitas",
+    name: "¿Betta con gambitas?",
+    url: {
+      tiktok: "https://www.tiktok.com/@juanjoeltiopez/video/7400362279893601541",
+      instagram: "https://www.instagram.com/reel/C-TxcOHsbqL/",
+    },
+    emoji: "🦐",
+    tags: ["betta", "gambitas", "compatibilidad"],
   },
 
   // Agua y Parámetros Videos

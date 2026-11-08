@@ -7,6 +7,8 @@ import plantasContent from "./posts/plantas-content.js";
 import paisajismoContent from "./posts/paisajismo-content.js";
 import osmosisContent from "./posts/osmosis-content.js";
 import filtroMantenimientoContent from "./posts/filtro-mantenimiento-content.js";
+import planariasContent from "./posts/planarias-content.js";
+import bettaGambitasContent from "./posts/betta-gambitas-content.js";
 
 export const blogPosts = [
   {
@@ -380,6 +382,99 @@ export const blogPosts = [
     ],
     videoIds: ["mantenimiento-filtro"],
     relatedPostSlugs: ["mantenimiento-acuario-rutina"],
+  },
+  {
+    id: "9",
+    title: "Planarias en el gambario: cómo eliminarlas",
+    slug: "planarias-gambario-como-eliminarlas",
+    excerpt:
+      "Las planarias atacan a las crías y a las gambas recién mudadas. Te cuento cómo reconocerlas, por qué aparecen y cómo eliminarlas con Z-1.",
+    content: planariasContent,
+    summary:
+      "Las planarias son gusanos planos que llegan en plantas, musgos o decoración, y se reproducen de forma exponencial cuando hay exceso de alimento. En un gambario atacan a las crías y a las gambas recién mudadas. Si son pocas, retíralas manualmente; si son muchas, usa Z-1: 2 cucharadas por cada 50 litros, en ciclos de 7 días y sin cambios de agua durante el ciclo.",
+    category: "Invertebrados",
+    categoryColor: "orange",
+    date: "2026-11-08T12:00:00Z",
+    author: "JuanJo El Tío Pez",
+    readTime: "3 min lectura",
+    image: "/images/gambas-consejos/planarias-gamba-neo.jpg",
+    coverImage: "/images/gambas-consejos/planarias-gamba-neo.jpg",
+    level: "Principiante",
+    faq: [
+      {
+        q: "¿Las planarias son peligrosas para las gambas?",
+        a: "En un gambario, sí: atacan a las crías y a las gambas recién mudadas, que quedan blandas por unas horas. En grandes cantidades también compiten con las gambas por el alimento.",
+      },
+      {
+        q: "¿Por qué aparecen planarias en el acuario?",
+        a: "Llegan como polizones en plantas, musgos, troncos, rocas o en el agua de otro acuario. Lo que las hace multiplicarse es el exceso de alimento: con comida de sobra en el fondo se reproducen de forma exponencial.",
+      },
+      {
+        q: "¿Cómo eliminar planarias sin dañar a las gambas?",
+        a: "Si son pocas, retíralas manualmente con una pipeta o con el sifón y reduce la alimentación. Si son muchas, usa Z-1: es compatible con gambas, peces y plantas.",
+      },
+      {
+        q: "¿El Z-1 mata a los caracoles?",
+        a: "Puede afectarlos. Si quieres conservar tus caracoles, sácalos del acuario antes de empezar el tratamiento.",
+      },
+      {
+        q: "¿Puedo hacer cambios de agua durante el tratamiento con Z-1?",
+        a: "No. Durante el ciclo de 7 días no hagas cambios de agua. Al terminar, haz un cambio del 50 % y sifona los restos.",
+      },
+    ],
+    videoIds: ["planarias-z1", "planarias-z1-resultados", "mantenimiento-gambario-neocaridinas"],
+  },
+  {
+    id: "10",
+    title: "¿Puede un Betta convivir con gambitas?",
+    slug: "betta-y-gambitas-pueden-convivir",
+    excerpt:
+      "Depende del temperamento de tu Betta, del tipo de gambas y del acuario. Te cuento qué tener en cuenta para que la convivencia funcione.",
+    content: bettaGambitasContent,
+    summary:
+      "Depende. Un Betta puede convivir con Neocaridinas si es de temperamento tranquilo y el acuario tiene al menos 20 litros, muchas plantas y musgos para esconderse, agua entre 24 y 26 °C y pH de 6.5 a 7.5. Ten en cuenta que probablemente se coma muchas crías, y sepáralos si persigue a las gambas.",
+    category: "Cuidado de Peces",
+    categoryColor: "blue",
+    date: "2026-11-08T12:00:00Z",
+    author: "JuanJo El Tío Pez",
+    readTime: "3 min lectura",
+    image: "/images/betta-gambitas/betta-gambita-card.jpg",
+    coverImage: "/images/betta-gambitas/betta-gambita-portada.jpg",
+    level: "Principiante",
+    careSheet: {
+      species: "Betta splendens + Neocaridinas",
+      items: [
+        { key: "volume", label: "Acuario mínimo", value: "20 L" },
+        { key: "temp", label: "Temperatura", value: "24–26 °C" },
+        { key: "ph", label: "pH", value: "6.5–7.5" },
+        { key: "hardness", label: "GH", value: "6–8" },
+        { key: "filter", label: "Filtro", value: "Flujo suave o esponja" },
+        { key: "substrate", label: "Refugio", value: "Musgos y plantas" },
+      ],
+    },
+    faq: [
+      {
+        q: "¿Un Betta se come a las gambitas?",
+        a: "Puede pasar, sobre todo con las crías y las gambas recién mudadas. Las adultas, en un acuario bien plantado, normalmente logran esconderse. Depende mucho del temperamento de cada Betta.",
+      },
+      {
+        q: "¿Qué gambitas pueden vivir con un Betta?",
+        a: "Las Neocaridinas, como Cherry Red, Bloody Mary, Blue Velvet o Yellow Fire. Las Caridinas necesitan agua de ósmosis y un pH entre 5.5 y 6.5, que no es lo que necesita un Betta.",
+      },
+      {
+        q: "¿Cuántos litros necesito para tener un Betta con gambitas?",
+        a: "Mínimo 20 litros, y entre más grande, mejor: más espacio y más plantas significan más escondites para las gambas.",
+      },
+      {
+        q: "¿Qué meto primero al acuario, el Betta o las gambitas?",
+        a: "Las gambitas. Así conocen el acuario y encuentran sus escondites antes de que llegue el Betta.",
+      },
+      {
+        q: "¿Qué hago si mi Betta persigue a las gambitas?",
+        a: "Sepáralos. Si las gambas viven escondidas y estresadas, ese acuario no es un buen hogar para ellas: no es lo mismo vivir que sobrevivir.",
+      },
+    ],
+    videoIds: ["betta-gambitas", "betta-compatibles", "gambitas-5-consejos"],
   },
 ];
 

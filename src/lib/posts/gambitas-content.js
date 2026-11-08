@@ -56,18 +56,20 @@ Es importante no sobrealimentar. Las gambitas prefieren alimentarse del biofilm 
 
 ## ¿Con qué peces pueden vivir las gambitas?
 
-**Compatibilidad:** Siempre voy a recomendar tener a tus gambas solas, es la única forma de verlas en su estado natural, sin estrés alguno. Sin embargo, podrías tenerlas en un acuario comunitario con peces pequeños o pacíficos. Algunos buenos compañeros  podrían ser **caracoles** y peces como **Otocinclus** o **rasboras**.
+**Compatibilidad:** Siempre voy a recomendar tener a tus gambas solas, es la única forma de verlas en su estado natural, sin estrés alguno. Sin embargo, podrías tenerlas en un acuario comunitario con peces pequeños o pacíficos. Algunos buenos compañeros podrían ser **caracoles** y peces como **Otocinclus** o **rasboras**. ¿Y con un Betta? Depende: te lo explico en [¿puede un Betta convivir con gambitas?](/blog/betta-y-gambitas-pueden-convivir).
 
 ## Cuidado con la microfauna
 
-Uno de los problemas más comunes en gambarios son las **planarias**, pequeños gusanos planos que pueden aparecer en acuarios con exceso de materia orgánica. Aunque no siempre son dañinas, en grandes cantidades pueden competir con las gambas por alimento y, en algunos casos, atacar gambas muy pequeñas, débiles o recién mudadas.
+Uno de los problemas más comunes en gambarios son las **planarias**, pequeños gusanos planos que llegan en plantas, musgos o decoración, y se multiplican cuando hay exceso de materia orgánica. Aunque no siempre son dañinas, en grandes cantidades pueden competir con las gambas por alimento y, en algunos casos, atacar gambas muy pequeñas, débiles o recién mudadas.
 
 
 ![Planarias con gamba neocaridina](/images/gambas-consejos/planarias-gamba-neo.jpg)
-*Las planarias pueden aparecer en el acuario si hay exceso de alimento. Mantén el acuario limpio y evita sobrealimentar para prevenir su aparición*
+*Las planarias llegan en plantas y decoración, y el exceso de alimento hace que se multipliquen. Mantén el acuario limpio y evita sobrealimentar para que no se conviertan en plaga*
 
 **Prevención:**
 - No sobrealimentar
 - Realizar cambios de agua regulares
 - Sifonar detritos
-- Mantener un acuario limpio y equilibrado`;
+- Mantener un acuario limpio y equilibrado
+
+Si ya tienes muchas, te explico cómo sacarlas en [planarias en el gambario: cómo eliminarlas](/blog/planarias-gambario-como-eliminarlas).`;

@@ -78,7 +78,7 @@ No todos los Bettas son aptos para acuarios comunitarios. Aunque pueden convivir
 - **Corydoras** - Peces de fondo pacíficos
 - **Otocinclus** - Comedores de algas pequeños
 - **Caracoles** (Nerite, Mystery)
-- **Camarones** - Con precaución, depende del temperamento
+- **Camarones** - Con precaución, depende del temperamento ([¿puede un Betta convivir con gambitas?](/blog/betta-y-gambitas-pueden-convivir))
 - **Rasboras** - Peces pequeños y rápidos
 
 **Evita:**
