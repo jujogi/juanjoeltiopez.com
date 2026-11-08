@@ -68,8 +68,14 @@ export default function PostCard({ post, headingLevel = "h3", priority = false }
   );
 }
 
-// Tarjeta grande y horizontal para la guía destacada
-export function FeaturedPostCard({ post, headingLevel = "h3", label = "Guía destacada" }) {
+// Tarjeta grande y horizontal para la guía destacada.
+// priority: solo cuando la tarjeta está arriba de la página (índice del blog)
+export function FeaturedPostCard({
+  post,
+  headingLevel = "h3",
+  label = "Guía destacada",
+  priority = false,
+}) {
   return (
     <LinkBox as="article" {...cardStyles}>
       <Grid templateColumns={{ base: "1fr", md: "1.2fr 1fr" }}>
@@ -85,7 +91,8 @@ export function FeaturedPostCard({ post, headingLevel = "h3", label = "Guía des
             fill
             sizes="(max-width: 768px) 100vw, 640px"
             style={imageStyle}
-            priority
+            priority={priority}
+            fetchPriority={priority ? "high" : undefined}
           />
         </Box>
         <Box

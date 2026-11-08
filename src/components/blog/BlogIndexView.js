@@ -101,7 +101,7 @@ export default function BlogIndexView({ categorySlug }) {
 
       {showFeatured && (
         <Box mb={{ base: 8, md: 10 }}>
-          <FeaturedPostCard post={featured} headingLevel="h2" label="Lo más reciente" />
+          <FeaturedPostCard post={featured} headingLevel="h2" label="Lo más reciente" priority />
         </Box>
       )}
 

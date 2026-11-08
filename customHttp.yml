@@ -1,0 +1,8 @@
+# Headers de Amplify Hosting. Amplify ignora los headers de next.config.js para los
+# archivos de /public, por eso las imágenes llegaban con caché de 5 segundos.
+# Una semana de caché: si reemplazas una imagen, usa un nombre nuevo para que se vea de inmediato.
+customHeaders:
+  - pattern: "/images/**"
+    headers:
+      - key: Cache-Control
+        value: "public, max-age=604800, stale-while-revalidate=86400"

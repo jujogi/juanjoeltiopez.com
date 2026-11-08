@@ -100,7 +100,7 @@ export default function ArticleView({ slug }) {
             <Avatar
               size="sm"
               name={post.author}
-              src={post.isGuestAuthor ? undefined : mainAuthor.image}
+              src={post.isGuestAuthor ? undefined : mainAuthor.avatar}
               bg="accent.cyan"
               color="water.950"
             />
@@ -139,6 +139,7 @@ export default function ArticleView({ slug }) {
             sizes="(max-width: 1280px) 100vw, 1280px"
             style={{ objectFit: "cover" }}
             priority
+            fetchPriority="high"
           />
         </Box>
       </Container>

@@ -75,7 +75,7 @@ export default function AuthorBox({ post }) {
         align={{ md: "start" }}
       >
         <Avatar
-          src={mainAuthor.image}
+          src={mainAuthor.avatar}
           name={mainAuthor.name}
           size="xl"
           border="2px solid"

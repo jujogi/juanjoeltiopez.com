@@ -23,6 +23,8 @@ export const totalFollowers = Object.values(socialProfiles).reduce(
 export const mainAuthor = {
   name: SITE_NAME,
   image: "/images/juanjoeltiopez.jpg",
+  // Versión pequeña para los avatares redondos (la foto completa pesa 68 KB)
+  avatar: "/images/juanjoeltiopez-avatar.jpg",
   url: `${SITE_URL}/sobre-mi`,
   shortBio:
     "Acuarista colombiano desde 2020 y creador de contenido. Te comparto lo que me ha funcionado (y lo que no) con peces, gambitas y acuarios plantados. Mi misión: promover una acuariofilia responsable.",

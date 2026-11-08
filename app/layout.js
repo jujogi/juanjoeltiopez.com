@@ -138,12 +138,12 @@ export default function RootLayout({ children }) {
         {/* Datos estructurados del sitio: al final del body para no alterar la hidratación */}
         <JsonLd data={siteSchema} />
 
-        {/* Google Analytics - loaded after hydration */}
+        {/* Google Analytics: se carga cuando la página ya terminó de cargar, para no frenarla */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-Y3KZVFC4CS"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
