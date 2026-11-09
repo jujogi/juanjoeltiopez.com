@@ -1,25 +1,17 @@
 export default `
-Es una de las preguntas que más me hacen: "Mi acuario está estable, ¿igual tengo que hacer cambios de agua o basta con rellenar lo que se evapora?". La respuesta depende de **con qué agua rellenas**.
+"Mi acuario es estable y maduro, ¿igual tengo que hacer cambios de agua o basta solo con rellenar lo que se evapora?". La respuesta depende de **con qué agua rellenas**.
 
 Te cuento qué pasa con el agua cuando se evapora, por qué los TDS de tu acuario pueden subir sin que te des cuenta y qué agua usar para rellenar.
 
 ## ¿Qué pasa cuando el agua del acuario se evapora?
 
-**Cuando el agua se evapora, solo se va el agua: los minerales se quedan en el acuario.** El calcio, el magnesio, las sales y todo lo que está disuelto no se evapora, así que queda la misma cantidad de minerales en menos agua.
-
-Por eso, entre más se evapora, más concentrada queda el agua. Y eso es justo lo que miden los **TDS** (sólidos disueltos totales): la cantidad de minerales y sustancias disueltas en el agua.
-
-## ¿Los TDS me dicen cuánto calcio y magnesio tengo?
-
-**No. Los TDS son solo una medida rápida y una guía: te dicen cuánto hay disuelto en total, pero no qué es.** Si quieres saber cuánto calcio y magnesio tiene tu agua, tienes que hacer el **test de GH** (dureza general).
-
-Un medidor de TDS mide todo junto: calcio, magnesio, pero también sodio, fertilizantes y cualquier otra cosa disuelta en el agua. Por eso dos acuarios con los mismos TDS pueden tener un GH muy distinto.
+**Cuando el agua se evapora, solo se va el agua: los minerales se quedan en el acuario.** El calcio, el magnesio, las sales y todo lo que está disuelto no se evapora, así que queda la misma cantidad de minerales pero en menos cantidad de agua.
 
 ## ¿Por qué suben los TDS si solo relleno el agua evaporada?
 
-**Porque cada vez que rellenas con agua que tiene minerales, le sumas más minerales al acuario.** El agua que se evaporó no se llevó nada, pero el agua que estás añadiendo sí trae sus minerales.
+**Porque cada vez que rellenas con agua que tiene minerales, le sumas más minerales al acuario.** El agua que se evaporó no se llevó nada, pero el agua que estás añadiendo sí los trae.
 
-Si rellenas con agua de la llave, que en muchas zonas trae bastantes minerales, el ciclo se repite semana tras semana: se evapora agua, añades agua nueva con minerales, y los TDS suben un poquito cada vez. Si además no haces cambios de agua, **no hay nada que saque esos minerales** del acuario.
+Si rellenas con agua de la llave, que en muchas ciudades trae bastantes minerales, el ciclo se repite semana tras semana: se evapora agua, añades agua nueva con minerales, y los TDS empiezan a subir y si además no haces cambios de agua, **¡no hay nada que remueva esos minerales** del acuario!
 
 ### Un ejemplo con números
 
@@ -47,7 +39,7 @@ Algunas opciones:
 - **Agua destilada:** tampoco trae minerales, y te sirve si no tienes un filtro de ósmosis.
 - **Agua de la llave con TDS bajos:** en algunas zonas el agua de la llave viene muy blanda. Mídela antes con un medidor de TDS.
 
-**Importante:** no rellenes con agua remineralizada ni con sales para gambas. Esa agua ya tiene minerales, y al rellenar con ella los TDS van a subir igual que con agua de la llave. El agua remineralizada es para los cambios de agua, no para rellenar.
+**Importante:** no rellenes con agua remineralizada ni con sales para gambas. Esa agua ya tiene minerales, y al rellenar con ella, los TDS van a subir igual que con agua de la llave. El agua remineralizada es para los cambios de agua, no para rellenar.
 
 ## ¿Si mi acuario es maduro, igual tengo que cuidar los TDS?
 
@@ -59,18 +51,9 @@ Si en algún momento ves que los TDS subieron mucho, ya sabes: es hora de un bue
 
 Cuidar los TDS es todavía más importante en un **gambario**: las gambitas son muy sensibles a los cambios de parámetros, y unos TDS que suben poco a poco pueden terminar afectando las mudas. En el [gambario para caridinas](/blog/caridinas-gambario-montaje) controlar los TDS es parte de la rutina.
 
-## Mi recomendación
-
-- **Rellena siempre con agua de 0 TDS** o con TDS muy bajos: ósmosis sin remineralizar o agua destilada.
-- **Ten un medidor de TDS y un test de GH.** El medidor es barato y te dice en segundos si el agua se está concentrando; el test de GH te dice cuánto calcio y magnesio tienes.
-- **Mide los TDS cada semana**, sobre todo si casi no haces cambios de agua. Si suben aunque rellenes con agua de ósmosis, es hora de un cambio de agua.
-- **Marca el nivel del agua** en el vidrio y rellena antes de que baje mucho. Así repones poca agua a la vez y no estresas a tus peces o gambas.
-- **No dejes de lado los cambios de agua:** rellenar bien te ayuda, pero no reemplaza el mantenimiento. Te dejo mi [rutina de mantenimiento del acuario](/blog/mantenimiento-acuario-rutina).
-
 ## ¿Cómo lo hago yo?
 
-**Cada fin de semana le hago un cambio de agua de alrededor del 40 % a todos mis acuarios, y a mitad de semana relleno con agua de ósmosis lo que se evaporó.** Te confieso que soy muy dedicado con mis acuarios: es más de lo que recomiendo si estás iniciando, pero esta rutina me ha funcionado muy bien.
-
+**Cada fin de semana le hago un cambio de agua de alrededor del 40 % a todos mis acuarios, y a mitad de semana relleno con agua de ósmosis lo que se evaporó.**
 Vivo en Cali, una ciudad bastante caliente, y aquí el agua se evapora rápido: para mitad de semana ya se nota que el nivel bajó. Ese día relleno solo con agua de ósmosis, para reponer el agua que se fue sin sumarle minerales al acuario. Así llego al fin de semana con los TDS estables y vuelvo a empezar el ciclo.
 
 | Cuándo | Qué hago | Con qué agua |
