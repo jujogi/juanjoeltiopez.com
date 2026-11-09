@@ -9,6 +9,7 @@ import osmosisContent from "./posts/osmosis-content.js";
 import filtroMantenimientoContent from "./posts/filtro-mantenimiento-content.js";
 import planariasContent from "./posts/planarias-content.js";
 import bettaGambitasContent from "./posts/betta-gambitas-content.js";
+import cambiosAguaRellenarContent from "./posts/cambios-agua-rellenar-content.js";
 
 export const blogPosts = [
   {
@@ -475,6 +476,48 @@ export const blogPosts = [
       },
     ],
     videoIds: ["betta-gambitas", "betta-compatibles", "gambitas-5-consejos"],
+  },
+  {
+    id: "11",
+    title: "¿Cambios de agua o solo rellenar el acuario?",
+    slug: "cambios-de-agua-o-solo-rellenar",
+    excerpt:
+      "Cuando el agua se evapora, los minerales se quedan. Te cuento por qué suben los TDS si solo rellenas y con qué agua rellenar tu acuario.",
+    content: cambiosAguaRellenarContent,
+    summary:
+      "Cuando el agua del acuario se evapora, los minerales se quedan. Si solo rellenas con agua de la llave, sumas más minerales y los TDS suben. Rellena con agua de 0 TDS o TDS bajos, como ósmosis sin remineralizar, y deja el agua remineralizada para los cambios de agua.",
+    category: "Agua y Parámetros",
+    categoryColor: "blue",
+    date: "2026-11-08T12:00:00Z",
+    author: "JuanJo El Tío Pez",
+    readTime: "6 min lectura",
+    image: "/images/cambios-agua/acuario-plantado-card.jpg",
+    coverImage: "/images/cambios-agua/acuario-plantado-portada.jpg",
+    level: "Principiante",
+    faq: [
+      {
+        q: "¿Puedo solo rellenar el agua que se evapora y no hacer cambios de agua?",
+        a: "Solo si eres un acuarista con experiencia. En ese caso, rellena con agua de 0 TDS o TDS muy bajos, como ósmosis sin remineralizar, y mide los TDS cada semana. Si rellenas con agua de la llave, los minerales se acumulan y los TDS suben semana tras semana.",
+      },
+      {
+        q: "¿Cuando el agua del acuario se evapora se van los minerales?",
+        a: "No. Solo se evapora el agua: el calcio, el magnesio y las sales se quedan en el acuario, así que el agua queda más concentrada.",
+      },
+      {
+        q: "¿Con qué agua relleno el agua evaporada del acuario?",
+        a: "Con agua de 0 TDS o TDS bajos: agua de ósmosis inversa sin remineralizar o agua destilada. No uses agua remineralizada ni sales para gambas, porque suben los TDS.",
+      },
+      {
+        q: "¿Por qué suben los TDS de mi acuario?",
+        a: "Porque cuando el agua se evapora los minerales se quedan, y si rellenas con agua de la llave le sumas más minerales cada vez. Si no haces cambios de agua, nada los saca del acuario.",
+      },
+      {
+        q: "¿Los TDS me dicen cuánto calcio y magnesio tiene mi agua?",
+        a: "No. Los TDS son una medida rápida y una guía de todo lo disuelto en el agua. Para saber cuánto calcio y magnesio tienes, haz el test de GH.",
+      },
+    ],
+    videoIds: ["osmosis-filtro", "mantenimiento-gambario-neocaridinas", "mantenimiento-plantado"],
+    relatedPostSlugs: ["osmosis-inversa-vs-agua-de-la-llave", "mantenimiento-acuario-rutina"],
   },
 ];
 
