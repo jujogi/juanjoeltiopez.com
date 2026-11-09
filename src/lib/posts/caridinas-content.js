@@ -9,7 +9,7 @@ Las caridinas son especialmente sensibles a los cambios bruscos en los parámetr
 
 **KH bajo:** Un KH bajo es importante porque permite que el pH se mantenga estable en niveles ácidos. ¡No queremos fluctuaciones!
 
-**Agua de ósmosis y sales especiales:** Es importante utilizar agua de ósmosis, ya que está libre de impurezas y minerales que pueden alterar los parámetros del agua. Para aportar los minerales que sí necesitamos, haremos uso de sales específicas para gambas, logrando así un control exacto sobre la **dureza general (GH)** y los niveles de **TDS (sólidos disueltos totales)**. Para las caridinas te recomiendo un GH entre **4 y 6**.
+**Agua de ósmosis y sales especiales:** Es importante utilizar agua de ósmosis, ya que está libre de impurezas y minerales que pueden alterar los parámetros del agua. Para aportar los minerales que sí necesitamos, haremos uso de sales específicas para gambas, logrando así un control exacto sobre la **dureza general (GH)** y los niveles de **TDS (sólidos disueltos totales)**. Para las caridinas te recomiendo un GH entre **4 y 6**. Para que los TDS no suban con el tiempo, rellena el agua que se evapora con ósmosis sin remineralizar: te cuento por qué en [este artículo](/blog/cambios-de-agua-o-solo-rellenar).
 
 
 ## ¿Por qué usar sustrato activo en un gambario?

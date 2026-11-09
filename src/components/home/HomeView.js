@@ -172,6 +172,7 @@ const TopicCard = ({ category }) => (
     minH={{ base: "180px", md: "220px" }}
     display="flex"
     alignItems="flex-end"
+    isolation="isolate"
     transition="transform 0.2s"
     _hover={{ transform: "translateY(-3px)" }}
     sx={{
@@ -185,13 +186,14 @@ const TopicCard = ({ category }) => (
         alt=""
         fill
         sizes="(max-width: 768px) 100vw, 400px"
-        style={{ objectFit: "cover", transition: "transform 0.4s ease" }}
+        style={{ objectFit: "cover", transition: "transform 0.4s ease", zIndex: -1 }}
       />
     )}
     {/* Degradado fijo solo detrás del texto, para que siga legible */}
     <Box
       position="absolute"
       inset={0}
+      zIndex={-1}
       bgGradient="linear(to-t, rgba(4,20,26,0.92) 0%, rgba(4,20,26,0.55) 40%, rgba(4,20,26,0) 70%)"
     />
     {/* Capa oscura que desaparece al pasar el mouse: la foto se ve brillante */}
@@ -199,10 +201,12 @@ const TopicCard = ({ category }) => (
       className="topic-shade"
       position="absolute"
       inset={0}
+      zIndex={-1}
       bg="rgba(4,20,26,0.55)"
       transition="opacity 0.3s ease"
     />
-    <Box position="relative" p={5} w="full">
+    {/* Sin position: así el enlace (LinkOverlay) cubre toda la tarjeta, no solo el texto */}
+    <Box p={5} w="full">
       <Heading as="h3" fontSize="xl" color="white" mb={1}>
         <LinkOverlay as={NextLink} href={category.href}>
           {category.name}

@@ -20,6 +20,7 @@ En pocas semanas, con un ecosistema en equilibrio y maduro, las algas serán cos
 ## Consejos para un mantenimiento efectivo
 
 - **Cambios de agua regulares:** Cambia entre un 20% y 30% del agua de tu acuario cada semana. Usa un sifón para aspirar los desechos acumulados en el sustrato. No hay problema si decides hacer un cambio de agua mayor a la mitad, ya que la colonia bacteriana se encuentra principalmente en el filtro.
+- **Rellena con agua sin minerales:** El agua que se evapora se va sin sus minerales, así que si rellenas con agua de la llave los TDS suben poco a poco. Te explico por qué en [¿Cambios de agua o solo rellenar el acuario?](/blog/cambios-de-agua-o-solo-rellenar).
 - **Usa agua acondicionada:** Elimina cloro, cloraminas y metales pesados del agua de la llave con un buen acondicionador antes de agregarla al acuario.
 - **Limpia el filtro periódicamente:** Las esponjas puedes lavarlas con agua de la llave sin problema: la mayoría de las bacterias no viven ahí, sino en el material biológico (canutillos, biobolas). Ese material sí enjuágalo en un balde con agua del mismo acuario para no eliminar bacterias benéficas. Entre más pequeño sea el filtro, más mantenimiento tendrás que realizarle.
 - **Monitorea los parámetros del agua:** Usa kits de prueba para medir niveles de amonio, nitritos, nitratos y el pH. Esto te ayudará a detectar problemas antes de que se conviertan en una crisis.
