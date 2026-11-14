@@ -1,4 +1,4 @@
-// Especies de la herramienta de compatibilidad (/compatibilidad-de-peces).
+// Especies de la herramienta de compatibilidad (/armonia-acuatica).
 //
 // Los datos de Betta, Neocaridinas y Caridinas salen de los artículos del blog y
 // tienen que coincidir con ellos. Los demás rangos son valores de referencia

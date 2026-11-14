@@ -72,6 +72,7 @@ En `src/lib/blogData.js`, importa el contenido y agrega una entrada al final de 
 | `level`      | `"Principiante"` o `"Avanzado"`                                                                                                                                     |
 | `careSheet`  | Opcional: "Ficha rápida" con 4–6 datos clave (litros, temperatura, pH, GH…). Los `key` disponibles están en `src/components/article/CareSheet.js`                   |
 | `faq`        | **3–5 preguntas frecuentes** en lenguaje natural, con respuestas de 1–3 frases que se entiendan solas. Google las recibe como datos estructurados                   |
+| `armoniaIds` | Opcional: especies del artículo (ids de `src/lib/speciesData.js`). La invitación a Armonía Acuática abre la herramienta con ellas ya elegidas                       |
 | `videoIds`   | 2–4 videos de `videosData.js` para "Videos relacionados"                                                                                                            |
 
 Lo demás es automático: la página, el índice de contenidos, los datos para Google (artículo, FAQ, migas de pan), el sitemap y `llms.txt`.

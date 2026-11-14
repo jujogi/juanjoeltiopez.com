@@ -1,12 +1,43 @@
-// Textos de /compatibilidad-de-peces: se usan en la página, los metadatos y los datos estructurados.
+// Textos de Armonía Acuática (/armonia-acuatica): se usan en la página, los metadatos,
+// los datos estructurados y la invitación de los artículos.
 // Las respuestas sobre el Betta y las gambitas repiten los datos de los artículos del blog.
 
-export const COMPATIBILIDAD_PATH = "/compatibilidad-de-peces";
+import { getSpeciesById } from "./speciesData";
+
+// Ruta de la herramienta: la usan la página, el sitemap, llms.txt y los enlaces de los artículos
+export const COMPATIBILIDAD_PATH = "/armonia-acuatica";
 
 export const compatibilidad = {
-  title: "Compatibilidad de peces y gambitas",
-  lead: "Elige las especies que quieres tener, cuéntanos de cuántos litros es tu acuario y te decimos si pueden vivir juntas: parámetros, espacio y temperamento.",
+  // name: la marca de la herramienta · tagline: lo que la gente busca en Google
+  name: "Armonía Acuática",
+  tagline: "Compatibilidad de peces y gambitas",
+  // Para el <title>, llms.txt y las vistas previas al compartir
+  title: "Armonía Acuática: compatibilidad de peces y gambitas",
+  lead: "Elige las especies que quisieras tener en tu acuario, cuéntanos de cuántos litros es y veamos si pueden vivir juntas: parámetros, espacio y temperamento.",
 };
+
+// Bloque que invita a usar la herramienta desde los artículos (ArmoniaBand)
+export const armoniaInvite = {
+  title: "¿Quieres saber qué peces pueden vivir juntos?",
+  text: "Elige tus especies, cuéntanos de cuántos litros es tu acuario y te decimos si pueden vivir juntas: parámetros, espacio y temperamento.",
+  cta: "Probar Armonía Acuática",
+  // Fotos que se muestran cuando el artículo no tiene especies propias
+  defaultIds: ["betta", "tetra-neon", "ramirezi", "neocaridina"],
+};
+
+// Enlace a la herramienta; con ids, abre con esas especies ya elegidas (cada una en su grupo mínimo)
+export const armoniaHref = ids =>
+  ids?.length
+    ? `${COMPATIBILIDAD_PATH}?p=${ids.map(id => `${id}:${getSpeciesById(id).minGroup}`).join(",")}`
+    : COMPATIBILIDAD_PATH;
+
+// Ejemplos de un toque para quien no sabe por dónde empezar (ids de speciesData.js)
+export const starterCombos = [
+  { label: "Betta + gambitas", ids: ["betta", "neocaridina"] },
+  { label: "Neones + Corydoras", ids: ["tetra-neon", "corydoras"] },
+  { label: "Ramirezi + cardenales", ids: ["ramirezi", "tetra-cardenal"] },
+  { label: "Guppys + platys", ids: ["guppy", "platy"] },
+];
 
 export const checksExplained = [
   {
@@ -15,7 +46,7 @@ export const checksExplained = [
   },
   {
     title: "Litros del acuario",
-    text: "Revisamos el acuario mínimo de cada especie y, como guía, la regla de 1 litro por cada centímetro de pez adulto. Las gambitas no cuentan en esa regla. Es solo una referencia: entre más agua tengas, mejor.",
+    text: "Revisamos el acuario mínimo de cada especie y, como guía, la regla de 1 litro por cada centímetro de pez adulto. Las gambitas no cuentan en esa regla. Es solo una referencia: ¡entre más litros tengas, mejor!",
   },
   {
     title: "Temperamento",
@@ -30,22 +61,22 @@ export const checksExplained = [
 export const faq = [
   {
     q: "¿Cómo saber si dos peces son compatibles?",
-    a: "Tienen que compartir temperatura, pH y GH, caber en el mismo acuario y tener un temperamento parecido. Si uno muerde aletas, es territorial o le cabe el otro en la boca, no son compatibles aunque el agua les sirva a los dos.",
+    a: "Tienen que compartir en cierta medida temperatura, pH y GH, caber en el mismo acuario y tener un temperamento parecido. Si uno muerde aletas, es territorial o le cabe el otro en la boca, no son compatibles aunque sus parámetros sean similares.",
   },
   {
     q: "¿Qué peces pueden vivir con gambitas?",
-    a: "Los más seguros son los peces pequeños y pacíficos, como las Corydoras pigmeas y los Otocinclus. Los tetras y las rasboras pequeñas respetan a las adultas, pero se comen las crías. Los peces grandes, como el escalar, se comen también a las adultas.",
+    a: "Vamos a la fija con peces pequeños y pacíficos, como las Corys pigmeas y Otocinclus. Los tetras y rasboras respetan a las adultas, pero las crías siempre estarán en riesgo. Los peces grandes como escalares, ramirezi o discos, las verán siempre como alimento premium.",
   },
   {
     q: "¿Un Betta puede vivir con otros peces?",
-    a: "Depende mucho del temperamento de cada Betta. Los mejores compañeros son peces pacíficos y poco llamativos, como Corydoras u Otocinclus. Evita otros Bettas, los peces de aletas o colas largas como los guppys y los mordedores de aletas, y ten cuidado con los peces muy coloridos: algunos Bettas los persiguen.",
+    a: "Depende mucho del temperamento de cada Betta. Los mejores compañeros son peces pacíficos y poco llamativos, como Corydoras u Otocinclus. Evita otros Bettas, en especial machos y peces de aletas o colas largas como los guppys.",
   },
   {
     q: "¿Puedo juntar Neocaridinas y Caridinas?",
-    a: "No te lo recomendamos. Las Neocaridinas necesitan un pH de 6.5 a 7.5 y un GH de 6 a 8; las Caridinas, un pH de 5.5 a 6.5 y un GH de 4 a 6. Apenas coinciden en un punto, y alguna de las dos va a sobrevivir en vez de vivir bien.",
+    a: "No te lo recomendamos. Las Neocaridinas necesitan un pH de 6.5 a 7.5 y un GH de 6 a 8; las Caridinas, por su parte prefieren aguas muy blandas. Las neocaridinas adaptarse a esos parámetros pero no al revés. Es un riesgo que no vale la pena correr.",
   },
   {
     q: "¿Las gambas Sulawesi pueden vivir con otras gambitas?",
-    a: "No. Necesitan agua muy caliente, entre 27 y 30 °C, y alcalina, con pH de 7.5 a 8.5. Esos parámetros no les sirven ni a las Neocaridinas ni a las Caridinas, así que lo mejor es un gambario solo para ellas.",
+    a: "No. Esta especie necesita una temperatura de 27 a 30 °C, y un pH de 7.5 a 8.5. Ningún pez o gambita puede adaptarse a ese rango de parámetros.",
   },
 ];

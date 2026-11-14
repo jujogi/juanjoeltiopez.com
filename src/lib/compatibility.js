@@ -71,7 +71,22 @@ function parameterChecks(list) {
   return { checks, shared };
 }
 
+// Litros que pide la regla de ocupación. Las gambitas no cuentan: su carga biológica es mínima
+const stockingLiters = entries =>
+  Math.ceil(
+    entries
+      .filter(e => e.species.type === "fish")
+      .reduce((sum, e) => sum + e.qty * e.species.sizeCm, 0) * LITERS_PER_CM
+  );
+
+// Lo que de verdad pide la selección: el acuario mínimo de la especie más exigente o la regla
+// de ocupación, lo que sea mayor (un solo pez globo de 2.5 cm no vive en 3 L)
+const neededLiters = entries =>
+  Math.max(stockingLiters(entries), ...entries.map(e => e.species.minLiters));
+
 function tankChecks(entries, liters) {
+  // Sin litros (se llega desde un artículo con especies ya elegidas) no hay acuario que revisar
+  if (!liters) return [];
   const checks = [];
 
   for (const { species } of entries) {
@@ -84,26 +99,19 @@ function tankChecks(entries, liters) {
     }
   }
 
-  // Las gambitas no cuentan: su carga biológica es mínima
-  const fishCm = entries
-    .filter(e => e.species.type === "fish")
-    .reduce((sum, e) => sum + e.qty * e.species.sizeCm, 0);
-  const neededLiters = Math.ceil(fishCm * LITERS_PER_CM);
+  const stocking = stockingLiters(entries);
 
-  if (neededLiters > liters) {
+  if (stocking > liters) {
     checks.push({
-      level: neededLiters > liters * OVERSTOCK_BAD_RATIO ? "bad" : "caution",
+      level: stocking > liters * OVERSTOCK_BAD_RATIO ? "bad" : "caution",
       title: "Son muchos peces para ese acuario",
-      detail: `Con la regla de 1 litro por centímetro de pez adulto, esa cantidad pide unos ${neededLiters} L y tu acuario tiene ${liters} L. Baja la cantidad o piensa en un acuario más grande: entre más grande, mejor.`,
+      detail: `Con la regla de 1 litro por centímetro de pez adulto, esa cantidad pide unos ${stocking} L y tu acuario tiene ${liters} L. Baja la cantidad o piensa en un acuario más grande: entre más grande, mejor.`,
     });
   } else if (checks.length === 0) {
-    // Lo que de verdad piden: el acuario mínimo de la especie más exigente o la regla de
-    // ocupación, lo que sea mayor (un solo pez globo de 2.5 cm no vive en 3 L)
-    const minLiters = Math.max(neededLiters, ...entries.map(e => e.species.minLiters));
     checks.push({
       level: "ok",
       title: "Caben en tu acuario",
-      detail: `Esa combinación pide mínimo ${minLiters} L y tu acuario tiene ${liters} L.`,
+      detail: `Esa combinación pide mínimo ${neededLiters(entries)} L y tu acuario tiene ${liters} L.`,
     });
   }
 
@@ -140,7 +148,6 @@ const names = items =>
 function behaviourChecks(a, others) {
   const checks = [];
   const fish = others.filter(b => b.type === "fish");
-  const shrimp = others.filter(b => b.type === "shrimp");
   const add = (level, affected, title, detail) => {
     if (affected.length) checks.push({ level, title, detail: detail(names(affected)) });
   };
@@ -210,25 +217,6 @@ function behaviourChecks(a, others) {
     );
   }
 
-  if (a.type === "fish" && a.shrimpRisk === "adultas") {
-    add(
-      "bad",
-      shrimp,
-      `${a.name} se come las gambas`,
-      n => `Las ve como alimento, incluso a las adultas. No lo juntes con ${n}.`
-    );
-  }
-
-  if (a.type === "fish" && a.shrimpRisk === "crias") {
-    add(
-      "caution",
-      shrimp.filter(b => b.breedsInTank !== false),
-      `${a.name} se puede comer las crías`,
-      n =>
-        `Lo más probable es que se coma muchas crías de ${n}. Las adultas, en un acuario bien plantado, normalmente logran esconderse: entre más musgos y plantas tengas, mejor.`
-    );
-  }
-
   return checks;
 }
 
@@ -257,7 +245,36 @@ function rivalryChecks(list) {
   return checks;
 }
 
-// selection: [{ id, qty }] · liters: litros del acuario (obligatorio)
+// Peces que se comen las gambitas: un solo aviso que nombra a todos los que lo hacen
+function shrimpChecks(list) {
+  const checks = [];
+  const fish = list.filter(s => s.type === "fish");
+  const shrimp = list.filter(s => s.type === "shrimp");
+  const breeding = shrimp.filter(s => s.breedsInTank !== false);
+  const eatAdults = fish.filter(s => s.shrimpRisk === "adultas");
+  const eatFry = fish.filter(s => s.shrimpRisk === "crias");
+  const plural = items => items.length > 1;
+
+  if (shrimp.length && eatAdults.length) {
+    checks.push({
+      level: "bad",
+      title: `${names(eatAdults)} se ${plural(eatAdults) ? "comen" : "come"} las gambas`,
+      detail: `Las ${plural(eatAdults) ? "ven" : "ve"} como alimento, incluso a las adultas. No ${plural(eatAdults) ? "los" : "lo"} juntes con ${names(shrimp)}.`,
+    });
+  }
+
+  if (breeding.length && eatFry.length) {
+    checks.push({
+      level: "caution",
+      title: `${names(eatFry)} se ${plural(eatFry) ? "pueden" : "puede"} comer las crías`,
+      detail: `Lo más probable es que se ${plural(eatFry) ? "coman" : "coma"} muchas crías de ${names(breeding)}. Las adultas, en un acuario bien plantado, normalmente logran esconderse: entre más musgos y plantas tengas, mejor.`,
+    });
+  }
+
+  return checks;
+}
+
+// selection: [{ id, qty }] · liters: litros del acuario, o null si todavía no se saben
 export function checkCompatibility(selection, liters) {
   const entries = selection
     .map(({ id, qty }) => ({ species: getSpeciesById(id), qty }))
@@ -275,6 +292,7 @@ export function checkCompatibility(selection, liters) {
       )
     ),
     ...rivalryChecks(list),
+    ...shrimpChecks(list),
   ];
 
   const checks = [
@@ -288,6 +306,19 @@ export function checkCompatibility(selection, liters) {
     level: checks[0]?.level || "ok",
     checks,
     shared,
-    minLiters: Math.max(...list.map(s => s.minLiters)),
+    liters,
+    neededLiters: neededLiters(entries),
   };
+}
+
+// Cómo encajaría una especie más en el acuario actual: el peor nivel entre los avisos nuevos
+// que traería. Sirve para marcar las sugerencias del buscador antes de elegirlas.
+export function fitWithTank(selection, liters, id) {
+  const known = new Set(checkCompatibility(selection, liters)?.checks.map(c => c.title));
+  const candidate = { id, qty: getSpeciesById(id).minGroup };
+  const added = checkCompatibility([...selection, candidate], liters).checks.filter(
+    c => !known.has(c.title)
+  );
+  // Ya vienen ordenados de peor a mejor
+  return added[0]?.level || "ok";
 }

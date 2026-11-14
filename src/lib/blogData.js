@@ -16,6 +16,7 @@ export const blogPosts = [
     id: "1",
     title: "¿Tienes un Pez Betta? Todo lo que necesitas saber",
     slug: "cuidado-pez-betta",
+    armoniaIds: ["betta"],
     excerpt:
       "Los Betta son peces fascinantes pero necesitan un entorno adecuado para estar bien. ¡Recuerda que no es lo mismo vivir que sobrevivir!",
     content: bettaContent,
@@ -72,6 +73,7 @@ export const blogPosts = [
     id: "2",
     title: "Gambitas: Guía para principiantes",
     slug: "gambitas-acuario-cuidados",
+    armoniaIds: ["neocaridina"],
     excerpt:
       "Las gambitas de acuario son diminutas criaturas llenas de carácter y ternura que pueden ser un verdadero espectáculo en tu acuario.",
     content: gambitasContent,
@@ -166,6 +168,7 @@ export const blogPosts = [
     id: "4",
     title: "Cómo montar un gambario para caridinas",
     slug: "caridinas-gambario-montaje",
+    armoniaIds: ["caridina"],
     excerpt:
       "Las caridinas son de las especies de gambas más fascinantes, pero requieren cuidados especiales. Aprende cómo montar un gambario ideal para ellas.",
     content: caridinasContent,
@@ -388,6 +391,7 @@ export const blogPosts = [
     id: "9",
     title: "Planarias en el gambario: cómo eliminarlas",
     slug: "planarias-gambario-como-eliminarlas",
+    armoniaIds: ["neocaridina"],
     excerpt:
       "Las planarias atacan a las crías y a las gambas recién mudadas. Te cuento cómo reconocerlas, por qué aparecen y cómo eliminarlas con Z-1.",
     content: planariasContent,
@@ -429,6 +433,7 @@ export const blogPosts = [
     id: "10",
     title: "¿Puede un Betta convivir con gambitas?",
     slug: "betta-y-gambitas-pueden-convivir",
+    armoniaIds: ["betta", "neocaridina"],
     excerpt:
       "Depende del temperamento de tu Betta, del tipo de gambas y del acuario. Te cuento qué tener en cuenta para que la convivencia funcione.",
     content: bettaGambitasContent,

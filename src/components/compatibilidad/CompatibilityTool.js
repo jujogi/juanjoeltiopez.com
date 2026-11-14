@@ -6,9 +6,6 @@ import {
   Flex,
   Heading,
   HStack,
-  Input,
-  InputGroup,
-  InputRightAddon,
   SimpleGrid,
   Stack,
   Text,
@@ -16,16 +13,21 @@ import {
   WrapItem,
   useToast,
 } from "@chakra-ui/react";
-import { CheckCircleIcon, RepeatIcon } from "@chakra-ui/icons";
-import { getSpeciesById } from "@/lib/speciesData";
-import { checkCompatibility } from "@/lib/compatibility";
-import { useTankSelection, MAX_LITERS } from "./useTankSelection";
+import { useMemo } from "react";
+import { CheckCircleIcon, LinkIcon, RepeatIcon } from "@chakra-ui/icons";
+import { species, getSpeciesById } from "@/lib/speciesData";
+import { checkCompatibility, fitWithTank } from "@/lib/compatibility";
+import { starterCombos } from "@/lib/compatibilidadData";
+import { useTankSelection } from "./useTankSelection";
 import SelectedSpeciesCard from "./SelectedSpeciesCard";
 import CompatibilityResult from "./CompatibilityResult";
 import SpeciesSearch from "./SpeciesSearch";
+import LitersInput from "./LitersInput";
+import Chip from "./Chip";
 
-const LITER_PRESETS = [20, 40, 60, 100, 200];
 const TOAST_MS = 2500;
+const FISH_COUNT = species.filter(s => s.type === "fish").length;
+const SHRIMP_COUNT = species.length - FISH_COUNT;
 
 // Los pasos que todavía no se pueden usar se ven atenuados
 const StepHeading = ({ step, id, isDimmed, children }) => (
@@ -44,25 +46,7 @@ const StepHeading = ({ step, id, isDimmed, children }) => (
   </Heading>
 );
 
-const Chip = ({ isSelected, children, ...props }) => (
-  <Button
-    size="sm"
-    variant="unstyled"
-    display="inline-flex"
-    px={4}
-    border="1px"
-    borderColor={isSelected ? "accent.cyan" : "dark.border"}
-    bg={isSelected ? "accent.cyan" : "dark.surface"}
-    color={isSelected ? "water.950" : "dark.text"}
-    _hover={{ borderColor: "accent.cyan" }}
-    aria-pressed={isSelected}
-    {...props}
-  >
-    {children}
-  </Button>
-);
-
-const AddedToast = ({ name }) => (
+const ToastPill = ({ children }) => (
   <HStack
     role="status"
     bg="dark.surfaceRaised"
@@ -78,13 +62,17 @@ const AddedToast = ({ name }) => (
   >
     <CheckCircleIcon color="accent.cyan" />
     <Text fontSize="sm" fontWeight="600" color="white">
-      ¡Listo! Agregaste {name}
+      {children}
     </Text>
   </HStack>
 );
 
+const ActionButton = props => (
+  <Button size="sm" variant="ghost" border="1px" borderColor="dark.border" {...props} />
+);
+
 const Placeholder = ({ children }) => (
-  <Text
+  <Box
     color="dark.textSecondary"
     bg="dark.surface"
     border="1px"
@@ -93,7 +81,7 @@ const Placeholder = ({ children }) => (
     p={{ base: 4, md: 6 }}
   >
     {children}
-  </Text>
+  </Box>
 );
 
 export default function CompatibilityTool() {
@@ -102,18 +90,38 @@ export default function CompatibilityTool() {
     useTankSelection();
 
   const litersNumber = Number(liters) > 0 ? Number(liters) : null;
-  // Los litros son obligatorios: sin ellos no se pueden elegir especies ni ver el resultado
-  const isLocked = !litersNumber;
+  // Los litros son obligatorios para empezar. La excepción es llegar con especies ya elegidas
+  // (desde un artículo o un enlace compartido): ahí se muestra el resultado de una vez, sin la
+  // revisión del acuario, y se pide completar los litros.
+  const isLocked = !litersNumber && selection.length === 0;
+  const needsLiters = !litersNumber && selection.length > 0;
   const result = isLocked ? null : checkCompatibility(selection, litersNumber);
   const hasChoices = Boolean(liters) || selection.length > 0;
 
-  const onAdd = id => {
-    addSpecies(id);
+  // Con especies en el acuario, cada sugerencia del buscador muestra cómo encajaría
+  const fitById = useMemo(
+    () =>
+      isLocked || selection.length === 0
+        ? {}
+        : Object.fromEntries(species.map(s => [s.id, fitWithTank(selection, litersNumber, s.id)])),
+    [isLocked, selection, litersNumber]
+  );
+
+  const notify = message =>
     toast({
       duration: TOAST_MS,
       position: "bottom",
-      render: () => <AddedToast name={getSpeciesById(id).name} />,
+      render: () => <ToastPill>{message}</ToastPill>,
     });
+
+  const onAdd = id => {
+    addSpecies(id);
+    notify(`¡Listo! Agregaste ${getSpeciesById(id).name}`);
+  };
+
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(window.location.href);
+    notify("¡Enlace copiado! Compártelo con quien quieras");
   };
 
   return (
@@ -122,51 +130,30 @@ export default function CompatibilityTool() {
         <StepHeading step={1} id="paso-litros">
           ¿De cuántos litros es tu acuario?
         </StepHeading>
-        <Stack direction="row" wrap="wrap" spacing={3} align="center">
-          <InputGroup w="150px">
-            <Input
-              type="number"
-              inputMode="numeric"
-              min={1}
-              max={MAX_LITERS}
-              value={liters}
-              onChange={e => setLiters(e.target.value)}
-              placeholder="Ej: 60"
-              aria-labelledby="paso-litros"
-              aria-required="true"
-              bg="dark.surface"
-              borderColor="dark.border"
-              color="white"
-            />
-            <InputRightAddon bg="dark.surfaceRaised" borderColor="dark.border" color="dark.text">
-              L
-            </InputRightAddon>
-          </InputGroup>
-          <Wrap spacing={2}>
-            {LITER_PRESETS.map(preset => (
-              <WrapItem key={preset}>
-                <Chip
-                  isSelected={litersNumber === preset}
-                  onClick={() => setLiters(String(preset))}
-                >
-                  {preset} L
-                </Chip>
-              </WrapItem>
-            ))}
-          </Wrap>
-        </Stack>
+        <LitersInput liters={liters} onChange={setLiters} labelledBy="paso-litros" />
+        {needsLiters && (
+          <Text role="status" fontSize="sm" fontWeight="600" color="accent.sand" mt={3}>
+            Ya elegimos las especies por ti. Cuéntanos los litros de tu acuario para revisar también
+            si caben.
+          </Text>
+        )}
       </Box>
 
       <Box as="section" aria-labelledby="paso-especies">
         <StepHeading step={2} id="paso-especies" isDimmed={isLocked}>
           Elige las especies que quieres tener
         </StepHeading>
-        <SpeciesSearch selectedIds={selection.map(e => e.id)} onAdd={onAdd} isDisabled={isLocked} />
-        {isLocked && (
-          <Text fontSize="sm" color="dark.textSecondary" mt={3}>
-            Primero cuéntanos de cuántos litros es tu acuario.
-          </Text>
-        )}
+        <SpeciesSearch
+          selectedIds={selection.map(e => e.id)}
+          fitById={fitById}
+          onAdd={onAdd}
+          isDisabled={isLocked}
+        />
+        <Text fontSize="sm" color="dark.textSecondary" mt={3}>
+          {isLocked
+            ? "Primero cuéntanos de cuántos litros es tu acuario."
+            : `Por ahora tenemos ${FISH_COUNT} peces y ${SHRIMP_COUNT} gambitas en nuestra base de datos.`}
+        </Text>
       </Box>
 
       <Box as="section" aria-labelledby="paso-resultado">
@@ -174,40 +161,72 @@ export default function CompatibilityTool() {
           <StepHeading step={3} id="paso-resultado" isDimmed={isLocked}>
             ¿Pueden vivir juntas?
           </StepHeading>
-          {hasChoices && (
-            <Button
-              size="sm"
-              variant="ghost"
-              border="1px"
-              borderColor="dark.border"
-              leftIcon={<RepeatIcon />}
-              onClick={reset}
-              mb={4}
-            >
-              Empezar de nuevo
-            </Button>
-          )}
+          <Wrap spacing={2} mb={4}>
+            {result && (
+              <WrapItem>
+                <ActionButton leftIcon={<LinkIcon />} onClick={copyLink}>
+                  Copiar enlace
+                </ActionButton>
+              </WrapItem>
+            )}
+            {hasChoices && (
+              <WrapItem>
+                <ActionButton leftIcon={<RepeatIcon />} onClick={reset}>
+                  Empezar de nuevo
+                </ActionButton>
+              </WrapItem>
+            )}
+          </Wrap>
         </Flex>
         {result ? (
-          <Stack spacing={6}>
-            <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4}>
-              {selection.map(entry => (
-                <SelectedSpeciesCard
-                  key={entry.id}
-                  species={getSpeciesById(entry.id)}
-                  qty={entry.qty}
-                  onQtyChange={qty => setQty(entry.id, qty)}
-                  onRemove={() => removeSpecies(entry.id)}
-                />
-              ))}
-            </SimpleGrid>
-            <CompatibilityResult result={result} speciesCount={selection.length} />
+          <Stack spacing={8}>
+            {/* El veredicto va primero: es la respuesta, y queda a la vista al agregar una especie */}
+            <CompatibilityResult
+              result={result}
+              entries={selection.map(e => ({ species: getSpeciesById(e.id), qty: e.qty }))}
+              onRemove={removeSpecies}
+            />
+            <Box as="section" aria-labelledby="tu-acuario">
+              <Heading as="h3" id="tu-acuario" fontSize="lg" color="white" mb={3}>
+                {litersNumber ? `Tu acuario de ${litersNumber} L` : "Tu acuario"}
+              </Heading>
+              <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={3} alignItems="start">
+                {selection.map(entry => (
+                  <SelectedSpeciesCard
+                    key={entry.id}
+                    species={getSpeciesById(entry.id)}
+                    qty={entry.qty}
+                    onQtyChange={qty => setQty(entry.id, qty)}
+                    onRemove={() => removeSpecies(entry.id)}
+                  />
+                ))}
+              </SimpleGrid>
+              <Text fontSize="xs" color="dark.textMuted" mt={3}>
+                Fotos de Wikimedia Commons: el autor y la licencia de cada una están en su ficha.
+              </Text>
+            </Box>
           </Stack>
         ) : (
           <Placeholder>
-            {isLocked
-              ? "Cuando nos cuentes de cuántos litros es tu acuario, aquí vas a ver la ficha de cada especie y si pueden vivir juntas."
-              : "Elige tu primera especie para ver su ficha y sus parámetros. Después agrega otra y te decimos si pueden vivir juntas."}
+            <Text>
+              {isLocked
+                ? "Cuando nos cuentes de cuántos litros es tu acuario, aquí vas a ver la ficha de cada especie y si pueden vivir juntas."
+                : "Elige tu primera especie para ver sus parámetros. Después agrega otra y te decimos si pueden vivir juntas."}
+            </Text>
+            {!isLocked && (
+              <>
+                <Text fontSize="sm" mt={4} mb={2}>
+                  ¿No sabes por dónde empezar? Prueba con una de estas:
+                </Text>
+                <Wrap spacing={2}>
+                  {starterCombos.map(combo => (
+                    <WrapItem key={combo.label}>
+                      <Chip onClick={() => addSpecies(...combo.ids)}>{combo.label}</Chip>
+                    </WrapItem>
+                  ))}
+                </Wrap>
+              </>
+            )}
           </Placeholder>
         )}
       </Box>

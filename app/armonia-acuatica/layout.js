@@ -3,14 +3,14 @@ import { SITE_URL } from "@/lib/siteConfig";
 import { COMPATIBILIDAD_PATH, compatibilidad, faq } from "@/lib/compatibilidadData";
 
 const DESCRIPTION =
-  "Elige tus peces y gambitas y revisa si pueden vivir juntos: temperatura, pH, GH, litros del acuario y temperamento. Tetras, rasboras, Betta, Neocaridinas y Caridinas.";
+  "Elige tus peces y gambitas y revisa si pueden vivir juntos: temperatura, pH, GH, litros y temperamento. Tetras, cíclidos, guramis, Betta y gambitas.";
 
 export const metadata = {
   alternates: { canonical: COMPATIBILIDAD_PATH },
   title: compatibilidad.title,
   description: DESCRIPTION,
   keywords:
-    "compatibilidad de peces, peces compatibles, compatibilidad de peces de acuario, peces compatibles con gambas, peces compatibles con betta, tetras, rasboras, neocaridinas, caridinas, gambas sulawesi",
+    "armonía acuática, compatibilidad de peces, peces compatibles, compatibilidad de peces de acuario, peces compatibles con gambas, peces compatibles con betta, tetras, rasboras, neocaridinas, caridinas, gambas sulawesi",
   openGraph: {
     title: `${compatibilidad.title} | JuanJo El Tío Pez`,
     description: DESCRIPTION,
@@ -31,13 +31,14 @@ export const metadata = {
   },
 };
 
-// Datos estructurados renderizados en el servidor
+// Datos estructurados renderizados en el servidor (Armonía Acuática como aplicación web + FAQ)
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebApplication",
-      name: compatibilidad.title,
+      name: compatibilidad.name,
+      alternateName: compatibilidad.tagline,
       description: DESCRIPTION,
       url: `${SITE_URL}${COMPATIBILIDAD_PATH}`,
       applicationCategory: "UtilitiesApplication",

@@ -22,7 +22,7 @@ const SOCIAL_ICONS = { tiktok: FaTiktok, instagram: FaInstagram };
 
 const SITE_LINKS = [
   { label: "Blog", href: "/blog" },
-  { label: "Compatibilidad de peces", href: "/compatibilidad-de-peces" },
+  { label: "Armonía Acuática", href: "/armonia-acuatica" },
   { label: "Asesorías", href: "/asesoria" },
   { label: "Sobre mí", href: "/sobre-mi" },
   { label: "Términos y condiciones", href: "/terminos" },

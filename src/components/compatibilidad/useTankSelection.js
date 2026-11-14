@@ -53,9 +53,15 @@ const update = change => {
 
 const setLiters = liters => update(() => ({ liters }));
 
-const addSpecies = id =>
+// Acepta una o varias especies; las que ya están no se repiten
+const addSpecies = (...ids) =>
   update(({ selection }) => ({
-    selection: [...selection, { id, qty: getSpeciesById(id).minGroup }],
+    selection: [
+      ...selection,
+      ...ids
+        .filter(id => !selection.some(e => e.id === id))
+        .map(id => ({ id, qty: getSpeciesById(id).minGroup })),
+    ],
   }));
 
 const removeSpecies = id =>

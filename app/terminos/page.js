@@ -57,13 +57,13 @@ export default function TerminosPage() {
           proporcionadas.
         </Section>
 
-        <Section title="5. Herramienta de Compatibilidad de Peces">
-          La herramienta de compatibilidad de peces y gambitas es una utilidad informativa para
-          ayudarte a planear tu acuario. Sus resultados se basan en rangos de referencia de
-          temperatura, pH, GH, litros y temperamento de cada especie, y son una guía, no una
-          garantía: cada pez tiene su propio temperamento y cada acuario es diferente, así que la
-          convivencia puede resultar distinta a lo que indica la herramienta. Observa siempre a tus
-          animales y ten un plan para separarlos si hace falta. JuanJo El Tío Pez no se hace
+        <Section title="5. Armonía Acuática (Herramienta de Compatibilidad de Peces)">
+          Armonía Acuática, la herramienta de compatibilidad de peces y gambitas, es una utilidad
+          informativa para ayudarte a planear tu acuario. Sus resultados se basan en rangos de
+          referencia de temperatura, pH, GH, litros y temperamento de cada especie, y son una guía,
+          no una garantía: cada pez tiene su propio temperamento y cada acuario es diferente, así
+          que la convivencia puede resultar distinta a lo que indica la herramienta. Observa siempre
+          a tus animales y ten un plan para separarlos si hace falta. JuanJo El Tío Pez no se hace
           responsable por las decisiones que tomes con base en estos resultados. Las fotografías de
           las especies que no son de autoría propia provienen de Wikimedia Commons y pertenecen a
           sus autores: se usan bajo las licencias indicadas en el crédito de cada foto.

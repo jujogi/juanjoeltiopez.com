@@ -1,12 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Box, Flex, Icon, Input, InputGroup, InputLeftElement, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  HStack,
+  Icon,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Text,
+  VisuallyHidden,
+} from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { GiTropicalFish, GiShrimp } from "react-icons/gi";
-import Image from "next/image";
 import { species } from "@/lib/speciesData";
-import { speciesPhotos } from "@/lib/speciesPhotos";
+import SpeciesThumbnail from "./SpeciesThumbnail";
+import { LEVELS } from "./levels";
 
 const LISTBOX_ID = "especies-sugeridas";
 const optionId = id => `especie-${id}`;
@@ -27,36 +36,21 @@ const matchRank = (s, term) => {
   return normalize(`${s.name} ${s.scientific}`).includes(term) ? 2 : NO_MATCH;
 };
 
-const Thumbnail = ({ item }) => {
-  const photo = speciesPhotos[item.id];
-  return (
-    <Flex
-      position="relative"
-      w="64px"
-      h="44px"
-      flexShrink={0}
-      rounded="md"
-      overflow="hidden"
-      bg="dark.bgAlt"
-      align="center"
-      justify="center"
-    >
-      {photo ? (
-        <Image src={photo.src} alt="" fill sizes="64px" style={{ objectFit: "cover" }} />
-      ) : (
-        <Icon
-          as={item.type === "shrimp" ? GiShrimp : GiTropicalFish}
-          aria-hidden="true"
-          color="accent.cyan"
-          boxSize={6}
-        />
-      )}
-    </Flex>
-  );
-};
-
 // Buscador con sugerencias (combobox): se escribe, se elige con el mouse o con flechas + Enter
-export default function SpeciesSearch({ selectedIds, onAdd, isDisabled }) {
+// Cómo encaja la sugerencia con lo que ya hay en el acuario. En el celular solo va el ícono
+// (el texto queda para lectores de pantalla) para no quitarle espacio al nombre.
+const FitBadge = ({ level }) => (
+  <HStack spacing={1.5} ml="auto" flexShrink={0} color={LEVELS[level].color}>
+    <Icon as={LEVELS[level].icon} aria-hidden="true" boxSize={3.5} />
+    <Text fontSize="xs" fontWeight="600" display={{ base: "none", md: "block" }}>
+      {LEVELS[level].label}
+    </Text>
+    <VisuallyHidden display={{ md: "none" }}>{LEVELS[level].label}</VisuallyHidden>
+  </HStack>
+);
+
+// fitById: { id: "ok" | "caution" | "bad" } según el acuario actual; vacío si aún no hay especies
+export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled }) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -198,7 +192,7 @@ export default function SpeciesSearch({ selectedIds, onAdd, isDisabled }) {
                 onMouseMove={() => setActiveIndex(i)}
                 onClick={() => add(item)}
               >
-                <Thumbnail item={item} />
+                <SpeciesThumbnail species={item} />
                 <Box minW={0}>
                   <Text fontWeight="600" color="white" noOfLines={1}>
                     {item.name}
@@ -207,6 +201,7 @@ export default function SpeciesSearch({ selectedIds, onAdd, isDisabled }) {
                     {item.scientific}
                   </Text>
                 </Box>
+                {fitById[item.id] && <FitBadge level={fitById[item.id]} />}
               </Flex>
             </Box>
           );

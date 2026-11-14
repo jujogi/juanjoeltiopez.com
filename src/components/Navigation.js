@@ -21,7 +21,7 @@ import { trackCtaClick } from "@/lib/gtm";
 const LINKS = [
   { name: "Inicio", href: "/" },
   { name: "Blog", href: "/blog" },
-  { name: "Compatibilidad", href: "/compatibilidad-de-peces" },
+  { name: "Armonía Acuática", href: "/armonia-acuatica" },
   { name: "Sobre mí", href: "/sobre-mi" },
 ];
 

@@ -1,4 +1,4 @@
-// Fotos de las especies de /compatibilidad-de-peces, tomadas de Wikimedia Commons.
+// Fotos de las especies de /armonia-acuatica, tomadas de Wikimedia Commons.
 // Cada licencia (CC BY, CC BY-SA) exige dar crédito al autor, nombrar la licencia y enlazar
 // la fuente: por eso la ficha siempre muestra el crédito junto a la foto. Las fotos se
 // redujeron de tamaño y la ficha las recorta para que encajen.

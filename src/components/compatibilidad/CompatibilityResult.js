@@ -1,17 +1,21 @@
 "use client";
 
-import { Box, Flex, HStack, Heading, Text, Icon, SimpleGrid, VStack } from "@chakra-ui/react";
-import { FaCheckCircle, FaExclamationTriangle, FaTimesCircle } from "react-icons/fa";
-
-const LEVELS = {
-  ok: { icon: FaCheckCircle, color: "accent.cyan", title: "Sí, pueden vivir juntas" },
-  caution: {
-    icon: FaExclamationTriangle,
-    color: "accent.sand",
-    title: "Pueden vivir juntas, pero con cuidado",
-  },
-  bad: { icon: FaTimesCircle, color: "red.300", title: "No te lo recomendamos" },
-};
+import {
+  Box,
+  Flex,
+  HStack,
+  Heading,
+  Text,
+  Icon,
+  IconButton,
+  SimpleGrid,
+  VStack,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
+import { CloseIcon } from "@chakra-ui/icons";
+import { LEVELS } from "./levels";
+import SpeciesThumbnail from "./SpeciesThumbnail";
 
 const SHARED_LABELS = [
   { key: "temp", label: "Temperatura" },
@@ -19,10 +23,52 @@ const SHARED_LABELS = [
   { key: "gh", label: "GH" },
 ];
 
+// Especie que se está comparando: foto, cantidad y nombre, con su botón para quitarla
+const SpeciesPill = ({ species, qty, onRemove }) => (
+  <HStack spacing={2} bg="dark.bgAlt" border="1px" borderColor="dark.border" rounded="full" p={1}>
+    <SpeciesThumbnail species={species} w="32px" h="32px" rounded="full" />
+    <Text fontSize="sm" fontWeight="600" color="white">
+      {qty > 1 && `${qty} × `}
+      {species.name}
+    </Text>
+    <IconButton
+      icon={<CloseIcon boxSize={2} />}
+      aria-label={`Quitar ${species.name}`}
+      onClick={onRemove}
+      size="xs"
+      isRound
+      variant="ghost"
+      color="dark.textSecondary"
+    />
+  </HStack>
+);
+
+// Barra de ocupación: cuánto del acuario pide la selección
+const StockingBar = ({ needed, liters }) => {
+  const ratio = needed / liters;
+  const color = ratio <= 1 ? "accent.cyan" : ratio <= 1.5 ? "accent.sand" : "red.300";
+
+  return (
+    <Box mt={5}>
+      <Flex justify="space-between" gap={3} fontSize="sm" mb={2} wrap="wrap">
+        <Text color="dark.textSecondary">Ocupación del acuario</Text>
+        <Text fontWeight="600" color="white">
+          {ratio <= 1
+            ? `Pide mínimo ${needed} L de tus ${liters} L`
+            : `Pide ${needed} L y tienes ${liters} L`}
+        </Text>
+      </Flex>
+      <Box aria-hidden="true" h="8px" bg="dark.bgAlt" rounded="full" overflow="hidden">
+        <Box h="full" w={`${Math.min(ratio, 1) * 100}%`} bg={color} rounded="full" />
+      </Box>
+    </Box>
+  );
+};
+
 // Veredicto con sus razones. result viene de checkCompatibility()
-export default function CompatibilityResult({ result, speciesCount }) {
+export default function CompatibilityResult({ result, entries, onRemove }) {
   const verdict = LEVELS[result.level];
-  const isSingle = speciesCount === 1;
+  const isSingle = entries.length === 1;
   const title =
     isSingle && result.level === "ok" ? "Agrega otra especie para compararlas" : verdict.title;
 
@@ -32,7 +78,7 @@ export default function CompatibilityResult({ result, speciesCount }) {
       value: result.shared[key] || "No coinciden",
       isMissing: !result.shared[key],
     })),
-    { label: "Acuario mínimo", value: `${result.minLiters} L` },
+    { label: "Acuario mínimo", value: `${result.neededLiters} L` },
   ];
 
   return (
@@ -61,6 +107,19 @@ export default function CompatibilityResult({ result, speciesCount }) {
       </Flex>
 
       <Box px={{ base: 4, md: 6 }} py={5}>
+        <Wrap
+          as="ul"
+          spacing={2}
+          mb={5}
+          listStyleType="none"
+          aria-label="Especies que estás comparando"
+        >
+          {entries.map(({ species, qty }) => (
+            <WrapItem as="li" key={species.id}>
+              <SpeciesPill species={species} qty={qty} onRemove={() => onRemove(species.id)} />
+            </WrapItem>
+          ))}
+        </Wrap>
         <Text fontSize="sm" color="dark.textSecondary" mb={3}>
           {isSingle ? "Lo que necesita:" : "El agua que les sirve a todas:"}
         </Text>
@@ -87,6 +146,7 @@ export default function CompatibilityResult({ result, speciesCount }) {
             </Box>
           ))}
         </SimpleGrid>
+        {result.liters && <StockingBar needed={result.neededLiters} liters={result.liters} />}
 
         <VStack as="ul" align="stretch" spacing={4} mt={6} listStyleType="none">
           {result.checks.map(check => (
