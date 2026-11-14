@@ -27,6 +27,7 @@ import { mainAuthor, totalFollowers, formatFollowers } from "@/lib/siteConfig";
 import { trackCtaClick } from "@/lib/gtm";
 import PostCard, { FeaturedPostCard } from "@/components/PostCard";
 import AsesoriaBand from "@/components/AsesoriaBand";
+import ArmoniaHomeBand from "./ArmoniaHomeBand";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { Eyebrow, SectionHeader } from "@/components/ui/SectionHeading";
 
@@ -244,6 +245,11 @@ export default function HomeView() {
               <TopicCard key={c.slug} category={c} />
             ))}
           </SimpleGrid>
+        </Box>
+
+        {/* Armonía Acuática */}
+        <Box mb={{ base: 16, md: 24 }}>
+          <ArmoniaHomeBand />
         </Box>
 
         {/* Destacada + recientes */}

@@ -48,6 +48,9 @@ export default function ArmoniaBand({ speciesIds, trackingId = "articulo_armonia
           <Text color="dark.textSecondary" lineHeight="1.6">
             {armoniaInvite.text}
           </Text>
+          <Text fontSize="xs" color="dark.textMuted" mt={3}>
+            Fotos de Wikimedia Commons: los créditos están en la herramienta.
+          </Text>
         </Box>
         <Box flexShrink={0}>
           <HStack spacing={-2} mb={4} aria-hidden="true">

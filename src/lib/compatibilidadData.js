@@ -25,6 +25,27 @@ export const armoniaInvite = {
   defaultIds: ["betta", "tetra-neon", "ramirezi", "neocaridina"],
 };
 
+// Bloque de la home (ArmoniaHomeBand). {count} se reemplaza por el número de especies
+export const armoniaHome = {
+  title: "¿Tus peces pueden vivir juntos?",
+  text: "Antes de comprar, revisa si las especies que quieres comparten agua, espacio y temperamento. Ya tenemos {count} peces y gambitas para comparar.",
+  features: [
+    "Temperatura, pH y GH que les sirven a todas",
+    "Litros y ocupación de tu acuario",
+    "Temperamento y qué tan seguras están las gambitas",
+  ],
+  cta: "Probar Armonía Acuática",
+  combosLabel: "O empieza con una de estas:",
+  // Resultado de ejemplo que se muestra como vista previa (lo calcula la misma herramienta)
+  example: {
+    liters: 60,
+    selection: [
+      { id: "betta", qty: 1 },
+      { id: "neocaridina", qty: 10 },
+    ],
+  },
+};
+
 // Enlace a la herramienta; con ids, abre con esas especies ya elegidas (cada una en su grupo mínimo)
 export const armoniaHref = ids =>
   ids?.length
@@ -35,7 +56,6 @@ export const armoniaHref = ids =>
 export const starterCombos = [
   { label: "Betta + gambitas", ids: ["betta", "neocaridina"] },
   { label: "Neones + Corydoras", ids: ["tetra-neon", "corydoras"] },
-  { label: "Ramirezi + cardenales", ids: ["ramirezi", "tetra-cardenal"] },
   { label: "Guppys + platys", ids: ["guppy", "platy"] },
 ];
 
