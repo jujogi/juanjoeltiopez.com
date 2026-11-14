@@ -133,8 +133,7 @@ export default function CompatibilityTool() {
         <LitersInput liters={liters} onChange={setLiters} labelledBy="paso-litros" />
         {needsLiters && (
           <Text role="status" fontSize="sm" fontWeight="600" color="accent.sand" mt={3}>
-            Ya elegimos las especies por ti. Cuéntanos los litros de tu acuario para revisar también
-            si caben.
+            Indícanos los litros de tu acuario para afinar los resultados
           </Text>
         )}
       </Box>

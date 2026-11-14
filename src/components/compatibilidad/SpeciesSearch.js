@@ -112,7 +112,16 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
           aria-controls={LISTBOX_ID}
           aria-autocomplete="list"
           aria-activedescendant={isOpen && active ? optionId(active.id) : undefined}
+          // Safari ofrece autocompletar datos de contacto (teléfono, nombre) en campos de texto
+          // aunque tengan autoComplete="off"; no lo hace si el campo se identifica como búsqueda.
+          id="species-search"
+          name="search"
+          inputMode="search"
+          enterKeyHint="search"
           autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck={false}
           value={query}
           onChange={e => {
             setQuery(e.target.value);
