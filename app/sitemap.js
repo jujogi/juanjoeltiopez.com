@@ -33,6 +33,12 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/compatibilidad-de-peces`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/sobre-mi`,
       lastModified: new Date(),
       changeFrequency: "monthly",

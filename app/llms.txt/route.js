@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/blogData";
 import { getCategories, MIN_POSTS_TO_INDEX } from "@/lib/categories";
+import { COMPATIBILIDAD_PATH, compatibilidad } from "@/lib/compatibilidadData";
 import {
   SITE_URL,
   SITE_NAME,
@@ -30,6 +31,10 @@ ${posts.map(p => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.excerpt}`).joi
 ## Temas
 
 ${topics.map(c => `- [${c.name}](${SITE_URL}${c.href}): ${c.description}`).join("\n")}
+
+## Herramientas
+
+- [${compatibilidad.title}](${SITE_URL}${COMPATIBILIDAD_PATH}): ${compatibilidad.lead}
 
 ## Asesorías personalizadas
 

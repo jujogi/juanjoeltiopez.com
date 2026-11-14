@@ -21,6 +21,7 @@ import { trackCtaClick } from "@/lib/gtm";
 const LINKS = [
   { name: "Inicio", href: "/" },
   { name: "Blog", href: "/blog" },
+  { name: "Compatibilidad", href: "/compatibilidad-de-peces" },
   { name: "Sobre mí", href: "/sobre-mi" },
 ];
 

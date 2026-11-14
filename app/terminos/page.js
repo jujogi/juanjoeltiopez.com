@@ -57,7 +57,19 @@ export default function TerminosPage() {
           proporcionadas.
         </Section>
 
-        <Section title="5. Limitación de Responsabilidad">
+        <Section title="5. Herramienta de Compatibilidad de Peces">
+          La herramienta de compatibilidad de peces y gambitas es una utilidad informativa para
+          ayudarte a planear tu acuario. Sus resultados se basan en rangos de referencia de
+          temperatura, pH, GH, litros y temperamento de cada especie, y son una guía, no una
+          garantía: cada pez tiene su propio temperamento y cada acuario es diferente, así que la
+          convivencia puede resultar distinta a lo que indica la herramienta. Observa siempre a tus
+          animales y ten un plan para separarlos si hace falta. JuanJo El Tío Pez no se hace
+          responsable por las decisiones que tomes con base en estos resultados. Las fotografías de
+          las especies que no son de autoría propia provienen de Wikimedia Commons y pertenecen a
+          sus autores: se usan bajo las licencias indicadas en el crédito de cada foto.
+        </Section>
+
+        <Section title="6. Limitación de Responsabilidad">
           La información proporcionada en este sitio web es de carácter general y no sustituye el
           asesoramiento profesional específico. JuanJo El Tío Pez no se hace responsable por
           cualquier daño directo o indirecto que pueda resultar del uso de la información
@@ -65,32 +77,32 @@ export default function TerminosPage() {
           mascotas.
         </Section>
 
-        <Section title="6. Enlaces Externos">
+        <Section title="7. Enlaces Externos">
           Este sitio puede contener enlaces a sitios web de terceros. No nos hacemos responsables
           del contenido, políticas de privacidad o prácticas de estos sitios externos. El acceso a
           dichos enlaces es bajo tu propio riesgo.
         </Section>
 
-        <Section title="7. Privacidad">
+        <Section title="8. Privacidad">
           El uso de este sitio web está sujeto a nuestra Política de Privacidad. Al utilizar este
           sitio, aceptas el procesamiento de tus datos según lo descrito en dicha política.
           Respetamos tu privacidad y no compartimos información personal con terceros sin tu
           consentimiento.
         </Section>
 
-        <Section title="8. Modificaciones">
+        <Section title="9. Modificaciones">
           Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento.
           Las modificaciones entrarán en vigor inmediatamente después de su publicación en el sitio
           web. Es tu responsabilidad revisar periódicamente estos términos para estar al tanto de
           cualquier cambio.
         </Section>
 
-        <Section title="9. Ley Aplicable">
+        <Section title="10. Ley Aplicable">
           Estos términos y condiciones se rigen por las leyes de Colombia. Cualquier disputa
           relacionada con estos términos será resuelta en los tribunales competentes de Colombia.
         </Section>
 
-        <Section title="10. Contacto">
+        <Section title="11. Contacto">
           Si tienes alguna pregunta sobre estos términos y condiciones, puedes contactarnos a través
           de:{" "}
           <Text as="span" color="accent.cyan" fontWeight="semibold">
