@@ -32,6 +32,7 @@ import AuthorBox from "./AuthorBox";
 import PostCard from "@/components/PostCard";
 import RelatedVideosWidget from "@/components/RelatedVideosWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
+import ArmoniaBand from "@/components/ArmoniaBand";
 
 function getRelatedPosts(post, allPosts, count = 3) {
   const explicit = (post.relatedPostSlugs || [])
@@ -195,6 +196,10 @@ export default function ArticleView({ slug }) {
               )}
 
               <ArticleBody post={post} />
+
+              <Box maxW="68ch">
+                <ArmoniaBand speciesIds={post.armoniaIds} />
+              </Box>
 
               {post.faq?.length > 0 && (
                 <Box maxW="68ch">
