@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Box,
   Flex,
@@ -54,6 +54,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const inputRef = useRef(null);
 
   const term = normalize(query.trim());
   const available = species.filter(s => !selectedIds.includes(s.id));
@@ -80,6 +81,9 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
     setActiveIndex(0);
     // Se cierra para que se vea la ficha recién agregada; vuelve a abrir al escribir o hacer clic
     setIsOpen(false);
+    // En pantallas táctiles se suelta el campo para que se esconda el teclado: si no, tapa el
+    // aviso de "agregaste…" y el resultado. Con teclado físico el foco se queda para seguir.
+    if (window.matchMedia("(pointer: coarse)").matches) inputRef.current?.blur();
   };
 
   const onKeyDown = e => {
@@ -105,6 +109,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
           <SearchIcon color="dark.textMuted" boxSize={4} />
         </InputLeftElement>
         <Input
+          ref={inputRef}
           role="combobox"
           isDisabled={isDisabled}
           aria-label="Buscar una especie"
