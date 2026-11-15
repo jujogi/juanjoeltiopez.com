@@ -18,6 +18,7 @@ import { formatRange } from "@/lib/speciesData";
 import { speciesPhotos } from "@/lib/speciesPhotos";
 import { MAX_QTY } from "./useTankSelection";
 import SpeciesThumbnail from "./SpeciesThumbnail";
+import WhereToBuy from "./WhereToBuy";
 
 const facts = s => [
   { label: "Temperatura", value: formatRange(s.temp, " °C") },
@@ -63,7 +64,7 @@ const StepButton = props => (
 );
 
 // Especie elegida, en formato compacto: foto, nombre y cantidad. La ficha completa
-// (intro, parámetros y crédito de la foto) se abre con "Ver ficha".
+// (intro, parámetros, dónde comprarla y crédito de la foto) se abre con "Ver ficha".
 export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemove }) {
   const [isOpen, setIsOpen] = useState(false);
   const photo = speciesPhotos[species.id];
@@ -185,6 +186,7 @@ export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemov
             </Box>
           ))}
         </SimpleGrid>
+        <WhereToBuy species={species} />
         {photo && <PhotoCredit photo={photo} />}
       </Box>
     </Box>

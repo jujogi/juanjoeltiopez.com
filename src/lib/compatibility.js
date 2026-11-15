@@ -128,6 +128,16 @@ function groupChecks(entries) {
         title: `Solo ${species.maxCount} ${species.name} por acuario`,
         detail: "Es territorial: dos machos en el mismo acuario se pelean.",
       });
+    } else if (
+      species.unstableGroup &&
+      qty >= species.unstableGroup[0] &&
+      qty <= species.unstableGroup[1]
+    ) {
+      checks.push({
+        level: "caution",
+        title: `${species.name}: en solitario o en grupo de ${species.unstableGroup[1] + 1} o más`,
+        detail: `Pusiste ${qty}. Cuando son pocas, la más fuerte persigue a las demás. Funciona una sola, o un grupo grande en un acuario amplio y muy plantado, donde la agresividad se reparte.`,
+      });
     } else if (qty < species.minGroup) {
       checks.push({
         level: "caution",
@@ -163,11 +173,20 @@ function behaviourChecks(a, others) {
 
   // Peces territoriales como el Betta: entre más se parezca el otro a un rival, peor
   if (a.territorial) {
-    const gouramis = fish.filter(b => b.labyrinth);
+    // La hembra de su misma especie no es un gurami más: tiene su propio aviso
+    const mates = fish.filter(b => b.scientific === a.scientific);
+    const gouramis = fish.filter(b => b.labyrinth && !mates.includes(b));
     const longFinned = fish.filter(b => b.longFins && !b.labyrinth);
     const colorful = fish.filter(b => b.colorful && !b.longFins && !b.labyrinth);
     const rest = fish.filter(b => !b.labyrinth && !b.longFins && !b.colorful && !b.finNipper);
 
+    add(
+      "bad",
+      mates,
+      `${a.name} y ${names(mates)} solo se juntan para reproducirse`,
+      () =>
+        "Fuera de la reproducción, el macho la persigue y la puede lastimar o matar. Cada uno en su acuario."
+    );
     add(
       "bad",
       gouramis,
@@ -229,15 +248,15 @@ function rivalryChecks(list) {
   if (gouramis.length > 1) {
     checks.push({
       level: "caution",
-      title: "Guramis distintos pueden pelear",
-      detail: `${names(gouramis)} son parientes y los machos se ven como rivales. Solo en acuarios grandes y con muchas plantas que corten la vista.`,
+      title: "Los laberíntidos pueden pelear entre ellos",
+      detail: `${names(gouramis)} son parientes y se ven como rivales. Solo en acuarios grandes y con muchas plantas que corten la vista.`,
     });
   }
 
   if (dwarfCichlids.length > 1) {
     checks.push({
       level: "caution",
-      title: "Los cíclidos enanos compiten por el fondo",
+      title: "Estos cíclidos compiten por el fondo",
       detail: `${names(dwarfCichlids)} defienden territorio en la misma zona. Necesitas un acuario largo, de 100 L o más, con cuevas y plantas para que cada uno tenga su espacio.`,
     });
   }

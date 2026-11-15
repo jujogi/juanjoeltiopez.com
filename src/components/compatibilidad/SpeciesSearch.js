@@ -6,13 +6,15 @@ import {
   Flex,
   HStack,
   Icon,
+  IconButton,
   Input,
   InputGroup,
   InputLeftElement,
+  InputRightElement,
   Text,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
 import { species } from "@/lib/speciesData";
 import SpeciesThumbnail from "./SpeciesThumbnail";
 import { LEVELS } from "./levels";
@@ -86,6 +88,13 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
     if (window.matchMedia("(pointer: coarse)").matches) inputRef.current?.blur();
   };
 
+  const clear = () => {
+    setQuery("");
+    setActiveIndex(0);
+    setIsOpen(true);
+    inputRef.current?.focus();
+  };
+
   const onKeyDown = e => {
     if (e.key === "ArrowDown" || e.key === "ArrowUp") {
       e.preventDefault();
@@ -143,6 +152,21 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
           borderColor="dark.border"
           color="white"
         />
+        {query && (
+          <InputRightElement>
+            <IconButton
+              aria-label="Borrar la búsqueda"
+              icon={<CloseIcon boxSize={2.5} />}
+              size="sm"
+              variant="ghost"
+              rounded="full"
+              color="dark.textSecondary"
+              // Evita que el campo pierda el foco (y se cierre el teclado) antes del clic
+              onMouseDown={e => e.preventDefault()}
+              onClick={clear}
+            />
+          </InputRightElement>
+        )}
       </InputGroup>
 
       <Box

@@ -319,4 +319,42 @@ export const speciesPhotos = {
     source:
       "https://commons.wikimedia.org/wiki/File:Caridina_multidentata(Hamamatsu,Shizuoka,Japan,2007).jpg",
   },
+  "betta-hembra": {
+    src: "/images/especies/betta-hembra.jpg",
+    author: "Bernard Ladenthin",
+    license: "CC BY 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/4.0",
+    source:
+      "https://commons.wikimedia.org/wiki/File:Siamese_fighting_fish_(Betta_splendens)_female_orange.JPG",
+  },
+  "tetra-rubi": {
+    src: "/images/especies/tetra-rubi.jpg",
+    author: "Thomas Siems",
+    license: "CC BY-SA 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+    source:
+      "https://commons.wikimedia.org/wiki/File:Pfeffersalmler_Axelrodia_riesei_(16467043916).jpg",
+  },
+  kribensis: {
+    src: "/images/especies/kribensis.jpg",
+    author: "Tino Strauss",
+    license: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+    source: "https://commons.wikimedia.org/wiki/File:Pelvicachromis_pulcher_(male).jpg",
+  },
+  "polar-blue": {
+    src: "/images/especies/polar-blue.jpg",
+    author: "Rubel Das",
+    license: "CC0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    source: "https://commons.wikimedia.org/wiki/File:Polar_Blue_Parrot_Fish.jpg",
+  },
+  plecostomus: {
+    src: "/images/especies/plecostomus.jpg",
+    author: "Motu purkait",
+    license: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+    source:
+      "https://commons.wikimedia.org/wiki/File:Common_pleco(Hypostomus_plecostomus)_(28698).jpg",
+  },
 };

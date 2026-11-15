@@ -10,6 +10,7 @@
 //   sizeCm          tamaño adulto
 //   minGroup        cuántos como mínimo para que estén tranquilos
 //   maxCount        máximo por acuario (Betta macho: 1)
+//   unstableGroup   [desde, hasta]: cantidades en las que se pelean (Betta hembra: de 2 a 4)
 //   finNipper       muerde aletas
 //   longFins        tiene aletas largas (víctima de los mordedores)
 //   territorial     no tolera rivales: ataca peces de aletas largas y puede perseguir a los coloridos
@@ -34,7 +35,7 @@ export const species = [
     group: "Betta y otros populares",
     type: "fish",
     intro:
-      "Un pez fascinante y territorial: solo un macho por acuario, y lejos de peces de colas largas o muy coloridos. Necesita calentador, flujo suave y plantas naturales.",
+      "Un pez fascinante, pero territorial: solo un macho por acuario, y nada de juntarlo con peces de colas largas o muy coloridos. Dale calentador, un filtro de flujo suave y plantas naturales. ¡Recuerda que no es lo mismo vivir que sobrevivir!",
     temp: [24, 28],
     ph: [6.5, 7.5],
     gh: [5, 15],
@@ -49,13 +50,32 @@ export const species = [
     postSlug: "cuidado-pez-betta",
   },
   {
+    id: "betta-hembra",
+    name: "Betta hembra",
+    scientific: "Betta splendens",
+    group: "Betta y otros populares",
+    type: "fish",
+    intro:
+      "Es más tranquila que el macho, pero cada una tiene su propio temperamento. Tenla sola o en grupo de 5 o más, en un acuario grande y bien plantado. Con el macho solo se junta para reproducirse.",
+    temp: [24, 28],
+    ph: [6.5, 7.5],
+    gh: [5, 15],
+    minLiters: 15,
+    sizeCm: 5.5,
+    minGroup: 1,
+    unstableGroup: [2, 4],
+    labyrinth: true,
+    shrimpRisk: "crias",
+    postSlug: "cuidado-pez-betta",
+  },
+  {
     id: "goldfish",
     name: "Goldfish (bailarina)",
     scientific: "Carassius auratus",
     group: "Betta y otros populares",
     type: "fish",
     intro:
-      "Un pez de agua fría que crece mucho y ensucia bastante. Necesita un acuario grande y no va con peces tropicales.",
+      "No es un pez para pecera redonda: crece mucho, ensucia bastante y es de agua fría. Necesita un acuario grande y no te recomendamos juntarlo con peces tropicales.",
     temp: [18, 23],
     ph: [7.0, 8.0],
     gh: [8, 20],
@@ -75,7 +95,7 @@ export const species = [
     group: "Betta y otros populares",
     type: "fish",
     intro:
-      "Diminuto pero con mucho carácter: muerde aletas y se come gambas y caracoles. Lo mejor es un acuario solo para ellos.",
+      "Es diminuto, pero no te confíes: muerde aletas y se come las gambitas y los caracoles. Te recomendamos un acuario solo para ellos.",
     temp: [24, 28],
     ph: [6.5, 7.5],
     gh: [5, 15],
@@ -95,7 +115,7 @@ export const species = [
     group: "Tetras",
     type: "fish",
     intro:
-      "El tetra más conocido. Es pacífico y de cardumen: en grupo se ve mejor y vive más tranquilo.",
+      "Es el tetra que todos conocemos. Es pacífico y de cardumen, así que tenlo en grupo: entre más sean, más tranquilos viven y mejor se ven.",
     temp: [21, 26],
     ph: [5.5, 7.5],
     gh: [2, 12],
@@ -112,7 +132,7 @@ export const species = [
     group: "Tetras",
     type: "fish",
     intro:
-      "Parecido al neón, pero con la franja roja completa. Le gusta el agua más caliente, blanda y ácida.",
+      "Se parece al neón, pero la franja roja le llega hasta la cabeza. Le gusta el agua más caliente, blanda y ácida, y siempre en cardumen.",
     temp: [24, 29],
     ph: [5.0, 7.0],
     gh: [1, 8],
@@ -129,7 +149,7 @@ export const species = [
     group: "Tetras",
     type: "fish",
     intro:
-      "El más pequeño de los neones. Ideal para acuarios plantados de agua blanda, siempre en cardumen.",
+      "Es el más pequeño de los neones. Si tienes un acuario plantado de agua blanda, un buen cardumen se ve espectacular.",
     temp: [24, 28],
     ph: [5.0, 7.0],
     gh: [1, 8],
@@ -145,7 +165,8 @@ export const species = [
     scientific: "Hyphessobrycon herbertaxelrodi",
     group: "Tetras",
     type: "fish",
-    intro: "Un tetra resistente y pacífico, buena opción si estás iniciando con peces de cardumen.",
+    intro:
+      "Si estás iniciando con peces de cardumen, este tetra es de los más resistentes y pacíficos que puedes elegir.",
     temp: [23, 27],
     ph: [5.5, 7.5],
     gh: [2, 12],
@@ -161,7 +182,7 @@ export const species = [
     group: "Tetras",
     type: "fish",
     intro:
-      "El de la nariz roja. Nada en cardumen muy compacto y necesita espacio para nadar y agua estable.",
+      "Lo reconoces por la nariz roja. Nada en un cardumen muy unido, así que dale espacio para nadar y mantén los parámetros estables.",
     temp: [24, 28],
     ph: [5.5, 7.0],
     gh: [2, 10],
@@ -177,7 +198,7 @@ export const species = [
     group: "Tetras",
     type: "fish",
     intro:
-      "Muy resistente, pero mordedor de aletas: no lo juntes con peces de aletas largas y tenlo en grupo.",
+      "Aguanta de todo, pero muerde aletas. Tenlo en grupo y no lo juntes con peces de aletas largas.",
     temp: [21, 27],
     ph: [6.0, 8.0],
     gh: [4, 18],
@@ -194,13 +215,30 @@ export const species = [
     group: "Tetras",
     type: "fish",
     intro:
-      "Un tetra colombiano, elegante y resistente. Los machos se retan entre ellos, pero son pacíficos con los demás peces.",
+      "Un tetra colombiano muy resistente. Los machos se retan entre ellos, pero con los demás peces son tranquilos.",
     temp: [23, 27],
     ph: [5.5, 7.5],
     gh: [2, 12],
     minLiters: 60,
     sizeCm: 5,
     minGroup: 6,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "tetra-rubi",
+    name: "Tetra rubí",
+    scientific: "Axelrodia riesei",
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Un tetra diminuto de nuestros llanos, de un rojo intenso. Es tímido, así que dale agua blanda, muchas plantas y un buen grupo para que se sienta seguro.",
+    temp: [23, 27],
+    ph: [5.0, 7.0],
+    gh: [1, 8],
+    minLiters: 40,
+    sizeCm: 2,
+    minGroup: 8,
+    colorful: true,
     shrimpRisk: "crias",
   },
 
@@ -212,7 +250,7 @@ export const species = [
     group: "Rasboras y danios",
     type: "fish",
     intro:
-      "Pacífica, resistente y de cardumen. De las mejores compañeras para un acuario comunitario.",
+      "De las mejores compañeras para un acuario comunitario: es pacífica, resistente y vive en cardumen.",
     temp: [22, 27],
     ph: [6.0, 7.5],
     gh: [2, 12],
@@ -228,7 +266,7 @@ export const species = [
     group: "Rasboras y danios",
     type: "fish",
     intro:
-      "Pequeña y algo tímida. Prefiere agua más fresca y un acuario con muchas plantas donde esconderse.",
+      "Es pequeña y algo tímida. Prefiere el agua más fresca y un acuario con muchas plantas donde pueda esconderse.",
     temp: [20, 25],
     ph: [6.5, 7.5],
     gh: [5, 15],
@@ -244,7 +282,8 @@ export const species = [
     scientific: "Boraras brigittae",
     group: "Rasboras y danios",
     type: "fish",
-    intro: "Un nano pez rojo intenso, perfecto para acuarios pequeños y plantados de agua blanda.",
+    intro:
+      "Un pez diminuto de un rojo intenso. Va muy bien en acuarios pequeños y plantados, con agua blanda y en grupo.",
     temp: [23, 28],
     ph: [5.0, 7.0],
     gh: [1, 8],
@@ -261,7 +300,7 @@ export const species = [
     group: "Rasboras y danios",
     type: "fish",
     intro:
-      "Muy activo y resistente. Aguanta agua más fresca y necesita un acuario largo para nadar.",
+      "No se queda quieto. Es muy resistente y aguanta agua más fresca, pero necesita un acuario largo para nadar.",
     temp: [18, 25],
     ph: [6.5, 8.0],
     gh: [5, 19],
@@ -277,7 +316,7 @@ export const species = [
     group: "Rasboras y danios",
     type: "fish",
     intro:
-      "Prima de la arlequín, más pequeña y de color cobre. Pacífica y de cardumen, ideal para acuarios plantados.",
+      "Es prima de la arlequín, más pequeña y de color cobre. Pacífica y de cardumen, se ve muy bien en acuarios plantados.",
     temp: [23, 28],
     ph: [5.5, 7.5],
     gh: [2, 12],
@@ -295,7 +334,7 @@ export const species = [
     group: "Vivíparos",
     type: "fish",
     intro:
-      "Colorido, activo y muy fácil de reproducir. Le va mejor en agua dura y alcalina que en agua blanda.",
+      "Colorido, activo y se reproduce con mucha facilidad, así que prepárate para las crías. Le va mejor el agua dura y alcalina que la blanda.",
     temp: [22, 28],
     ph: [7.0, 8.0],
     gh: [8, 20],
@@ -313,7 +352,7 @@ export const species = [
     group: "Vivíparos",
     type: "fish",
     intro:
-      "Resistente y muy fácil de reproducir, pero necesita agua dura y alcalina y más espacio del que parece.",
+      "Es resistente y se reproduce con facilidad, pero muchos ignoran que necesita agua dura y alcalina, y más espacio del que parece.",
     temp: [24, 28],
     ph: [7.5, 8.5],
     gh: [12, 25],
@@ -329,7 +368,7 @@ export const species = [
     group: "Vivíparos",
     type: "fish",
     intro:
-      "De los mejores peces para iniciar: pacífico, colorido y resistente. Como todo vivíparo, prefiere agua dura.",
+      "Si estás iniciando, es de los mejores peces para empezar: pacífico, colorido y resistente. Como todos los vivíparos, prefiere el agua dura.",
     temp: [20, 26],
     ph: [7.0, 8.0],
     gh: [10, 25],
@@ -345,7 +384,7 @@ export const species = [
     group: "Vivíparos",
     type: "fish",
     intro:
-      "Vivíparo grande y muy activo. Los machos se pelean entre ellos: mejor un macho con varias hembras.",
+      "Un vivíparo grande y muy activo. Los machos se pelean entre ellos, así que te recomendamos un macho con varias hembras.",
     temp: [22, 27],
     ph: [7.0, 8.0],
     gh: [10, 25],
@@ -361,7 +400,7 @@ export const species = [
     group: "Vivíparos",
     type: "fish",
     intro:
-      "El primo pequeño del guppy, con colores neón. Muy activo y se reproduce muchísimo: perfecto para acuarios pequeños de agua dura.",
+      "Es el primo pequeño del guppy. Es muy activo y se reproduce muchísimo, y va muy bien en acuarios pequeños de agua dura.",
     temp: [23, 28],
     ph: [7.0, 8.0],
     gh: [8, 20],
@@ -380,7 +419,7 @@ export const species = [
     group: "Cíclidos",
     type: "fish",
     intro:
-      "Un cíclido elegante que crece bastante y necesita un acuario alto. De adulto se come a los peces pequeños.",
+      "Lo venden pequeño, pero crece bastante y necesita un acuario alto. Ten en cuenta que de adulto se come a los peces pequeños.",
     temp: [24, 29],
     ph: [6.0, 7.5],
     gh: [3, 12],
@@ -398,7 +437,7 @@ export const species = [
     group: "Cíclidos",
     type: "fish",
     intro:
-      "Un cíclido enano de nuestros llanos, precioso pero delicado: necesita agua caliente, blanda y muy limpia.",
+      "Un cíclido enano de nuestros llanos, hermoso pero delicado. Necesita agua caliente, blanda y muy limpia.",
     temp: [26, 30],
     ph: [5.0, 7.0],
     gh: [1, 10],
@@ -416,7 +455,7 @@ export const species = [
     group: "Cíclidos",
     type: "fish",
     intro:
-      "El apistogramma más resistente y el mejor para iniciar con cíclidos enanos. El macho defiende su territorio en el fondo.",
+      "Si quieres iniciar con cíclidos enanos, este es el más resistente. Ten en cuenta que el macho defiende su territorio en el fondo.",
     temp: [22, 28],
     ph: [6.0, 7.5],
     gh: [2, 15],
@@ -434,12 +473,30 @@ export const species = [
     group: "Cíclidos",
     type: "fish",
     intro:
-      "Un cíclido enano amazónico de colores increíbles. Necesita agua blanda y ácida, cuevas y muchas plantas.",
+      "Un cíclido enano del Amazonas con unos colores increíbles. Necesita agua blanda y ácida, cuevas y muchas plantas.",
     temp: [24, 28],
     ph: [5.0, 7.0],
     gh: [1, 8],
     minLiters: 60,
     sizeCm: 8,
+    minGroup: 2,
+    colorful: true,
+    bottomTerritory: true,
+    shrimpRisk: "adultas",
+  },
+  {
+    id: "kribensis",
+    name: "Kribensis (Pulcher)",
+    scientific: "Pelvicachromis pulcher",
+    group: "Cíclidos",
+    type: "fish",
+    intro:
+      "Un cíclido enano africano, resistente y fácil de reproducir. Cuando la pareja tiene crías defiende su cueva con todo, así que dales espacio.",
+    temp: [24, 27],
+    ph: [6.0, 7.5],
+    gh: [5, 15],
+    minLiters: 80,
+    sizeCm: 10,
     minGroup: 2,
     colorful: true,
     bottomTerritory: true,
@@ -452,13 +509,32 @@ export const species = [
     group: "Cíclidos",
     type: "fish",
     intro:
-      "El rey del acuario. Necesita agua muy caliente y blanda, un acuario grande y vivir en grupo. No es para iniciar.",
+      "Le dicen el rey del acuario. Necesita agua muy caliente y blanda, un acuario grande y vivir en grupo. No te lo recomendamos para iniciar.",
     temp: [28, 31],
     ph: [5.5, 7.0],
     gh: [1, 8],
     minLiters: 250,
     sizeCm: 15,
     minGroup: 5,
+    shrimpRisk: "adultas",
+  },
+  {
+    id: "polar-blue",
+    name: "Loro Polar Blue",
+    scientific: "Híbrido de convicto y loro",
+    group: "Cíclidos",
+    type: "fish",
+    intro:
+      "Es un híbrido entre el cíclido convicto y el loro: pequeño para ser cíclido, pero con el carácter fuerte del convicto. Júntalo con peces robustos de su tamaño, no con peces pequeños ni tranquilos.",
+    temp: [24, 28],
+    ph: [6.5, 8.0],
+    gh: [6, 20],
+    minLiters: 100,
+    sizeCm: 10,
+    minGroup: 1,
+    finNipper: true,
+    bottomTerritory: true,
+    eatsUnderCm: 4,
     shrimpRisk: "adultas",
   },
 
@@ -470,7 +546,7 @@ export const species = [
     group: "Guramis",
     type: "fish",
     intro:
-      "Grande, tranquilo y elegante. De los guramis más pacíficos, pero necesita un acuario amplio y con plantas.",
+      "Grande y tranquilo, es de los guramis más pacíficos. Eso sí, necesita un acuario amplio y con plantas.",
     temp: [24, 28],
     ph: [6.0, 7.5],
     gh: [3, 15],
@@ -488,7 +564,7 @@ export const species = [
     group: "Guramis",
     type: "fish",
     intro:
-      "El gurami más pequeño y pacífico. Tímido: le gustan las plantas flotantes y los compañeros tranquilos.",
+      "El gurami más pequeño y pacífico. Es tímido: le gustan las plantas flotantes y los compañeros tranquilos.",
     temp: [22, 28],
     ph: [6.0, 7.5],
     gh: [3, 15],
@@ -505,7 +581,7 @@ export const species = [
     group: "Guramis",
     type: "fish",
     intro:
-      "Muy colorido y algo territorial: un solo macho por acuario. Necesita plantas y agua tranquila.",
+      "Muy colorido y algo territorial: solo un macho por acuario. Dale plantas y un flujo suave.",
     temp: [24, 28],
     ph: [6.0, 7.5],
     gh: [4, 15],
@@ -526,7 +602,7 @@ export const species = [
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
-      "El barbo más pacífico. Los machos se ponen rojo intenso y es resistente: buena opción para iniciar.",
+      "El más pacífico de los barbos, y además resistente. Los machos se ponen de un rojo intenso. Buena opción si estás iniciando.",
     temp: [23, 27],
     ph: [6.0, 7.5],
     gh: [4, 15],
@@ -542,7 +618,7 @@ export const species = [
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
-      "Activo y mordedor de aletas. En grupo grande se entretienen entre ellos, pero no lo juntes con peces de aletas largas.",
+      "Muy activo y mordedor de aletas. En grupo grande se entretienen entre ellos, pero no lo juntes con peces de aletas largas.",
     temp: [21, 27],
     ph: [6.0, 7.5],
     gh: [4, 15],
@@ -559,7 +635,7 @@ export const species = [
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
-      "Un torpedo de 15 cm que nada sin parar. Necesita un acuario largo, buena corriente y vivir en grupo.",
+      "Un torpedo de 15 cm que no para de nadar. Necesita un acuario largo, buena corriente y vivir en grupo.",
     temp: [20, 25],
     ph: [6.5, 7.8],
     gh: [5, 20],
@@ -575,7 +651,7 @@ export const species = [
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
-      "Mitad azul, mitad naranja. Pacífico y muy activo, pero crece y necesita un acuario grande y agua dura.",
+      "Mitad azul, mitad naranja. Es pacífico y muy activo, pero crece: necesita un acuario grande y agua dura.",
     temp: [24, 28],
     ph: [7.0, 8.0],
     gh: [8, 20],
@@ -591,7 +667,7 @@ export const species = [
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
-      "El arcoíris para acuarios medianos: azul neón con aletas rojas. Activo, pacífico y de cardumen.",
+      "El arcoíris para acuarios medianos: azul neón con aletas rojas. Es activo, pacífico y vive en cardumen.",
     temp: [23, 28],
     ph: [6.5, 7.5],
     gh: [5, 15],
@@ -609,7 +685,7 @@ export const species = [
     group: "Peces de fondo",
     type: "fish",
     intro:
-      "Pez de fondo pacífico y de grupo. Necesita arena o un sustrato suave para cuidar sus barbillas.",
+      "Un pez de fondo pacífico que vive en grupo. Usa arena o un sustrato suave para que no se lastime las barbillas.",
     temp: [22, 26],
     ph: [6.0, 7.5],
     gh: [2, 15],
@@ -625,7 +701,7 @@ export const species = [
     group: "Peces de fondo",
     type: "fish",
     intro:
-      "Una corydora diminuta que nada en grupo a media agua. De los peces más seguros para un gambario.",
+      "Una corydora diminuta que nada en grupo a media agua. Es de los peces más seguros si quieres tener gambitas.",
     temp: [22, 26],
     ph: [6.0, 7.5],
     gh: [2, 12],
@@ -641,7 +717,7 @@ export const species = [
     group: "Peces de fondo",
     type: "fish",
     intro:
-      "Un pequeño comedor de algas, muy pacífico. Solo para acuarios maduros, con biofilm y algas que comer.",
+      "Un comedor de algas pequeño y muy pacífico. No lo metas en un acuario recién montado: necesita uno maduro, con biofilm y algas para comer.",
     temp: [22, 26],
     ph: [6.0, 7.5],
     gh: [2, 12],
@@ -657,7 +733,7 @@ export const species = [
     group: "Peces de fondo",
     type: "fish",
     intro:
-      "La corydora que mejor aguanta el agua caliente: la compañera clásica de ramirezis y discos.",
+      "Es la corydora que mejor aguanta el agua caliente, por eso es la compañera de siempre de ramirezis y discos.",
     temp: [24, 29],
     ph: [6.0, 7.5],
     gh: [2, 15],
@@ -673,7 +749,7 @@ export const species = [
     group: "Peces de fondo",
     type: "fish",
     intro:
-      "La cucha pequeña: comedora de algas resistente y pacífica. Necesita un tronco para raspar y esconderse.",
+      "La cucha pequeña: come algas, es resistente y pacífica. Ponle un tronco para que raspe y se esconda.",
     temp: [22, 27],
     ph: [6.0, 7.5],
     gh: [2, 20],
@@ -683,13 +759,29 @@ export const species = [
     shrimpRisk: "bajo",
   },
   {
+    id: "plecostomus",
+    name: "Plecostomus común",
+    scientific: "Hypostomus plecostomus",
+    group: "Peces de fondo",
+    type: "fish",
+    intro:
+      "La cucha grande. La venden de 5 cm, pero pasa de 30 cm y ensucia muchísimo, así que es solo para acuarios muy grandes. Para un acuario normal te recomendamos un Ancistrus.",
+    temp: [22, 28],
+    ph: [6.5, 7.5],
+    gh: [4, 20],
+    minLiters: 300,
+    sizeCm: 35,
+    minGroup: 1,
+    shrimpRisk: "crias",
+  },
+  {
     id: "kuhli",
     name: "Kuhli",
     scientific: "Pangio kuhlii",
     group: "Peces de fondo",
     type: "fish",
     intro:
-      "Parece una pequeña anguila. Tímido y nocturno: necesita arena, escondites y vivir en grupo.",
+      "Parece una anguila pequeña. Es tímido y sale de noche: necesita arena, escondites y vivir en grupo.",
     temp: [24, 28],
     ph: [5.5, 7.0],
     gh: [2, 10],
@@ -704,7 +796,7 @@ export const species = [
     scientific: "Chromobotia macracanthus",
     group: "Peces de fondo",
     type: "fish",
-    intro: "La venden pequeña, pero llega a 30 cm y vive en grupo: solo para acuarios muy grandes.",
+    intro: "La venden pequeña, pero llega a 30 cm y vive en grupo. Solo para acuarios muy grandes.",
     temp: [25, 30],
     ph: [6.0, 7.5],
     gh: [2, 12],
@@ -722,7 +814,7 @@ export const species = [
     group: "Gambitas",
     type: "shrimp",
     intro:
-      "Cherry Red, Bloody Mary, Blue Velvet, Yellow Fire… Las gambitas más resistentes y las mejores para iniciar.",
+      "Cherry Red, Bloody Mary, Blue Velvet, Yellow Fire… Son las gambitas más resistentes y las que te recomendamos para iniciar.",
     temp: [24, 26],
     ph: [6.5, 7.5],
     gh: [6, 8],
@@ -738,7 +830,7 @@ export const species = [
     group: "Gambitas",
     type: "shrimp",
     intro:
-      "Más delicadas que las Neocaridinas: necesitan agua de ósmosis remineralizada, sustrato activo y un gambario maduro.",
+      "Más delicadas que sus hermanas, las Neocaridinas: necesitan agua de ósmosis con sales para gambas, sustrato activo y un gambario maduro.",
     temp: [20, 24],
     ph: [5.5, 6.5],
     gh: [4, 6],
@@ -754,7 +846,7 @@ export const species = [
     group: "Gambitas",
     type: "shrimp",
     intro:
-      "Vienen de los lagos de Sulawesi: agua muy caliente y alcalina. Lo mejor es un gambario solo para ellas.",
+      "Vienen de los lagos de Sulawesi y necesitan agua muy caliente y alcalina. Te recomendamos un gambario solo para ellas.",
     temp: [27, 30],
     ph: [7.5, 8.5],
     gh: [6, 8],
@@ -769,7 +861,7 @@ export const species = [
     group: "Gambitas",
     type: "shrimp",
     intro:
-      "Más grande que las demás gambitas y gran comedora de algas. No se reproduce en agua dulce.",
+      "Más grande que las demás gambitas y muy buena comiendo algas. No se reproduce en agua dulce, así que no esperes crías sin antes entender bien su etapa reproductiva.",
     temp: [20, 27],
     ph: [6.5, 7.5],
     gh: [5, 15],
