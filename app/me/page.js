@@ -1,11 +1,12 @@
 "use client";
 
 import { Container, VStack, Heading, Text, Box, HStack, Icon, SimpleGrid } from "@chakra-ui/react";
-import { FaTiktok, FaInstagram } from "react-icons/fa";
+import { FaFish, FaTiktok, FaInstagram } from "react-icons/fa";
 import { FiMessageCircle, FiBook } from "react-icons/fi";
 import NextLink from "next/link";
 import Image from "next/image";
 import { trackEvent } from "@/lib/gtm";
+import { COMPATIBILIDAD_PATH, compatibilidad } from "@/lib/compatibilidadData";
 
 const SocialIcon = ({ icon, link, color, bgColor, platform, label }) => {
   const handleClick = () => {
@@ -37,13 +38,13 @@ const SocialIcon = ({ icon, link, color, bgColor, platform, label }) => {
   );
 };
 
-const NavCard = ({ title, icon, href, description }) => {
+const NavCard = ({ title, icon, href, description, gridColumn }) => {
   const handleClick = () => {
     trackEvent(`me_page_${title}`, "Navigation");
   };
 
   return (
-    <Box as={NextLink} href={href} onClick={handleClick}>
+    <Box as={NextLink} href={href} onClick={handleClick} gridColumn={gridColumn}>
       <Box
         p={{ base: 3, md: 5 }}
         bg="dark.surface"
@@ -125,6 +126,13 @@ export default function MePage() {
 
           {/* Navigation Cards */}
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 5 }} w="full">
+            <NavCard
+              title={compatibilidad.name}
+              icon={FaFish}
+              href={COMPATIBILIDAD_PATH}
+              gridColumn="1 / -1"
+              description="¿Tus peces y gambitas pueden vivir juntos? Revísalo antes de comprar"
+            />
             <NavCard
               title="Asesorías"
               icon={FiMessageCircle}
