@@ -15,6 +15,7 @@ import {
 import { AddIcon, MinusIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import { formatRange } from "@/lib/speciesData";
+import { trackArmonia } from "@/lib/gtm";
 import { speciesPhotos } from "@/lib/speciesPhotos";
 import { MAX_QTY } from "./useTankSelection";
 import SpeciesThumbnail from "./SpeciesThumbnail";
@@ -123,7 +124,10 @@ export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemov
           }
           aria-expanded={isOpen}
           aria-controls={detailsId}
-          onClick={() => setIsOpen(open => !open)}
+          onClick={() => {
+            if (!isOpen) trackArmonia("ver_ficha", { especie: species.name });
+            setIsOpen(!isOpen);
+          }}
         >
           {isOpen ? "Ocultar ficha" : "Ver ficha"}
         </Button>
@@ -163,7 +167,12 @@ export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemov
         <Text color="dark.textSecondary" fontSize="sm" lineHeight="1.6">
           {species.intro}{" "}
           {species.postSlug && (
-            <Link as={NextLink} href={`/blog/${species.postSlug}`} color="accent.cyan">
+            <Link
+              as={NextLink}
+              href={`/blog/${species.postSlug}`}
+              color="accent.cyan"
+              onClick={() => trackArmonia("guia", { especie: species.name })}
+            >
               Lee la guía completa
             </Link>
           )}

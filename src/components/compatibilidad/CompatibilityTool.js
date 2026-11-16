@@ -18,6 +18,7 @@ import { CheckCircleIcon, LinkIcon, RepeatIcon } from "@chakra-ui/icons";
 import { species, getSpeciesById } from "@/lib/speciesData";
 import { checkCompatibility, fitWithTank } from "@/lib/compatibility";
 import { starterCombos } from "@/lib/compatibilidadData";
+import { trackArmonia } from "@/lib/gtm";
 import { useTankSelection } from "./useTankSelection";
 import SelectedSpeciesCard from "./SelectedSpeciesCard";
 import CompatibilityResult from "./CompatibilityResult";
@@ -97,6 +98,7 @@ export default function CompatibilityTool() {
   const needsLiters = !litersNumber && selection.length > 0;
   const result = isLocked ? null : checkCompatibility(selection, litersNumber);
   const hasChoices = Boolean(liters) || selection.length > 0;
+  const entries = selection.map(e => ({ species: getSpeciesById(e.id), qty: e.qty }));
 
   // Con especies en el acuario, cada sugerencia del buscador muestra cómo encajaría
   const fitById = useMemo(
@@ -116,11 +118,37 @@ export default function CompatibilityTool() {
 
   const onAdd = id => {
     addSpecies(id);
+    trackArmonia("agregar_especie", {
+      especie: getSpeciesById(id).name,
+      total_especies: selection.length + 1,
+    });
     notify(`¡Listo! Agregaste ${getSpeciesById(id).name}`);
+  };
+
+  // origen: "resultado" (la etiqueta del veredicto) o "ficha" (la tarjeta de la especie)
+  const onRemove = (id, origen) => {
+    removeSpecies(id);
+    trackArmonia("quitar_especie", { especie: getSpeciesById(id).name, origen });
+  };
+
+  const onQtyChange = (id, qty) => {
+    setQty(id, qty);
+    trackArmonia("cantidad", { especie: getSpeciesById(id).name, cantidad: qty });
+  };
+
+  const onStarterCombo = combo => {
+    addSpecies(...combo.ids);
+    trackArmonia("combo", { combo: combo.label });
+  };
+
+  const onReset = () => {
+    trackArmonia("empezar_de_nuevo", { total_especies: selection.length });
+    reset();
   };
 
   const copyLink = async () => {
     await navigator.clipboard.writeText(window.location.href);
+    trackArmonia("copiar_enlace", { total_especies: selection.length });
     notify("¡Enlace copiado! Compártelo con quien quieras");
   };
 
@@ -170,7 +198,7 @@ export default function CompatibilityTool() {
             )}
             {hasChoices && (
               <WrapItem>
-                <ActionButton leftIcon={<RepeatIcon />} onClick={reset}>
+                <ActionButton leftIcon={<RepeatIcon />} onClick={onReset}>
                   Empezar de nuevo
                 </ActionButton>
               </WrapItem>
@@ -182,8 +210,8 @@ export default function CompatibilityTool() {
             {/* El veredicto va primero: es la respuesta, y queda a la vista al agregar una especie */}
             <CompatibilityResult
               result={result}
-              entries={selection.map(e => ({ species: getSpeciesById(e.id), qty: e.qty }))}
-              onRemove={removeSpecies}
+              entries={entries}
+              onRemove={id => onRemove(id, "resultado")}
             />
             <Box as="section" aria-labelledby="tu-acuario">
               <Heading as="h3" id="tu-acuario" fontSize="lg" color="white" mb={3}>
@@ -195,8 +223,8 @@ export default function CompatibilityTool() {
                     key={entry.id}
                     species={getSpeciesById(entry.id)}
                     qty={entry.qty}
-                    onQtyChange={qty => setQty(entry.id, qty)}
-                    onRemove={() => removeSpecies(entry.id)}
+                    onQtyChange={qty => onQtyChange(entry.id, qty)}
+                    onRemove={() => onRemove(entry.id, "ficha")}
                   />
                 ))}
               </SimpleGrid>
@@ -220,7 +248,7 @@ export default function CompatibilityTool() {
                 <Wrap spacing={2}>
                   {starterCombos.map(combo => (
                     <WrapItem key={combo.label}>
-                      <Chip onClick={() => addSpecies(...combo.ids)}>{combo.label}</Chip>
+                      <Chip onClick={() => onStarterCombo(combo)}>{combo.label}</Chip>
                     </WrapItem>
                   ))}
                 </Wrap>

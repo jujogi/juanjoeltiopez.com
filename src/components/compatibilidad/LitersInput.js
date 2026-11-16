@@ -1,6 +1,7 @@
 "use client";
 
 import { Input, InputGroup, InputRightAddon, Stack, Wrap, WrapItem } from "@chakra-ui/react";
+import { trackArmonia } from "@/lib/gtm";
 import { MAX_LITERS } from "./useTankSelection";
 import Chip from "./Chip";
 
@@ -18,6 +19,10 @@ export default function LitersInput({ liters, onChange, labelledBy }) {
           max={MAX_LITERS}
           value={liters}
           onChange={e => onChange(e.target.value)}
+          // Se registra al salir del campo, no en cada tecla
+          onBlur={() =>
+            liters && trackArmonia("litros", { litros: Number(liters), origen: "campo" })
+          }
           placeholder="Ej: 60"
           aria-labelledby={labelledBy}
           aria-required="true"
@@ -32,7 +37,13 @@ export default function LitersInput({ liters, onChange, labelledBy }) {
       <Wrap spacing={2}>
         {LITER_PRESETS.map(preset => (
           <WrapItem key={preset}>
-            <Chip isSelected={Number(liters) === preset} onClick={() => onChange(String(preset))}>
+            <Chip
+              isSelected={Number(liters) === preset}
+              onClick={() => {
+                onChange(String(preset));
+                trackArmonia("litros", { litros: preset, origen: "boton" });
+              }}
+            >
               {preset} L
             </Chip>
           </WrapItem>

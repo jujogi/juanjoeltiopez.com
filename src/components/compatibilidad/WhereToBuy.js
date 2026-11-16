@@ -1,4 +1,7 @@
+"use client";
+
 import { Box, HStack, Image, Link, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { trackArmonia } from "@/lib/gtm";
 import { getShopContactLink, getShopsFor, whereToBuy } from "@/lib/speciesShops";
 
 // "¿Dónde comprar…?" dentro de la ficha: las tiendas aliadas que venden la especie y, siempre,
@@ -23,6 +26,9 @@ export default function WhereToBuy({ species }) {
                   href={shop.url}
                   target="_blank"
                   rel="sponsored noopener"
+                  onClick={() =>
+                    trackArmonia("tienda", { especie: species.name, tienda: shop.name })
+                  }
                   display="block"
                   bg="dark.surface"
                   border="1px"
@@ -55,7 +61,12 @@ export default function WhereToBuy({ species }) {
       )}
       <Text fontSize="sm" color="dark.textSecondary" mt={2}>
         {whereToBuy.shopsInvite(species.name)}{" "}
-        <Link href={getShopContactLink(species.name)} isExternal color="accent.cyan">
+        <Link
+          href={getShopContactLink(species.name)}
+          isExternal
+          color="accent.cyan"
+          onClick={() => trackArmonia("contacto_tienda", { especie: species.name })}
+        >
           {whereToBuy.shopsInviteCta}
         </Link>
       </Text>

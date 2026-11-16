@@ -19,6 +19,7 @@ import { species } from "@/lib/speciesData";
 import SpeciesThumbnail from "./SpeciesThumbnail";
 import { LEVELS } from "./levels";
 import { focusWithoutScroll, useKeyboardReveal } from "./useKeyboardReveal";
+import { useTrackNoResults } from "./useArmoniaTracking";
 
 const LISTBOX_ID = "especies-sugeridas";
 const optionId = id => `especie-${id}`;
@@ -72,6 +73,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
         .map(m => m.item)
     : available;
   const active = options[Math.min(activeIndex, options.length - 1)];
+  useTrackNoResults(term, options.length > 0);
 
   // Con las flechas, la opción activa se mantiene a la vista dentro de la lista
   useEffect(() => {
