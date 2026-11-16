@@ -18,9 +18,11 @@ import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
 import { species } from "@/lib/speciesData";
 import SpeciesThumbnail from "./SpeciesThumbnail";
 import { LEVELS } from "./levels";
+import { focusWithoutScroll, useKeyboardReveal } from "./useKeyboardReveal";
 
 const LISTBOX_ID = "especies-sugeridas";
 const optionId = id => `especie-${id}`;
+const LIST_OFFSET = 6; // separación entre el campo y la lista
 
 // Compara sin tildes ni mayúsculas: "neon" encuentra "Tetra neón"
 const normalize = text => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -57,6 +59,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef(null);
+  const listMaxH = useKeyboardReveal(inputRef, isOpen, LIST_OFFSET);
 
   const term = normalize(query.trim());
   const available = species.filter(s => !selectedIds.includes(s.id));
@@ -142,6 +145,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
             setActiveIndex(0);
             setIsOpen(true);
           }}
+          onMouseDown={focusWithoutScroll}
           onFocus={() => setIsOpen(true)}
           onClick={() => setIsOpen(true)}
           onBlur={() => setIsOpen(false)}
@@ -176,11 +180,11 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
         aria-label="Especies"
         display={isOpen ? "block" : "none"}
         position="absolute"
-        top="calc(100% + 6px)"
+        top={`calc(100% + ${LIST_OFFSET}px)`}
         left={0}
         right={0}
         zIndex="dropdown"
-        maxH="380px"
+        maxH={`${listMaxH}px`}
         overflowY="auto"
         listStyleType="none"
         bg="dark.surfaceRaised"
