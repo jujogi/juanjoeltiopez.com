@@ -16,6 +16,30 @@ export const compatibilidad = {
   lead: "Elige las especies que quisieras tener en tu acuario, cuéntanos de cuántos litros es y veamos si pueden vivir juntas: parámetros, espacio y temperamento.",
 };
 
+// Calculadora de litros (LitersCalculator), para quien no sabe de cuántos litros es su acuario
+export const litersCalculator = {
+  toggle: "¿No sabes de cuántos litros es tu acuario?",
+  title: "Calculemos los litros de tu acuario",
+  help: "Mide tu acuario por fuera con un metro, en centímetros.",
+  fields: [
+    { key: "length", label: "Largo", placeholder: "60" },
+    { key: "width", label: "Ancho", placeholder: "30" },
+    { key: "height", label: "Alto", placeholder: "35" },
+  ],
+  discountLabel: "Descontar rocas, troncos y sustrato",
+  decorLabel: "¿Cuánto ocupan?",
+  decorHelp:
+    "Sí, tu acuario no solo tiene agua: las rocas, los troncos y sustrato nos quitan algunos litros. Si tienes poca decoración, déjalo en 10%; en un paisajismo con muchas rocas puede ser 30% o más.",
+  defaultDecorPercent: 10,
+  maxDecorPercent: 60,
+  empty: "Escribe las tres medidas y te decimos cuántos litros tiene.",
+  result: "Tu acuario tiene unos",
+  resultDetail: (total, percent) => `${total} L en total, menos ${percent}% de decoración.`,
+  resultTotal: "Sin descontar la decoración.",
+  tooBig: max => `Por ahora la herramienta llega hasta ${max} L.`,
+  use: liters => `Usar ${liters} L`,
+};
+
 // Bloque que invita a usar la herramienta desde los artículos (ArmoniaBand)
 export const armoniaInvite = {
   title: "¿Quieres saber qué peces pueden vivir juntos?",

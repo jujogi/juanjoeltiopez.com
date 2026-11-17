@@ -74,10 +74,10 @@ export default function TerminosPage() {
           aparecer tiendas aliadas. Son enlaces comerciales: JuanJo El Tío Pez puede recibir un pago
           o una comisión de esas tiendas por aparecer ahí, y por eso se muestran con la etiqueta
           "Tiendas aliadas". Aquí no aparece cualquier tienda: solo trabajamos con las que conocemos
-          y sabemos que respetan a los peces, es decir, pruemueven un hobby responsable. Esa relación no cambia los resultados de compatibilidad ni la
-          información de las especies. La compra la haces directamente con la tienda: precios,
-          disponibilidad, envíos, garantías y el estado de los animales son responsabilidad de cada
-          tienda, no de Juanjo El Tío Pez.
+          y sabemos que respetan a los peces, es decir, pruemueven un hobby responsable. Esa
+          relación no cambia los resultados de compatibilidad ni la información de las especies. La
+          compra la haces directamente con la tienda: precios, disponibilidad, envíos, garantías y
+          el estado de los animales son responsabilidad de cada tienda, no de Juanjo El Tío Pez.
         </Section>
 
         <Section title="7. Limitación de Responsabilidad">

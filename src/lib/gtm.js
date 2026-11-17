@@ -51,7 +51,8 @@ export const trackBlogClick = postTitle => {
  * dimensiones personalizadas (Administrar → Definiciones personalizadas):
  *   especie, total_especies, litros, cantidad, origen, combo, tienda, busqueda
  *
- * Acciones: litros · agregar_especie · quitar_especie · cantidad · combo ·
+ * Acciones: litros (origen: boton, campo o calculadora) · abrir_calculadora ·
+ * agregar_especie · quitar_especie · cantidad · combo ·
  * copiar_enlace · empezar_de_nuevo · ver_ficha · guia · tienda · contacto_tienda ·
  * busqueda_sin_resultado
  *
