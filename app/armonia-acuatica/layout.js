@@ -14,20 +14,11 @@ export const metadata = {
   openGraph: {
     title: `${compatibilidad.title} | JuanJo El Tío Pez`,
     description: DESCRIPTION,
-    images: [
-      {
-        url: "/images/acuario-plantado-2.jpg",
-        width: 1200,
-        height: 602,
-        alt: "Acuario plantado de JuanJo El Tío Pez",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${compatibilidad.title} | JuanJo El Tío Pez`,
     description: DESCRIPTION,
-    images: ["/images/acuario-plantado-2.jpg"],
   },
 };
 
