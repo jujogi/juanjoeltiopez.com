@@ -28,8 +28,8 @@ import LitersInput from "./LitersInput";
 import Chip from "./Chip";
 
 const TOAST_MS = 2500;
-const FISH_COUNT = species.filter(s => s.type === "fish").length;
-const SHRIMP_COUNT = species.length - FISH_COUNT;
+const countOf = type => species.filter(s => s.type === type).length;
+const SPECIES_COUNT = [countOf("fish"), countOf("shrimp"), countOf("snail")];
 
 // Los pasos que todavía no se pueden usar se ven atenuados
 const StepHeading = ({ step, id, isDimmed, children }) => (
@@ -198,7 +198,7 @@ export default function CompatibilityTool() {
           isDisabled={isLocked}
         />
         <Text fontSize="sm" color="dark.textSecondary" mt={3}>
-          {isLocked ? t.lockedHint(unitName) : t.speciesCount(FISH_COUNT, SHRIMP_COUNT)}
+          {isLocked ? t.lockedHint(unitName) : t.speciesCount(...SPECIES_COUNT)}
         </Text>
       </Box>
 

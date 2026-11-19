@@ -28,6 +28,7 @@ articles in `src/lib/posts/` and his video titles in `src/lib/videosData.js`.
 - Articles and most pages use first person singular ("te cuento", "mi recomendación").
 - Armonía Acuática uses "nosotros" ("Comparamos…", "No te lo recomendamos",
   "cuéntanos"). The one exception is the shop invitation, which says "Contáctame".
+- Snails have a "caparazón", never a "concha".
 - Avoid lists of adjectives with no verb ("Pacífica, resistente y de cardumen.") and
   stiff or Spain-style wording. Use "agua de la llave", not "grifo".
 
@@ -89,7 +90,9 @@ copy is written by Claude: tell JuanJo it needs his review.
    - `id`: kebab-case, no accents, Spanish common name (`tetra-rubi`).
    - `name`: the name hobbyists use in Colombia. `scientific`: the Latin name, or a
      short description for hybrids.
-   - `type`: `"fish"` or `"shrimp"`. Shrimp do not count toward stocking.
+   - `type`: `"fish"`, `"shrimp"` or `"snail"`. Shrimp and snails do not count toward
+     stocking. Snails need hard water for their shell: give them pH from 7.0 and a GH
+     that keeps them out of soft-water tanks, and say so in the `intro`.
    - `temp`, `ph`, `gh`: `[min, max]`. Write pH with one decimal (`7.0`).
    - `minLiters`, `sizeCm` (adult size), `minGroup`.
    - Behaviour flags only when they apply. Leave the rest out.
@@ -119,7 +122,9 @@ search, the fit badges and the fichas all read from `species`.
 | `speciesOnly` (text)        | "No" with every other fish. The text is shown as the reason                         |
 | `colorful`                  | Caution next to a `territorial` fish                                                |
 | `eatsUnderCm`               | "No" with any fish whose `sizeCm` is below this number                              |
-| `shrimpRisk`                | `"adultas"`: "no" with shrimp. `"crias"`: caution. `"bajo"`: nothing                |
+| `shrimpRisk`                | `"adultas"`: "no" with shrimp. `"crias"`: caution. `"bajo"`: nothing. Fish or snail |
+| `snailRisk`                 | `"todos"`: "no" with every snail. `"pequenos"`: "no" with `smallSnail` snails       |
+| `smallSnail`                | Small snail (Planorbis, Physa) that fish with `snailRisk: "pequenos"` eat           |
 | `breedsInTank: false`       | Shrimp that has no fry to protect (Gamba Amano)                                     |
 | `maxCount`                  | "No" above this quantity                                                            |
 | `minGroup`                  | Caution below this quantity. Also the default quantity when added                   |
@@ -157,10 +162,12 @@ Use a generic User-Agent for the Commons API and never send personal details to 
 
 Every ficha shows this section. With no shops it shows only the invitation for shops
 to write on WhatsApp. To add a shop, edit `speciesShops.js`: the shop once in `shops`
-(name, logo in `public/images/tiendas/`, url, city), then its id under each species in
-`speciesShops`, with an optional direct `url`. Links go out with `rel="sponsored"` and
-the "Tiendas aliadas" label, and item 6 of `app/terminos/page.js` describes them. Only
-JuanJo decides which shops appear.
+(name, url, `country` as a two-letter ISO code, city, optional logo in
+`public/images/tiendas/`), then its id under each species in `speciesShops`, with an
+optional direct `url`. The ficha groups shops by country, then city; the country name
+comes from `Intl.DisplayNames` in the tool's language. Links go out with
+`rel="sponsored"` and the "Tiendas aliadas" label, and item 6 of `app/terminos/page.js`
+describes them. Only JuanJo decides which shops appear.
 
 ### Analytics
 

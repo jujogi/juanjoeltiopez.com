@@ -232,14 +232,15 @@ function rivalryChecks(list, t, names, vol) {
   return checks;
 }
 
-// Peces que se comen las gambitas: un solo aviso que nombra a todos los que lo hacen
+// Lo que se come a las gambitas (peces, y el caracol Helena a las crías): un solo aviso que
+// nombra a todos los que lo hacen
 function shrimpChecks(list, t, names) {
   const checks = [];
-  const fish = list.filter(s => s.type === "fish");
+  const predators = list.filter(s => s.type !== "shrimp");
   const shrimp = list.filter(s => s.type === "shrimp");
   const breeding = shrimp.filter(s => s.breedsInTank !== false);
-  const eatAdults = fish.filter(s => s.shrimpRisk === "adultas");
-  const eatFry = fish.filter(s => s.shrimpRisk === "crias");
+  const eatAdults = predators.filter(s => s.shrimpRisk === "adultas");
+  const eatFry = predators.filter(s => s.shrimpRisk === "crias");
   const plural = items => items.length > 1;
 
   if (shrimp.length && eatAdults.length) {
@@ -258,6 +259,30 @@ function shrimpChecks(list, t, names) {
     });
   }
 
+  return checks;
+}
+
+// Lo que se come a los caracoles (peces y el caracol Helena): un aviso para los que se comen
+// cualquier caracol y otro para los que solo se comen los pequeños (smallSnail)
+function snailChecks(list, t, names) {
+  const checks = [];
+  const snails = list.filter(s => s.type === "snail");
+  const plural = items => items.length > 1;
+  const add = (risk, isPrey, message) => {
+    // Nadie se come a sí mismo: la Helena sola no cuenta como presa ni como cazadora
+    const eaters = list.filter(s => s.snailRisk === risk && snails.some(p => p !== s && isPrey(p)));
+    const prey = snails.filter(p => isPrey(p) && eaters.some(e => e !== p));
+    if (eaters.length && prey.length) {
+      checks.push({
+        level: "bad",
+        title: message.title(names(eaters), plural(eaters)),
+        detail: message.detail(plural(eaters), names(prey)),
+      });
+    }
+  };
+
+  add("todos", () => true, t.eatSnails);
+  add("pequenos", p => p.smallSnail, t.eatSmallSnails);
   return checks;
 }
 
@@ -290,6 +315,7 @@ export function checkCompatibility(selection, liters, lang = "es", unit = "l") {
     ),
     ...rivalryChecks(list, t, names, vol),
     ...shrimpChecks(list, t, names),
+    ...snailChecks(list, t, names),
   ];
 
   const checks = [
@@ -310,11 +336,14 @@ export function checkCompatibility(selection, liters, lang = "es", unit = "l") {
 
 // Cómo encajaría una especie más en el acuario actual: el peor nivel entre los avisos nuevos
 // que traería. Sirve para marcar las sugerencias del buscador antes de elegirlas.
+// Un aviso cuenta como nuevo si cambia su título o su detalle: los avisos que nombran a todas
+// las afectadas ("X se come los caracoles") conservan el título y suman la especie al detalle.
 export function fitWithTank(selection, liters, id) {
-  const known = new Set(checkCompatibility(selection, liters)?.checks.map(c => c.title));
+  const key = c => `${c.title}\n${c.detail}`;
+  const known = new Set(checkCompatibility(selection, liters)?.checks.map(key));
   const candidate = { id, qty: getSpeciesById(id).minGroup };
   const added = checkCompatibility([...selection, candidate], liters).checks.filter(
-    c => !known.has(c.title)
+    c => !known.has(key(c))
   );
   // Ya vienen ordenados de peor a mejor
   return added[0]?.level || "ok";

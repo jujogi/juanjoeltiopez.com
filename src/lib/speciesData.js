@@ -20,7 +20,11 @@
 //   colorful        colores muy vivos (un pez territorial lo puede ver como rival)
 //   eatsUnderCm     se come a los peces más pequeños que este tamaño
 //   shrimpRisk      "bajo" | "crias" | "adultas": qué tanto riesgo es para las gambas
+//   snailRisk       "pequenos" | "todos": se come los caracoles pequeños (smallSnail) o todos
+//   smallSnail      caracol pequeño que casi cualquier pez que come caracoles se puede comer
 //   breedsInTank    false si la gamba no se reproduce en agua dulce (no hay crías que cuidar)
+//   type            "fish" | "shrimp" | "snail". Las gambitas y los caracoles no cuentan en la
+//                   regla de ocupación
 //   postSlug        artículo del blog sobre la especie
 //
 // El orden del arreglo es el orden en que el buscador sugiere las especies: van agrupadas
@@ -91,6 +95,7 @@ export const species = [
       "Es de agua fría, ensucia mucho y crece demasiado para compartir acuario con peces tropicales.",
     eatsUnderCm: 5,
     shrimpRisk: "adultas",
+    snailRisk: "pequenos",
   },
   {
     id: "globo-enano",
@@ -109,6 +114,7 @@ export const species = [
     finNipper: true,
     speciesOnly: "Es pequeño pero agresivo: muerde aletas y acosa a los demás peces.",
     shrimpRisk: "adultas",
+    snailRisk: "todos",
   },
   {
     id: "killi-payaso",
@@ -593,6 +599,7 @@ export const species = [
     bottomTerritory: true,
     eatsUnderCm: 4,
     shrimpRisk: "adultas",
+    snailRisk: "pequenos",
   },
   {
     id: "acara-azul",
@@ -611,6 +618,7 @@ export const species = [
     colorful: true,
     eatsUnderCm: 4,
     shrimpRisk: "adultas",
+    snailRisk: "pequenos",
   },
   {
     id: "falso-disco",
@@ -628,6 +636,7 @@ export const species = [
     minGroup: 1,
     eatsUnderCm: 5,
     shrimpRisk: "adultas",
+    snailRisk: "pequenos",
   },
   {
     id: "oscar",
@@ -645,6 +654,7 @@ export const species = [
     minGroup: 1,
     eatsUnderCm: 12,
     shrimpRisk: "adultas",
+    snailRisk: "todos",
   },
   {
     id: "flower-horn",
@@ -664,6 +674,7 @@ export const species = [
     speciesOnly: "Es muy agresivo y territorial: ataca a casi cualquier compañero de acuario.",
     eatsUnderCm: 12,
     shrimpRisk: "adultas",
+    snailRisk: "todos",
   },
 
   // Guramis
@@ -932,6 +943,7 @@ export const species = [
     sizeCm: 30,
     minGroup: 5,
     shrimpRisk: "adultas",
+    snailRisk: "todos",
   },
   {
     id: "zorro-volador",
@@ -1013,6 +1025,86 @@ export const species = [
     sizeCm: 5,
     minGroup: 3,
     breedsInTank: false,
+  },
+  // Caracoles
+  {
+    id: "planorbis",
+    name: "Planorbis",
+    scientific: "Planorbella duryi",
+    group: "Caracoles",
+    type: "snail",
+    intro:
+      "Casi siempre llegan a nuestro acuario pegados a plantas que no fueron limpiadas correctamente, y entre más comida sobra, más se reproducen: si te pasas con la comida, en pocas semanas se vuelven plaga. Come algas y restos, y prefiere el agua dura: en agua blanda y ácida su caparazón se debilita.",
+    temp: [20, 28],
+    ph: [7.0, 8.0],
+    gh: [6, 18],
+    minLiters: 10,
+    sizeCm: 2.5,
+    minGroup: 1,
+    smallSnail: true,
+  },
+  {
+    id: "physa",
+    name: "Physa",
+    scientific: "Physella acuta",
+    group: "Caracoles",
+    type: "snail",
+    intro:
+      "Es el caracol que aparece de la nada: casi siempre llega pegado a plantas que no fueron limpiadas correctamente, y si te pasas con la comida, en pocas semanas se vuelve plaga. No le hace daño a las plantas sanas, pero si ves muchos, es porque le estás dando más comida de la necesaria. Prefiere el agua dura: en agua blanda y ácida su caparazón se debilita.",
+    temp: [18, 28],
+    ph: [7.0, 8.0],
+    gh: [6, 18],
+    minLiters: 10,
+    sizeCm: 1,
+    minGroup: 1,
+    smallSnail: true,
+  },
+  {
+    id: "caracol-manzano",
+    name: "Caracol manzano",
+    scientific: "Pomacea diffusa",
+    group: "Caracoles",
+    type: "snail",
+    intro:
+      "El caracol grande y colorido de las tiendas: dorado, azul, violeta... Crece hasta unos 5 cm y ensucia más que los otros caracoles, así que dale un acuario de 40 L o más. Pone sus huevos fuera del agua y le encanta salirse del acuario, así que deberías taparlo. Necesita agua dura para que su caparazón no se debilite. Algunos Bettas se sienten atraídos por sus grandes antenas, así que obsérvalos los primeros días.",
+    temp: [20, 28],
+    ph: [7.0, 8.0],
+    gh: [8, 18],
+    minLiters: 40,
+    sizeCm: 5,
+    minGroup: 1,
+  },
+  {
+    id: "caracol-helena",
+    name: "Caracol Helena",
+    scientific: "Anentome helena",
+    group: "Caracoles",
+    type: "snail",
+    intro:
+      "El famoso caracol asesino: se come a otros caracoles, por eso es el plan B de muchos para controlar la plaga de planorbis y physa. Ojo, que también puede atacar neritinas, caracoles manzano y crías de gambitas. Se reproduce despacio, así que nunca se vuelve plaga, y le encanta enterrarse en la arena. Como todos los caracoles, prefiere el agua dura para que su caparazón no se debilite.",
+    temp: [22, 28],
+    ph: [7.0, 8.0],
+    gh: [6, 18],
+    minLiters: 20,
+    sizeCm: 2.5,
+    minGroup: 1,
+    snailRisk: "todos",
+    shrimpRisk: "crias",
+  },
+  {
+    id: "neritina",
+    name: "Neritina",
+    scientific: "Neritina sp.",
+    group: "Caracoles",
+    type: "snail",
+    intro:
+      "De los mejores comedores de algas que puedes tener en el acuario, y lo mejor es que no se pueden volver plaga: en agua dulce sus huevos no eclosionan, aunque los vas a ver como pequeños puntos blancos en rocas y troncos. Debes tapar bien el acuario porque son excelentes escapistas. Prefieren aguas duras: en agua blanda con un pH muy ácido, su caparazón se desgasta.",
+    temp: [22, 28],
+    ph: [7.0, 8.0],
+    gh: [6, 18],
+    minLiters: 20,
+    sizeCm: 2.5,
+    minGroup: 1,
   },
 ];
 

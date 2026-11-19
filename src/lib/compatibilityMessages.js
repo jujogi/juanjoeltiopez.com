@@ -111,6 +111,16 @@ const es = {
     detail: (plural, shrimp) =>
       `Lo más probable es que se ${plural ? "coman" : "coma"} muchas crías de ${shrimp}. Las adultas, en un acuario bien plantado, normalmente logran esconderse: entre más musgos y plantas tengas, mejor.`,
   },
+  eatSnails: {
+    title: (names, plural) => `${names} se ${plural ? "comen" : "come"} los caracoles`,
+    detail: (plural, snails) =>
+      `${plural ? "Los ven" : "Los ve"} como alimento. Si quieres conservar ${snails}, no los juntes; si son una plaga en tu acuario, ${plural ? "ayudan" : "ayuda"} a controlarla.`,
+  },
+  eatSmallSnails: {
+    title: (names, plural) => `${names} se ${plural ? "comen" : "come"} los caracoles pequeños`,
+    detail: (plural, snails) =>
+      `Son tan pequeños que ${plural ? "se los comen" : "se los come"} enteros. Si quieres conservar ${snails}, no los juntes; si son una plaga en tu acuario, ${plural ? "ayudan" : "ayuda"} a controlarla.`,
+  },
 };
 
 const en = {
@@ -219,6 +229,16 @@ const en = {
     title: names => `${names} may eat the baby shrimp`,
     detail: (plural, shrimp) =>
       `${plural ? "They" : "It"} will most likely eat many of the ${shrimp} babies. In a well-planted tank the adults can usually hide: the more moss and plants you have, the better.`,
+  },
+  eatSnails: {
+    title: (names, plural) => `${names} ${plural ? "eat" : "eats"} snails`,
+    detail: (plural, snails) =>
+      `${plural ? "They see" : "It sees"} them as food. If you want to keep ${snails}, don't put them together; if they're a pest in your tank, ${plural ? "they help" : "it helps"} keep it under control.`,
+  },
+  eatSmallSnails: {
+    title: (names, plural) => `${names} ${plural ? "eat" : "eats"} small snails`,
+    detail: (plural, snails) =>
+      `They're so small that ${plural ? "they swallow" : "it swallows"} them whole. If you want to keep ${snails}, don't put them together; if they're a pest in your tank, ${plural ? "they help" : "it helps"} keep it under control.`,
   },
 };
 

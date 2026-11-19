@@ -54,7 +54,7 @@ export const armoniaInvite = {
 // Bloque de la home (ArmoniaHomeBand). {count} se reemplaza por el número de especies
 export const armoniaHome = {
   title: "¿Tus peces pueden vivir juntos?",
-  text: "Antes de comprar, revisa si las especies que quieres comparten agua, espacio y temperamento. Ya tenemos {count} peces y gambitas para comparar.",
+  text: "Antes de comprar, revisa si las especies que quieres comparten agua, espacio y temperamento. Ya tenemos {count} peces, gambitas y caracoles para comparar.",
   features: [
     "Temperatura, pH y GH que les sirven a todas",
     "Litros y ocupación de tu acuario",
@@ -92,7 +92,7 @@ export const checksExplained = [
   },
   {
     title: "Litros del acuario",
-    text: "Revisamos el acuario mínimo de cada especie y, como guía, la regla de 1 litro por cada centímetro de pez adulto. Las gambitas no cuentan en esa regla. Es solo una referencia: ¡entre más litros tengas, mejor!",
+    text: "Revisamos el acuario mínimo de cada especie y, como guía, la regla de 1 litro por cada centímetro de pez adulto. Las gambitas y los caracoles no cuentan en esa regla. Es solo una referencia: ¡entre más litros tengas, mejor!",
   },
   {
     title: "Temperamento",
@@ -155,8 +155,8 @@ export const ui = {
     needsLiters: unit => `Indícanos los ${unit} de tu acuario para afinar los resultados`,
     speciesStep: "Elige las especies que quieres tener",
     lockedHint: unit => `Primero cuéntanos de cuántos ${unit} es tu acuario.`,
-    speciesCount: (fish, shrimp) =>
-      `Por ahora tenemos ${fish} peces y ${shrimp} gambitas en nuestra base de datos.`,
+    speciesCount: (fish, shrimp, snails) =>
+      `Por ahora tenemos ${fish} peces, ${shrimp} gambitas y ${snails} caracoles en nuestra base de datos.`,
     resultStep: "¿Pueden vivir juntas?",
     copyLink: "Copiar enlace",
     reset: "Empezar de nuevo",

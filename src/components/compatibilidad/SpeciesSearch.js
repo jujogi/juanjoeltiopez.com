@@ -31,17 +31,17 @@ const normalize = text => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerC
 
 // 0: una palabra del nombre empieza por el texto ("cor" → Corydoras) · 1: empieza una palabra
 // del nombre científico o del grupo · 2: aparece en medio de una palabra · 3: no coincide.
-// En inglés el nombre en español también cuenta, después del nombre en inglés.
+// En inglés el nombre y el grupo en español también cuentan, después del nombre en inglés.
 const NO_MATCH = 3;
 const startsWord = (text, term) =>
   normalize(text)
     .split(/[\s()]+/)
     .some(w => w.startsWith(term));
 const matchRank = (s, term) => {
-  const nameEs = getSpeciesById(s.id).name;
+  const es = getSpeciesById(s.id);
   if (startsWord(s.name, term)) return 0;
-  if (startsWord(`${s.scientific} ${s.group} ${nameEs}`, term)) return 1;
-  return normalize(`${s.name} ${s.scientific} ${nameEs}`).includes(term) ? 2 : NO_MATCH;
+  if (startsWord(`${s.scientific} ${s.group} ${es.name} ${es.group}`, term)) return 1;
+  return normalize(`${s.name} ${s.scientific} ${es.name}`).includes(term) ? 2 : NO_MATCH;
 };
 
 // Buscador con sugerencias (combobox): se escribe, se elige con el mouse o con flechas + Enter

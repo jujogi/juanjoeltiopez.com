@@ -1,7 +1,9 @@
 "use client";
 
 import { Flex, Icon } from "@chakra-ui/react";
-import { GiTropicalFish, GiShrimp } from "react-icons/gi";
+import { GiTropicalFish, GiShrimp, GiSnail } from "react-icons/gi";
+
+const TYPE_ICONS = { fish: GiTropicalFish, shrimp: GiShrimp, snail: GiSnail };
 import Image from "next/image";
 import { speciesPhotos } from "@/lib/speciesPhotos";
 
@@ -26,7 +28,7 @@ export default function SpeciesThumbnail({ species, w = "64px", h = "44px", roun
         <Image src={photo.src} alt="" fill sizes="128px" style={{ objectFit: "cover" }} />
       ) : (
         <Icon
-          as={species.type === "shrimp" ? GiShrimp : GiTropicalFish}
+          as={TYPE_ICONS[species.type] || GiTropicalFish}
           aria-hidden="true"
           color="accent.cyan"
           boxSize={6}

@@ -15,6 +15,7 @@ export const groupsEn = {
   "Barbos y arcoíris": "Barbs and rainbowfish",
   "Peces de fondo": "Bottom dwellers",
   Gambitas: "Shrimp",
+  Caracoles: "Snails",
 };
 
 export const speciesEn = {
@@ -310,5 +311,30 @@ export const speciesEn = {
     name: "Amano shrimp",
     intro:
       "Bigger than other shrimp and great at eating algae. It doesn't breed in fresh water, so don't expect babies unless you first understand how it reproduces.",
+  },
+  planorbis: {
+    name: "Ramshorn snail (Planorbis)",
+    intro:
+      "It almost always arrives in our tank stuck to plants that weren't cleaned properly, and the more leftover food there is, the more it breeds: overfeed your tank and in a few weeks it becomes a pest. It eats algae and leftovers, and it prefers hard water: in soft, acidic water its shell gets weak.",
+  },
+  physa: {
+    name: "Bladder snail (Physa)",
+    intro:
+      "The snail that shows up out of nowhere: it almost always arrives stuck to plants that weren't cleaned properly, and if you overfeed, in a few weeks it becomes a pest. It doesn't harm healthy plants, but if you see lots of them, it's because you're feeding more than needed. It prefers hard water: in soft, acidic water its shell gets weak.",
+  },
+  "caracol-manzano": {
+    name: "Mystery snail",
+    intro:
+      "The big, colorful snail you see in shops: gold, blue, purple… It grows to about 5 cm and makes more mess than other snails, so give it a tank of 40 L or more. It lays its eggs above the water and loves to climb out of the tank, so you should keep a lid on. It needs hard water so its shell doesn't get weak. Some bettas are drawn to its big antennae, so watch them closely for the first few days.",
+  },
+  "caracol-helena": {
+    name: "Assassin snail (Helena)",
+    intro:
+      "The famous assassin snail: it eats other snails, which is why many people use it as a plan B to control a ramshorn or bladder snail plague. Careful, it can also attack nerites, mystery snails and baby shrimp. It breeds slowly, so it never becomes a pest, and it loves to bury itself in sand. Like every snail, it prefers hard water so its shell doesn't get weak.",
+  },
+  neritina: {
+    name: "Nerite snail",
+    intro:
+      "One of the best algae eaters you can have in your tank, and the best part is it can't become a pest: its eggs don't hatch in fresh water, although you'll see them as small white dots on rocks and driftwood. Keep the tank well covered because they're great escape artists. They prefer hard water: in soft water with a very acidic pH, their shell wears away.",
   },
 };

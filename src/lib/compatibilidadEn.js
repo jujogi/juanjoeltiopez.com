@@ -57,7 +57,7 @@ export const armoniaEn = {
     },
     {
       title: "Tank size",
-      text: "We check each species' minimum tank size and, as a guide, the rule of 1 liter for every centimeter of adult fish. Shrimp don't count toward that rule. It's only a reference: the more liters you have, the better!",
+      text: "We check each species' minimum tank size and, as a guide, the rule of 1 liter for every centimeter of adult fish. Shrimp and snails don't count toward that rule. It's only a reference: the more liters you have, the better!",
     },
     {
       title: "Temperament",
@@ -122,8 +122,8 @@ export const armoniaEn = {
       needsLiters: unit => `Tell us your tank's ${unit} to fine-tune the results`,
       speciesStep: "Choose the species you want to keep",
       lockedHint: unit => `First, tell us how many ${unit} your tank holds.`,
-      speciesCount: (fish, shrimp) =>
-        `For now we have ${fish} fish and ${shrimp} shrimp in our database.`,
+      speciesCount: (fish, shrimp, snails) =>
+        `For now we have ${fish} fish, ${shrimp} shrimp and ${snails} snails in our database.`,
       resultStep: "Can they live together?",
       copyLink: "Copy link",
       reset: "Start over",
