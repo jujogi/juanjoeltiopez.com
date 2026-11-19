@@ -14,17 +14,13 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
+import { formatNeeded, formatTank } from "@/lib/tankUnits";
 import { LEVELS } from "./levels";
 import SpeciesThumbnail from "./SpeciesThumbnail";
-
-const SHARED_LABELS = [
-  { key: "temp", label: "Temperatura" },
-  { key: "ph", label: "pH" },
-  { key: "gh", label: "GH" },
-];
+import { useArmoniaLang } from "./useArmoniaLang";
 
 // Especie que se está comparando: foto, cantidad y nombre, con su botón para quitarla
-const SpeciesPill = ({ species, qty, onRemove }) => (
+const SpeciesPill = ({ species, qty, onRemove, removeLabel }) => (
   <HStack spacing={2} bg="dark.bgAlt" border="1px" borderColor="dark.border" rounded="full" p={1}>
     <SpeciesThumbnail species={species} w="32px" h="32px" rounded="full" />
     <Text fontSize="sm" fontWeight="600" color="white">
@@ -33,7 +29,7 @@ const SpeciesPill = ({ species, qty, onRemove }) => (
     </Text>
     <IconButton
       icon={<CloseIcon boxSize={2} />}
-      aria-label={`Quitar ${species.name}`}
+      aria-label={removeLabel}
       onClick={onRemove}
       size="xs"
       isRound
@@ -44,18 +40,20 @@ const SpeciesPill = ({ species, qty, onRemove }) => (
 );
 
 // Barra de ocupación: cuánto del acuario pide la selección
-const StockingBar = ({ needed, liters }) => {
+const StockingBar = ({ needed, liters, unit, copy }) => {
   const ratio = needed / liters;
+  const neededText = formatNeeded(needed, unit, liters);
+  const tankText = formatTank(liters, unit);
   const color = ratio <= 1 ? "accent.cyan" : ratio <= 1.5 ? "accent.sand" : "red.300";
 
   return (
     <Box mt={5}>
       <Flex justify="space-between" gap={3} fontSize="sm" mb={2} wrap="wrap">
-        <Text color="dark.textSecondary">Ocupación del acuario</Text>
+        <Text color="dark.textSecondary">{copy.stocking}</Text>
         <Text fontWeight="600" color="white">
           {ratio <= 1
-            ? `Pide mínimo ${needed} L de tus ${liters} L`
-            : `Pide ${needed} L y tienes ${liters} L`}
+            ? copy.stockingFits(neededText, tankText)
+            : copy.stockingOver(neededText, tankText)}
         </Text>
       </Flex>
       <Box aria-hidden="true" h="8px" bg="dark.bgAlt" rounded="full" overflow="hidden">
@@ -66,19 +64,27 @@ const StockingBar = ({ needed, liters }) => {
 };
 
 // Veredicto con sus razones. result viene de checkCompatibility()
-export default function CompatibilityResult({ result, entries, onRemove }) {
+// unit: "l" o "gal", la unidad en que se muestran los volúmenes
+export default function CompatibilityResult({ result, entries, unit, onRemove }) {
+  const { copy } = useArmoniaLang();
+  const t = copy.ui.result;
   const verdict = LEVELS[result.level];
   const isSingle = entries.length === 1;
   const title =
-    isSingle && result.level === "ok" ? "Agrega otra especie para compararlas" : verdict.title;
+    isSingle && result.level === "ok" ? t.addAnother : copy.ui.levels[result.level].title;
 
+  const sharedLabels = [
+    { key: "temp", label: t.temperature },
+    { key: "ph", label: "pH" },
+    { key: "gh", label: "GH" },
+  ];
   const tiles = [
-    ...SHARED_LABELS.map(({ key, label }) => ({
+    ...sharedLabels.map(({ key, label }) => ({
       label,
-      value: result.shared[key] || "No coinciden",
+      value: result.shared[key] || t.noMatch,
       isMissing: !result.shared[key],
     })),
-    { label: "Acuario mínimo", value: `${result.neededLiters} L` },
+    { label: t.minTank, value: formatNeeded(result.neededLiters, unit, result.liters) },
   ];
 
   return (
@@ -107,21 +113,20 @@ export default function CompatibilityResult({ result, entries, onRemove }) {
       </Flex>
 
       <Box px={{ base: 4, md: 6 }} py={5}>
-        <Wrap
-          as="ul"
-          spacing={2}
-          mb={5}
-          listStyleType="none"
-          aria-label="Especies que estás comparando"
-        >
+        <Wrap as="ul" spacing={2} mb={5} listStyleType="none" aria-label={t.comparing}>
           {entries.map(({ species, qty }) => (
             <WrapItem as="li" key={species.id}>
-              <SpeciesPill species={species} qty={qty} onRemove={() => onRemove(species.id)} />
+              <SpeciesPill
+                species={species}
+                qty={qty}
+                onRemove={() => onRemove(species.id)}
+                removeLabel={t.remove(species.name)}
+              />
             </WrapItem>
           ))}
         </Wrap>
         <Text fontSize="sm" color="dark.textSecondary" mb={3}>
-          {isSingle ? "Lo que necesita:" : "El agua que les sirve a todas:"}
+          {isSingle ? t.singleNeeds : t.sharedWater}
         </Text>
         <SimpleGrid as="dl" columns={{ base: 2, md: 4 }} spacing={3}>
           {tiles.map(tile => (
@@ -146,7 +151,9 @@ export default function CompatibilityResult({ result, entries, onRemove }) {
             </Box>
           ))}
         </SimpleGrid>
-        {result.liters && <StockingBar needed={result.neededLiters} liters={result.liters} />}
+        {result.liters && (
+          <StockingBar needed={result.neededLiters} liters={result.liters} unit={unit} copy={t} />
+        )}
 
         <VStack as="ul" align="stretch" spacing={4} mt={6} listStyleType="none">
           {result.checks.map(check => (

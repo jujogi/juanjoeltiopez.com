@@ -14,24 +14,27 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon, MinusIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
-import { formatRange } from "@/lib/speciesData";
+import { formatRange, getSpeciesById } from "@/lib/speciesData";
 import { trackArmonia } from "@/lib/gtm";
+import { formatNeeded } from "@/lib/tankUnits";
 import { speciesPhotos } from "@/lib/speciesPhotos";
 import { MAX_QTY } from "./useTankSelection";
 import SpeciesThumbnail from "./SpeciesThumbnail";
 import WhereToBuy from "./WhereToBuy";
+import { useArmoniaLang } from "./useArmoniaLang";
 
-const facts = s => [
-  { label: "Temperatura", value: formatRange(s.temp, " °C") },
+// tankLiters: el acuario, para que el mínimo en galones no contradiga el veredicto
+const facts = (s, copy, unit, tankLiters) => [
+  { label: copy.temperature, value: formatRange(s.temp, " °C") },
   { label: "pH", value: formatRange(s.ph, "", 1) },
   { label: "GH", value: formatRange(s.gh) },
-  { label: "Acuario mínimo", value: `${s.minLiters} L` },
+  { label: copy.minTank, value: formatNeeded(s.minLiters, unit, tankLiters) },
 ];
 
 // Crédito de la foto: las licencias Creative Commons exigen autor, licencia y enlace a la fuente
-const PhotoCredit = ({ photo }) => (
+const PhotoCredit = ({ photo, copy }) => (
   <Text fontSize="xs" color="dark.textMuted" mt={4}>
-    Foto:{" "}
+    {copy.photo}{" "}
     {photo.source ? (
       <Link href={photo.source} isExternal color="dark.textMuted" textDecoration="underline">
         {photo.author || "Wikimedia Commons"}
@@ -56,7 +59,7 @@ const PhotoCredit = ({ photo }) => (
         )}
       </>
     )}
-    {photo.source && photo.author && " · vía Wikimedia Commons"}
+    {photo.source && photo.author && copy.viaCommons}
   </Text>
 );
 
@@ -66,8 +69,19 @@ const StepButton = props => (
 
 // Especie elegida, en formato compacto: foto, nombre y cantidad. La ficha completa
 // (intro, parámetros, dónde comprarla y crédito de la foto) se abre con "Ver ficha".
-export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemove }) {
+// species llega en el idioma de la herramienta; Analytics recibe el nombre en español.
+export default function SelectedSpeciesCard({
+  species,
+  qty,
+  unit,
+  tankLiters,
+  onQtyChange,
+  onRemove,
+}) {
   const [isOpen, setIsOpen] = useState(false);
+  const { copy } = useArmoniaLang();
+  const t = copy.ui.card;
+  const trackingName = getSpeciesById(species.id).name;
   const photo = speciesPhotos[species.id];
   const detailsId = `ficha-${species.id}`;
 
@@ -92,7 +106,7 @@ export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemov
         </Box>
         <IconButton
           icon={<CloseIcon boxSize={2.5} />}
-          aria-label={`Quitar ${species.name}`}
+          aria-label={copy.ui.result.remove(species.name)}
           onClick={onRemove}
           size="sm"
           variant="ghost"
@@ -125,21 +139,21 @@ export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemov
           aria-expanded={isOpen}
           aria-controls={detailsId}
           onClick={() => {
-            if (!isOpen) trackArmonia("ver_ficha", { especie: species.name });
+            if (!isOpen) trackArmonia("ver_ficha", { especie: trackingName });
             setIsOpen(!isOpen);
           }}
         >
-          {isOpen ? "Ocultar ficha" : "Ver ficha"}
+          {isOpen ? t.hideDetails : t.showDetails}
         </Button>
         <HStack spacing={2}>
           {species.minGroup > 1 && (
             <Text fontSize="xs" color="dark.textMuted" mr={1}>
-              Mínimo {species.minGroup}
+              {t.min(species.minGroup)}
             </Text>
           )}
           <StepButton
             icon={<MinusIcon boxSize={2.5} />}
-            aria-label={`Menos ${species.name}`}
+            aria-label={t.less(species.name)}
             onClick={() => onQtyChange(qty - 1)}
             isDisabled={qty <= 1}
           />
@@ -148,7 +162,7 @@ export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemov
           </Text>
           <StepButton
             icon={<AddIcon boxSize={2.5} />}
-            aria-label={`Más ${species.name}`}
+            aria-label={t.more(species.name)}
             onClick={() => onQtyChange(qty + 1)}
             isDisabled={qty >= MAX_QTY}
           />
@@ -171,14 +185,14 @@ export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemov
               as={NextLink}
               href={`/blog/${species.postSlug}`}
               color="accent.cyan"
-              onClick={() => trackArmonia("guia", { especie: species.name })}
+              onClick={() => trackArmonia("guia", { especie: trackingName })}
             >
-              Lee la guía completa
+              {t.guide}
             </Link>
           )}
         </Text>
         <SimpleGrid as="dl" columns={2} spacing={3} mt={4}>
-          {facts(species).map(fact => (
+          {facts(species, copy.ui.result, unit, tankLiters).map(fact => (
             <Box key={fact.label}>
               <Text
                 as="dt"
@@ -196,7 +210,7 @@ export default function SelectedSpeciesCard({ species, qty, onQtyChange, onRemov
           ))}
         </SimpleGrid>
         <WhereToBuy species={species} />
-        {photo && <PhotoCredit photo={photo} />}
+        {photo && <PhotoCredit photo={photo} copy={t} />}
       </Box>
     </Box>
   );

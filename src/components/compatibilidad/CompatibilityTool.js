@@ -17,9 +17,10 @@ import { useMemo } from "react";
 import { CheckCircleIcon, LinkIcon, RepeatIcon } from "@chakra-ui/icons";
 import { species, getSpeciesById } from "@/lib/speciesData";
 import { checkCompatibility, fitWithTank } from "@/lib/compatibility";
-import { starterCombos } from "@/lib/compatibilidadData";
 import { trackArmonia } from "@/lib/gtm";
+import { formatTank } from "@/lib/tankUnits";
 import { useTankSelection } from "./useTankSelection";
+import { useArmoniaLang } from "./useArmoniaLang";
 import SelectedSpeciesCard from "./SelectedSpeciesCard";
 import CompatibilityResult from "./CompatibilityResult";
 import SpeciesSearch from "./SpeciesSearch";
@@ -87,18 +88,31 @@ const Placeholder = ({ children }) => (
 
 export default function CompatibilityTool() {
   const toast = useToast();
-  const { liters, selection, setLiters, addSpecies, removeSpecies, setQty, reset } =
-    useTankSelection();
+  const {
+    size,
+    unit,
+    liters: litersNumber,
+    selection,
+    setSize,
+    setUnit,
+    setLiters,
+    addSpecies,
+    removeSpecies,
+    setQty,
+    reset,
+  } = useTankSelection();
+  const { lang, copy } = useArmoniaLang();
+  const t = copy.ui.tool;
+  const unitName = copy.ui.units[unit].name;
 
-  const litersNumber = Number(liters) > 0 ? Number(liters) : null;
   // Los litros son obligatorios para empezar. La excepción es llegar con especies ya elegidas
   // (desde un artículo o un enlace compartido): ahí se muestra el resultado de una vez, sin la
   // revisión del acuario, y se pide completar los litros.
   const isLocked = !litersNumber && selection.length === 0;
   const needsLiters = !litersNumber && selection.length > 0;
-  const result = isLocked ? null : checkCompatibility(selection, litersNumber);
-  const hasChoices = Boolean(liters) || selection.length > 0;
-  const entries = selection.map(e => ({ species: getSpeciesById(e.id), qty: e.qty }));
+  const result = isLocked ? null : checkCompatibility(selection, litersNumber, lang, unit);
+  const hasChoices = Boolean(size) || selection.length > 0;
+  const entries = selection.map(e => ({ species: getSpeciesById(e.id, lang), qty: e.qty }));
 
   // Con especies en el acuario, cada sugerencia del buscador muestra cómo encajaría
   const fitById = useMemo(
@@ -122,7 +136,7 @@ export default function CompatibilityTool() {
       especie: getSpeciesById(id).name,
       total_especies: selection.length + 1,
     });
-    notify(`¡Listo! Agregaste ${getSpeciesById(id).name}`);
+    notify(t.added(getSpeciesById(id, lang).name));
   };
 
   // origen: "resultado" (la etiqueta del veredicto) o "ficha" (la tarjeta de la especie)
@@ -138,7 +152,7 @@ export default function CompatibilityTool() {
 
   const onStarterCombo = combo => {
     addSpecies(...combo.ids);
-    trackArmonia("combo", { combo: combo.label });
+    trackArmonia("combo", { combo: combo.labelEs || combo.label });
   };
 
   const onReset = () => {
@@ -149,26 +163,33 @@ export default function CompatibilityTool() {
   const copyLink = async () => {
     await navigator.clipboard.writeText(window.location.href);
     trackArmonia("copiar_enlace", { total_especies: selection.length });
-    notify("¡Enlace copiado! Compártelo con quien quieras");
+    notify(t.linkCopied);
   };
 
   return (
     <Stack spacing={{ base: 10, md: 12 }}>
       <Box as="section" aria-labelledby="paso-litros">
         <StepHeading step={1} id="paso-litros">
-          ¿De cuántos litros es tu acuario?
+          {t.litersStep(unitName)}
         </StepHeading>
-        <LitersInput liters={liters} onChange={setLiters} labelledBy="paso-litros" />
+        <LitersInput
+          size={size}
+          unit={unit}
+          onChange={setSize}
+          onUnitChange={setUnit}
+          onLitersChange={setLiters}
+          labelledBy="paso-litros"
+        />
         {needsLiters && (
           <Text role="status" fontSize="sm" fontWeight="600" color="accent.sand" mt={3}>
-            Indícanos los litros de tu acuario para afinar los resultados
+            {t.needsLiters(unitName)}
           </Text>
         )}
       </Box>
 
       <Box as="section" aria-labelledby="paso-especies">
         <StepHeading step={2} id="paso-especies" isDimmed={isLocked}>
-          Elige las especies que quieres tener
+          {t.speciesStep}
         </StepHeading>
         <SpeciesSearch
           selectedIds={selection.map(e => e.id)}
@@ -177,29 +198,27 @@ export default function CompatibilityTool() {
           isDisabled={isLocked}
         />
         <Text fontSize="sm" color="dark.textSecondary" mt={3}>
-          {isLocked
-            ? "Primero cuéntanos de cuántos litros es tu acuario."
-            : `Por ahora tenemos ${FISH_COUNT} peces y ${SHRIMP_COUNT} gambitas en nuestra base de datos.`}
+          {isLocked ? t.lockedHint(unitName) : t.speciesCount(FISH_COUNT, SHRIMP_COUNT)}
         </Text>
       </Box>
 
       <Box as="section" aria-labelledby="paso-resultado">
         <Flex justify="space-between" align="start" wrap="wrap" columnGap={4}>
           <StepHeading step={3} id="paso-resultado" isDimmed={isLocked}>
-            ¿Pueden vivir juntas?
+            {t.resultStep}
           </StepHeading>
           <Wrap spacing={2} mb={4}>
             {result && (
               <WrapItem>
                 <ActionButton leftIcon={<LinkIcon />} onClick={copyLink}>
-                  Copiar enlace
+                  {t.copyLink}
                 </ActionButton>
               </WrapItem>
             )}
             {hasChoices && (
               <WrapItem>
                 <ActionButton leftIcon={<RepeatIcon />} onClick={onReset}>
-                  Empezar de nuevo
+                  {t.reset}
                 </ActionButton>
               </WrapItem>
             )}
@@ -211,42 +230,41 @@ export default function CompatibilityTool() {
             <CompatibilityResult
               result={result}
               entries={entries}
+              unit={unit}
               onRemove={id => onRemove(id, "resultado")}
             />
             <Box as="section" aria-labelledby="tu-acuario">
               <Heading as="h3" id="tu-acuario" fontSize="lg" color="white" mb={3}>
-                {litersNumber ? `Tu acuario de ${litersNumber} L` : "Tu acuario"}
+                {t.yourTank(litersNumber && formatTank(litersNumber, unit))}
               </Heading>
               <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={3} alignItems="start">
                 {selection.map(entry => (
                   <SelectedSpeciesCard
                     key={entry.id}
-                    species={getSpeciesById(entry.id)}
+                    species={getSpeciesById(entry.id, lang)}
                     qty={entry.qty}
+                    unit={unit}
+                    tankLiters={litersNumber}
                     onQtyChange={qty => onQtyChange(entry.id, qty)}
                     onRemove={() => onRemove(entry.id, "ficha")}
                   />
                 ))}
               </SimpleGrid>
               <Text fontSize="xs" color="dark.textMuted" mt={3}>
-                Fotos de Wikimedia Commons: el autor y la licencia de cada una están en su ficha.
+                {t.photosNote}
               </Text>
             </Box>
           </Stack>
         ) : (
           <Placeholder>
-            <Text>
-              {isLocked
-                ? "Cuando nos cuentes de cuántos litros es tu acuario, aquí vas a ver la ficha de cada especie y si pueden vivir juntas."
-                : "Elige tu primera especie para ver sus parámetros. Después agrega otra y te decimos si pueden vivir juntas."}
-            </Text>
+            <Text>{isLocked ? t.placeholderLocked(unitName) : t.placeholderEmpty}</Text>
             {!isLocked && (
               <>
                 <Text fontSize="sm" mt={4} mb={2}>
-                  ¿No sabes por dónde empezar? Prueba con una de estas:
+                  {t.startersLabel}
                 </Text>
                 <Wrap spacing={2}>
-                  {starterCombos.map(combo => (
+                  {copy.starterCombos.map(combo => (
                     <WrapItem key={combo.label}>
                       <Chip onClick={() => onStarterCombo(combo)}>{combo.label}</Chip>
                     </WrapItem>

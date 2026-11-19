@@ -2,12 +2,17 @@
 
 import { Box, HStack, Image, Link, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import { trackArmonia } from "@/lib/gtm";
-import { getShopContactLink, getShopsFor, whereToBuy } from "@/lib/speciesShops";
+import { getSpeciesById } from "@/lib/speciesData";
+import { getShopContactLink, getShopsFor } from "@/lib/speciesShops";
+import { useArmoniaLang } from "./useArmoniaLang";
 
 // "¿Dónde comprar…?" dentro de la ficha: las tiendas aliadas que venden la especie y, siempre,
 // la invitación para que otras tiendas escriban. Sin tiendas solo queda la invitación.
+// El mensaje de WhatsApp y Analytics van con el nombre en español, en los dos idiomas.
 export default function WhereToBuy({ species }) {
   const shops = getShopsFor(species.id);
+  const { whereToBuy } = useArmoniaLang().copy;
+  const nameEs = getSpeciesById(species.id).name;
 
   return (
     <Box mt={4} pt={4} borderTop="1px" borderColor="dark.border">
@@ -26,9 +31,7 @@ export default function WhereToBuy({ species }) {
                   href={shop.url}
                   target="_blank"
                   rel="sponsored noopener"
-                  onClick={() =>
-                    trackArmonia("tienda", { especie: species.name, tienda: shop.name })
-                  }
+                  onClick={() => trackArmonia("tienda", { especie: nameEs, tienda: shop.name })}
                   display="block"
                   bg="dark.surface"
                   border="1px"
@@ -62,10 +65,10 @@ export default function WhereToBuy({ species }) {
       <Text fontSize="sm" color="dark.textSecondary" mt={2}>
         {whereToBuy.shopsInvite(species.name)}{" "}
         <Link
-          href={getShopContactLink(species.name)}
+          href={getShopContactLink(nameEs)}
           isExternal
           color="accent.cyan"
-          onClick={() => trackArmonia("contacto_tienda", { especie: species.name })}
+          onClick={() => trackArmonia("contacto_tienda", { especie: nameEs })}
         >
           {whereToBuy.shopsInviteCta}
         </Link>

@@ -4,7 +4,7 @@ import { Box, Heading, Text, VStack, Icon } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 // Preguntas frecuentes con <details>: el texto queda en el HTML (indexable) y es accesible
-export default function ArticleFAQ({ faq }) {
+export default function ArticleFAQ({ faq, title = "Preguntas frecuentes" }) {
   if (!faq?.length) return null;
 
   return (
@@ -16,7 +16,7 @@ export default function ArticleFAQ({ faq }) {
         color="white"
         mb={5}
       >
-        Preguntas frecuentes
+        {title}
       </Heading>
       <VStack align="stretch" spacing={3}>
         {faq.map(item => (

@@ -25,6 +25,10 @@
 //
 // El orden del arreglo es el orden en que el buscador sugiere las especies: van agrupadas
 // por `group`, y las especies nuevas se agregan dentro de su grupo.
+//
+// Los textos en inglés (name, intro, speciesOnly, group) están en speciesDataEn.js.
+
+import { groupsEn, speciesEn } from "./speciesDataEn";
 
 export const species = [
   // Betta y otros populares
@@ -1012,7 +1016,16 @@ export const species = [
   },
 ];
 
-export const getSpeciesById = id => species.find(s => s.id === id);
+// Las especies en el idioma de la herramienta ("es" o "en"). En inglés cambian los textos,
+// nunca los datos; si a una especie le falta la traducción, queda en español.
+const speciesByLang = {
+  es: species,
+  en: species.map(s => ({ ...s, ...speciesEn[s.id], group: groupsEn[s.group] || s.group })),
+};
+
+export const getSpeciesList = (lang = "es") => speciesByLang[lang] || species;
+
+export const getSpeciesById = (id, lang = "es") => getSpeciesList(lang).find(s => s.id === id);
 
 // digits: decimales (el pH se escribe siempre con uno: 7.0)
 export const formatRange = ([min, max], unit = "", digits = 0) =>

@@ -36,17 +36,45 @@ articles in `src/lib/posts/` and his video titles in `src/lib/videosData.js`.
 Route `/armonia-acuatica`. The page is `app/armonia-acuatica/`, the components are in
 `src/components/compatibilidad/`, and all data and rules are in `src/lib/`.
 
-| File                            | What it holds                                               |
-| ------------------------------- | ----------------------------------------------------------- |
-| `src/lib/speciesData.js`        | The species: water ranges, size, behaviour flags, intro     |
-| `src/lib/speciesPhotos.js`      | One photo per species with author, licence and source       |
-| `src/lib/compatibility.js`      | The rules. Pure functions, no React                         |
-| `src/lib/speciesShops.js`       | Allied shops per species and the "¿Dónde comprar?" copy     |
-| `src/lib/compatibilidadData.js` | Page copy, FAQ, starter combos, invitation blocks, the path |
-| `src/lib/gtm.js`                | `trackArmonia(action, params)` for Google Analytics events  |
+| File                               | What it holds                                                |
+| ---------------------------------- | ------------------------------------------------------------ |
+| `src/lib/speciesData.js`           | The species: water ranges, size, behaviour flags, intro      |
+| `src/lib/speciesPhotos.js`         | One photo per species with author, licence and source        |
+| `src/lib/compatibility.js`         | The rules. Pure functions, no React                          |
+| `src/lib/speciesShops.js`          | Allied shops per species and the "¿Dónde comprar?" copy      |
+| `src/lib/compatibilidadData.js`    | Page copy, FAQ, starter combos, invitation blocks, the path  |
+| `src/lib/gtm.js`                   | `trackArmonia(action, params)` for Google Analytics events   |
+| `src/lib/speciesDataEn.js`         | English name, intro, `speciesOnly` and group of each species |
+| `src/lib/compatibilidadEn.js`      | English page and tool copy, same keys as the Spanish files   |
+| `src/lib/compatibilityMessages.js` | The text of every verdict check, Spanish and English         |
+| `src/lib/tankUnits.js`             | Litres ↔ US gallons, the presets per unit and `formatVolume` |
 
-The URL is the state: `?l=60&p=tetra-neon:10,neocaridina:10` (litres, then
+The URL is the state: `?l=60&p=tetra-neon:10,neocaridina:10` (tank size, then
 `id:quantity` pairs). Species ids are part of shared links, so never rename an id.
+
+### Litres and gallons
+
+Litres are the default. `l` is always the tank in litres (up to 6 decimals); the unit
+menu inside the field only adds `&u=gal`, so switching units never changes the tank or
+the verdict (`?l=75.708236&u=gal` is a 20 gal tank). Data, rules and Analytics (`litros`)
+always work in litres: gallons exist only in the field and in the text. A text that
+shows the tank uses `formatTank` (rounds down); one that shows what something needs uses
+`formatNeeded` (rounds up, but never above the tank when it fits), so the text never
+contradicts the verdict. Never write a bare number with " L". The litres calculator
+always measures in centimetres.
+
+For a change to units or volume text, run every pair and trio in the four modes (es/en ×
+l/gal) and confirm the verdict is identical, no "needs X, your tank has Y" contradicts
+its level, and a typed value comes back unchanged in the field.
+
+### English version
+
+A button at the top switches the tool to English and adds `&lang=en` to the URL. Only
+the tool changes: header, footer, blog, metadata, JSON-LD and the asesoría band stay in
+Spanish, and the server always renders Spanish (that is what Google indexes).
+Components get their copy from `useArmoniaLang()`; no tool text is hardcoded in a
+component. Analytics always receives the Spanish species name and combo label. English
+copy is written by Claude: tell JuanJo it needs his review.
 
 ### Adding a species
 
@@ -68,6 +96,8 @@ The URL is the state: `?l=60&p=tetra-neon:10,neocaridina:10` (litres, then
    - `intro`: one to three sentences in the voice above. No facts that the numbers
      do not support.
    - `postSlug` only if a blog article covers the species.
+   - Add its English `name` and `intro` (and `speciesOnly`, if any) to
+     `speciesDataEn.js`. Without them the species shows in Spanish in English mode.
 4. **Keep the data consistent with the blog.** Betta, Neocaridina and Caridina values
    come from the articles and must match them. For every other species the values are
    reference numbers: tell JuanJo they need his review.
@@ -101,9 +131,10 @@ of adult fish: over 100% is a caution, over 150% is "no". A tank below a species
 `minLiters` is "no".
 
 If a species needs behaviour none of the flags describe, add a rule in
-`compatibility.js` and document the new field at the top of `speciesData.js`. Each rule
-must produce one check per species that names all the affected ones, not one check per
-pair: the check titles are React keys and must be unique within a result.
+`compatibility.js`, its text in both languages in `compatibilityMessages.js`, and
+document the new field at the top of `speciesData.js`. Each rule must produce one check
+per species that names all the affected ones, not one check per pair: the check titles
+are React keys and must be unique within a result.
 
 ### Photos
 
@@ -150,10 +181,11 @@ visitor typed except a search that found no species.
   of its own group.
 - In the search, confirm the name and the scientific name both find it, without
   accents too.
-- For a rule change, run every pair and trio through `checkCompatibility` and confirm
-  no result has two checks with the same title. `compatibility.js` imports
-  `./speciesData` without an extension, so to run it with plain `node` copy both files
-  as `.mjs` to a temporary folder and fix that import.
+- For a rule change, run every pair and trio through `checkCompatibility` in both
+  languages (`lang` "es" and "en") and confirm no result has two checks with the same
+  title. The files in `src/lib/` import each other without an extension, so to run them
+  with plain `node` copy `speciesData`, `speciesDataEn`, `compatibilityMessages` and
+  `compatibility` as `.mjs` to a temporary folder and fix those imports.
 - Layout changes are checked at desktop, 390 px and 330 px. Anything that depends on
   the phone keyboard (the search field, `useKeyboardReveal.js`) can only be confirmed
   on a real phone: ask JuanJo to test it.

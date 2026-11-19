@@ -24,6 +24,7 @@ import {
   armoniaHome,
   armoniaHref,
   starterCombos,
+  ui,
 } from "@/lib/compatibilidadData";
 import { LEVELS } from "@/components/compatibilidad/levels";
 import SpeciesThumbnail from "@/components/compatibilidad/SpeciesThumbnail";
@@ -48,7 +49,7 @@ const Preview = () => {
       >
         <Icon as={verdict.icon} aria-hidden="true" color={verdict.color} boxSize={5} />
         <Text fontFamily="heading" fontSize="lg" fontWeight="600" color="white">
-          {verdict.title}
+          {ui.levels[result.level].title}
         </Text>
       </HStack>
       <Box px={5} py={4}>

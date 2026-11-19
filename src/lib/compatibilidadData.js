@@ -16,10 +16,12 @@ export const compatibilidad = {
   lead: "Elige las especies que quisieras tener en tu acuario, cuéntanos de cuántos litros es y veamos si pueden vivir juntas: parámetros, espacio y temperamento.",
 };
 
-// Calculadora de litros (LitersCalculator), para quien no sabe de cuántos litros es su acuario
+// Calculadora de litros (LitersCalculator), para quien no sabe de cuántos litros es su acuario.
+// Las medidas siempre van en centímetros; el resultado sale en la unidad elegida.
+// unit: "litros" o "galones" (ui.units) · los volúmenes llegan ya con su unidad ("60 L")
 export const litersCalculator = {
-  toggle: "¿No sabes de cuántos litros es tu acuario?",
-  title: "Calculemos los litros de tu acuario",
+  toggle: unit => `¿No sabes de cuántos ${unit} es tu acuario?`,
+  title: unit => `Calculemos los ${unit} de tu acuario`,
   help: "Mide tu acuario por fuera con un metro, en centímetros.",
   fields: [
     { key: "length", label: "Largo", placeholder: "60" },
@@ -32,12 +34,12 @@ export const litersCalculator = {
     "Sí, tu acuario no solo tiene agua: las rocas, los troncos y sustrato nos quitan algunos litros. Si tienes poca decoración, déjalo en 10%; en un paisajismo con muchas rocas puede ser 30% o más.",
   defaultDecorPercent: 10,
   maxDecorPercent: 60,
-  empty: "Escribe las tres medidas y te decimos cuántos litros tiene.",
+  empty: unit => `Escribe las tres medidas y te decimos cuántos ${unit} tiene.`,
   result: "Tu acuario tiene unos",
-  resultDetail: (total, percent) => `${total} L en total, menos ${percent}% de decoración.`,
+  resultDetail: (total, percent) => `${total} en total, menos ${percent}% de decoración.`,
   resultTotal: "Sin descontar la decoración.",
-  tooBig: max => `Por ahora la herramienta llega hasta ${max} L.`,
-  use: liters => `Usar ${liters} L`,
+  tooBig: max => `Por ahora la herramienta llega hasta ${max}.`,
+  use: volume => `Usar ${volume}`,
 };
 
 // Bloque que invita a usar la herramienta desde los artículos (ArmoniaBand)
@@ -124,3 +126,87 @@ export const faq = [
     a: "No. Esta especie necesita una temperatura de 27 a 30 °C, y un pH de 7.5 a 8.5. Ningún pez o gambita puede adaptarse a ese rango de parámetros.",
   },
 ];
+
+// Textos de la herramienta en sí (botones, etiquetas, avisos), por componente. La versión en
+// inglés está en compatibilidadEn.js con las mismas llaves.
+// unit: el nombre de la unidad ("litros" o "galones") · volume: ya con su unidad ("60 L", "16 gal")
+export const ui = {
+  // Unidad del acuario: short en el botón, name dentro de las frases
+  units: {
+    label: "Unidad del acuario",
+    l: { short: "L", name: "litros" },
+    gal: { short: "gal", name: "galones" },
+  },
+  // El botón de idioma se lee en el idioma al que lleva
+  languageSwitch: "Not familiar with Spanish? See it in English",
+  home: "Inicio",
+  faqTitle: "Preguntas frecuentes",
+  howItWorks: {
+    eyebrow: "¿Cómo funciona?",
+    title: "Lo que revisamos por ti",
+    disclaimerTitle: "Es solo una referencia",
+    disclaimer:
+      "Armamos esta herramienta con información disponible en internet y con nuestra experiencia, pero eso no significa que funcione en todos los casos: cada pez tiene su propio temperamento y cada acuario es diferente. Observa siempre a tus animales y ten un plan B por si hace falta separarlos.",
+  },
+  tool: {
+    added: name => `¡Listo! Agregaste ${name}`,
+    linkCopied: "¡Enlace copiado! Compártelo con quien quieras",
+    litersStep: unit => `¿De cuántos ${unit} es tu acuario?`,
+    needsLiters: unit => `Indícanos los ${unit} de tu acuario para afinar los resultados`,
+    speciesStep: "Elige las especies que quieres tener",
+    lockedHint: unit => `Primero cuéntanos de cuántos ${unit} es tu acuario.`,
+    speciesCount: (fish, shrimp) =>
+      `Por ahora tenemos ${fish} peces y ${shrimp} gambitas en nuestra base de datos.`,
+    resultStep: "¿Pueden vivir juntas?",
+    copyLink: "Copiar enlace",
+    reset: "Empezar de nuevo",
+    yourTank: volume => (volume ? `Tu acuario de ${volume}` : "Tu acuario"),
+    photosNote: "Fotos de Wikimedia Commons: el autor y la licencia de cada una están en su ficha.",
+    placeholderLocked: unit =>
+      `Cuando nos cuentes de cuántos ${unit} es tu acuario, aquí vas a ver la ficha de cada especie y si pueden vivir juntas.`,
+    placeholderEmpty:
+      "Elige tu primera especie para ver sus parámetros. Después agrega otra y te decimos si pueden vivir juntas.",
+    startersLabel: "¿No sabes por dónde empezar? Prueba con una de estas:",
+  },
+  // Los tres niveles del veredicto: title en el resultado, label en las sugerencias del buscador
+  levels: {
+    ok: { title: "Sí, pueden vivir juntas", label: "Compatible" },
+    caution: { title: "Pueden vivir juntas, pero con cuidado", label: "Con cuidado" },
+    bad: { title: "No te lo recomendamos", label: "No recomendado" },
+  },
+  result: {
+    addAnother: "Agrega otra especie para compararlas",
+    temperature: "Temperatura",
+    noMatch: "No coinciden",
+    minTank: "Acuario mínimo",
+    comparing: "Especies que estás comparando",
+    singleNeeds: "Lo que necesita:",
+    sharedWater: "El agua que les sirve a todas:",
+    stocking: "Ocupación del acuario",
+    stockingFits: (needed, tank) => `Pide mínimo ${needed} de tus ${tank}`,
+    stockingOver: (needed, tank) => `Pide ${needed} y tienes ${tank}`,
+    remove: name => `Quitar ${name}`,
+  },
+  card: {
+    showDetails: "Ver ficha",
+    hideDetails: "Ocultar ficha",
+    min: n => `Mínimo ${n}`,
+    less: name => `Menos ${name}`,
+    more: name => `Más ${name}`,
+    guide: "Lee la guía completa",
+    photo: "Foto:",
+    viaCommons: " · vía Wikimedia Commons",
+  },
+  search: {
+    label: "Buscar una especie",
+    placeholder: "Busca: neón, ramirezi, gambitas…",
+    clear: "Borrar la búsqueda",
+    listLabel: "Especies",
+    noResults: "No tenemos esa especie todavía.",
+    allChosen: "Ya elegiste todas las especies.",
+  },
+  liters: {
+    placeholder: { l: "Ej: 60", gal: "Ej: 20" },
+    close: "Cerrar",
+  },
+};

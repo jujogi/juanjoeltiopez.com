@@ -24,9 +24,10 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { litersCalculator as copy } from "@/lib/compatibilidadData";
 import { tankVolume } from "@/lib/tankVolume";
+import { formatTank } from "@/lib/tankUnits";
 import { MAX_LITERS } from "./useTankSelection";
+import { useArmoniaLang } from "./useArmoniaLang";
 
 const DECOR_STEP = 5;
 // Acepta coma o punto decimal: "30,5" y "30.5"
@@ -34,9 +35,14 @@ const toNumber = text => Number(String(text).replace(",", "."));
 
 // Calculadora de litros en una ventana: largo × ancho × alto del agua, menos lo que ocupa la
 // decoración. En el celular ocupa toda la pantalla, para que el teclado no la tape.
+// Las medidas van siempre en centímetros; el resultado se muestra en la unidad elegida (unit).
 // onUse(liters) recibe los litros de agua cuando la persona decide usarlos.
-export default function LitersCalculator({ isOpen, onClose, onUse }) {
+export default function LitersCalculator({ isOpen, unit, onClose, onUse }) {
   const size = useBreakpointValue({ base: "full", md: "md" });
+  const { lang, copy: allCopy } = useArmoniaLang();
+  const copy = allCopy.litersCalculator;
+  const unitName = allCopy.ui.units[unit].name;
+  const vol = liters => formatTank(liters, unit);
   const [sizes, setSizes] = useState({ length: "", width: "", height: "" });
   const [decorPercent, setDecorPercent] = useState(copy.defaultDecorPercent);
   // Apagado, se usan todos los litros del acuario, sin descontar la decoración
@@ -54,11 +60,18 @@ export default function LitersCalculator({ isOpen, onClose, onUse }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={size} isCentered scrollBehavior="inside">
       <ModalOverlay bg="blackAlpha.700" />
-      <ModalContent bg="dark.surface" border="1px" borderColor="dark.border" color="dark.text">
+      {/* La ventana se abre fuera de la página: lleva su propio idioma */}
+      <ModalContent
+        lang={lang}
+        bg="dark.surface"
+        border="1px"
+        borderColor="dark.border"
+        color="dark.text"
+      >
         <ModalHeader fontFamily="body" fontSize="lg" color="white" pr={12}>
-          {copy.title}
+          {copy.title(unitName)}
         </ModalHeader>
-        <ModalCloseButton aria-label="Cerrar" />
+        <ModalCloseButton aria-label={allCopy.ui.liters.close} />
         <ModalBody>
           <Text fontSize="sm" color="dark.textSecondary" mb={4}>
             {copy.help}
@@ -144,24 +157,24 @@ export default function LitersCalculator({ isOpen, onClose, onUse }) {
                 <Text fontSize="sm" color="dark.textSecondary">
                   {copy.result}{" "}
                   <Text as="strong" fontSize="xl" color="white">
-                    {volume.water} L
+                    {vol(volume.water)}
                   </Text>
                 </Text>
                 <Text fontSize="xs" color="dark.textMuted">
                   {isTooBig
-                    ? copy.tooBig(MAX_LITERS)
+                    ? copy.tooBig(vol(MAX_LITERS))
                     : discountsDecor
-                      ? copy.resultDetail(volume.total, decorPercent)
+                      ? copy.resultDetail(vol(volume.total), decorPercent)
                       : copy.resultTotal}
                 </Text>
               </Box>
               <Button size="sm" onClick={() => onUse(volume.water)} isDisabled={isTooBig}>
-                {copy.use(volume.water)}
+                {copy.use(vol(volume.water))}
               </Button>
             </Flex>
           ) : (
             <Text fontSize="sm" color="dark.textSecondary">
-              {copy.empty}
+              {copy.empty(unitName)}
             </Text>
           )}
         </ModalFooter>

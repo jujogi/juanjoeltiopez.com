@@ -1,17 +1,28 @@
 "use client";
 
-import { Box, Container, Heading, HStack, Icon, Text, SimpleGrid } from "@chakra-ui/react";
-import { FaExclamationTriangle } from "react-icons/fa";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  Text,
+  SimpleGrid,
+} from "@chakra-ui/react";
+import { FaExclamationTriangle, FaGlobeAmericas } from "react-icons/fa";
 import Breadcrumbs from "@/components/article/Breadcrumbs";
 import ArticleFAQ from "@/components/article/ArticleFAQ";
 import AsesoriaBand from "@/components/AsesoriaBand";
 import { SectionHeader } from "@/components/ui/SectionHeading";
-import { compatibilidad, checksExplained, faq } from "@/lib/compatibilidadData";
+import { trackArmonia } from "@/lib/gtm";
 import CompatibilityTool from "./CompatibilityTool";
+import { useArmoniaLang } from "./useArmoniaLang";
 
-const HowItWorks = () => (
+const HowItWorks = ({ checksExplained, copy }) => (
   <Box as="section" aria-labelledby="como-funciona">
-    <SectionHeader eyebrow="¿Cómo funciona?" id="como-funciona" title="Lo que revisamos por ti" />
+    <SectionHeader eyebrow={copy.eyebrow} id="como-funciona" title={copy.title} />
     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
       {checksExplained.map(item => (
         <Box
@@ -51,13 +62,10 @@ const HowItWorks = () => (
       />
       <Box>
         <Text fontWeight="700" color="white" mb={1}>
-          Es solo una referencia
+          {copy.disclaimerTitle}
         </Text>
         <Text color="dark.textSecondary" lineHeight="1.6">
-          Armamos esta herramienta con información disponible en internet y con nuestra experiencia,
-          pero eso no significa que funcione en todos los casos: cada pez tiene su propio
-          temperamento y cada acuario es diferente. Observa siempre a tus animales y ten un plan B
-          por si hace falta separarlos.
+          {copy.disclaimer}
         </Text>
       </Box>
     </HStack>
@@ -65,9 +73,36 @@ const HowItWorks = () => (
 );
 
 export default function CompatibilidadView() {
+  const { lang, copy, setLang } = useArmoniaLang();
+  const { compatibilidad, ui } = copy;
+
+  const switchLang = () => {
+    const next = lang === "en" ? "es" : "en";
+    trackArmonia("idioma", { idioma: next });
+    setLang(next);
+  };
+
   return (
-    <Container maxW="container.xl" pt={{ base: 6, md: 10 }}>
-      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: compatibilidad.name }]} />
+    <Container maxW="container.xl" pt={{ base: 6, md: 10 }} lang={lang}>
+      <Flex justify="space-between" align="center" wrap="wrap" gap={3}>
+        <Breadcrumbs items={[{ label: ui.home, href: "/" }, { label: compatibilidad.name }]} />
+        {/* El botón está escrito en el idioma al que lleva */}
+        <Button
+          size="sm"
+          variant="ghost"
+          border="1px"
+          borderColor="dark.border"
+          leftIcon={<Icon as={FaGlobeAmericas} aria-hidden="true" />}
+          lang={lang === "en" ? "es" : "en"}
+          whiteSpace="normal"
+          textAlign="left"
+          h="auto"
+          py={2}
+          onClick={switchLang}
+        >
+          {ui.languageSwitch}
+        </Button>
+      </Flex>
 
       <Box as="header" maxW="760px" mt={{ base: 6, md: 8 }} mb={{ base: 10, md: 14 }}>
         <Heading
@@ -106,11 +141,14 @@ export default function CompatibilidadView() {
         gridTemplateColumns="minmax(0, 1fr)"
         gap={{ base: 20, md: 28 }}
       >
-        <HowItWorks />
+        <HowItWorks checksExplained={copy.checksExplained} copy={ui.howItWorks} />
         <Box maxW="860px">
-          <ArticleFAQ faq={faq} />
+          <ArticleFAQ faq={copy.faq} title={ui.faqTitle} />
         </Box>
-        <AsesoriaBand trackingId="compatibilidad_asesoria_band" />
+        {/* Las asesorías son en español: el bloque no se traduce */}
+        <Box lang="es">
+          <AsesoriaBand trackingId="compatibilidad_asesoria_band" />
+        </Box>
       </Box>
     </Container>
   );

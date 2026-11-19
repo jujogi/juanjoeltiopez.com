@@ -15,11 +15,12 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
-import { species } from "@/lib/speciesData";
+import { getSpeciesById, getSpeciesList } from "@/lib/speciesData";
 import SpeciesThumbnail from "./SpeciesThumbnail";
 import { LEVELS } from "./levels";
 import { focusWithoutScroll, useKeyboardReveal } from "./useKeyboardReveal";
 import { useTrackNoResults } from "./useArmoniaTracking";
+import { useArmoniaLang } from "./useArmoniaLang";
 
 const LISTBOX_ID = "especies-sugeridas";
 const optionId = id => `especie-${id}`;
@@ -29,28 +30,30 @@ const LIST_OFFSET = 6; // separación entre el campo y la lista
 const normalize = text => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
 // 0: una palabra del nombre empieza por el texto ("cor" → Corydoras) · 1: empieza una palabra
-// del nombre científico o del grupo · 2: aparece en medio de una palabra · 3: no coincide
+// del nombre científico o del grupo · 2: aparece en medio de una palabra · 3: no coincide.
+// En inglés el nombre en español también cuenta, después del nombre en inglés.
 const NO_MATCH = 3;
 const startsWord = (text, term) =>
   normalize(text)
     .split(/[\s()]+/)
     .some(w => w.startsWith(term));
 const matchRank = (s, term) => {
+  const nameEs = getSpeciesById(s.id).name;
   if (startsWord(s.name, term)) return 0;
-  if (startsWord(`${s.scientific} ${s.group}`, term)) return 1;
-  return normalize(`${s.name} ${s.scientific}`).includes(term) ? 2 : NO_MATCH;
+  if (startsWord(`${s.scientific} ${s.group} ${nameEs}`, term)) return 1;
+  return normalize(`${s.name} ${s.scientific} ${nameEs}`).includes(term) ? 2 : NO_MATCH;
 };
 
 // Buscador con sugerencias (combobox): se escribe, se elige con el mouse o con flechas + Enter
 // Cómo encaja la sugerencia con lo que ya hay en el acuario. En el celular solo va el ícono
 // (el texto queda para lectores de pantalla) para no quitarle espacio al nombre.
-const FitBadge = ({ level }) => (
+const FitBadge = ({ level, label }) => (
   <HStack spacing={1.5} ml="auto" flexShrink={0} color={LEVELS[level].color}>
     <Icon as={LEVELS[level].icon} aria-hidden="true" boxSize={3.5} />
     <Text fontSize="xs" fontWeight="600" display={{ base: "none", md: "block" }}>
-      {LEVELS[level].label}
+      {label}
     </Text>
-    <VisuallyHidden display={{ md: "none" }}>{LEVELS[level].label}</VisuallyHidden>
+    <VisuallyHidden display={{ md: "none" }}>{label}</VisuallyHidden>
   </HStack>
 );
 
@@ -61,9 +64,11 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef(null);
   const listMaxH = useKeyboardReveal(inputRef, isOpen, LIST_OFFSET);
+  const { lang, copy } = useArmoniaLang();
+  const t = copy.ui.search;
 
   const term = normalize(query.trim());
-  const available = species.filter(s => !selectedIds.includes(s.id));
+  const available = getSpeciesList(lang).filter(s => !selectedIds.includes(s.id));
   // Sin texto se muestran todas por grupo; con texto, primero las que mejor coinciden
   const options = term
     ? available
@@ -126,7 +131,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
           ref={inputRef}
           role="combobox"
           isDisabled={isDisabled}
-          aria-label="Buscar una especie"
+          aria-label={t.label}
           aria-expanded={isOpen}
           aria-controls={LISTBOX_ID}
           aria-autocomplete="list"
@@ -152,7 +157,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
           onClick={() => setIsOpen(true)}
           onBlur={() => setIsOpen(false)}
           onKeyDown={onKeyDown}
-          placeholder="Busca: neón, ramirezi, gambitas…"
+          placeholder={t.placeholder}
           fontSize="md"
           bg="dark.surface"
           borderColor="dark.border"
@@ -161,7 +166,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
         {query && (
           <InputRightElement>
             <IconButton
-              aria-label="Borrar la búsqueda"
+              aria-label={t.clear}
               icon={<CloseIcon boxSize={2.5} />}
               size="sm"
               variant="ghost"
@@ -179,7 +184,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
         as="ul"
         id={LISTBOX_ID}
         role="listbox"
-        aria-label="Especies"
+        aria-label={t.listLabel}
         display={isOpen ? "block" : "none"}
         position="absolute"
         top={`calc(100% + ${LIST_OFFSET}px)`}
@@ -200,7 +205,7 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
       >
         {options.length === 0 && (
           <Text as="li" role="presentation" px={3} py={3} color="dark.textSecondary" fontSize="sm">
-            {term ? "No tenemos esa especie todavía." : "Ya elegiste todas las especies."}
+            {term ? t.noResults : t.allChosen}
           </Text>
         )}
         {options.map((item, i) => {
@@ -245,7 +250,12 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
                     {item.scientific}
                   </Text>
                 </Box>
-                {fitById[item.id] && <FitBadge level={fitById[item.id]} />}
+                {fitById[item.id] && (
+                  <FitBadge
+                    level={fitById[item.id]}
+                    label={copy.ui.levels[fitById[item.id]].label}
+                  />
+                )}
               </Flex>
             </Box>
           );

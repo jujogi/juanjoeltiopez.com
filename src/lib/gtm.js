@@ -49,12 +49,16 @@ export const trackBlogClick = postTitle => {
  * llevan el detalle en parámetros, para no crear un evento distinto por cada especie.
  * Para ver esos parámetros en los informes de GA4 hay que registrarlos una vez como
  * dimensiones personalizadas (Administrar → Definiciones personalizadas):
- *   especie, total_especies, litros, cantidad, origen, combo, tienda, busqueda
+ *   especie, total_especies, litros, cantidad, origen, combo, tienda, busqueda, idioma, unidad
  *
- * Acciones: litros (origen: boton, campo o calculadora) · abrir_calculadora ·
+ * Acciones: litros (origen: boton, campo o calculadora; unidad: l o gal; `litros` va siempre
+ * en litros, aunque la persona escriba galones) · unidad (unidad: l o gal, a la que cambió) ·
+ * abrir_calculadora ·
  * agregar_especie · quitar_especie · cantidad · combo ·
  * copiar_enlace · empezar_de_nuevo · ver_ficha · guia · tienda · contacto_tienda ·
- * busqueda_sin_resultado
+ * busqueda_sin_resultado · idioma (idioma: es o en, al que cambió)
+ *
+ * `especie` y `combo` van siempre en español, aunque la herramienta esté en inglés.
  *
  * @param {string} action - La acción, sin el prefijo
  * @param {object} params - Detalle del evento (textos de máximo 100 caracteres)

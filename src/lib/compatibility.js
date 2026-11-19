@@ -1,6 +1,8 @@
-// Reglas de la herramienta de compatibilidad. Función pura: recibe la selección
-// y los litros, devuelve un veredicto con sus razones.
+// Reglas de la herramienta de compatibilidad. Función pura: recibe la selección, los litros
+// y el idioma, devuelve un veredicto con sus razones. Los textos están en compatibilityMessages.js.
 import { getSpeciesById, formatRange } from "./speciesData";
+import { compatibilityMessages } from "./compatibilityMessages";
+import { formatNeeded, formatTank } from "./tankUnits";
 
 // De mejor a peor: el veredicto general es el peor de todas las revisiones
 const LEVEL_ORDER = ["ok", "caution", "bad"];
@@ -8,11 +10,13 @@ const LEVEL_ORDER = ["ok", "caution", "bad"];
 // Regla orientativa de ocupación: 1 litro por cada centímetro de pez adulto
 const LITERS_PER_CM = 1;
 const OVERSTOCK_BAD_RATIO = 1.5;
+// Acuario mínimo para dos o más cíclidos enanos que defienden el fondo
+const BOTTOM_RIVALS_MIN_LITERS = 100;
 
 const PARAMETERS = [
-  { key: "temp", label: "temperatura", unit: " °C", digits: 0 },
-  { key: "ph", label: "pH", unit: "", digits: 1 },
-  { key: "gh", label: "GH", unit: "", digits: 0 },
+  { key: "temp", unit: " °C", digits: 0 },
+  { key: "ph", unit: "", digits: 1 },
+  { key: "gh", unit: "", digits: 0 },
 ];
 
 // Rango que comparten todas las especies, y las dos que lo limitan
@@ -22,11 +26,12 @@ function sharedRange(list, key) {
   return { min: lowest[key][0], max: highest[key][1], lowest, highest };
 }
 
-function parameterChecks(list) {
+function parameterChecks(list, t) {
   const checks = [];
   const shared = {};
 
-  for (const { key, label, unit, digits } of PARAMETERS) {
+  for (const { key, unit, digits } of PARAMETERS) {
+    const label = t.parameterLabels[key];
     const { min, max, lowest, highest } = sharedRange(list, key);
     const needs = `${lowest.name}: ${formatRange(lowest[key], unit, digits)}. ${highest.name}: ${formatRange(highest[key], unit, digits)}`;
     const single = `${min.toFixed(digits)}${unit}`;
@@ -35,15 +40,15 @@ function parameterChecks(list) {
       shared[key] = null;
       checks.push({
         level: "bad",
-        title: `No comparten ${label}`,
-        detail: `${needs}. No hay un valor que les sirva a los dos.`,
+        title: t.noOverlap.title(label),
+        detail: t.noOverlap.detail(needs),
       });
     } else if (min === max) {
       shared[key] = single;
       checks.push({
         level: "caution",
-        title: `Margen muy estrecho de ${label}`,
-        detail: `${needs}. Solo coinciden en ${single}: tendrías que mantenerlo muy estable.`,
+        title: t.narrowOverlap.title(label),
+        detail: t.narrowOverlap.detail(needs, single),
       });
     } else {
       shared[key] = formatRange([min, max], unit, digits);
@@ -54,17 +59,16 @@ function parameterChecks(list) {
   if (checks.filter(c => c.level === "caution").length > 1) {
     checks.push({
       level: "bad",
-      title: "Casi no comparten parámetros",
-      detail:
-        "Apenas coinciden en un punto en más de un parámetro. Alguna de las dos va a sobrevivir en vez de vivir bien.",
+      title: t.barelyShared.title(),
+      detail: t.barelyShared.detail(),
     });
   }
 
   if (list.length > 1 && checks.length === 0) {
     checks.push({
       level: "ok",
-      title: "Comparten parámetros",
-      detail: `Les sirve la misma agua: ${shared.temp}, pH ${shared.ph} y GH ${shared.gh}.`,
+      title: t.shared.title(),
+      detail: t.shared.detail(shared),
     });
   }
 
@@ -84,7 +88,8 @@ const stockingLiters = entries =>
 const neededLiters = entries =>
   Math.max(stockingLiters(entries), ...entries.map(e => e.species.minLiters));
 
-function tankChecks(entries, liters) {
+// vol: litros → texto en la unidad elegida ("60 L" o "16 gal")
+function tankChecks(entries, liters, t, vol) {
   // Sin litros (se llega desde un artículo con especies ya elegidas) no hay acuario que revisar
   if (!liters) return [];
   const checks = [];
@@ -93,8 +98,8 @@ function tankChecks(entries, liters) {
     if (species.minLiters > liters) {
       checks.push({
         level: "bad",
-        title: `El acuario es pequeño para ${species.name}`,
-        detail: `Necesita mínimo ${species.minLiters} L y tu acuario tiene ${liters} L.`,
+        title: t.tankTooSmall.title(species.name),
+        detail: t.tankTooSmall.detail(vol(species.minLiters, true), vol(liters)),
       });
     }
   }
@@ -104,29 +109,29 @@ function tankChecks(entries, liters) {
   if (stocking > liters) {
     checks.push({
       level: stocking > liters * OVERSTOCK_BAD_RATIO ? "bad" : "caution",
-      title: "Son muchos peces para ese acuario",
-      detail: `Con la regla de 1 litro por centímetro de pez adulto, esa cantidad pide unos ${stocking} L y tu acuario tiene ${liters} L. Baja la cantidad o piensa en un acuario más grande: entre más grande, mejor.`,
+      title: t.overstocked.title(),
+      detail: t.overstocked.detail(vol(stocking, true), vol(liters)),
     });
   } else if (checks.length === 0) {
     checks.push({
       level: "ok",
-      title: "Caben en tu acuario",
-      detail: `Esa combinación pide mínimo ${neededLiters(entries)} L y tu acuario tiene ${liters} L.`,
+      title: t.fits.title(),
+      detail: t.fits.detail(vol(neededLiters(entries), true), vol(liters)),
     });
   }
 
   return checks;
 }
 
-function groupChecks(entries) {
+function groupChecks(entries, t) {
   const checks = [];
 
   for (const { species, qty } of entries) {
     if (species.maxCount && qty > species.maxCount) {
       checks.push({
         level: "bad",
-        title: `Solo ${species.maxCount} ${species.name} por acuario`,
-        detail: "Es territorial: dos machos en el mismo acuario se pelean.",
+        title: t.maxCount.title(species.maxCount, species.name),
+        detail: t.maxCount.detail(),
       });
     } else if (
       species.unstableGroup &&
@@ -135,14 +140,14 @@ function groupChecks(entries) {
     ) {
       checks.push({
         level: "caution",
-        title: `${species.name}: en solitario o en grupo de ${species.unstableGroup[1] + 1} o más`,
-        detail: `Pusiste ${qty}. Cuando son pocas, la más fuerte persigue a las demás. Funciona una sola, o un grupo grande en un acuario amplio y muy plantado, donde la agresividad se reparte.`,
+        title: t.unstableGroup.title(species.name, species.unstableGroup[1] + 1),
+        detail: t.unstableGroup.detail(qty),
       });
     } else if (qty < species.minGroup) {
       checks.push({
         level: "caution",
-        title: `${species.name}: mejor en grupo de ${species.minGroup} o más`,
-        detail: `Pusiste ${qty}. En grupos pequeños viven estresados y se esconden: no es lo mismo vivir que sobrevivir.`,
+        title: t.smallGroup.title(species.name, species.minGroup),
+        detail: t.smallGroup.detail(qty),
       });
     }
   }
@@ -150,12 +155,13 @@ function groupChecks(entries) {
   return checks;
 }
 
-const names = items =>
-  new Intl.ListFormat("es", { type: "conjunction" }).format(items.map(s => s.name));
+// "Tetra neón, Guppy y Platy" / "Neon tetra, Guppy, and Platy"
+const listNames = lang => items =>
+  new Intl.ListFormat(lang, { type: "conjunction" }).format(items.map(s => s.name));
 
 // Lo que una especie (a) les hace a las demás. Cada regla sale una sola vez y nombra a todas
 // las afectadas: así no se repite el mismo aviso por cada pareja.
-function behaviourChecks(a, others) {
+function behaviourChecks(a, others, t, names) {
   const checks = [];
   const fish = others.filter(b => b.type === "fish");
   const add = (level, affected, title, detail) => {
@@ -166,8 +172,8 @@ function behaviourChecks(a, others) {
     add(
       "bad",
       fish.filter(b => b.longFins),
-      `${a.name} muerde aletas`,
-      n => `Los peces de aletas largas terminan mordidos y estresados. No lo juntes con ${n}.`
+      t.finNipper.title(a.name),
+      t.finNipper.detail
     );
   }
 
@@ -180,59 +186,21 @@ function behaviourChecks(a, others) {
     const colorful = fish.filter(b => b.colorful && !b.longFins && !b.labyrinth);
     const rest = fish.filter(b => !b.labyrinth && !b.longFins && !b.colorful && !b.finNipper);
 
-    add(
-      "bad",
-      mates,
-      `${a.name} y ${names(mates)} solo se juntan para reproducirse`,
-      () =>
-        "Fuera de la reproducción, el macho la persigue y la puede lastimar o matar. Cada uno en su acuario."
-    );
-    add(
-      "bad",
-      gouramis,
-      `${a.name} no tolera a los guramis`,
-      n => `Son parientes y los ve como otro macho: se van a pelear. No lo juntes con ${n}.`
-    );
-    add(
-      "bad",
-      longFinned,
-      `${a.name} ataca peces de aletas o colas largas`,
-      n =>
-        `Los confunde con otro macho por sus aletas y los persigue y ataca. No lo juntes con ${n}.`
-    );
-    add(
-      "caution",
-      colorful,
-      `${a.name} puede perseguir peces coloridos`,
-      n =>
-        `Algunos ${a.name} ven los colores muy vivos como un rival. Con ${n} funciona mejor en acuarios grandes y con muchas plantas, y solo si tu pez es tranquilo.`
-    );
-    add(
-      "caution",
-      rest,
-      `Depende del temperamento de tu ${a.name}`,
-      n =>
-        `Con ${n} no hay aletas largas ni colores que lo provoquen, pero cada ${a.name} tiene su propio temperamento. Obsérvalo los primeros días y ten un plan B por si los persigue.`
-    );
+    add("bad", mates, t.mates.title(a.name, names(mates)), t.mates.detail);
+    add("bad", gouramis, t.gouramis.title(a.name), t.gouramis.detail);
+    add("bad", longFinned, t.longFins.title(a.name), t.longFins.detail);
+    add("caution", colorful, t.colorful.title(a.name), n => t.colorful.detail(a.name, n));
+    add("caution", rest, t.temperament.title(a.name), n => t.temperament.detail(a.name, n));
   }
 
   if (a.speciesOnly) {
-    add(
-      "bad",
-      fish,
-      `${a.name}: mejor en un acuario solo para su especie`,
-      n => `${a.speciesOnly} No lo juntes con ${n}.`
-    );
+    add("bad", fish, t.speciesOnly.title(a.name), n => t.speciesOnly.detail(a.speciesOnly, n));
   }
 
   if (a.eatsUnderCm) {
     const prey = fish.filter(b => b.sizeCm < a.eatsUnderCm);
-    add(
-      "bad",
-      prey,
-      `${a.name} se puede comer a ${names(prey)}`,
-      () =>
-        `De adulto mide unos ${a.sizeCm} cm: los peces de menos de ${a.eatsUnderCm} cm le caben en la boca.`
+    add("bad", prey, t.eatsSmallFish.title(a.name, names(prey)), () =>
+      t.eatsSmallFish.detail(a.sizeCm, a.eatsUnderCm)
     );
   }
 
@@ -240,7 +208,7 @@ function behaviourChecks(a, others) {
 }
 
 // Reglas entre especies del mismo tipo: se revisan una vez sobre toda la selección
-function rivalryChecks(list) {
+function rivalryChecks(list, t, names, vol) {
   const checks = [];
   const gouramis = list.filter(s => s.labyrinth && !s.territorial);
   const dwarfCichlids = list.filter(s => s.bottomTerritory);
@@ -248,16 +216,16 @@ function rivalryChecks(list) {
   if (gouramis.length > 1) {
     checks.push({
       level: "caution",
-      title: "Los laberíntidos pueden pelear entre ellos",
-      detail: `${names(gouramis)} son parientes y se ven como rivales. Solo en acuarios grandes y con muchas plantas que corten la vista.`,
+      title: t.labyrinthRivals.title(),
+      detail: t.labyrinthRivals.detail(names(gouramis)),
     });
   }
 
   if (dwarfCichlids.length > 1) {
     checks.push({
       level: "caution",
-      title: "Estos cíclidos compiten por el fondo",
-      detail: `${names(dwarfCichlids)} defienden territorio en la misma zona. Necesitas un acuario largo, de 100 L o más, con cuevas y plantas para que cada uno tenga su espacio.`,
+      title: t.bottomRivals.title(),
+      detail: t.bottomRivals.detail(names(dwarfCichlids), vol(BOTTOM_RIVALS_MIN_LITERS, true)),
     });
   }
 
@@ -265,7 +233,7 @@ function rivalryChecks(list) {
 }
 
 // Peces que se comen las gambitas: un solo aviso que nombra a todos los que lo hacen
-function shrimpChecks(list) {
+function shrimpChecks(list, t, names) {
   const checks = [];
   const fish = list.filter(s => s.type === "fish");
   const shrimp = list.filter(s => s.type === "shrimp");
@@ -277,16 +245,16 @@ function shrimpChecks(list) {
   if (shrimp.length && eatAdults.length) {
     checks.push({
       level: "bad",
-      title: `${names(eatAdults)} se ${plural(eatAdults) ? "comen" : "come"} las gambas`,
-      detail: `Las ${plural(eatAdults) ? "ven" : "ve"} como alimento, incluso a las adultas. No ${plural(eatAdults) ? "los" : "lo"} juntes con ${names(shrimp)}.`,
+      title: t.eatShrimp.title(names(eatAdults), plural(eatAdults)),
+      detail: t.eatShrimp.detail(plural(eatAdults), names(shrimp)),
     });
   }
 
   if (breeding.length && eatFry.length) {
     checks.push({
       level: "caution",
-      title: `${names(eatFry)} se ${plural(eatFry) ? "pueden" : "puede"} comer las crías`,
-      detail: `Lo más probable es que se ${plural(eatFry) ? "coman" : "coma"} muchas crías de ${names(breeding)}. Las adultas, en un acuario bien plantado, normalmente logran esconderse: entre más musgos y plantas tengas, mejor.`,
+      title: t.eatShrimpFry.title(names(eatFry), plural(eatFry)),
+      detail: t.eatShrimpFry.detail(plural(eatFry), names(breeding)),
     });
   }
 
@@ -294,31 +262,41 @@ function shrimpChecks(list) {
 }
 
 // selection: [{ id, qty }] · liters: litros del acuario, o null si todavía no se saben
-export function checkCompatibility(selection, liters) {
+// lang: "es" o "en", el idioma de los nombres y los avisos · unit: "l" o "gal", la unidad en
+// que se muestran los volúmenes de los avisos (las cuentas siempre son en litros)
+export function checkCompatibility(selection, liters, lang = "es", unit = "l") {
+  const t = compatibilityMessages[lang] || compatibilityMessages.es;
+  const names = listNames(lang);
+  // vol(litros) → el acuario ("60 L") · vol(litros, true) → lo que se pide, comparado con el
+  // acuario para que el texto nunca contradiga el veredicto
+  const vol = (value, isNeeded = false) =>
+    isNeeded ? formatNeeded(value, unit, liters) : formatTank(value, unit);
   const entries = selection
-    .map(({ id, qty }) => ({ species: getSpeciesById(id), qty }))
+    .map(({ id, qty }) => ({ species: getSpeciesById(id, lang), qty }))
     .filter(e => e.species);
   if (entries.length === 0) return null;
 
   const list = entries.map(e => e.species);
-  const { checks: paramChecks, shared } = parameterChecks(list);
+  const { checks: paramChecks, shared } = parameterChecks(list, t);
 
   const pairChecks = [
     ...list.flatMap(a =>
       behaviourChecks(
         a,
-        list.filter(b => b.id !== a.id)
+        list.filter(b => b.id !== a.id),
+        t,
+        names
       )
     ),
-    ...rivalryChecks(list),
-    ...shrimpChecks(list),
+    ...rivalryChecks(list, t, names, vol),
+    ...shrimpChecks(list, t, names),
   ];
 
   const checks = [
     ...paramChecks,
     ...pairChecks,
-    ...groupChecks(entries),
-    ...tankChecks(entries, liters),
+    ...groupChecks(entries, t),
+    ...tankChecks(entries, liters, t, vol),
   ].sort((a, b) => LEVEL_ORDER.indexOf(b.level) - LEVEL_ORDER.indexOf(a.level));
 
   return {
