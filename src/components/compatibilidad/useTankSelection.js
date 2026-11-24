@@ -44,6 +44,8 @@ function writeQuery({ liters, unit, selection, lang }) {
   if (selection.length) params.set("p", selection.map(e => `${e.id}:${e.qty}`).join(","));
   if (lang === "en") params.set("lang", lang);
   const query = params.toString().replace(/%3A/g, ":").replace(/%2C/g, ",");
+  // Si la URL no cambia, no se reescribe: el navegador limita cuántas veces se puede hacer
+  if (`?${query}` === window.location.search || (!query && !window.location.search)) return;
   window.history.replaceState(null, "", query ? `?${query}` : window.location.pathname);
   window.dispatchEvent(new Event(URL_EVENT));
 }

@@ -44,6 +44,11 @@ export default function LitersInput({
   hint,
 }) {
   const [isCalculating, setIsCalculating] = useState(false);
+  // Mientras se arrastra la barra, el valor vive aquí y la URL se escribe una sola vez al
+  // soltar: Safari y Chrome rompen la página si se reescribe la URL decenas de veces por
+  // segundo (history.replaceState tiene un límite)
+  const [dragValue, setDragValue] = useState(null);
+  const shown = dragValue === null ? size : String(dragValue);
   const { copy } = useArmoniaLang();
   const units = copy.ui.units;
   const slider = SLIDER[unit];
@@ -83,7 +88,7 @@ export default function LitersInput({
           min={1}
           max={tankInUnit(MAX_LITERS, unit)}
           step="any"
-          value={size}
+          value={shown}
           onChange={e => onChange(e.target.value)}
           // Se registra al salir del campo, no en cada tecla
           onBlur={() => size && trackSize(size, "campo")}
@@ -151,9 +156,14 @@ export default function LitersInput({
         max={slider.max}
         step={slider.step}
         // Un acuario más grande que la barra la deja al tope; el campo conserva el valor real
-        value={Math.min(Number(size) || 0, slider.max)}
-        onChange={value => value > 0 && onChange(String(value))}
-        onChangeEnd={value => value > 0 && trackSize(value, "deslizador")}
+        value={Math.min(Number(shown) || 0, slider.max)}
+        onChange={value => value > 0 && setDragValue(value)}
+        onChangeEnd={value => {
+          setDragValue(null);
+          if (value <= 0) return;
+          onChange(String(value));
+          trackSize(value, "deslizador");
+        }}
         focusThumbOnChange={false}
         mt={6}
         mb={5}
