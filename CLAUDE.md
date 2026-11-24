@@ -49,15 +49,18 @@ Route `/armonia-acuatica`. The page is `app/armonia-acuatica/`, the components a
 | `src/lib/compatibilidadEn.js`      | English page and tool copy, same keys as the Spanish files   |
 | `src/lib/compatibilityMessages.js` | The text of every verdict check, Spanish and English         |
 | `src/lib/tankUnits.js`             | Litres ↔ US gallons, the presets per unit and `formatVolume` |
+| `src/lib/speciesSearch.js`         | How the search matches names: aliases, plurals, typos        |
 
 The URL is the state: `?l=60&p=tetra-neon:10,neocaridina:10` (tank size, then
 `id:quantity` pairs). Species ids are part of shared links, so never rename an id.
 
 ### Litres and gallons
 
-Litres are the default. `l` is always the tank in litres (up to 6 decimals); the unit
-menu inside the field only adds `&u=gal`, so switching units never changes the tank or
-the verdict (`?l=75.708236&u=gal` is a 20 gal tank). Data, rules and Analytics (`litros`)
+Litres are the default. `l` is always the tank in litres (up to 6 decimals) and `&u=gal`
+says the field and the text show gallons (`?l=75.708236&u=gal` is a 20 gal tank).
+Switching units keeps the number in the field, not the volume: 60 L becomes 60 gal, so the
+tank and the verdict change (JuanJo's call: someone who typed 60 and then picked gallons
+meant 60 gallons). Data, rules and Analytics (`litros`)
 always work in litres: gallons exist only in the field and in the text. A text that
 shows the tank uses `formatTank` (rounds down); one that shows what something needs uses
 `formatNeeded` (rounds up, but never above the tank when it fits), so the text never
@@ -65,8 +68,9 @@ contradicts the verdict. Never write a bare number with " L". The litres calcula
 always measures in centimetres.
 
 For a change to units or volume text, run every pair and trio in the four modes (es/en ×
-l/gal) and confirm the verdict is identical, no "needs X, your tank has Y" contradicts
-its level, and a typed value comes back unchanged in the field.
+l/gal) and confirm that the same volume gives the same verdict in both units, no "needs X,
+your tank has Y" contradicts its level, and a typed value comes back unchanged in the field
+(also after switching units).
 
 ### English version
 
@@ -120,6 +124,7 @@ search, the fit badges and the fichas all read from `species`.
 | `labyrinth`                 | Two or more non-territorial ones together give a caution                            |
 | `bottomTerritory`           | Two or more together give a caution about sharing the bottom                        |
 | `speciesOnly` (text)        | "No" with every other fish. The text is shown as the reason                         |
+| `aggressive`                | "No" with `longFins` fish and fish under half its size; caution with the rest       |
 | `colorful`                  | Caution next to a `territorial` fish                                                |
 | `eatsUnderCm`               | "No" with any fish whose `sizeCm` is below this number                              |
 | `shrimpRisk`                | `"adultas"`: "no" with shrimp. `"crias"`: caution. `"bajo"`: nothing. Fish or snail |
@@ -129,6 +134,7 @@ search, the fit badges and the fichas all read from `species`.
 | `maxCount`                  | "No" above this quantity                                                            |
 | `minGroup`                  | Caution below this quantity. Also the default quantity when added                   |
 | `unstableGroup: [from, to]` | Caution inside this range (Betta hembra: 2 to 4)                                    |
+| `pondFish`                  | Pond fish (koi): always "no" with its own check, and left out of the litres rules   |
 
 Other rules: water ranges that do not overlap give "no"; overlapping on a single value
 gives a caution, and two such parameters give "no". Stocking is 1 litre per centimetre

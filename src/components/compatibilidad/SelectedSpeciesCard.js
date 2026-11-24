@@ -28,7 +28,10 @@ const facts = (s, copy, unit, tankLiters) => [
   { label: copy.temperature, value: formatRange(s.temp, " °C") },
   { label: "pH", value: formatRange(s.ph, "", 1) },
   { label: "GH", value: formatRange(s.gh) },
-  { label: copy.minTank, value: formatNeeded(s.minLiters, unit, tankLiters) },
+  {
+    label: copy.minTank,
+    value: s.pondFish ? copy.pond : formatNeeded(s.minLiters, unit, tankLiters),
+  },
 ];
 
 // Crédito de la foto: las licencias Creative Commons exigen autor, licencia y enlace a la fuente
@@ -127,6 +130,7 @@ export default function SelectedSpeciesCard({
         <Button
           size="sm"
           variant="link"
+          h={8}
           color="accent.cyan"
           fontWeight="600"
           rightIcon={
@@ -136,6 +140,8 @@ export default function SelectedSpeciesCard({
               transition="transform 0.2s ease"
             />
           }
+          // Cada botón dice de qué especie es: "Ver ficha de Tetra neón"
+          aria-label={isOpen ? t.hideDetailsOf(species.name) : t.showDetailsOf(species.name)}
           aria-expanded={isOpen}
           aria-controls={detailsId}
           onClick={() => {
@@ -178,6 +184,11 @@ export default function SelectedSpeciesCard({
         borderColor="dark.border"
         bg="dark.bgAlt"
       >
+        {species.aliases?.length > 0 && (
+          <Text color="dark.textMuted" fontSize="sm" mb={2}>
+            {t.aliases(species.aliases.join(", "))}
+          </Text>
+        )}
         <Text color="dark.textSecondary" fontSize="sm" lineHeight="1.6">
           {species.intro}{" "}
           {species.postSlug && (

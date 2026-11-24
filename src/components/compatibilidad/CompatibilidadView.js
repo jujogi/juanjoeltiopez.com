@@ -114,7 +114,8 @@ export default function CompatibilidadView() {
           mb={5}
         >
           {compatibilidad.name}
-          {/* La frase que la gente busca también va dentro del H1 */}
+          {/* La frase que la gente busca también va dentro del H1. El espacio evita que Google y
+              los lectores de pantalla lean "Armonía AcuáticaCompatibilidad…" */}{" "}
           <Text
             as="span"
             display="block"

@@ -86,6 +86,21 @@ const es = {
     title: name => `${name}: mejor en un acuario solo para su especie`,
     detail: (reason, others) => `${reason} No lo juntes con ${others}.`,
   },
+  pondFish: {
+    title: (names, plural) => `${names} ${plural ? "son peces" : "es un pez"} de estanque`,
+    detail: plural =>
+      `${plural ? "Crecen" : "Crece"} demasiado para un acuario y ${plural ? "viven" : "vive"} muchos años: ${plural ? "necesitan" : "necesita"} un estanque grande al aire libre, con buen filtro. Por eso no lo medimos con la regla de litros de un acuario.`,
+  },
+  aggressiveVictims: {
+    title: name => `${name} ataca a los peces pequeños y de aletas largas`,
+    detail: others =>
+      `Es muy agresivo, sobre todo cuando tiene crías, y ellos no tienen cómo defenderse. No lo juntes con ${others}.`,
+  },
+  aggressive: {
+    title: name => `${name} es muy agresivo`,
+    detail: others =>
+      `Con ${others} puede funcionar si son robustos y de su tamaño, en un acuario grande con cuevas que corten la vista. Ten un plan B por si los persigue.`,
+  },
   eatsSmallFish: {
     title: (name, prey) => `${name} se puede comer a ${prey}`,
     detail: (sizeCm, underCm) =>
@@ -204,6 +219,21 @@ const en = {
   speciesOnly: {
     title: name => `${name}: better in a tank of its own`,
     detail: (reason, others) => `${reason} Don't keep it with ${others}.`,
+  },
+  pondFish: {
+    title: (names, plural) => `${names} ${plural ? "are pond fish" : "is a pond fish"}`,
+    detail: plural =>
+      `${plural ? "They grow" : "It grows"} too big for an aquarium and ${plural ? "live" : "lives"} many years: ${plural ? "they need" : "it needs"} a large outdoor pond with a good filter. That's why we don't measure ${plural ? "them" : "it"} with the aquarium liters rule.`,
+  },
+  aggressiveVictims: {
+    title: name => `${name} attacks small and long-finned fish`,
+    detail: others =>
+      `It's very aggressive, especially when it has fry, and they have no way to defend themselves. Don't keep it with ${others}.`,
+  },
+  aggressive: {
+    title: name => `${name} is very aggressive`,
+    detail: others =>
+      `With ${others} it can work if they're sturdy and its size, in a large tank with caves that break the line of sight. Have a plan B in case it chases them.`,
   },
   eatsSmallFish: {
     title: (name, prey) => `${name} can eat ${prey}`,

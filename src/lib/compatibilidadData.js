@@ -54,14 +54,14 @@ export const armoniaInvite = {
 // Bloque de la home (ArmoniaHomeBand). {count} se reemplaza por el número de especies
 export const armoniaHome = {
   title: "¿Tus peces pueden vivir juntos?",
-  text: "Antes de comprar, revisa si las especies que quieres comparten agua, espacio y temperamento. Ya tenemos {count} peces, gambitas y caracoles para comparar.",
+  text: "Antes de comprar, revisa si las especies que quieres comparten parámetros, espacio y temperamento. Ya tenemos {count} peces, gambitas y caracoles para comparar.",
   features: [
     "Temperatura, pH y GH que les sirven a todas",
     "Litros y ocupación de tu acuario",
     "Temperamento y qué tan seguras están las gambitas",
   ],
   cta: "Probar Armonía Acuática",
-  combosLabel: "O empieza con una de estas:",
+  combosLabel: "O empieza con una de estas especies:",
   // Resultado de ejemplo que se muestra como vista previa (lo calcula la misma herramienta)
   example: {
     liters: 60,
@@ -118,8 +118,12 @@ export const faq = [
     a: "Depende mucho del temperamento de cada Betta. Los mejores compañeros son peces pacíficos y poco llamativos, como Corydoras u Otocinclus. Evita otros Bettas, en especial machos y peces de aletas o colas largas como los guppys.",
   },
   {
+    q: "¿Puedo tener una pareja de Bettas?",
+    a: "No en el mismo acuario. El macho y la hembra solo se juntan para reproducirse: fuera de eso, el macho la persigue y la puede lastimar o matar. Dos machos tampoco, porque se pelean. Las hembras pueden vivir solas o en grupo de 5 o más, en un acuario grande y bien plantado; con 2 a 4, la más fuerte persigue a las demás.",
+  },
+  {
     q: "¿Puedo juntar Neocaridinas y Caridinas?",
-    a: "No te lo recomendamos. Las Neocaridinas necesitan un pH de 6.5 a 7.5 y un GH de 6 a 8; las Caridinas, por su parte prefieren aguas muy blandas. Las neocaridinas adaptarse a esos parámetros pero no al revés. Es un riesgo que no vale la pena correr.",
+    a: "No te lo recomendamos. Las Neocaridinas necesitan un pH de 6.5 a 7.5 y un GH de 6 a 8; las Caridinas, por su parte prefieren aguas muy blandas. Las neocaridinas pueden adaptarse a esos parámetros pero no al revés. Es un riesgo que no vale la pena correr.",
   },
   {
     q: "¿Las gambas Sulawesi pueden vivir con otras gambitas?",
@@ -134,8 +138,10 @@ export const ui = {
   // Unidad del acuario: short en el botón, name dentro de las frases
   units: {
     label: "Unidad del acuario",
-    l: { short: "L", name: "litros" },
-    gal: { short: "gal", name: "galones" },
+    // button: los botones de unidad junto al campo · slider: la barra para deslizar
+    slider: unit => `Tamaño del acuario en ${unit}`,
+    l: { short: "L", name: "litros", button: "Litros" },
+    gal: { short: "gal", name: "galones", button: "Galones" },
   },
   // El botón de idioma se lee en el idioma al que lleva
   languageSwitch: "Not familiar with Spanish? See it in English",
@@ -151,21 +157,31 @@ export const ui = {
   tool: {
     added: name => `¡Listo! Agregaste ${name}`,
     linkCopied: "¡Enlace copiado! Compártelo con quien quieras",
+    // Si el navegador no deja copiar: el enlace es el de la barra de direcciones
+    linkNotCopied: "No pudimos copiarlo. Copia el enlace de la barra de direcciones",
+    // Los pasos: su nombre en la barra de progreso y los botones para moverse entre ellos
+    steps: ["Tu acuario", "Especies y resultado"],
+    stepOf: (n, total) => `Paso ${n} de ${total}`,
+    toSpecies: "Elegir especies",
+    toTank: "Cambiar dimensiones del acuario",
     litersStep: unit => `¿De cuántos ${unit} es tu acuario?`,
+    litersIntro:
+      "Escríbelo, mueve la barra o elige uno de los tamaños más comunes. Con eso revisamos si a cada especie le alcanza el espacio.",
     needsLiters: unit => `Indícanos los ${unit} de tu acuario para afinar los resultados`,
+    addLiters: unit => `Indicar los ${unit}`,
+    // Bajo el campo, si toca "Elegir especies" sin haber escrito el tamaño
+    litersRequired: unit => `Escribe los ${unit} de tu acuario para seguir.`,
     speciesStep: "Elige las especies que quieres tener",
-    lockedHint: unit => `Primero cuéntanos de cuántos ${unit} es tu acuario.`,
     speciesCount: (fish, shrimp, snails) =>
       `Por ahora tenemos ${fish} peces, ${shrimp} gambitas y ${snails} caracoles en nuestra base de datos.`,
     resultStep: "¿Pueden vivir juntas?",
     copyLink: "Copiar enlace",
+    // En el celular: abre el menú de compartir del sistema con el enlace y este texto
+    share: "Compartir",
+    shareText: "Mira si estas especies pueden vivir juntas en el acuario:",
     reset: "Empezar de nuevo",
     yourTank: volume => (volume ? `Tu acuario de ${volume}` : "Tu acuario"),
     photosNote: "Fotos de Wikimedia Commons: el autor y la licencia de cada una están en su ficha.",
-    placeholderLocked: unit =>
-      `Cuando nos cuentes de cuántos ${unit} es tu acuario, aquí vas a ver la ficha de cada especie y si pueden vivir juntas.`,
-    placeholderEmpty:
-      "Elige tu primera especie para ver sus parámetros. Después agrega otra y te decimos si pueden vivir juntas.",
     startersLabel: "¿No sabes por dónde empezar? Prueba con una de estas:",
   },
   // Los tres niveles del veredicto: title en el resultado, label en las sugerencias del buscador
@@ -179,21 +195,29 @@ export const ui = {
     temperature: "Temperatura",
     noMatch: "No coinciden",
     minTank: "Acuario mínimo",
+    // En vez de litros, para los peces de estanque (pondFish)
+    pond: "Estanque",
     comparing: "Especies que estás comparando",
     singleNeeds: "Lo que necesita:",
     sharedWater: "El agua que les sirve a todas:",
-    stocking: "Ocupación del acuario",
+    // La barra muestra lo que pide la combinación (acuario mínimo o 1 L/cm, lo que sea mayor)
+    stocking: "Cuánto de tu acuario se necesita",
     stockingFits: (needed, tank) => `Pide mínimo ${needed} de tus ${tank}`,
     stockingOver: (needed, tank) => `Pide ${needed} y tienes ${tank}`,
     remove: name => `Quitar ${name}`,
+    // Botón en los avisos de espacio: lleva al paso del acuario
+    changeTank: unit => `Cambiar los ${unit}`,
   },
   card: {
     showDetails: "Ver ficha",
     hideDetails: "Ocultar ficha",
+    showDetailsOf: name => `Ver ficha de ${name}`,
+    hideDetailsOf: name => `Ocultar ficha de ${name}`,
     min: n => `Mínimo ${n}`,
     less: name => `Menos ${name}`,
     more: name => `Más ${name}`,
     guide: "Lee la guía completa",
+    aliases: names => `También le dicen: ${names}`,
     photo: "Foto:",
     viaCommons: " · vía Wikimedia Commons",
   },
@@ -203,6 +227,11 @@ export const ui = {
     clear: "Borrar la búsqueda",
     listLabel: "Especies",
     noResults: "No tenemos esa especie todavía.",
+    alreadyChosen: names => `Ya está en tu acuario: ${names}.`,
+    // Buscó un animal que no es pez, gambita ni caracol (ajolote, tortuga…): NOT_FISH en speciesSearch.js
+    notFish: "Por ahora solo comparamos peces, gambitas y caracoles.",
+    // La especie se encontró por otro de sus nombres (aliases en speciesData.js)
+    alias: name => `También: ${name}`,
     allChosen: "Ya elegiste todas las especies.",
   },
   liters: {

@@ -9,7 +9,7 @@ export const MAX_LITERS = 2000;
 
 // La selección viaja en la URL para poder compartirla: ?l=60&p=tetra-neon:10,neocaridina:10
 // `l` son siempre litros. Con &u=gal el acuario se escribe y se muestra en galones, pero se
-// guarda en litros (?l=75.7082&u=gal): cambiar de unidad no cambia el acuario.
+// guarda en litros (?l=75.7082&u=gal). Cambiar de unidad conserva el número del campo.
 // Con &lang=en la herramienta se ve en inglés (useArmoniaLang.js).
 export const readLang = search => (new URLSearchParams(search).get("lang") === "en" ? "en" : "es");
 
@@ -69,8 +69,16 @@ const update = change => {
 const setSize = size =>
   update(({ unit }) => ({ liters: Number(size) > 0 ? toLiters(Number(size), unit) : null }));
 
-// Solo cambia cómo se ve: el acuario (los litros) sigue igual
-const setUnit = unit => update(() => ({ unit }));
+// El número del campo se queda igual y pasa a la otra unidad: quien escribió 60 y después
+// eligió galones quería decir 60 galones. Cambia el acuario, y con él el veredicto. Si en la
+// nueva unidad pasa del máximo, queda en el máximo.
+const setUnit = unit =>
+  update(current => ({
+    unit,
+    liters: current.liters
+      ? Math.min(toLiters(tankInUnit(current.liters, current.unit), unit), MAX_LITERS)
+      : null,
+  }));
 
 // Litros que ya vienen calculados (la calculadora), sin pasar por la unidad
 const setLiters = liters => update(() => ({ liters }));
@@ -94,8 +102,8 @@ const setQty = (id, qty) =>
     selection: selection.map(e => (e.id === id ? { ...e, qty } : e)),
   }));
 
-// Empezar de nuevo borra el acuario, no el idioma ni la unidad
-const reset = () => update(() => ({ liters: null, selection: [] }));
+// Empezar de nuevo quita las especies; el tamaño del acuario, la unidad y el idioma se quedan
+const reset = () => update(() => ({ selection: [] }));
 
 export const setLang = lang => update(() => ({ lang }));
 

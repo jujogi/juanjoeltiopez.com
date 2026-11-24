@@ -86,12 +86,12 @@ const Hero = ({ postCount }) => (
           <Stack direction="row" wrap="wrap" spacing={3} mb={10}>
             <Button
               as={NextLink}
-              href="/blog"
+              href="/armonia-acuatica"
               size="lg"
               rightIcon={<ArrowForwardIcon />}
               onClick={() => trackCtaClick("home_hero_guias")}
             >
-              Ver las guías
+              Armonía Acuática
             </Button>
             <Button
               as={NextLink}
@@ -238,6 +238,12 @@ export default function HomeView() {
 
       <Container maxW="container.xl">
         {/* Temas */}
+
+        {/* Armonía Acuática */}
+        <Box mb={{ base: 16, md: 24 }}>
+          <ArmoniaHomeBand />
+        </Box>
+
         <Box as="section" aria-labelledby="temas" mb={{ base: 16, md: 24 }}>
           <SectionHeader eyebrow="Explora por tema" title="¿Qué quieres aprender hoy?" id="temas" />
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
@@ -247,10 +253,6 @@ export default function HomeView() {
           </SimpleGrid>
         </Box>
 
-        {/* Armonía Acuática */}
-        <Box mb={{ base: 16, md: 24 }}>
-          <ArmoniaHomeBand />
-        </Box>
 
         {/* Destacada + recientes */}
         <Box as="section" aria-labelledby="recientes" mb={{ base: 16, md: 24 }}>

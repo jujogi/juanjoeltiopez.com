@@ -1,6 +1,7 @@
 // Unidades del acuario en Armonía Acuática: litros (la de siempre) o galones de EE. UU.
-// El acuario se guarda siempre en litros (el `l` de la URL); la unidad solo cambia cómo se
-// escribe y cómo se muestra. Así, cambiar de unidad nunca cambia el acuario ni el veredicto.
+// El acuario se guarda siempre en litros (el `l` de la URL) y la unidad dice cómo se escribe y
+// cómo se muestra. Cambiar de unidad conserva el número escrito (60 L → 60 gal), así que sí
+// cambia el acuario (useTankSelection.js).
 
 export const UNITS = ["l", "gal"];
 export const DEFAULT_UNIT = "l";

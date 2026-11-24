@@ -75,18 +75,41 @@ function parameterChecks(list, t) {
   return { checks, shared };
 }
 
+// Los peces de estanque (pondFish, como el koi) no se miden en litros de acuario: tienen su
+// propio aviso (pondChecks) y quedan fuera de las reglas de espacio
+const inAquarium = entries => entries.filter(e => !e.species.pondFish);
+
 // Litros que pide la regla de ocupación. Las gambitas no cuentan: su carga biológica es mínima
 const stockingLiters = entries =>
   Math.ceil(
-    entries
+    inAquarium(entries)
       .filter(e => e.species.type === "fish")
       .reduce((sum, e) => sum + e.qty * e.species.sizeCm, 0) * LITERS_PER_CM
   );
 
 // Lo que de verdad pide la selección: el acuario mínimo de la especie más exigente o la regla
-// de ocupación, lo que sea mayor (un solo pez globo de 2.5 cm no vive en 3 L)
-const neededLiters = entries =>
-  Math.max(stockingLiters(entries), ...entries.map(e => e.species.minLiters));
+// de ocupación, lo que sea mayor (un solo pez globo de 2.5 cm no vive en 3 L). null si solo
+// hay peces de estanque: no hay acuario que alcance.
+const neededLiters = entries => {
+  const aquarium = inAquarium(entries);
+  if (!aquarium.length) return null;
+  return Math.max(stockingLiters(entries), ...aquarium.map(e => e.species.minLiters));
+};
+
+// Un solo aviso que nombra a todos los peces de estanque de la selección. No depende de los
+// litros: ningún acuario les sirve, así que no trae aboutTank.
+function pondChecks(list, t, names) {
+  const pond = list.filter(s => s.pondFish);
+  if (!pond.length) return [];
+  const plural = pond.length > 1;
+  return [
+    {
+      level: "bad",
+      title: t.pondFish.title(names(pond), plural),
+      detail: t.pondFish.detail(plural),
+    },
+  ];
+}
 
 // vol: litros → texto en la unidad elegida ("60 L" o "16 gal")
 function tankChecks(entries, liters, t, vol) {
@@ -94,10 +117,11 @@ function tankChecks(entries, liters, t, vol) {
   if (!liters) return [];
   const checks = [];
 
-  for (const { species } of entries) {
+  for (const { species } of inAquarium(entries)) {
     if (species.minLiters > liters) {
       checks.push({
         level: "bad",
+        aboutTank: true,
         title: t.tankTooSmall.title(species.name),
         detail: t.tankTooSmall.detail(vol(species.minLiters, true), vol(liters)),
       });
@@ -109,10 +133,12 @@ function tankChecks(entries, liters, t, vol) {
   if (stocking > liters) {
     checks.push({
       level: stocking > liters * OVERSTOCK_BAD_RATIO ? "bad" : "caution",
+      aboutTank: true,
       title: t.overstocked.title(),
       detail: t.overstocked.detail(vol(stocking, true), vol(liters)),
     });
-  } else if (checks.length === 0) {
+  } else if (checks.length === 0 && inAquarium(entries).length === entries.length) {
+    // Con un pez de estanque no se dice "caben en tu acuario": su aviso ya dice que no
     checks.push({
       level: "ok",
       title: t.fits.title(),
@@ -195,6 +221,16 @@ function behaviourChecks(a, others, t, names) {
 
   if (a.speciesOnly) {
     add("bad", fish, t.speciesOnly.title(a.name), n => t.speciesOnly.detail(a.speciesOnly, n));
+  }
+
+  // Agresivo con todos (cíclido convicto): no con los que no se saben defender, cuidado con el
+  // resto. Los que ya se puede comer tienen su propio aviso (eatsUnderCm).
+  if (a.aggressive) {
+    const eaten = b => a.eatsUnderCm && b.sizeCm < a.eatsUnderCm;
+    const defenceless = fish.filter(b => !eaten(b) && (b.longFins || b.sizeCm < a.sizeCm / 2));
+    const rest = fish.filter(b => !eaten(b) && !defenceless.includes(b));
+    add("bad", defenceless, t.aggressiveVictims.title(a.name), t.aggressiveVictims.detail);
+    add("caution", rest, t.aggressive.title(a.name), t.aggressive.detail);
   }
 
   if (a.eatsUnderCm) {
@@ -289,6 +325,9 @@ function snailChecks(list, t, names) {
 // selection: [{ id, qty }] · liters: litros del acuario, o null si todavía no se saben
 // lang: "es" o "en", el idioma de los nombres y los avisos · unit: "l" o "gal", la unidad en
 // que se muestran los volúmenes de los avisos (las cuentas siempre son en litros)
+// Cada aviso es { level, title, detail }; los que se arreglan con un acuario más grande
+// (acuario mínimo y ocupación) traen además aboutTank: true. neededLiters es null si solo hay
+// peces de estanque.
 export function checkCompatibility(selection, liters, lang = "es", unit = "l") {
   const t = compatibilityMessages[lang] || compatibilityMessages.es;
   const names = listNames(lang);
@@ -316,6 +355,7 @@ export function checkCompatibility(selection, liters, lang = "es", unit = "l") {
     ...rivalryChecks(list, t, names, vol),
     ...shrimpChecks(list, t, names),
     ...snailChecks(list, t, names),
+    ...pondChecks(list, t, names),
   ];
 
   const checks = [

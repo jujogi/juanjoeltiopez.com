@@ -15,7 +15,8 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
-import { getSpeciesById, getSpeciesList } from "@/lib/speciesData";
+import { getSpeciesList } from "@/lib/speciesData";
+import { cleanQuery, isNotFish, searchSpecies } from "@/lib/speciesSearch";
 import SpeciesThumbnail from "./SpeciesThumbnail";
 import { LEVELS } from "./levels";
 import { focusWithoutScroll, useKeyboardReveal } from "./useKeyboardReveal";
@@ -25,24 +26,6 @@ import { useArmoniaLang } from "./useArmoniaLang";
 const LISTBOX_ID = "especies-sugeridas";
 const optionId = id => `especie-${id}`;
 const LIST_OFFSET = 6; // separación entre el campo y la lista
-
-// Compara sin tildes ni mayúsculas: "neon" encuentra "Tetra neón"
-const normalize = text => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-
-// 0: una palabra del nombre empieza por el texto ("cor" → Corydoras) · 1: empieza una palabra
-// del nombre científico o del grupo · 2: aparece en medio de una palabra · 3: no coincide.
-// En inglés el nombre y el grupo en español también cuentan, después del nombre en inglés.
-const NO_MATCH = 3;
-const startsWord = (text, term) =>
-  normalize(text)
-    .split(/[\s()]+/)
-    .some(w => w.startsWith(term));
-const matchRank = (s, term) => {
-  const es = getSpeciesById(s.id);
-  if (startsWord(s.name, term)) return 0;
-  if (startsWord(`${s.scientific} ${s.group} ${es.name} ${es.group}`, term)) return 1;
-  return normalize(`${s.name} ${s.scientific} ${es.name}`).includes(term) ? 2 : NO_MATCH;
-};
 
 // Buscador con sugerencias (combobox): se escribe, se elige con el mouse o con flechas + Enter
 // Cómo encaja la sugerencia con lo que ya hay en el acuario. En el celular solo va el ícono
@@ -58,7 +41,7 @@ const FitBadge = ({ level, label }) => (
 );
 
 // fitById: { id: "ok" | "caution" | "bad" } según el acuario actual; vacío si aún no hay especies
-export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled }) {
+export default function SpeciesSearch({ selectedIds, fitById, onAdd }) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -67,18 +50,26 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
   const { lang, copy } = useArmoniaLang();
   const t = copy.ui.search;
 
-  const term = normalize(query.trim());
-  const available = getSpeciesList(lang).filter(s => !selectedIds.includes(s.id));
+  const term = cleanQuery(query);
+  const list = getSpeciesList(lang);
+  const available = list.filter(s => !selectedIds.includes(s.id));
   // Sin texto se muestran todas por grupo; con texto, primero las que mejor coinciden
-  const options = term
-    ? available
-        .map(s => ({ item: s, rank: matchRank(s, term) }))
-        .filter(m => m.rank < NO_MATCH)
-        .sort((a, b) => a.rank - b.rank)
-        .map(m => m.item)
-    : available;
+  const matches = term ? searchSpecies(available, term) : available.map(item => ({ item }));
+  const options = matches.map(m => m.item);
+  // Lo que busca ya está en el acuario ("guppys" con Guppy elegido): se le dice arriba de las
+  // sugerencias si encaja tan bien como la mejor, y no cuenta como especie que nos falta
+  const chosenMatches = term
+    ? searchSpecies(
+        list.filter(s => selectedIds.includes(s.id)),
+        term
+      )
+    : [];
+  const chosen =
+    chosenMatches.length && (!matches.length || chosenMatches[0].rank <= matches[0].rank)
+      ? chosenMatches.map(m => m.item.name)
+      : [];
   const active = options[Math.min(activeIndex, options.length - 1)];
-  useTrackNoResults(term, options.length > 0);
+  useTrackNoResults(term, options.length > 0 || chosen.length > 0);
 
   // Con las flechas, la opción activa se mantiene a la vista dentro de la lista
   useEffect(() => {
@@ -130,7 +121,6 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
         <Input
           ref={inputRef}
           role="combobox"
-          isDisabled={isDisabled}
           aria-label={t.label}
           aria-expanded={isOpen}
           aria-controls={LISTBOX_ID}
@@ -203,9 +193,15 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
         // Evita que el clic le quite el foco al campo y cierre la lista antes de elegir
         onMouseDown={e => e.preventDefault()}
       >
-        {options.length === 0 && (
+        {(options.length === 0 || chosen.length > 0) && (
           <Text as="li" role="presentation" px={3} py={3} color="dark.textSecondary" fontSize="sm">
-            {term ? t.noResults : t.allChosen}
+            {chosen.length
+              ? t.alreadyChosen(chosen.join(", "))
+              : !term
+                ? t.allChosen
+                : isNotFish(term)
+                  ? t.notFish
+                  : t.noResults}
           </Text>
         )}
         {options.map((item, i) => {
@@ -246,9 +242,16 @@ export default function SpeciesSearch({ selectedIds, fitById, onAdd, isDisabled 
                   <Text fontWeight="600" color="white" noOfLines={1}>
                     {item.name}
                   </Text>
-                  <Text fontSize="sm" fontStyle="italic" color="dark.textSecondary" noOfLines={1}>
-                    {item.scientific}
-                  </Text>
+                  {/* Si se encontró por otro nombre, se muestra ese nombre: "También: pez ángel" */}
+                  {matches[i].alias ? (
+                    <Text fontSize="sm" color="dark.textSecondary" noOfLines={1}>
+                      {t.alias(matches[i].alias)}
+                    </Text>
+                  ) : (
+                    <Text fontSize="sm" fontStyle="italic" color="dark.textSecondary" noOfLines={1}>
+                      {item.scientific}
+                    </Text>
+                  )}
                 </Box>
                 {fitById[item.id] && (
                   <FitBadge

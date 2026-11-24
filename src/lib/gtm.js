@@ -50,13 +50,15 @@ export const trackBlogClick = postTitle => {
  * Para ver esos parámetros en los informes de GA4 hay que registrarlos una vez como
  * dimensiones personalizadas (Administrar → Definiciones personalizadas):
  *   especie, total_especies, litros, cantidad, origen, combo, tienda, busqueda, idioma, unidad,
- *   pais, ciudad
+ *   pais, ciudad, paso
  *
- * Acciones: litros (origen: boton, campo o calculadora; unidad: l o gal; `litros` va siempre
+ * Acciones: paso (paso: 1 o 2, al que fue) ·
+ * litros (origen: boton, campo, deslizador o calculadora; unidad: l o gal; `litros` va siempre
  * en litros, aunque la persona escriba galones) · unidad (unidad: l o gal, a la que cambió) ·
  * abrir_calculadora ·
- * agregar_especie · quitar_especie · cantidad · combo ·
- * copiar_enlace · empezar_de_nuevo · ver_ficha · guia ·
+ * agregar_especie · quitar_especie (origen: resultado o ficha) · cantidad · combo ·
+ * copiar_enlace · compartir (el menú de compartir del celular; solo si se compartió) ·
+ * empezar_de_nuevo · ver_ficha · guia ·
  * tienda (tienda, pais: código ISO como CO, ciudad) · contacto_tienda ·
  * busqueda_sin_resultado · idioma (idioma: es o en, al que cambió)
  *

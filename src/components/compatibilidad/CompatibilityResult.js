@@ -2,42 +2,19 @@
 
 import {
   Box,
+  Button,
   Flex,
   HStack,
   Heading,
   Text,
   Icon,
-  IconButton,
   SimpleGrid,
   VStack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
-import { CloseIcon } from "@chakra-ui/icons";
 import { formatNeeded, formatTank } from "@/lib/tankUnits";
 import { LEVELS } from "./levels";
-import SpeciesThumbnail from "./SpeciesThumbnail";
+import SpeciesPills from "./SpeciesPills";
 import { useArmoniaLang } from "./useArmoniaLang";
-
-// Especie que se está comparando: foto, cantidad y nombre, con su botón para quitarla
-const SpeciesPill = ({ species, qty, onRemove, removeLabel }) => (
-  <HStack spacing={2} bg="dark.bgAlt" border="1px" borderColor="dark.border" rounded="full" p={1}>
-    <SpeciesThumbnail species={species} w="32px" h="32px" rounded="full" />
-    <Text fontSize="sm" fontWeight="600" color="white">
-      {qty > 1 && `${qty} × `}
-      {species.name}
-    </Text>
-    <IconButton
-      icon={<CloseIcon boxSize={2} />}
-      aria-label={removeLabel}
-      onClick={onRemove}
-      size="xs"
-      isRound
-      variant="ghost"
-      color="dark.textSecondary"
-    />
-  </HStack>
-);
 
 // Barra de ocupación: cuánto del acuario pide la selección
 const StockingBar = ({ needed, liters, unit, copy }) => {
@@ -65,7 +42,8 @@ const StockingBar = ({ needed, liters, unit, copy }) => {
 
 // Veredicto con sus razones. result viene de checkCompatibility()
 // unit: "l" o "gal", la unidad en que se muestran los volúmenes
-export default function CompatibilityResult({ result, entries, unit, onRemove }) {
+// onChangeTank: lleva al paso del acuario, desde los avisos que se arreglan con más litros
+export default function CompatibilityResult({ result, entries, unit, onRemove, onChangeTank }) {
   const { copy } = useArmoniaLang();
   const t = copy.ui.result;
   const verdict = LEVELS[result.level];
@@ -84,7 +62,13 @@ export default function CompatibilityResult({ result, entries, unit, onRemove })
       value: result.shared[key] || t.noMatch,
       isMissing: !result.shared[key],
     })),
-    { label: t.minTank, value: formatNeeded(result.neededLiters, unit, result.liters) },
+    {
+      label: t.minTank,
+      value:
+        result.neededLiters === null
+          ? t.pond
+          : formatNeeded(result.neededLiters, unit, result.liters),
+    },
   ];
 
   return (
@@ -112,31 +96,21 @@ export default function CompatibilityResult({ result, entries, unit, onRemove })
         </Heading>
       </Flex>
 
-      <Box px={{ base: 4, md: 6 }} py={5}>
-        <Wrap as="ul" spacing={2} mb={5} listStyleType="none" aria-label={t.comparing}>
-          {entries.map(({ species, qty }) => (
-            <WrapItem as="li" key={species.id}>
-              <SpeciesPill
-                species={species}
-                qty={qty}
-                onRemove={() => onRemove(species.id)}
-                removeLabel={t.remove(species.name)}
-              />
-            </WrapItem>
-          ))}
-        </Wrap>
+      <Box px={{ base: 3, md: 6 }} py={5}>
+        <SpeciesPills entries={entries} onRemove={onRemove} mb={5} />
         <Text fontSize="sm" color="dark.textSecondary" mb={3}>
           {isSingle ? t.singleNeeds : t.sharedWater}
         </Text>
         <SimpleGrid as="dl" columns={{ base: 2, md: 4 }} spacing={3}>
           {tiles.map(tile => (
-            <Box key={tile.label} bg="dark.bgAlt" rounded="lg" px={3} py={3}>
+            <Box key={tile.label} bg="dark.bgAlt" rounded="lg" px={{ base: 2.5, md: 3 }} py={3}>
+              {/* En mayúsculas, "TEMPERATURA" no cabe en el celular y se parte: ahí va normal */}
               <Text
                 as="dt"
                 fontSize="xs"
                 color="dark.textMuted"
-                textTransform="uppercase"
-                letterSpacing="0.06em"
+                textTransform={{ base: "none", md: "uppercase" }}
+                letterSpacing={{ base: "0", md: "0.06em" }}
               >
                 {tile.label}
               </Text>
@@ -151,7 +125,7 @@ export default function CompatibilityResult({ result, entries, unit, onRemove })
             </Box>
           ))}
         </SimpleGrid>
-        {result.liters && (
+        {result.liters && result.neededLiters !== null && (
           <StockingBar needed={result.neededLiters} liters={result.liters} unit={unit} copy={t} />
         )}
 
@@ -173,6 +147,18 @@ export default function CompatibilityResult({ result, entries, unit, onRemove })
                 <Text fontSize="sm" color="dark.textSecondary" lineHeight="1.6">
                   {check.detail}
                 </Text>
+                {check.aboutTank && (
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    border="1px"
+                    borderColor="dark.border"
+                    mt={2}
+                    onClick={onChangeTank}
+                  >
+                    {t.changeTank(copy.ui.units[unit].name)}
+                  </Button>
+                )}
               </Box>
             </HStack>
           ))}

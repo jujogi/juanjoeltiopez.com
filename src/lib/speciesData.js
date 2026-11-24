@@ -5,6 +5,8 @@
 // PENDIENTES DE REVISIÓN por JuanJo antes de publicar.
 //
 // Campos:
+//   aliases         otros nombres comunes (de otros países o regiones, o de una variedad). El
+//                   buscador los encuentra y la ficha los muestra. En inglés van en speciesDataEn.js
 //   temp, ph, gh    [mínimo, máximo] (°C, pH, °dGH)
 //   minLiters       acuario mínimo para la especie
 //   sizeCm          tamaño adulto
@@ -17,6 +19,10 @@
 //   labyrinth       laberíntido (Betta y guramis): entre ellos se ven como rivales
 //   bottomTerritory cíclido enano que defiende territorio en el fondo
 //   speciesOnly     por qué va mejor en un acuario solo para su especie (texto)
+//   pondFish        pez de estanque (koi): siempre "no", con su propio aviso, y queda fuera de
+//                   las reglas de litros y ocupación del acuario
+//   aggressive      agresivo con todos (cíclido convicto): "no" con los peces de aletas largas o de
+//                   menos de la mitad de su tamaño, cuidado con el resto
 //   colorful        colores muy vivos (un pez territorial lo puede ver como rival)
 //   eatsUnderCm     se come a los peces más pequeños que este tamaño
 //   shrimpRisk      "bajo" | "crias" | "adultas": qué tanto riesgo es para las gambas
@@ -40,6 +46,7 @@ export const species = [
     id: "betta",
     name: "Betta macho",
     scientific: "Betta splendens",
+    aliases: ["pez luchador", "luchador de Siam", "pez beta", "beta"],
     group: "Betta y otros populares",
     type: "fish",
     intro:
@@ -61,6 +68,7 @@ export const species = [
     id: "betta-hembra",
     name: "Betta hembra",
     scientific: "Betta splendens",
+    aliases: ["pez luchador hembra", "beta hembra"],
     group: "Betta y otros populares",
     type: "fish",
     intro:
@@ -80,6 +88,19 @@ export const species = [
     id: "goldfish",
     name: "Goldfish (bailarina)",
     scientific: "Carassius auratus",
+    aliases: [
+      "pez dorado",
+      "pez de colores",
+      "carpa dorada",
+      "carpín dorado",
+      "pez japonés",
+      "cometa",
+      "oranda",
+      "cabeza de león",
+      "ryukin",
+      "telescopio",
+      "ranchu",
+    ],
     group: "Betta y otros populares",
     type: "fish",
     intro:
@@ -101,6 +122,7 @@ export const species = [
     id: "globo-enano",
     name: "Pez globo enano",
     scientific: "Carinotetraodon travancoricus",
+    aliases: ["pez globo", "globito", "puffer enano", "tetraodon enano"],
     group: "Betta y otros populares",
     type: "fish",
     intro:
@@ -120,6 +142,7 @@ export const species = [
     id: "killi-payaso",
     name: "Killi payaso",
     scientific: "Epiplatys annulatus",
+    aliases: ["killi", "killifish", "panchax payaso"],
     group: "Betta y otros populares",
     type: "fish",
     intro:
@@ -137,6 +160,7 @@ export const species = [
     id: "channa",
     name: "Channa",
     scientific: "Channa sp.",
+    aliases: ["cabeza de serpiente", "pez cabeza de serpiente", "snakehead"],
     group: "Betta y otros populares",
     type: "fish",
     intro:
@@ -152,12 +176,106 @@ export const species = [
     eatsUnderCm: 10,
     shrimpRisk: "adultas",
   },
+  {
+    id: "pez-cuchillo-negro",
+    name: "Pez cuchillo negro",
+    scientific: "Apteronotus albifrons",
+    aliases: ["black ghost", "pez fantasma", "cuchillo"],
+    group: "Betta y otros populares",
+    type: "fish",
+    intro:
+      "Es nocturno y tímido: de día se esconde en cuevas o tubos, así que dale dónde refugiarse. Crece hasta unos 40 cm y de noche se come a los peces pequeños y las gambitas, por eso necesita un acuario grande y compañeros de buen tamaño.",
+    temp: [23, 28],
+    ph: [6.0, 7.5],
+    gh: [2, 12],
+    minLiters: 400,
+    sizeCm: 40,
+    minGroup: 1,
+    maxCount: 1,
+    eatsUnderCm: 9,
+    shrimpRisk: "adultas",
+  },
+  {
+    id: "arawana",
+    name: "Arawana",
+    scientific: "Osteoglossum bicirrhosum",
+    aliases: ["arowana", "arahuana", "arawana plateada"],
+    group: "Betta y otros populares",
+    type: "fish",
+    intro:
+      "Un pez de nuestros ríos que llega a medir casi un metro. Lo venden muy pequeño, pero de adulto necesita un acuario enorme y bien tapado, porque salta, y se come cualquier pez que le quepa en la boca.",
+    temp: [24, 30],
+    ph: [6.0, 7.5],
+    gh: [2, 12],
+    minLiters: 1500,
+    sizeCm: 90,
+    minGroup: 1,
+    maxCount: 1,
+    eatsUnderCm: 20,
+    shrimpRisk: "adultas",
+  },
+  {
+    id: "gato-cristal",
+    name: "Pez gato cristal",
+    scientific: "Kryptopterus vitreolus",
+    aliases: ["pez de vidrio", "pez transparente", "bagre de cristal", "gato fantasma"],
+    group: "Betta y otros populares",
+    type: "fish",
+    intro:
+      "Su cuerpo es tan transparente que se le ven los huesos. Es muy tímido: tenlo en grupo de 6 o más, con un flujo suave y compañeros tranquilos, o se esconde y deja de comer.",
+    temp: [24, 28],
+    ph: [6.0, 7.5],
+    gh: [2, 12],
+    minLiters: 100,
+    sizeCm: 8,
+    minGroup: 6,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "koi",
+    name: "Koi",
+    scientific: "Cyprinus rubrofuscus",
+    aliases: ["pez koi", "carpa koi", "carpa japonesa", "carpa"],
+    group: "Betta y otros populares",
+    type: "fish",
+    intro:
+      "Es un pez de estanque, no de acuario: pasa de 60 cm y vive muchos años. Si de verdad quieres koi, piensa en un estanque grande al aire libre, con buen filtro.",
+    temp: [15, 25],
+    ph: [7.0, 8.0],
+    gh: [5, 20],
+    minLiters: 2000,
+    sizeCm: 60,
+    minGroup: 3,
+    pondFish: true,
+    eatsUnderCm: 6,
+    shrimpRisk: "adultas",
+    snailRisk: "pequenos",
+  },
+  {
+    id: "bichir",
+    name: "Bichir",
+    scientific: "Polypterus senegalus",
+    aliases: ["polypterus", "pez dinosaurio", "bichir senegal"],
+    group: "Betta y otros populares",
+    type: "fish",
+    intro:
+      "Le dicen pez dinosaurio por su aspecto prehistórico. Es tranquilo con peces de su tamaño, pero de noche se come a los pequeños, y es un gran escapista: tapa muy bien el acuario.",
+    temp: [24, 28],
+    ph: [6.0, 8.0],
+    gh: [5, 20],
+    minLiters: 200,
+    sizeCm: 30,
+    minGroup: 1,
+    eatsUnderCm: 10,
+    shrimpRisk: "adultas",
+  },
 
   // Tetras
   {
     id: "tetra-neon",
     name: "Tetra neón",
     scientific: "Paracheirodon innesi",
+    aliases: ["pez neón", "neón azul"],
     group: "Tetras",
     type: "fish",
     intro:
@@ -175,6 +293,7 @@ export const species = [
     id: "tetra-cardenal",
     name: "Tetra cardenal",
     scientific: "Paracheirodon axelrodi",
+    aliases: ["neón cardenal", "cardenal"],
     group: "Tetras",
     type: "fish",
     intro:
@@ -192,6 +311,7 @@ export const species = [
     id: "tetra-neon-verde",
     name: "Tetra neón verde",
     scientific: "Paracheirodon simulans",
+    aliases: ["neón verde"],
     group: "Tetras",
     type: "fish",
     intro:
@@ -209,6 +329,7 @@ export const species = [
     id: "tetra-neon-negro",
     name: "Tetra neón negro",
     scientific: "Hyphessobrycon herbertaxelrodi",
+    aliases: ["neón negro"],
     group: "Tetras",
     type: "fish",
     intro:
@@ -225,6 +346,7 @@ export const species = [
     id: "tetra-borrachito",
     name: "Tetra borrachito",
     scientific: "Petitella bleheri",
+    aliases: ["nariz roja", "tetra nariz roja", "cabeza roja", "rodostomus", "rummy nose"],
     group: "Tetras",
     type: "fish",
     intro:
@@ -241,6 +363,7 @@ export const species = [
     id: "tetra-monjita",
     name: "Tetra monjita",
     scientific: "Gymnocorymbus ternetzi",
+    aliases: ["tetra negro", "tetra luto", "viudita", "tetra viuda", "monja"],
     group: "Tetras",
     type: "fish",
     intro:
@@ -258,6 +381,7 @@ export const species = [
     id: "tetra-emperador",
     name: "Tetra emperador",
     scientific: "Nematobrycon palmeri",
+    aliases: ["emperador"],
     group: "Tetras",
     type: "fish",
     intro:
@@ -304,12 +428,151 @@ export const species = [
     colorful: true,
     shrimpRisk: "crias",
   },
+  {
+    id: "tetra-serpae",
+    name: "Tetra serpae",
+    scientific: "Hyphessobrycon eques",
+    aliases: ["serpae", "callistus", "tetra rojo", "tetra sangre"],
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Es de un rojo intenso y muy activo, pero tiene fama de morder aletas, sobre todo cuando son pocos. Tenlo en grupo de 8 o más y no lo juntes con peces de colas largas.",
+    temp: [22, 28],
+    ph: [6.0, 7.5],
+    gh: [2, 12],
+    minLiters: 60,
+    sizeCm: 4.5,
+    minGroup: 8,
+    finNipper: true,
+    colorful: true,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "tetra-limon",
+    name: "Tetra limón",
+    scientific: "Hyphessobrycon pulchripinnis",
+    aliases: ["tetra amarillo"],
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Un tetra tranquilo de color amarillo que se luce en grupo, en un acuario plantado y con fondo oscuro. Entre más sean, mejor se ven.",
+    temp: [23, 28],
+    ph: [6.0, 7.5],
+    gh: [2, 15],
+    minLiters: 60,
+    sizeCm: 4.5,
+    minGroup: 8,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "tetra-fantasma-negro",
+    name: "Tetra fantasma negro",
+    scientific: "Hyphessobrycon megalopterus",
+    aliases: ["fantasma negro", "tetra fantasma", "black phantom"],
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Es tranquilo y resistente, un buen tetra si estás iniciando. Los machos abren las aletas para lucirse entre ellos, pero sin hacerse daño. Tenlo en grupo de 6 o más.",
+    temp: [22, 28],
+    ph: [6.0, 7.5],
+    gh: [2, 15],
+    minLiters: 60,
+    sizeCm: 4.5,
+    minGroup: 6,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "tetra-congo",
+    name: "Tetra Congo",
+    scientific: "Phenacogrammus interruptus",
+    aliases: ["congo"],
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Un tetra africano grande y tranquilo, de escamas que brillan con la luz. Nada mucho y vive en grupo, así que necesita un acuario largo y con espacio libre para nadar.",
+    temp: [24, 28],
+    ph: [6.0, 7.5],
+    gh: [3, 15],
+    minLiters: 150,
+    sizeCm: 8,
+    minGroup: 6,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "pez-hacha",
+    name: "Pez hacha",
+    scientific: "Carnegiella strigata",
+    aliases: ["hacha", "pez hacha marmoleado", "hatchetfish"],
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Vive pegado a la superficie y es un gran saltarín, así que tapa muy bien el acuario. Es tímido: tenlo en grupo de 6 o más, con plantas flotantes y compañeros tranquilos.",
+    temp: [24, 28],
+    ph: [5.5, 7.0],
+    gh: [1, 8],
+    minLiters: 60,
+    sizeCm: 3.5,
+    minGroup: 6,
+    shrimpRisk: "bajo",
+  },
+  {
+    id: "tetra-pristella",
+    name: "Tetra pristella",
+    scientific: "Pristella maxillaris",
+    aliases: ["pristella", "pristela", "tetra rayos x"],
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Un tetra resistente y tranquilo, casi transparente, con manchas negras y amarillas en las aletas. Es muy buena opción si estás iniciando: tenlo en grupo de 8 o más.",
+    temp: [24, 28],
+    ph: [6.0, 7.5],
+    gh: [2, 15],
+    minLiters: 60,
+    sizeCm: 4.5,
+    minGroup: 8,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "pez-lapiz",
+    name: "Pez lápiz",
+    scientific: "Nannostomus eques",
+    aliases: ["nannostomus", "pez lapicero", "lápiz marrón"],
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Delgado como un lápiz y muy curioso de ver: nada inclinado, con la cabeza hacia arriba, cerca de la superficie. Es tranquilo y algo tímido, así que tenlo en grupo de 6 o más, con plantas flotantes y compañeros pequeños y pacíficos.",
+    temp: [24, 28],
+    ph: [5.5, 7.5],
+    gh: [2, 12],
+    minLiters: 60,
+    sizeCm: 5,
+    minGroup: 6,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "dolar-plateado",
+    name: "Dólar plateado",
+    scientific: "Metynnis argenteus",
+    aliases: ["dólar", "silver dollar", "metynnis"],
+    group: "Tetras",
+    type: "fish",
+    intro:
+      "Un pez de cardumen tranquilo, pero vegetariano: se come las plantas del acuario. Vive en grupo de 5 o más y crece hasta unos 15 cm, así que necesita un acuario grande, con plantas duras o artificiales.",
+    temp: [24, 28],
+    ph: [6.0, 7.5],
+    gh: [4, 15],
+    minLiters: 300,
+    sizeCm: 15,
+    minGroup: 5,
+    shrimpRisk: "crias",
+  },
 
   // Rasboras y danios
   {
     id: "rasbora-arlequin",
     name: "Rasbora arlequín",
     scientific: "Trigonostigma heteromorpha",
+    aliases: ["arlequín", "pez arlequín"],
     group: "Rasboras y danios",
     type: "fish",
     intro:
@@ -326,6 +589,7 @@ export const species = [
     id: "rasbora-galaxy",
     name: "Rasbora galaxy",
     scientific: "Danio margaritatus",
+    aliases: ["galaxia", "microrasbora", "danio perla celestial", "celestial pearl danio"],
     group: "Rasboras y danios",
     type: "fish",
     intro:
@@ -343,6 +607,7 @@ export const species = [
     id: "rasbora-chili",
     name: "Rasbora mosquito (chili)",
     scientific: "Boraras brigittae",
+    aliases: ["boraras", "mosquito", "rasbora enana"],
     group: "Rasboras y danios",
     type: "fish",
     intro:
@@ -360,6 +625,7 @@ export const species = [
     id: "danio-cebra",
     name: "Danio cebra",
     scientific: "Danio rerio",
+    aliases: ["pez cebra", "cebrita", "zebra danio", "glofish"],
     group: "Rasboras y danios",
     type: "fish",
     intro:
@@ -376,6 +642,7 @@ export const species = [
     id: "rasbora-espei",
     name: "Rasbora espei",
     scientific: "Trigonostigma espei",
+    aliases: ["lambchop", "rasbora naranja"],
     group: "Rasboras y danios",
     type: "fish",
     intro:
@@ -388,12 +655,47 @@ export const species = [
     minGroup: 6,
     shrimpRisk: "crias",
   },
+  {
+    id: "neon-chino",
+    name: "Neón chino",
+    scientific: "Tanichthys albonubes",
+    aliases: ["pez nube blanca", "nube blanca", "white cloud"],
+    group: "Rasboras y danios",
+    type: "fish",
+    intro:
+      "De los pocos peces de cardumen que viven bien en agua fresca, sin calentador. Tenlo en grupo de 6 o más: entre más sean, más color muestran los machos.",
+    temp: [16, 24],
+    ph: [6.5, 8.0],
+    gh: [5, 19],
+    minLiters: 60,
+    sizeCm: 4,
+    minGroup: 6,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "rasbora-maculata",
+    name: "Rasbora maculata",
+    scientific: "Boraras maculatus",
+    aliases: ["rasbora enana manchada", "rasbora pigmea"],
+    group: "Rasboras y danios",
+    type: "fish",
+    intro:
+      "De las rasboras más pequeñas: no pasa de 2.5 cm. Va perfecta en un nano plantado con agua blanda y compañeros diminutos. Tenla en grupo de 10 o más.",
+    temp: [24, 28],
+    ph: [5.0, 7.0],
+    gh: [1, 8],
+    minLiters: 30,
+    sizeCm: 2.5,
+    minGroup: 10,
+    shrimpRisk: "bajo",
+  },
 
   // Vivíparos
   {
     id: "guppy",
     name: "Guppy",
     scientific: "Poecilia reticulata",
+    aliases: ["lebistes", "gupi", "gupy", "pez millón", "millonario"],
     group: "Vivíparos",
     type: "fish",
     intro:
@@ -412,6 +714,15 @@ export const species = [
     id: "molly",
     name: "Molly",
     scientific: "Poecilia sphenops",
+    aliases: [
+      "mollie",
+      "molinesia",
+      "black molly",
+      "molly negro",
+      "dálmata",
+      "molly globo",
+      "velífera",
+    ],
     group: "Vivíparos",
     type: "fish",
     intro:
@@ -428,6 +739,7 @@ export const species = [
     id: "platy",
     name: "Platy",
     scientific: "Xiphophorus maculatus",
+    aliases: ["plati", "platy mickey", "mickey mouse"],
     group: "Vivíparos",
     type: "fish",
     intro:
@@ -444,6 +756,7 @@ export const species = [
     id: "espada",
     name: "Pez espada",
     scientific: "Xiphophorus hellerii",
+    aliases: ["cola de espada", "portaespada", "espadita", "xipho"],
     group: "Vivíparos",
     type: "fish",
     intro:
@@ -460,6 +773,7 @@ export const species = [
     id: "endler",
     name: "Endler",
     scientific: "Poecilia wingei",
+    aliases: ["guppy endler"],
     group: "Vivíparos",
     type: "fish",
     intro:
@@ -479,6 +793,7 @@ export const species = [
     id: "escalar",
     name: "Escalar",
     scientific: "Pterophyllum scalare",
+    aliases: ["pez ángel", "ángel", "angelote"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -497,6 +812,7 @@ export const species = [
     id: "ramirezi",
     name: "Ramirezi",
     scientific: "Mikrogeophagus ramirezi",
+    aliases: ["ram", "cíclido mariposa", "mariposa", "ramírez"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -515,6 +831,7 @@ export const species = [
     id: "apistogramma-cacatuoides",
     name: "Apistogramma cacatúa",
     scientific: "Apistogramma cacatuoides",
+    aliases: ["apisto", "apistograma", "cacatúa"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -533,6 +850,7 @@ export const species = [
     id: "apistogramma-agassizii",
     name: "Apistogramma agassizii",
     scientific: "Apistogramma agassizii",
+    aliases: ["apisto", "apistograma", "agassizi"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -551,6 +869,7 @@ export const species = [
     id: "kribensis",
     name: "Kribensis (Pulcher)",
     scientific: "Pelvicachromis pulcher",
+    aliases: ["pulcher", "krib", "cíclido púrpura"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -569,6 +888,7 @@ export const species = [
     id: "disco",
     name: "Pez disco",
     scientific: "Symphysodon sp.",
+    aliases: ["discus", "disco"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -585,6 +905,7 @@ export const species = [
     id: "polar-blue",
     name: "Loro Polar Blue",
     scientific: "Híbrido de convicto y loro",
+    aliases: ["polar blue", "loro polar"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -605,6 +926,7 @@ export const species = [
     id: "acara-azul",
     name: "Acara azul",
     scientific: "Andinoacara pulcher",
+    aliases: ["acará azul", "acara", "pulcher"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -624,6 +946,7 @@ export const species = [
     id: "falso-disco",
     name: "Falso disco",
     scientific: "Heros efasciatus",
+    aliases: ["severum", "severo", "heros"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -642,6 +965,7 @@ export const species = [
     id: "oscar",
     name: "Pez Oscar",
     scientific: "Astronotus ocellatus",
+    aliases: ["óscar", "oscar tigre", "acarahuazú"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -660,6 +984,7 @@ export const species = [
     id: "flower-horn",
     name: "Flower Horn",
     scientific: "Híbrido de cíclidos centroamericanos",
+    aliases: ["flowerhorn", "cuerno de flor", "luohan"],
     group: "Cíclidos",
     type: "fish",
     intro:
@@ -676,12 +1001,72 @@ export const species = [
     shrimpRisk: "adultas",
     snailRisk: "todos",
   },
+  {
+    id: "convicto",
+    name: "Cíclido convicto",
+    scientific: "Amatitlania nigrofasciata",
+    aliases: ["convicto", "cíclido cebra", "convict"],
+    group: "Cíclidos",
+    type: "fish",
+    intro:
+      "Resistente y fácil de reproducir, pero bravo: cuando tiene crías defiende su territorio a muerte. Dale un acuario amplio con cuevas y compañeros que se sepan defender.",
+    temp: [22, 28],
+    ph: [6.5, 8.0],
+    gh: [6, 20],
+    minLiters: 120,
+    sizeCm: 12,
+    minGroup: 1,
+    bottomTerritory: true,
+    aggressive: true,
+    eatsUnderCm: 5,
+    shrimpRisk: "adultas",
+    snailRisk: "pequenos",
+  },
+  {
+    id: "loro-sangre",
+    name: "Pez loro sangre",
+    scientific: "Híbrido de cíclidos centroamericanos",
+    aliases: ["pez loro", "loro", "loro rojo", "blood parrot"],
+    group: "Cíclidos",
+    type: "fish",
+    intro:
+      "De los más famosos en las tiendas, pero es un híbrido creado por el hombre: su boca no cierra bien, así que dale alimento que pueda tragar fácil. Es más tranquilo que otros cíclidos, aunque crece bastante y necesita un acuario amplio.",
+    temp: [24, 28],
+    ph: [6.5, 7.5],
+    gh: [5, 15],
+    minLiters: 150,
+    sizeCm: 18,
+    minGroup: 1,
+    eatsUnderCm: 3,
+    shrimpRisk: "adultas",
+  },
+  {
+    id: "ciclido-amarillo",
+    name: "Cíclido amarillo",
+    scientific: "Labidochromis caeruleus",
+    aliases: ["yellow lab", "labidochromis", "cíclido africano", "malawi"],
+    group: "Cíclidos",
+    type: "fish",
+    intro:
+      "Un cíclido africano del lago Malawi, de un amarillo intenso. Necesita agua dura y alcalina, muy distinta a la de los peces amazónicos, así que va mejor con otros cíclidos del Malawi y en grupo, para que la agresividad se reparta.",
+    temp: [24, 28],
+    ph: [7.8, 8.6],
+    gh: [10, 20],
+    minLiters: 200,
+    sizeCm: 10,
+    minGroup: 5,
+    speciesOnly:
+      "Es un cíclido del lago Malawi: agresivo con los peces que no son de su lago, y necesita agua dura y alcalina.",
+    shrimpRisk: "adultas",
+    snailRisk: "pequenos",
+  },
 
   // Guramis
   {
     id: "gurami-perla",
     name: "Gurami perla",
     scientific: "Trichopodus leerii",
+    aliases: ["gourami perla", "gurami mosaico", "gurami perlado"],
     group: "Guramis",
     type: "fish",
     intro:
@@ -700,6 +1085,7 @@ export const species = [
     id: "gurami-miel",
     name: "Gurami miel",
     scientific: "Trichogaster chuna",
+    aliases: ["gourami miel", "colisa miel", "colisa chuna"],
     group: "Guramis",
     type: "fish",
     intro:
@@ -717,6 +1103,7 @@ export const species = [
     id: "gurami-enano",
     name: "Gurami enano",
     scientific: "Trichogaster lalius",
+    aliases: ["gourami enano", "colisa", "colisa lalia", "gurami enano azul", "gurami fuego"],
     group: "Guramis",
     type: "fish",
     intro:
@@ -732,12 +1119,49 @@ export const species = [
     labyrinth: true,
     shrimpRisk: "adultas",
   },
+  {
+    id: "gurami-azul",
+    name: "Gurami azul",
+    scientific: "Trichopodus trichopterus",
+    aliases: ["gurami dorado", "gurami tres puntos", "gurami plateado", "gourami azul"],
+    group: "Guramis",
+    type: "fish",
+    intro:
+      "Resistente y fácil de mantener, un buen gurami si estás iniciando. Los machos pueden ser bravos entre ellos: tenlo solo o en pareja, en un acuario plantado. También lo vas a encontrar dorado o plateado.",
+    temp: [22, 28],
+    ph: [6.0, 8.0],
+    gh: [4, 18],
+    minLiters: 100,
+    sizeCm: 12,
+    minGroup: 1,
+    labyrinth: true,
+    shrimpRisk: "adultas",
+  },
+  {
+    id: "gurami-besador",
+    name: "Gurami besador",
+    scientific: "Helostoma temminckii",
+    aliases: ["besador", "pez besador"],
+    group: "Guramis",
+    type: "fish",
+    intro:
+      "Famoso por los “besos” que se dan, que en realidad son peleas por territorio. Crece hasta unos 20 cm y se come las plantas blandas, así que necesita un acuario grande.",
+    temp: [22, 28],
+    ph: [6.5, 8.0],
+    gh: [5, 18],
+    minLiters: 200,
+    sizeCm: 20,
+    minGroup: 1,
+    labyrinth: true,
+    shrimpRisk: "adultas",
+  },
 
   // Barbos y arcoíris
   {
     id: "barbo-cereza",
     name: "Barbo cereza",
     scientific: "Puntius titteya",
+    aliases: ["barbo rojo", "cherry barb"],
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
@@ -754,6 +1178,7 @@ export const species = [
     id: "barbo-sumatrano",
     name: "Barbo sumatrano",
     scientific: "Puntigrus tetrazona",
+    aliases: ["barbo tigre", "tigrito", "barbo de Sumatra", "barbo verde"],
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
@@ -771,6 +1196,7 @@ export const species = [
     id: "barbo-denisonii",
     name: "Barbo denisonii",
     scientific: "Sahyadria denisonii",
+    aliases: ["barbo de la India", "roseline", "barbo torpedo"],
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
@@ -787,6 +1213,7 @@ export const species = [
     id: "arcoiris-boesemani",
     name: "Arcoíris boesemani",
     scientific: "Melanotaenia boesemani",
+    aliases: ["pez arcoíris", "melanotaenia", "arcoíris bicolor"],
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
@@ -803,6 +1230,7 @@ export const species = [
     id: "arcoiris-praecox",
     name: "Arcoíris neón enano",
     scientific: "Melanotaenia praecox",
+    aliases: ["pez arcoíris", "arcoíris enano", "praecox"],
     group: "Barbos y arcoíris",
     type: "fish",
     intro:
@@ -816,11 +1244,77 @@ export const species = [
     shrimpRisk: "crias",
   },
 
+  // Tiburones de agua dulce
+  {
+    id: "tiburon-cola-roja",
+    name: "Tiburón cola roja",
+    scientific: "Epalzeorhynchos bicolor",
+    aliases: ["cola roja", "tiburón negro", "labeo bicolor", "labeo"],
+    group: "Tiburones de agua dulce",
+    type: "fish",
+    intro:
+      "Negro con la cola roja, muy llamativo, pero territorial: no tolera a otros de su especie ni a peces que se le parezcan. Uno solo por acuario, con cuevas y plantas para que tenga su propio espacio.",
+    temp: [22, 27],
+    ph: [6.5, 7.5],
+    gh: [4, 15],
+    minLiters: 200,
+    sizeCm: 15,
+    minGroup: 1,
+    maxCount: 1,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "tiburon-bala",
+    name: "Tiburón bala",
+    scientific: "Balantiocheilos melanopterus",
+    aliases: ["bala", "tiburón plateado"],
+    group: "Tiburones de agua dulce",
+    type: "fish",
+    intro:
+      "Lo venden pequeño, pero pasa de 30 cm y vive en grupo: necesita un acuario enorme. Si no tienes ese espacio, mejor elige otra especie.",
+    temp: [22, 28],
+    ph: [6.0, 8.0],
+    gh: [5, 15],
+    minLiters: 1000,
+    sizeCm: 35,
+    minGroup: 5,
+    eatsUnderCm: 5,
+    shrimpRisk: "adultas",
+  },
+  {
+    id: "pangasio",
+    name: "Tiburón pangasio",
+    scientific: "Pangasianodon hypophthalmus",
+    aliases: ["pangasio", "panga", "pangasius", "tiburón iridiscente"],
+    group: "Tiburones de agua dulce",
+    type: "fish",
+    intro:
+      "Lo venden como un tiburoncito para acuario, pero pasa del metro de largo y es muy nervioso: se golpea contra el vidrio. No es un pez para un acuario de casa, ni siquiera grande.",
+    temp: [22, 28],
+    ph: [6.5, 7.5],
+    gh: [2, 20],
+    minLiters: 2000,
+    sizeCm: 100,
+    minGroup: 5,
+    eatsUnderCm: 15,
+    shrimpRisk: "adultas",
+  },
+
   // Peces de fondo
   {
     id: "corydoras",
     name: "Corydoras",
     scientific: "Corydoras sp. (panda, bronce)",
+    aliases: [
+      "coridora",
+      "corydora",
+      "cory",
+      "limpiafondos",
+      "corydora panda",
+      "corydora bronce",
+      "corydora albina",
+      "hoplisoma",
+    ],
     group: "Peces de fondo",
     type: "fish",
     intro:
@@ -837,6 +1331,7 @@ export const species = [
     id: "corydoras-pigmea",
     name: "Corydoras pigmea",
     scientific: "Corydoras pygmaeus",
+    aliases: ["coridora pigmea", "corydora pigmea"],
     group: "Peces de fondo",
     type: "fish",
     intro:
@@ -853,6 +1348,7 @@ export const species = [
     id: "otocinclus",
     name: "Otocinclus",
     scientific: "Otocinclus sp.",
+    aliases: ["oto", "otocinclo", "limpiavidrios"],
     group: "Peces de fondo",
     type: "fish",
     intro:
@@ -869,6 +1365,7 @@ export const species = [
     id: "corydoras-sterbai",
     name: "Corydoras sterbai",
     scientific: "Corydoras sterbai",
+    aliases: ["coridora sterbai", "corydora sterbai"],
     group: "Peces de fondo",
     type: "fish",
     intro:
@@ -885,6 +1382,7 @@ export const species = [
     id: "ancistrus",
     name: "Ancistrus",
     scientific: "Ancistrus cirrhosus",
+    aliases: ["cucha", "corroncho", "pleco", "pleco de bigotes", "bushynose", "plecostomus enano"],
     group: "Peces de fondo",
     type: "fish",
     intro:
@@ -901,6 +1399,15 @@ export const species = [
     id: "plecostomus",
     name: "Plecostomus común",
     scientific: "Hypostomus plecostomus",
+    aliases: [
+      "pleco",
+      "cucha",
+      "corroncho",
+      "limpiapeceras",
+      "limpiavidrios",
+      "chupapiedras",
+      "pez diablo",
+    ],
     group: "Peces de fondo",
     type: "fish",
     intro:
@@ -917,6 +1424,7 @@ export const species = [
     id: "kuhli",
     name: "Kuhli",
     scientific: "Pangio kuhlii",
+    aliases: ["anguila kuhli", "khuli", "cobitis", "locha"],
     group: "Peces de fondo",
     type: "fish",
     intro:
@@ -933,6 +1441,7 @@ export const species = [
     id: "botia-payaso",
     name: "Botia payaso",
     scientific: "Chromobotia macracanthus",
+    aliases: ["botia", "loche payaso", "locha"],
     group: "Peces de fondo",
     type: "fish",
     intro: "La venden pequeña, pero llega a 30 cm y vive en grupo. Solo para acuarios muy grandes.",
@@ -949,6 +1458,7 @@ export const species = [
     id: "zorro-volador",
     name: "Zorro volador",
     scientific: "Epalzeorhynchos kalopterus",
+    aliases: ["zorro", "flying fox"],
     group: "Peces de fondo",
     type: "fish",
     intro:
@@ -961,12 +1471,55 @@ export const species = [
     minGroup: 1,
     shrimpRisk: "crias",
   },
+  {
+    id: "comedor-algas-siames",
+    name: "Comedor de algas siamés",
+    scientific: "Crossocheilus oblongus",
+    aliases: ["comedor de algas", "SAE"],
+    group: "Peces de fondo",
+    type: "fish",
+    intro:
+      "De los pocos peces que se comen el alga pincel, sobre todo de joven. Es activo y crece hasta unos 14 cm, así que dale espacio para nadar y tapa el acuario porque salta. No lo confundas con el comedor de algas chino, que de adulto se vuelve agresivo.",
+    temp: [24, 27],
+    ph: [6.5, 7.5],
+    gh: [5, 15],
+    minLiters: 150,
+    sizeCm: 14,
+    minGroup: 1,
+    shrimpRisk: "crias",
+  },
+  {
+    id: "garra-panda",
+    name: "Garra panda",
+    scientific: "Garra flavatra",
+    aliases: ["garra", "panda garra"],
+    group: "Peces de fondo",
+    type: "fish",
+    intro:
+      "Un comedor de algas pequeño, con rayas como de tigre, que disfruta el agua con buena corriente y oxígeno. Puede defender su roca de otros de su especie, así que dale cuevas y espacio.",
+    temp: [22, 26],
+    ph: [6.5, 7.5],
+    gh: [5, 15],
+    minLiters: 80,
+    sizeCm: 9,
+    minGroup: 1,
+    shrimpRisk: "crias",
+  },
 
   // Gambitas
   {
     id: "neocaridina",
     name: "Neocaridinas",
     scientific: "Neocaridina davidi",
+    aliases: [
+      "camarones",
+      "camarón",
+      "gambas",
+      "red cherry",
+      "cherry",
+      "camarón rojo",
+      "blue dream",
+    ],
     group: "Gambitas",
     type: "shrimp",
     intro:
@@ -983,6 +1536,7 @@ export const species = [
     id: "caridina",
     name: "Caridinas",
     scientific: "Caridina sp. (Crystal Red, Taiwan Bee)",
+    aliases: ["camarones", "camarón cristal", "crystal red", "taiwan bee", "abeja"],
     group: "Gambitas",
     type: "shrimp",
     intro:
@@ -999,6 +1553,7 @@ export const species = [
     id: "sulawesi",
     name: "Gambas Sulawesi",
     scientific: "Caridina dennerli",
+    aliases: ["camarón sulawesi"],
     group: "Gambitas",
     type: "shrimp",
     intro:
@@ -1014,6 +1569,7 @@ export const species = [
     id: "amano",
     name: "Gamba Amano",
     scientific: "Caridina multidentata",
+    aliases: ["camarón amano", "yamato"],
     group: "Gambitas",
     type: "shrimp",
     intro:
@@ -1031,6 +1587,7 @@ export const species = [
     id: "planorbis",
     name: "Planorbis",
     scientific: "Planorbella duryi",
+    aliases: ["caracol rojo", "caracol cuerno de carnero", "planorbe"],
     group: "Caracoles",
     type: "snail",
     intro:
@@ -1047,6 +1604,7 @@ export const species = [
     id: "physa",
     name: "Physa",
     scientific: "Physella acuta",
+    aliases: ["caracol plaga", "caracolillo", "fisa"],
     group: "Caracoles",
     type: "snail",
     intro:
@@ -1063,6 +1621,7 @@ export const species = [
     id: "caracol-manzano",
     name: "Caracol manzano",
     scientific: "Pomacea diffusa",
+    aliases: ["ampularia", "ampullaria", "caracol misterio", "caracol dorado", "caracol manzana"],
     group: "Caracoles",
     type: "snail",
     intro:
@@ -1078,6 +1637,7 @@ export const species = [
     id: "caracol-helena",
     name: "Caracol Helena",
     scientific: "Anentome helena",
+    aliases: ["caracol asesino", "caracol abejorro"],
     group: "Caracoles",
     type: "snail",
     intro:
@@ -1095,6 +1655,7 @@ export const species = [
     id: "neritina",
     name: "Neritina",
     scientific: "Neritina sp.",
+    aliases: ["nerita", "caracol cebra", "clithon"],
     group: "Caracoles",
     type: "snail",
     intro:
@@ -1109,10 +1670,16 @@ export const species = [
 ];
 
 // Las especies en el idioma de la herramienta ("es" o "en"). En inglés cambian los textos,
-// nunca los datos; si a una especie le falta la traducción, queda en español.
+// nunca los datos; si a una especie le falta la traducción, queda en español. Los aliases en
+// inglés son solo los de speciesDataEn.js: los nombres regionales en español no se muestran.
 const speciesByLang = {
   es: species,
-  en: species.map(s => ({ ...s, ...speciesEn[s.id], group: groupsEn[s.group] || s.group })),
+  en: species.map(s => ({
+    ...s,
+    aliases: [],
+    ...speciesEn[s.id],
+    group: groupsEn[s.group] || s.group,
+  })),
 };
 
 export const getSpeciesList = (lang = "es") => speciesByLang[lang] || species;
