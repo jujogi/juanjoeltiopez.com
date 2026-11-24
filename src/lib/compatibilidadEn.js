@@ -128,7 +128,7 @@ export const armoniaEn = {
       stepOf: (n, total) => `Step ${n} of ${total}`,
       toSpecies: "Choose species",
       toTank: "Change tank size",
-      litersStep: unit => `How many ${unit} does your tank hold?`,
+      litersStep: "How big is your tank?",
       litersIntro:
         "Type it, move the slider or pick one of the most common sizes. We use it to check that every species has enough space.",
       needsLiters: unit => `Tell us your tank's ${unit} to fine-tune the results`,

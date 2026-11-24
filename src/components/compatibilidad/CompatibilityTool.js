@@ -317,7 +317,7 @@ export default function CompatibilityTool() {
       {step === 1 && (
         <Box as="section" aria-labelledby={headingId}>
           <StepHeading id={headingId} headingRef={headingRef}>
-            {t.litersStep(unitName)}
+            {t.litersStep}
           </StepHeading>
           <StepIntro>{t.litersIntro}</StepIntro>
           <LitersInput

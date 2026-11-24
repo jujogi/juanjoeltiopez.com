@@ -7,10 +7,10 @@ export const UNITS = ["l", "gal"];
 export const DEFAULT_UNIT = "l";
 export const LITERS_PER_GALLON = 3.78541;
 
-// Tamaños comunes de un toque en cada unidad (los acuarios de 10, 20, 29, 40… galones)
+// Tamaños comunes de un toque en cada unidad: cinco en cada una, para que la fila mida igual
 export const VOLUME_PRESETS = {
   l: [20, 40, 60, 100, 200],
-  gal: [10, 20, 29, 40, 55, 75],
+  gal: [10, 20, 40, 60, 75],
 };
 
 // Decimales al mostrar el acuario: en galones hacen falta dos para no perder precisión

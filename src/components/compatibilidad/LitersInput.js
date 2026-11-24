@@ -12,8 +12,6 @@ import {
   SliderFilledTrack,
   SliderThumb,
   SliderTrack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
 import { trackArmonia } from "@/lib/gtm";
 import { UNITS, VOLUME_PRESETS, tankInUnit, toLiters } from "@/lib/tankUnits";
@@ -150,45 +148,62 @@ export default function LitersInput({
         </Text>
       )}
 
-      <Slider
-        aria-label={units.slider(units[unit].name)}
-        min={0}
-        max={slider.max}
-        step={slider.step}
-        // Un acuario más grande que la barra la deja al tope; el campo conserva el valor real
-        value={Math.min(Number(shown) || 0, slider.max)}
-        onChange={value => value > 0 && setDragValue(value)}
-        onChangeEnd={value => {
-          setDragValue(null);
-          if (value <= 0) return;
-          onChange(String(value));
-          trackSize(value, "deslizador");
-        }}
-        focusThumbOnChange={false}
-        mt={6}
-        mb={5}
-      >
-        <SliderTrack bg="dark.border" h={1.5} rounded="full">
-          <SliderFilledTrack bg="accent.cyan" />
-        </SliderTrack>
-        <SliderThumb boxSize={5} bg="accent.cyan" borderColor="water.950" border="3px" />
-      </Slider>
+      {/* Margen a los lados para que la manija no quede pegada al borde: en el celular ahí está
+          el gesto de "atrás" */}
+      <Box px={3} mt={2} mb={1}>
+        <Slider
+          aria-label={units.slider(units[unit].name)}
+          min={0}
+          max={slider.max}
+          step={slider.step}
+          // Un acuario más grande que la barra la deja al tope; el campo conserva el valor real
+          value={Math.min(Number(shown) || 0, slider.max)}
+          onChange={value => value > 0 && setDragValue(value)}
+          onChangeEnd={value => {
+            setDragValue(null);
+            if (value <= 0) return;
+            onChange(String(value));
+            trackSize(value, "deslizador");
+          }}
+          focusThumbOnChange={false}
+          // Más alto para que sea fácil de agarrar con el dedo
+          py={4}
+        >
+          <SliderTrack bg="dark.border" h={1.5} rounded="full">
+            <SliderFilledTrack bg="accent.cyan" />
+          </SliderTrack>
+          <SliderThumb
+            boxSize={{ base: 6, md: 5 }}
+            bg="accent.cyan"
+            borderColor="water.950"
+            border="3px"
+          />
+        </Slider>
+      </Box>
 
-      <Wrap spacing={2}>
+      {/* En el celular, cinco columnas iguales: caben en una línea en litros y en galones */}
+      <Box
+        display={{ base: "grid", md: "flex" }}
+        gridTemplateColumns="repeat(5, minmax(0, 1fr))"
+        flexWrap="wrap"
+        gap={2}
+      >
         {VOLUME_PRESETS[unit].map(preset => (
-          <WrapItem key={preset}>
-            <Chip
-              isSelected={Number(size) === preset}
-              onClick={() => {
-                onChange(String(preset));
-                trackSize(preset, "boton");
-              }}
-            >
-              {preset} {units[unit].short}
-            </Chip>
-          </WrapItem>
+          <Chip
+            key={preset}
+            isSelected={Number(size) === preset}
+            onClick={() => {
+              onChange(String(preset));
+              trackSize(preset, "boton");
+            }}
+            px={{ base: 1, md: 4 }}
+            fontSize={{ base: "xs", md: "sm" }}
+            justifyContent="center"
+          >
+            {preset} {units[unit].short}
+          </Chip>
         ))}
-      </Wrap>
+      </Box>
 
       <Button
         variant="link"

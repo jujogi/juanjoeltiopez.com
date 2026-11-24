@@ -164,7 +164,8 @@ export const ui = {
     stepOf: (n, total) => `Paso ${n} de ${total}`,
     toSpecies: "Elegir especies",
     toTank: "Cambiar dimensiones del acuario",
-    litersStep: unit => `¿De cuántos ${unit} es tu acuario?`,
+    // Igual en litros y en galones: si cambiara con la unidad, en el celular saltaría de línea
+    litersStep: "¿De qué tamaño es tu acuario?",
     litersIntro:
       "Escríbelo, mueve la barra o elige uno de los tamaños más comunes. Con eso revisamos si a cada especie le alcanza el espacio.",
     needsLiters: unit => `Indícanos los ${unit} de tu acuario para afinar los resultados`,
