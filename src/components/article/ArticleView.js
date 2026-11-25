@@ -33,6 +33,7 @@ import PostCard from "@/components/PostCard";
 import RelatedVideosWidget from "@/components/RelatedVideosWidget";
 import AsesoriaWidget from "@/components/AsesoriaWidget";
 import ArmoniaBand from "@/components/ArmoniaBand";
+import ElegirBand from "@/components/ElegirBand";
 
 function getRelatedPosts(post, allPosts, count = 3) {
   const explicit = (post.relatedPostSlugs || [])
@@ -200,6 +201,13 @@ export default function ArticleView({ slug }) {
               <Box maxW="68ch">
                 <ArmoniaBand speciesIds={post.armoniaIds} />
               </Box>
+
+              {/* Los artículos que no son de una especie invitan también a "Ayúdame a elegir" */}
+              {!post.armoniaIds?.length && (
+                <Box maxW="68ch">
+                  <ElegirBand trackingId="articulo_elegir" />
+                </Box>
+              )}
 
               {post.faq?.length > 0 && (
                 <Box maxW="68ch">

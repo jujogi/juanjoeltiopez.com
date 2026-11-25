@@ -39,6 +39,12 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/ayudame-a-elegir`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/sobre-mi`,
       lastModified: new Date(),
       changeFrequency: "monthly",

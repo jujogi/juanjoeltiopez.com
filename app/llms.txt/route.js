@@ -1,6 +1,7 @@
 import { getAllPosts } from "@/lib/blogData";
 import { getCategories, MIN_POSTS_TO_INDEX } from "@/lib/categories";
 import { COMPATIBILIDAD_PATH, compatibilidad } from "@/lib/compatibilidadData";
+import { ELEGIR_PATH, elegir } from "@/lib/elegirData";
 import {
   SITE_URL,
   SITE_NAME,
@@ -35,6 +36,7 @@ ${topics.map(c => `- [${c.name}](${SITE_URL}${c.href}): ${c.description}`).join(
 ## Herramientas
 
 - [${compatibilidad.title}](${SITE_URL}${COMPATIBILIDAD_PATH}): ${compatibilidad.lead}
+- [${elegir.name}: ${elegir.tagline.toLowerCase()}](${SITE_URL}${ELEGIR_PATH}): ${elegir.lead}
 
 ## Asesorías personalizadas
 

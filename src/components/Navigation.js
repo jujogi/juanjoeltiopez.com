@@ -11,8 +11,13 @@ import {
   useDisclosure,
   Stack,
   Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -21,9 +26,29 @@ import { trackCtaClick } from "@/lib/gtm";
 const LINKS = [
   { name: "Inicio", href: "/" },
   { name: "Blog", href: "/blog" },
-  { name: "Armonía Acuática", href: "/armonia-acuatica" },
+  {
+    name: "Herramientas",
+    children: [
+      { name: "Armonía Acuática", href: "/armonia-acuatica" },
+      { name: "Ayúdame a elegir", href: "/ayudame-a-elegir" },
+    ],
+  },
   { name: "Sobre mí", href: "/sobre-mi" },
 ];
+
+// Raya verde bajo el enlace activo en escritorio
+const underline = isActive => ({
+  content: '""',
+  position: "absolute",
+  left: 3,
+  right: 3,
+  bottom: "-1px",
+  h: "2px",
+  rounded: "full",
+  bg: "accent.cyan",
+  transform: isActive ? "scaleX(1)" : "scaleX(0)",
+  transition: "transform 0.2s ease",
+});
 
 const CTA = { name: "Asesorías personalizadas", href: "/asesoria" };
 
@@ -42,26 +67,53 @@ const NavLink = ({ href, children, isActive, isMobile, onClick }) => (
     borderBottom={isMobile ? "1px" : undefined}
     borderColor="dark.border"
     _hover={{ textDecoration: "none", color: "white" }}
-    _after={
-      isMobile
-        ? undefined
-        : {
-            content: '""',
-            position: "absolute",
-            left: 3,
-            right: 3,
-            bottom: "-1px",
-            h: "2px",
-            rounded: "full",
-            bg: "accent.cyan",
-            transform: isActive ? "scaleX(1)" : "scaleX(0)",
-            transition: "transform 0.2s ease",
-          }
-    }
+    _after={isMobile ? undefined : underline(isActive)}
   >
     {children}
   </Link>
 );
+
+// "Herramientas" en escritorio: un menú con las herramientas
+const ToolsMenu = ({ name, items, isActiveLink }) => {
+  const isActive = items.some(item => isActiveLink(item.href));
+  return (
+    <Menu placement="bottom-start">
+      <MenuButton
+        position="relative"
+        px={3}
+        py={2}
+        fontSize="sm"
+        fontWeight="500"
+        color={isActive ? "white" : "dark.textSecondary"}
+        _hover={{ color: "white" }}
+        _expanded={{ color: "white" }}
+        _after={underline(isActive)}
+      >
+        {name} <ChevronDownIcon aria-hidden="true" />
+      </MenuButton>
+      <MenuList bg="dark.surface" borderColor="dark.border" py={2} minW="220px">
+        {items.map(item => (
+          <MenuItem
+            key={item.href}
+            as={NextLink}
+            href={item.href}
+            aria-current={isActiveLink(item.href) ? "page" : undefined}
+            bg="transparent"
+            color={isActiveLink(item.href) ? "white" : "dark.textSecondary"}
+            fontSize="sm"
+            fontWeight="500"
+            px={4}
+            py={2.5}
+            _hover={{ bg: "dark.surfaceRaised", color: "white" }}
+            _focus={{ bg: "dark.surfaceRaised", color: "white" }}
+          >
+            {item.name}
+          </MenuItem>
+        ))}
+      </MenuList>
+    </Menu>
+  );
+};
 
 const CtaButton = ({ onClick, ...props }) => (
   <Button
@@ -125,11 +177,20 @@ export default function Navigation() {
           {/* Escritorio */}
           <HStack spacing={6} display={{ base: "none", lg: "flex" }}>
             <HStack as="nav" aria-label="Principal" spacing={1}>
-              {LINKS.map(link => (
-                <NavLink key={link.href} href={link.href} isActive={isActiveLink(link.href)}>
-                  {link.name}
-                </NavLink>
-              ))}
+              {LINKS.map(link =>
+                link.children ? (
+                  <ToolsMenu
+                    key={link.name}
+                    name={link.name}
+                    items={link.children}
+                    isActiveLink={isActiveLink}
+                  />
+                ) : (
+                  <NavLink key={link.href} href={link.href} isActive={isActiveLink(link.href)}>
+                    {link.name}
+                  </NavLink>
+                )
+              )}
             </HStack>
             <CtaButton />
           </HStack>
@@ -162,17 +223,48 @@ export default function Navigation() {
         >
           <Container maxW="container.xl" py={4}>
             <Stack as="nav" aria-label="Principal" spacing={0}>
-              {LINKS.map(link => (
-                <NavLink
-                  key={link.href}
-                  href={link.href}
-                  isActive={isActiveLink(link.href)}
-                  isMobile
-                  onClick={onClose}
-                >
-                  {link.name}
-                </NavLink>
-              ))}
+              {LINKS.map(link =>
+                link.children ? (
+                  // En el celular, las herramientas van debajo de su título, con sangría
+                  <Box key={link.name}>
+                    <Text
+                      px={2}
+                      pt={3}
+                      pb={1}
+                      fontSize="xs"
+                      fontWeight="700"
+                      textTransform="uppercase"
+                      letterSpacing="0.12em"
+                      color="dark.textMuted"
+                    >
+                      {link.name}
+                    </Text>
+                    {link.children.map(item => (
+                      <NavLink
+                        key={item.href}
+                        href={item.href}
+                        isActive={isActiveLink(item.href)}
+                        isMobile
+                        onClick={onClose}
+                      >
+                        <Box as="span" display="block" pl={4}>
+                          {item.name}
+                        </Box>
+                      </NavLink>
+                    ))}
+                  </Box>
+                ) : (
+                  <NavLink
+                    key={link.href}
+                    href={link.href}
+                    isActive={isActiveLink(link.href)}
+                    isMobile
+                    onClick={onClose}
+                  >
+                    {link.name}
+                  </NavLink>
+                )
+              )}
             </Stack>
             <CtaButton size="lg" w="full" mt={6} onClick={onClose} />
           </Container>

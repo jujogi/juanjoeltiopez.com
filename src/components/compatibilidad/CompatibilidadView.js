@@ -15,6 +15,7 @@ import { FaExclamationTriangle, FaGlobeAmericas } from "react-icons/fa";
 import Breadcrumbs from "@/components/article/Breadcrumbs";
 import ArticleFAQ from "@/components/article/ArticleFAQ";
 import AsesoriaBand from "@/components/AsesoriaBand";
+import ElegirBand from "@/components/ElegirBand";
 import { SectionHeader } from "@/components/ui/SectionHeading";
 import { trackArmonia } from "@/lib/gtm";
 import CompatibilityTool from "./CompatibilityTool";
@@ -143,6 +144,8 @@ export default function CompatibilidadView() {
         gap={{ base: 20, md: 28 }}
       >
         <HowItWorks checksExplained={copy.checksExplained} copy={ui.howItWorks} />
+        {/* Para quien todavía no sabe qué especies elegir. En español, como la banda de asesorías */}
+        <ElegirBand trackingId="armonia_elegir" />
         <Box maxW="860px">
           <ArticleFAQ faq={copy.faq} title={ui.faqTitle} />
         </Box>

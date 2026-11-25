@@ -28,6 +28,7 @@ import { trackCtaClick } from "@/lib/gtm";
 import PostCard, { FeaturedPostCard } from "@/components/PostCard";
 import AsesoriaBand from "@/components/AsesoriaBand";
 import ArmoniaHomeBand from "./ArmoniaHomeBand";
+import ElegirBand from "@/components/ElegirBand";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { Eyebrow, SectionHeader } from "@/components/ui/SectionHeading";
 
@@ -242,6 +243,10 @@ export default function HomeView() {
         {/* Armonía Acuática */}
         <Box mb={{ base: 16, md: 24 }}>
           <ArmoniaHomeBand />
+          {/* La otra herramienta, debajo y más pequeña */}
+          <Box mt={6}>
+            <ElegirBand trackingId="home_elegir" />
+          </Box>
         </Box>
 
         <Box as="section" aria-labelledby="temas" mb={{ base: 16, md: 24 }}>
@@ -252,7 +257,6 @@ export default function HomeView() {
             ))}
           </SimpleGrid>
         </Box>
-
 
         {/* Destacada + recientes */}
         <Box as="section" aria-labelledby="recientes" mb={{ base: 16, md: 24 }}>

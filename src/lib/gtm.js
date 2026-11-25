@@ -72,3 +72,28 @@ export const trackArmonia = (action, params = {}) => {
     window.gtag("event", `armonia_${action}`, params);
   }
 };
+
+/**
+ * Eventos de "Ayúdame a elegir" (/ayudame-a-elegir). Todos se llaman `elegir_<acción>`.
+ * Parámetros nuevos para registrar como dimensiones personalizadas: pregunta, respuesta,
+ * opcion, total_propuestas, desde, nuevas, exp, agua y meta (los demás ya existen para Armonía
+ * Acuática). La banda de invitación (ElegirBand) usa trackCtaClick: home_elegir,
+ * articulo_elegir o armonia_elegir.
+ *
+ * Acciones: paso (paso: 1 a 4, o 5 los resultados) · respuesta (pregunta: exp, agua o meta;
+ * respuesta: la clave de la opción) · litros (litros, unidad, origen: campo, boton o
+ * calculadora) · unidad · abrir_calculadora · resultado (total_propuestas; exp, agua y meta:
+ * las claves de las respuestas) ·
+ * ver_otras (desde: la primera opción que pasa a verse, 1 o 4; nuevas: true si ya se habían
+ * visto todas y salen propuestas nuevas; total_propuestas) ·
+ * abrir_armonia (opcion: 1 a 6; combo: los nombres en español) ·
+ * empezar_de_nuevo · idioma
+ *
+ * @param {string} action - La acción, sin el prefijo
+ * @param {object} params - Detalle del evento (textos de máximo 100 caracteres)
+ */
+export const trackElegir = (action, params = {}) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", `elegir_${action}`, params);
+  }
+};
