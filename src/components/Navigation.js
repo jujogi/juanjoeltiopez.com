@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -15,7 +15,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Text,
+  Collapse,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
@@ -130,6 +130,76 @@ const CtaButton = ({ onClick, ...props }) => (
   </Button>
 );
 
+// "Herramientas" en el celular: un botón que abre y cierra sus enlaces debajo, con sangría.
+// Empieza abierto si la página actual es una de las herramientas.
+const MobileToolsGroup = ({ name, items, isActiveLink, onNavigate }) => {
+  const isActive = items.some(item => isActiveLink(item.href));
+  const [isOpen, setIsOpen] = useState(isActive);
+  return (
+    <Box>
+      <Button
+        variant="unstyled"
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        w="full"
+        h="auto"
+        px={2}
+        py={3}
+        rounded="none"
+        fontSize="lg"
+        fontWeight="600"
+        textAlign="left"
+        color={isActive ? "white" : "dark.textSecondary"}
+        // Abierto, la línea va debajo de sus enlaces y no entre el título y ellos
+        borderBottom={isOpen ? "none" : "1px"}
+        borderColor="dark.border"
+        aria-expanded={isOpen}
+        aria-controls="menu-movil-herramientas"
+        onClick={() => setIsOpen(open => !open)}
+      >
+        {name}
+        <ChevronDownIcon
+          aria-hidden="true"
+          boxSize={6}
+          transform={isOpen ? "rotate(180deg)" : undefined}
+          transition="transform 0.2s"
+        />
+      </Button>
+      {/* Los enlaces van como bloques con sangría, sin línea entre ellos; el activo lleva una
+          barra verde a la izquierda */}
+      <Collapse in={isOpen} animateOpacity>
+        <Box id="menu-movil-herramientas" py={2} borderBottom="1px" borderColor="dark.border">
+          {items.map(item => {
+            const isCurrent = isActiveLink(item.href);
+            return (
+              <Link
+                key={item.href}
+                as={NextLink}
+                href={item.href}
+                onClick={onNavigate}
+                aria-current={isCurrent ? "page" : undefined}
+                display="block"
+                ml={2}
+                pl={4}
+                py={2.5}
+                fontSize="md"
+                fontWeight="600"
+                color={isCurrent ? "white" : "dark.textSecondary"}
+                borderLeft="2px"
+                borderColor={isCurrent ? "accent.cyan" : "dark.border"}
+                _hover={{ textDecoration: "none", color: "white" }}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+        </Box>
+      </Collapse>
+    </Box>
+  );
+};
+
 export default function Navigation() {
   const { isOpen, onToggle, onClose } = useDisclosure();
   const pathname = usePathname();
@@ -225,34 +295,13 @@ export default function Navigation() {
             <Stack as="nav" aria-label="Principal" spacing={0}>
               {LINKS.map(link =>
                 link.children ? (
-                  // En el celular, las herramientas van debajo de su título, con sangría
-                  <Box key={link.name}>
-                    <Text
-                      px={2}
-                      pt={3}
-                      pb={1}
-                      fontSize="xs"
-                      fontWeight="700"
-                      textTransform="uppercase"
-                      letterSpacing="0.12em"
-                      color="dark.textMuted"
-                    >
-                      {link.name}
-                    </Text>
-                    {link.children.map(item => (
-                      <NavLink
-                        key={item.href}
-                        href={item.href}
-                        isActive={isActiveLink(item.href)}
-                        isMobile
-                        onClick={onClose}
-                      >
-                        <Box as="span" display="block" pl={4}>
-                          {item.name}
-                        </Box>
-                      </NavLink>
-                    ))}
-                  </Box>
+                  <MobileToolsGroup
+                    key={link.name}
+                    name={link.name}
+                    items={link.children}
+                    isActiveLink={isActiveLink}
+                    onNavigate={onClose}
+                  />
                 ) : (
                   <NavLink
                     key={link.href}

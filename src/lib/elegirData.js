@@ -14,7 +14,7 @@ export const elegir = {
 export const questions = {
   tank: {
     title: unit => `¿De cuántos ${unit} es tu acuario?`,
-    hint: "Con eso calculamos cuántos peces caben sin apretarlos.",
+    hint: "Con eso calculamos cuántos peces caben sin sobrepoblar tu acuario.",
     missing: unit => `Escribe los ${unit} de tu acuario para seguir.`,
     calculator: unit => `¿No sabes de cuántos ${unit} es tu acuario?`,
   },

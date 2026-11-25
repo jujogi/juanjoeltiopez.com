@@ -33,9 +33,16 @@ export default function OptionStep({ options, selected, onSelect, labelledBy, di
             border="1px"
             borderColor={isSelected ? "accent.cyan" : "dark.border"}
             rounded="xl"
-            _hover={{ borderColor: "accent.cyan" }}
+            // El borde verde al pasar el mouse solo en computador: en el celular el "hover" se
+            // queda pegado después de tocar, y la opción del paso siguiente que cae en el mismo
+            // lugar parece elegida
+            sx={{
+              "@media (hover: hover)": {
+                "&:hover:not(:disabled)": { borderColor: "accent.cyan" },
+              },
+            }}
             isDisabled={Boolean(disabledNote)}
-            _disabled={{ opacity: 0.55, cursor: "not-allowed", _hover: {} }}
+            _disabled={{ opacity: 0.55, cursor: "not-allowed" }}
             aria-pressed={isSelected}
             onClick={() => onSelect(option.value)}
           >

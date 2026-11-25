@@ -18,7 +18,7 @@ export const elegirEn = {
   questions: {
     tank: {
       title: unit => `How many ${unit} does your tank hold?`,
-      hint: "That's how we work out how many fish fit without crowding them.",
+      hint: "That's how we work out how many fish fit without overstocking your tank.",
       missing: unit => `Type in your tank's ${unit} to continue.`,
       calculator: unit => `Don't know how many ${unit} your tank holds?`,
     },
