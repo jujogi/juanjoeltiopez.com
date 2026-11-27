@@ -1,12 +1,13 @@
 "use client";
 
 import { Container, VStack, Heading, Text, Box, HStack, Icon, SimpleGrid } from "@chakra-ui/react";
-import { FaFish, FaTiktok, FaInstagram } from "react-icons/fa";
+import { FaClipboardCheck, FaFish, FaTiktok, FaInstagram } from "react-icons/fa";
 import { FiMessageCircle, FiBook } from "react-icons/fi";
 import NextLink from "next/link";
 import Image from "next/image";
 import { trackEvent } from "@/lib/gtm";
 import { COMPATIBILIDAD_PATH, compatibilidad } from "@/lib/compatibilidadData";
+import { ELEGIR_PATH, elegir } from "@/lib/elegirData";
 
 const SocialIcon = ({ icon, link, color, bgColor, platform, label }) => {
   const handleClick = () => {
@@ -38,13 +39,13 @@ const SocialIcon = ({ icon, link, color, bgColor, platform, label }) => {
   );
 };
 
-const NavCard = ({ title, icon, href, description, gridColumn }) => {
+const NavCard = ({ title, icon, href, description }) => {
   const handleClick = () => {
     trackEvent(`me_page_${title}`, "Navigation");
   };
 
   return (
-    <Box as={NextLink} href={href} onClick={handleClick} gridColumn={gridColumn}>
+    <Box as={NextLink} href={href} onClick={handleClick}>
       <Box
         p={{ base: 3, md: 5 }}
         bg="dark.surface"
@@ -119,7 +120,7 @@ export default function MePage() {
               <Box as="strong" color="accent.cyan">
                 cuidar y disfrutar de tu acuario
               </Box>{" "}
-              como nunca antes. Encuentra guías, consejos y toda la inspiración para tus proyectos
+              como nunca antes. Encuentra guías, herramientas, consejos y toda la inspiración para tus proyectos
               acuáticos.
             </Text>
           </VStack>
@@ -130,8 +131,13 @@ export default function MePage() {
               title={compatibilidad.name}
               icon={FaFish}
               href={COMPATIBILIDAD_PATH}
-              gridColumn="1 / -1"
               description="¿Tus peces y gambitas pueden vivir juntos? Revísalo antes de comprar"
+            />
+            <NavCard
+              title={elegir.name}
+              icon={FaClipboardCheck}
+              href={ELEGIR_PATH}
+              description="¿No sabes qué peces poner? Responde 4 preguntas y te sugerimos los ideales"
             />
             <NavCard
               title="Asesorías"

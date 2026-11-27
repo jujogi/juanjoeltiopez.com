@@ -27,6 +27,11 @@ const MAX_CAUTIONS = { iniciando: 0, algo: 1, experto: 1 };
 // propuesta lo muestra.
 const BASE_CAUTIONS = { betta: 1 };
 
+// Especies que nunca sugerimos juntas aunque Armonía las acepte: el guppy y el endler se
+// cruzan entre ellos
+const DONT_MIX = [["guppy", "endler"]];
+const clashes = (a, b) => DONT_MIX.some(pair => pair.includes(a) && pair.includes(b) && a !== b);
+
 // El agua de la llave de cada respuesta. Una especie entra si este punto está dentro de sus
 // rangos de pH y GH. "No sé" es un agua neutra: entran las que toleran un rango amplio.
 const WATER = {
@@ -158,7 +163,10 @@ function grow(selection, liters) {
 // pools: las especies de cada papel (slots[i]), ya mezcladas
 function buildProposal(base, slots, pools, answers, used, maxCautions) {
   const { liters } = answers;
-  const selection = [{ id: base.id, qty: startQty(base, liters), role: slots[0][0] }];
+  // El papel de la base es el suyo dentro del primer puesto: unos guppys son "Vivíparos", no
+  // "Cardumen", aunque los dos papeles compartan el puesto
+  const role = slots[0].find(r => ROLES[r].includes(base.id));
+  const selection = [{ id: base.id, qty: startQty(base, liters), role }];
 
   slots.slice(1).forEach((roles, i) => {
     const options = candidates(pools[i + 1], answers)
@@ -166,6 +174,7 @@ function buildProposal(base, slots, pools, answers, used, maxCautions) {
       // Con un pez territorial (el Betta macho) nada de peces muy coloridos ni gambitas:
       // JuanJo no lo recomienda en esta herramienta, aunque en Armonía sea solo un "cuidado"
       .filter(s => !(base.territorial && (s.colorful || s.type === "shrimp")))
+      .filter(s => !selection.some(e => clashes(e.id, s.id)))
       .sort((a, b) => used.has(a.id) - used.has(b.id));
     for (const s of options) {
       const entry = {
