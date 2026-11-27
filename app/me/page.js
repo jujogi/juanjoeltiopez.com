@@ -39,13 +39,16 @@ const SocialIcon = ({ icon, link, color, bgColor, platform, label }) => {
   );
 };
 
-const NavCard = ({ title, icon, href, description }) => {
+// Las herramientas ocupan las dos columnas en el celular y una en pantallas grandes
+const TOOL_COLUMN = { base: "1 / -1", md: "auto" };
+
+const NavCard = ({ title, icon, href, description, gridColumn }) => {
   const handleClick = () => {
     trackEvent(`me_page_${title}`, "Navigation");
   };
 
   return (
-    <Box as={NextLink} href={href} onClick={handleClick}>
+    <Box as={NextLink} href={href} onClick={handleClick} gridColumn={gridColumn}>
       <Box
         p={{ base: 3, md: 5 }}
         bg="dark.surface"
@@ -120,24 +123,27 @@ export default function MePage() {
               <Box as="strong" color="accent.cyan">
                 cuidar y disfrutar de tu acuario
               </Box>{" "}
-              como nunca antes. Encuentra guías, herramientas, consejos y toda la inspiración para tus proyectos
-              acuáticos.
+              como nunca antes. Encuentra guías, herramientas, consejos y toda la inspiración para
+              tus proyectos acuáticos.
             </Text>
           </VStack>
 
           {/* Navigation Cards */}
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 5 }} w="full">
+          {/* En el celular las herramientas van a todo el ancho y Asesorías y Blog, lado a lado */}
+          <SimpleGrid columns={2} spacing={{ base: 4, md: 5 }} w="full">
             <NavCard
               title={compatibilidad.name}
               icon={FaFish}
               href={COMPATIBILIDAD_PATH}
-              description="¿Tus peces y gambitas pueden vivir juntos? Revísalo antes de comprar"
+              gridColumn={TOOL_COLUMN}
+              description="¿Tus peces y gambitas pueden vivir juntos?"
             />
             <NavCard
               title={elegir.name}
               icon={FaClipboardCheck}
               href={ELEGIR_PATH}
-              description="¿No sabes qué peces poner? Responde 4 preguntas y te sugerimos los ideales"
+              gridColumn={TOOL_COLUMN}
+              description="¡Respondiendo 4 preguntas te sugerimos qué peces podrías tener!"
             />
             <NavCard
               title="Asesorías"
