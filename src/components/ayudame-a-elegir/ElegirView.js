@@ -1,7 +1,17 @@
 "use client";
 
-import { Box, Button, Container, Flex, Heading, Icon, SimpleGrid, Text } from "@chakra-ui/react";
-import { FaGlobeAmericas } from "react-icons/fa";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
+import { FaExclamationTriangle, FaGlobeAmericas } from "react-icons/fa";
 import Breadcrumbs from "@/components/article/Breadcrumbs";
 import ArticleFAQ from "@/components/article/ArticleFAQ";
 import AsesoriaBand from "@/components/AsesoriaBand";
@@ -99,6 +109,32 @@ export default function ElegirView() {
       </Box>
 
       <AdvisorWizard />
+
+      {/* Aviso fuera de la herramienta, para que el cuadro no crezca. Mismo estilo del aviso
+          de Armonía Acuática */}
+      <HStack
+        role="note"
+        align="start"
+        spacing={3}
+        mt={{ base: 10, md: 12 }}
+        p={{ base: 4, md: 5 }}
+        bg="dark.surface"
+        border="1px"
+        borderColor="accent.sand"
+        rounded="xl"
+      >
+        <Icon
+          as={FaExclamationTriangle}
+          aria-hidden="true"
+          color="accent.sand"
+          boxSize={5}
+          mt={0.5}
+        />
+        {/* En amarillo y con la letra de los títulos, para que se lea como un aviso */}
+        <Text color="accent.sand" fontFamily="heading" fontSize="lg" lineHeight="1.5">
+          {ui.coldNote}
+        </Text>
+      </HStack>
 
       <Box
         mt={{ base: 20, md: 28 }}

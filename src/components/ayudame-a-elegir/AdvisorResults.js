@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { ArrowBackIcon, RepeatIcon } from "@chakra-ui/icons";
-import { FaExclamationTriangle } from "react-icons/fa";
 import NextLink from "next/link";
 import { checkCompatibility } from "@/lib/compatibility";
 import { COMPATIBILIDAD_PATH } from "@/lib/compatibilidadData";
@@ -23,7 +22,6 @@ import { suggestTanks } from "@/lib/speciesAdvisor";
 import { formatNeeded, formatTank } from "@/lib/tankUnits";
 import { trackElegir } from "@/lib/gtm";
 import { LEVELS } from "@/components/compatibilidad/levels";
-import PhotoCredits from "./PhotoCredits";
 import SpeciesPhoto from "./SpeciesPhoto";
 
 // Las propuestas se ven de a tres; "Ver otras opciones" cambia las tres por las siguientes y,
@@ -238,12 +236,14 @@ export default function AdvisorResults({
   }, [turns, first]);
 
   // Después de las últimas tres, una semilla nueva: otras propuestas, sin fin
-  const showOthers = () => {
+  // origen: "arriba" o "abajo", el botón que se tocó
+  const showOthers = origen => {
     const isLast = page + 1 >= pages;
     trackElegir("ver_otras", {
       desde: isLast ? 1 : (page + 1) * PAGE_SIZE + 1,
       nuevas: isLast,
       total_propuestas: proposals.length,
+      origen,
     });
     if (isLast) onReshuffle();
     setPage(isLast ? 0 : page + 1);
@@ -252,26 +252,29 @@ export default function AdvisorResults({
 
   const noResult = ui.results.noResult;
 
+  // El mismo botón arriba y debajo de las tarjetas, para no tener que subir después de leerlas
+  const othersButton = origen => (
+    <Button
+      size="sm"
+      bg="accent.cyan"
+      color="water.950"
+      _hover={{ bg: "accent.cyanHover" }}
+      leftIcon={<RepeatIcon aria-hidden="true" />}
+      onClick={() => showOthers(origen)}
+    >
+      {ui.results.others}
+    </Button>
+  );
+
   return (
     <Box>
-      {/* Arriba, lo que cambia las tarjetas; abajo, lo que saca de los resultados (Atrás y
-          Empezar de nuevo) */}
+      {/* Arriba, lo que cambia las tarjetas (también repetido debajo de ellas); al final, lo
+          que saca de los resultados (Atrás y Empezar de nuevo) */}
       <Flex justify="space-between" align="center" wrap="wrap" gap={3} mb={8}>
         <Text fontSize="sm" color="dark.textSecondary">
           {formatTank(liters, unit)} · {summary.join(" · ")}
         </Text>
-        {pages > 1 && (
-          <Button
-            size="sm"
-            bg="accent.cyan"
-            color="water.950"
-            _hover={{ bg: "accent.cyanHover" }}
-            leftIcon={<RepeatIcon aria-hidden="true" />}
-            onClick={showOthers}
-          >
-            {ui.results.others}
-          </Button>
-        )}
+        {pages > 1 && othersButton("arriba")}
       </Flex>
 
       {proposals.length > 0 ? (
@@ -313,40 +316,18 @@ export default function AdvisorResults({
         </Text>
       )}
 
-      {proposals.length > 0 && (
-        // Tarjeta de aviso, con el mismo estilo del aviso de Armonía Acuática
-        <HStack
-          role="note"
-          align="start"
-          spacing={3}
-          mt={6}
-          p={{ base: 4, md: 5 }}
-          bg="dark.surface"
-          border="1px"
-          borderColor="accent.sand"
-          rounded="xl"
-        >
-          <Icon
-            as={FaExclamationTriangle}
-            aria-hidden="true"
-            color="accent.sand"
-            boxSize={5}
-            mt={0.5}
-          />
-          {/* En amarillo y con la letra de los títulos, para que se lea como un aviso */}
-          <Text color="accent.sand" fontFamily="heading" fontSize="lg" lineHeight="1.5">
-            {ui.results.coldNote}
-          </Text>
-        </HStack>
+      {pages > 1 && (
+        <Flex justify="center" mt={6}>
+          {othersButton("abajo")}
+        </Flex>
       )}
 
-      {/* Las especies de las tarjetas que se ven, sin repetir */}
-      <PhotoCredits
-        species={[...new Set(shown.flatMap(p => p.selection.map(e => e.id)))].map(id =>
-          getSpeciesById(id, lang)
-        )}
-        copy={ui.results.credits}
-      />
+      {/* Los créditos completos (autor, licencia y fuente) están en las fichas de Armonía */}
+      {proposals.length > 0 && (
+        <Text mt={6} fontSize="xs" color="dark.textMuted">
+          {ui.results.credits}
+        </Text>
+      )}
 
       <Flex justify="space-between" align="center" wrap="wrap" gap={3} mt={{ base: 8, md: 10 }}>
         <Button variant="ghost" leftIcon={<ArrowBackIcon aria-hidden="true" />} onClick={onBack}>

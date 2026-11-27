@@ -139,7 +139,8 @@ search, the fit badges and the fichas all read from `species`.
 Other rules: water ranges that do not overlap give "no"; overlapping on a single value
 gives a caution, and two such parameters give "no". Stocking is 1 litre per centimetre
 of adult fish: over 100% is a caution, over 150% is "no". A tank below a species'
-`minLiters` is "no".
+`minLiters` is "no", except up to 20% below (`TIGHT_TANK_RATIO`), which is a caution that
+Ayúdame a elegir only accepts for "Tengo experiencia".
 
 If a species needs behaviour none of the flags describe, add a rule in
 `compatibility.js`, its text in both languages in `compatibilityMessages.js`, and

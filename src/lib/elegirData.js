@@ -104,10 +104,11 @@ export const ui = {
     },
     water: "Agua que comparten",
     cautions: "Ten en cuenta",
-    credits: { title: "Créditos de las fotos", viaCommons: " · vía Wikimedia Commons" },
+    // Los créditos completos de cada foto (autor, licencia y fuente) están en la ficha de la
+    // especie en Armonía Acuática, que se abre con el botón de cada propuesta
+    credits:
+      "Los créditos de las fotos están en la ficha de cada especie en Armonía Acuática. Ábrela con el botón «Revísala en Armonía Acuática».",
     open: "Revísala en Armonía Acuática",
-    coldNote:
-      "Todas estas especies son tropicales, si vives en una ciudad donde hace mucho frío o la temperatura varía mucho en el día, considera añadir un calentador.",
     noResult: {
       tank: volume =>
         `Para esto te recomendamos un acuario de al menos ${volume}. Prueba con otro objetivo o, si tu acuario es más grande, cambia los litros.`,
@@ -131,6 +132,9 @@ export const ui = {
     fondoGrande: "Fondo",
   },
   faqTitle: "Preguntas frecuentes",
+  // Aviso debajo de la herramienta, justo antes de "¿Cómo elegimos tus peces?"
+  coldNote:
+    "Todas las especies que sugerimos en Ayúdame a elegir son tropicales, así que si vives en una ciudad donde hace mucho frío o la temperatura varía mucho durante el día, considera añadir un calentador.",
 };
 
 // "¿Cómo elegimos tus peces?": la sección debajo de la herramienta (texto propio de la página

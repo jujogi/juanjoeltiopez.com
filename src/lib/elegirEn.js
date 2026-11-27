@@ -81,10 +81,9 @@ export const elegirEn = {
       },
       water: "Shared water",
       cautions: "Keep in mind",
-      credits: { title: "Photo credits", viaCommons: " · via Wikimedia Commons" },
+      credits:
+        "Photo credits are in each species' profile in Armonía Acuática. Open it with the “Check it in Armonía Acuática” button.",
       open: "Check it in Armonía Acuática",
-      coldNote:
-        "All these species are tropical. If you live in a city where it gets very cold or the temperature changes a lot during the day, consider adding a heater.",
       noResult: {
         tank: volume =>
           `For this we recommend a tank of at least ${volume}. Try another goal or, if your tank is bigger, change the liters.`,
@@ -107,6 +106,8 @@ export const elegirEn = {
       fondoGrande: "Bottom",
     },
     faqTitle: "Frequently asked questions",
+    coldNote:
+      "All the species we suggest in Ayúdame a elegir are tropical, so if you live in a city where it gets very cold or the temperature changes a lot during the day, consider adding a heater.",
   },
 
   howWeChoose: {

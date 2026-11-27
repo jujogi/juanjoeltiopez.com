@@ -85,7 +85,8 @@ export const trackArmonia = (action, params = {}) => {
  * calculadora) · unidad · abrir_calculadora · resultado (total_propuestas; exp, agua y meta:
  * las claves de las respuestas) ·
  * ver_otras (desde: la primera opción que pasa a verse, 1 o 4; nuevas: true si ya se habían
- * visto todas y salen propuestas nuevas; total_propuestas) ·
+ * visto todas y salen propuestas nuevas; total_propuestas; origen: arriba o abajo, el botón
+ * que se tocó) ·
  * abrir_armonia (opcion: 1 a 6; combo: los nombres en español) ·
  * empezar_de_nuevo · idioma
  *

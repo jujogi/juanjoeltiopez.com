@@ -167,7 +167,7 @@ export const speciesEn = {
     name: "Angelfish",
     aliases: ["freshwater angelfish", "angel"],
     intro:
-      "It's sold small, but it grows quite a bit and needs a tall tank. Keep in mind that as an adult it eats small fish.",
+      "It's sold small, but it grows quite a bit and needs a tall tank. It's a social fish: keep a group of 4 to 6, in a big, tall tank so they don't fight. Keep in mind that as an adult it eats small fish.",
   },
   ramirezi: {
     name: "German blue ram",
@@ -228,12 +228,12 @@ export const speciesEn = {
   "gurami-perla": {
     name: "Pearl gourami",
     intro:
-      "Big and calm, it's one of the most peaceful gouramis. It does need a roomy tank with plants.",
+      "Big and calm, it's one of the most peaceful gouramis. Keep it in a pair or a group, in a roomy tank with plants.",
   },
   "gurami-miel": {
     name: "Honey gourami",
     intro:
-      "The smallest and most peaceful gourami. It's shy: it likes floating plants and calm tank mates.",
+      "The smallest and most peaceful gourami. It's shy: keep it in a pair or a group, with floating plants and calm tank mates.",
   },
   "gurami-enano": {
     name: "Dwarf gourami",
@@ -444,7 +444,7 @@ export const speciesEn = {
     name: "Blue gourami",
     aliases: ["three spot gourami", "gold gourami", "opaline gourami"],
     intro:
-      "Hardy and easy to keep, a good gourami if you're just starting. The males can be tough with each other: keep it alone or as a pair, in a planted tank. You'll also find it in gold or silver.",
+      "Hardy and easy to keep, a good gourami if you're just starting. The males can be tough with each other: keep them as a pair, in a planted tank. You'll also find it in gold or silver.",
   },
   "gurami-besador": {
     name: "Kissing gourami",

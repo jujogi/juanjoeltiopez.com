@@ -2,7 +2,7 @@
 // respuestas. Función pura, sin React. Cada propuesta pasa por checkCompatibility, las mismas
 // reglas de Armonía Acuática, así que al abrirla allá da el mismo veredicto.
 import { getSpeciesById } from "./speciesData";
-import { checkCompatibility } from "./compatibility";
+import { checkCompatibility, TIGHT_TANK_RATIO } from "./compatibility";
 import { LEVELS, ROLES } from "./advisorSpecies";
 
 // Qué niveles de especie ve cada experiencia
@@ -11,6 +11,13 @@ const EXPERIENCE_LEVELS = {
   algo: ["facil", "medio"],
   experto: ["facil", "medio", "experto"],
 };
+
+// Qué parte del acuario mínimo de cada especie le pedimos a cada experiencia. Con experiencia
+// entra en un acuario hasta un 20% más pequeño: Armonía lo muestra como "cuidado".
+const TANK_RATIO = { iniciando: 1, algo: 1, experto: TIGHT_TANK_RATIO };
+
+// Los litros que pide una especie para esa experiencia
+const minTank = (species, exp) => Math.ceil(species.minLiters * TANK_RATIO[exp]);
 
 // Avisos de "cuidado" que aceptamos en una propuesta: ninguno para quien está iniciando
 const MAX_CAUTIONS = { iniciando: 0, algo: 1, experto: 1 };
@@ -29,7 +36,7 @@ const WATER = {
 };
 
 // Casi todas las ciudades de Colombia son tibias: sugerimos especies que viven bien en este
-// rango (°C). En tierra fría, los resultados recomiendan calentador.
+// rango (°C). En tierra fría, la página recomienda calentador (coldNote en elegirData.js).
 const TROPICAL = [25, 27];
 
 // Los papeles (ROLES en advisorSpecies.js) de cada meta, en orden. El primero es la base de
@@ -120,13 +127,17 @@ function shuffledPool(roles, random) {
 const candidates = (ids, answers) =>
   ids
     .map(id => getSpeciesById(id))
-    .filter(s => s && fits(s, answers) && s.minLiters <= answers.liters);
+    .filter(s => s && fits(s, answers) && minTank(s, answers.exp) <= answers.liters);
+
+// Papeles que se quedan en su grupo mínimo: un grupo de escalares es el protagonista, y el
+// espacio que sobra es para el cardumen
+const FIXED_ROLES = ["protagonista", "grande"];
 
 // Los cardúmenes crecen de a un pez, por turnos, mientras quepan
 function grow(selection, liters) {
   const schools = selection.filter(e => {
     const s = getSpeciesById(e.id);
-    return s.type === "fish" && s.minGroup >= 3;
+    return s.type === "fish" && s.minGroup >= 3 && !FIXED_ROLES.includes(e.role);
   });
   let grew = true;
   while (grew) {
@@ -178,7 +189,9 @@ function buildProposal(base, slots, pools, answers, used, maxCautions) {
 function noResultReason(slots, answers) {
   const pool = slots[0].flatMap(role => ROLES[role]).map(id => getSpeciesById(id));
   const fitting = pool.filter(s => fits(s, answers));
-  if (fitting.length) return { type: "tank", liters: Math.min(...fitting.map(s => s.minLiters)) };
+  if (fitting.length) {
+    return { type: "tank", liters: Math.min(...fitting.map(s => minTank(s, answers.exp))) };
+  }
   const levels = EXPERIENCE_LEVELS[answers.exp];
   if (pool.some(s => levels.includes(LEVELS[s.id]))) return { type: "water" };
   return { type: "experience" };

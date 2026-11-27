@@ -28,6 +28,12 @@ const es = {
     detail: (minVolume, tankVolume) =>
       `Necesita mínimo ${minVolume} y tu acuario tiene ${tankVolume}.`,
   },
+  // Hasta un 20% por debajo del mínimo (TIGHT_TANK_RATIO en compatibility.js)
+  tankTight: {
+    title: name => `El acuario es justo para ${name}`,
+    detail: (minVolume, tankVolume) =>
+      `Lo ideal es mínimo ${minVolume} y tu acuario tiene ${tankVolume}. Puede vivir bien si tienes experiencia: cambios de agua más seguidos y una buena filtración.`,
+  },
   overstocked: {
     title: () => "Son muchos peces para ese acuario",
     detail: (stockingVolume, tankVolume) =>
@@ -162,6 +168,11 @@ const en = {
     title: name => `The tank is too small for ${name}`,
     detail: (minVolume, tankVolume) =>
       `It needs at least ${minVolume} and your tank has ${tankVolume}.`,
+  },
+  tankTight: {
+    title: name => `The tank is tight for ${name}`,
+    detail: (minVolume, tankVolume) =>
+      `Ideally it needs at least ${minVolume} and your tank has ${tankVolume}. It can do well if you have experience: more frequent water changes and good filtration.`,
   },
   overstocked: {
     title: () => "Too many fish for that tank",

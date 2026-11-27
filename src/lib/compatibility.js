@@ -10,6 +10,10 @@ const LEVEL_ORDER = ["ok", "caution", "bad"];
 // Regla orientativa de ocupación: 1 litro por cada centímetro de pez adulto
 const LITERS_PER_CM = 1;
 const OVERSTOCK_BAD_RATIO = 1.5;
+// Un acuario hasta un 20% más pequeño que el mínimo de la especie es "cuidado", no "no": con
+// experiencia (más cambios de agua, buena filtración) puede vivir bien. Ayúdame a elegir solo
+// lo sugiere a quien tiene experiencia.
+export const TIGHT_TANK_RATIO = 0.8;
 // Acuario mínimo para dos o más cíclidos enanos que defienden el fondo
 const BOTTOM_RIVALS_MIN_LITERS = 100;
 
@@ -119,11 +123,13 @@ function tankChecks(entries, liters, t, vol) {
 
   for (const { species } of inAquarium(entries)) {
     if (species.minLiters > liters) {
+      const isTight = liters >= species.minLiters * TIGHT_TANK_RATIO;
+      const message = isTight ? t.tankTight : t.tankTooSmall;
       checks.push({
-        level: "bad",
+        level: isTight ? "caution" : "bad",
         aboutTank: true,
-        title: t.tankTooSmall.title(species.name),
-        detail: t.tankTooSmall.detail(vol(species.minLiters, true), vol(liters)),
+        title: message.title(species.name),
+        detail: message.detail(vol(species.minLiters, true), vol(liters)),
       });
     }
   }
