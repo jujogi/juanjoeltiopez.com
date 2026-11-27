@@ -72,10 +72,10 @@ export const speciesPhotos = {
   },
   "danio-cebra": {
     src: "/images/especies/danio-cebra.jpg",
-    author: "Pogrebnoj-Alexandroff",
-    license: "CC BY-SA 3.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
-    source: "https://commons.wikimedia.org/wiki/File:Danio_rerio_lab_right.JPG",
+    author: "Soulkeeper",
+    license: "Dominio p\u00fablico",
+    licenseUrl: "",
+    source: "https://commons.wikimedia.org/wiki/File:Danio_rerio_port.jpg",
   },
   betta: {
     src: "/images/especies/betta.jpg",
@@ -86,10 +86,10 @@ export const speciesPhotos = {
   },
   guppy: {
     src: "/images/especies/guppy.jpg",
-    author: "Wibowo Djatmiko",
-    license: "CC BY-SA 3.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
-    source: "https://commons.wikimedia.org/wiki/File:Poecilia_retic_090519-8688_kdBdk.jpg",
+    author: "Carlos Eduardo Joos",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+    source: "https://commons.wikimedia.org/wiki/File:The_guppy_(51713178218).jpg",
   },
   corydoras: {
     src: "/images/especies/corydoras.jpg",
@@ -514,10 +514,10 @@ export const speciesPhotos = {
   },
   "gurami-azul": {
     src: "/images/especies/gurami-azul.jpg",
-    author: "Igormaksym",
-    license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-    source: "https://commons.wikimedia.org/wiki/File:Trichopodus_trichopterus.jpg",
+    author: "Peter Jung",
+    license: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+    source: "https://commons.wikimedia.org/wiki/File:Punktierter_Fadenfisch_Maennchen.jpg",
   },
   "gurami-besador": {
     src: "/images/especies/gurami-besador.jpg",
